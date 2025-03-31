@@ -2,6 +2,11 @@ table, th, td {
     border:1px solid black;
 }
 
+.credit_count {
+    text-align: center;
+    vertical-align: middle;
+  }
+
 table {
     width: 100%;
 }

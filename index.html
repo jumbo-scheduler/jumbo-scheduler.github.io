@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>P-Nuts!</title>
+        <title>Planning courses? It's Peanuts!</title>
 
         <link rel="stylesheet" href="style.css">
 
@@ -12,12 +12,28 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     </head>
     <body>
-        <h1>Planning Necessary Undergrad Tracks in SIS</h1>
+        <h1>PEANUTS: Planning Elective And Necessary Undergrad Tracks Strategically</h1>
 
-        <select id="class_selection" style="width: 50%">
-            <option value="">Search or select...</option>
-            <!-- Options will be added dynamically -->
-        </select>
+        <p id="credits">
+            Design and coding by <a href="https://henryty83.github.io">Henry Ty</a> <br>
+            Idea by <a href="https://blusuqare.github.io">Dhyey Maharaja</a>
+        </p>
+
+        <div>
+            <h3>Degree requirements</h3>
+
+            <div id="requirements"></div>
+
+            <br>
+
+            <div>
+                Add new requirements <br>
+                <button id="new-class-button">By class name</button>
+                <button id="new-department-button">By department</button>
+                <button id="new-attribute-button">By attribute</button>
+                <button id="new-wildcard-button">"Pick one of..."</button>
+            </div>
+        </div>
 
 
         <div class="year" id="freshman">
@@ -30,5 +46,13 @@
         </div>
 
         <script src="script.js"></script>
+
+
+
+
+        <p id="contact">
+            v0: Last updated April 2025 <br>
+            Any issues?  <a href="mailto:Henry.Ty@tufts.edu">Send an email</a> or submit a <a href="https://github.com/jumbo-scheduler/jumbo-scheduler.github.io">pull request</a>
+        </p>
     </body>
 </html>
