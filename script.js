@@ -245,7 +245,7 @@ class Year {
 const verifyTerm = (term) => {
     var totalCredits = 0
     for (var subject of term) totalCredits += subject.credits
-    return 12 <= totalCredits <= 18
+    return 12 <= totalCredits && totalCredits <= 18
 }
 
 const a = (catalog) => {
