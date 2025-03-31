@@ -9,8 +9,8 @@ function loadFile(filePath) {
     return result;
 }
 
-const fall_catalog = JSON.parse(loadFile("/course_catalog/fall25.JSON"))
-const spring_catalog = JSON.parse(loadFile("/course_catalog/spring25.JSON"))
+const fall_catalog = JSON.parse(loadFile("/course-catalog/fall25.json"))
+const spring_catalog = JSON.parse(loadFile("/course-catalog/spring25.json"))
 const total_catalog = { ...spring_catalog, ...fall_catalog };
 
 const attributes = [
