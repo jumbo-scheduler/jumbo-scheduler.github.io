@@ -356,7 +356,7 @@ const create_requirements_tab = (id='Minor') => {
         container.find('.down-btn').click(() => { container.insertAfter(container.next()) })
         container.find('.remove-btn').click(() => { container.remove() })
         container.find(".duplicate-btn").click(() => {
-            var duplicate = create_dropdown(dropdown_class, data, placeholder_text)()
+            var duplicate = create_dropdown(dropdown_class, data, placeholder_text, preface)()
 
             duplicate.find('select').val(selector.val()).trigger('change')
             duplicate.insertAfter(container)
@@ -421,7 +421,7 @@ const update_tab_selection = () => {
     for (var i = 0; i < tabs.children().length - 1; i++) {
         const button = $(tabs.children()[i])
         var selected_requirement = requirements_ids[i]
-        if (button.attr('active') == 'true') $(`#${selected_requirement}`).attr('style', 'display:block;')
+        if (button.hasClass('active')) $(`#${selected_requirement}`).attr('style', 'display:block;')
         else $(`#${selected_requirement}`).attr('style', 'display:none;')
     }
 }

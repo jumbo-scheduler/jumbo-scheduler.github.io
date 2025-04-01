@@ -28,7 +28,7 @@ th {
   }
   
   /* Style the buttons that are used to open the tab content */
-  .requirement-link {
+#requirements button {
     background-color: inherit;
     float: left;
     border: none;
@@ -38,18 +38,20 @@ th {
     transition: 0.3s;
   }
   
-  /* Change background color of buttons on hover */
-  .requirement-link:hover {
+  #requirements button:hover {
     background-color: #ddd;
   }
   
-  /* Create an active/current tablink class */
-  .requirement-link.active {
+  #requirements button.active {
     background-color: #ccc;
   }
 
-/* Change background color of buttons on hover */
-#new-requirement {
+#requirements #new-requirement {
+    background-color: #3172AE;
+    color: #fff;
+}
+
+#requirements #new-requirement:hover {
     background-color: #3172AE;
     color: #fff;
 }
