@@ -5,7 +5,12 @@ table, th, td {
 .credit_count {
     text-align: center;
     vertical-align: middle;
-  }
+}
+
+
+.multi-selections {
+    padding-left: 2%
+}
 
 table {
     width: 100%;

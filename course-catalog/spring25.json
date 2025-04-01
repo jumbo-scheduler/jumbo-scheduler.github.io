@@ -3284,7 +3284,7 @@
       "BFA-Science/Technology",
       "SOE-Computing"
      ],
-     "prereqs": "First or second year student in AS&E or CS Postbac or Major or Minor in (Computer Science or Cognitive and Brain Science) in A&S.",
+     "prereqs": "First or second year student in AS&E or CS Postbac or Major or Minor in (Computer Science or Cognitive and Brain Science) in ANS.",
      "credits": 4
     },
     "CS-0011": {
@@ -3294,7 +3294,7 @@
       "LA-Distribution-Mathematics",
       "SOE-Computing"
      ],
-     "prereqs": "(Prior completion of CS 10 OR ES 2) AND (SOE undergraduate OR First or second year student in A&S OR CS Postbac OR Major or Minor in Computer Science or Cognitive and Brain Science in A&S).",
+     "prereqs": "(Prior completion of CS 10 OR ES 2) AND (SOE undergraduate OR First or second year student in ANS OR CS Postbac OR Major or Minor in Computer Science or Cognitive and Brain Science in ANS).",
      "credits": 4
     },
     "CS-0014": {
@@ -3310,7 +3310,7 @@
       "LA-Distribution-Mathematics",
       "SOE-Computing"
      ],
-     "prereqs": "Restricted to SOE undergrads, First or Second year A&S students, A&S students with a Major or Minor in CS or Cognitive and Brain Sciences, or CS Postbacs. All students with the exception of CS Postbacs must have completed CS 11 with a C- or better.",
+     "prereqs": "Restricted to SOE undergrads, First or Second year ANS students, ANS students with a Major or Minor in CS or Cognitive and Brain Sciences, or CS Postbacs. All students with the exception of CS Postbacs must have completed CS 11 with a C- or better.",
      "credits": 4
     },
     "CS-0020": {
@@ -7051,7 +7051,7 @@
       "SoE-HASS-Arts",
       "SoE-HASS-Humanities"
      ],
-     "prereqs": "Requires the completion of ENG 0001 and ENG 0002 or ENG 0003 and ENG 0004 or equivalent(s) and A&S, or ENG 0001 and SOE",
+     "prereqs": "Requires the completion of ENG 0001 and ENG 0002 or ENG 0003 and ENG 0004 or equivalent(s) and ANS, or ENG 0001 and SOE",
      "credits": 3
     },
     "ENG-0007": {

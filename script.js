@@ -12,6 +12,15 @@ function loadFile(filePath) {
 const fall_catalog = JSON.parse(loadFile("/course-catalog/fall25.json"))
 const spring_catalog = JSON.parse(loadFile("/course-catalog/spring25.json"))
 const total_catalog = { ...spring_catalog, ...fall_catalog };
+// runs fn on each element in catalog and returns the edited catalog. essentially array.map
+const edit_catalogs = (fn, catalog) => {
+    for (var a in catalog) {
+        catalog[a] = fn(catalog[a])
+    }
+
+    return JSON.stringify(catalog, 4, ' ')
+}
+
 
 const attributes = [
     "BFA-Language/Culture",
@@ -186,7 +195,7 @@ class Year {
         this.spring_classes = spring_classes
 
         this.name = name;
-        this.parent = document.getElementById(name);
+        this.parent = $(`#${name}`);
     }
 
     createDisplay() {
@@ -248,6 +257,7 @@ const verifyTerm = (term) => {
     return 12 <= totalCredits && totalCredits <= 18
 }
 
+// temp
 const a = (catalog) => {
     do {
         var output = []
@@ -287,30 +297,24 @@ const dropdowns = {
     attributes: attributes
 }
 
-const init_dropdowns = (id, data) => {
-    $(`#${id}`).select2({
-        data: data, // Load data from our array
-        placeholder: "Type to search...",
-        allowClear: true
-    });
-}
-
-// make a new class
-var divID = 0
-
-const create_dropdown = (dropdown_class, data, placeholder_text) => () => {
+// make a new subject
+const create_dropdown = (dropdown_class, data, placeholder_text, parent='#requirements') => () => {
     // Create dropdown container
-    const containerId = `dropdown-${divID}`;
+    const containerId = `dropdown-${Date.now()}`;
     const container = $(`
-        <div class="dropdown-container" id="dropdown-${divID}">
-            <select class="${dropdown_class}-select" id=${dropdown_class}-select-${divID} data-id="${divID}" style="width: 40%">
+        <div class="dropdown-container" id="${containerId}">
+            <select class="${dropdown_class}-select" data-id="${containerId}" style="width: 50%">
                 <option value=""></option>
             </select>
-            <button id="remove-btn-${divID}" data-container="${containerId}">Remove</button>
-            <button class="duplicate-btn" id="duplicate-btn-${divID}" data-container="dropdown-${divID}">Duplicate</button>
+            <button class="up-btn" data-container="${containerId}">U</button>
+            <button class="down-btn" data-container="${containerId}">D</button>
+            <button class="remove-btn" data-container="${containerId}">Remove</button>
+            <button class="duplicate-btn" data-container="${containerId}">Duplicate</button>
+
+            <span class="prereqs"></span>
         </div>
     `);
-    container.appendTo('#requirements')
+    container.appendTo(parent)
 
     var selector = container.find('select')
     selector.select2({
@@ -319,13 +323,11 @@ const create_dropdown = (dropdown_class, data, placeholder_text) => () => {
             allowClear: true
     });
 
-    $(`#remove-btn-${divID}`).click(() => {
-        container.remove()
-    })
-
-    $(`#duplicate-btn-${divID++}`).click(() =>{
+    container.find('.up-btn').click(() => {container.insertBefore(container.prev())})
+    container.find('.down-btn').click(() => {container.insertAfter(container.next())})
+    container.find('.remove-btn').click(() => {container.remove()})
+    container.find(".duplicate-btn").click(() =>{
         var duplicate = create_dropdown(dropdown_class, data, placeholder_text)()
-        duplicate.attr('id', `${dropdown_class}-select-${divID++}`)
 
         duplicate.find('select').val(selector.val()).trigger('change')
         duplicate.insertAfter(container)
@@ -333,10 +335,11 @@ const create_dropdown = (dropdown_class, data, placeholder_text) => () => {
     
 
     // Handle selection change
-    // $container.find('select').on('change', function() {
-    //     const selected = $(this).val();
-    //     console.log(`Dropdown #${$(this).data('id')} selected:`, selected);
-    // });
+    // prereqs
+    container.find('select').on('change', function() {
+        const selected = $(this).val();
+        // container.find('.prereqs').text(data[selected] == undefined ? '' : `Prereqs: ${total_catalog[data[selected].text.split(':')[0]].prereqs}`)
+    });
 
     return container
 }
@@ -344,3 +347,21 @@ const create_dropdown = (dropdown_class, data, placeholder_text) => () => {
 $('#new-class-button').click(create_dropdown("class", dropdowns.all_classes, "Search or select class name"));
 $('#new-department-button').click(create_dropdown("department", dropdowns.departments, "Search or select department"));
 $('#new-attribute-button').click(create_dropdown("attribute", dropdowns.attributes, "Search or select attribute"));
+
+$('#new-wildcard-button').click(()=>{
+    const containerId = `multi-select-${Date.now()}`;
+    const container = $(`
+        <div class="multi-select">
+        One of:
+            <div class="multi-selections" id=${containerId}>
+            </div>
+        </div>
+    `)
+    container.appendTo('#requirements')
+
+    create_dropdown("class", dropdowns.all_classes, "Search or select class name", `#${containerId}`)()
+    create_dropdown("class", dropdowns.all_classes, "Search or select class name", `#${containerId}`)()
+
+    container.click(()=>{if (container.find('.multi-selections').children().length == 0) container.remove()})
+});
+
