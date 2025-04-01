@@ -297,71 +297,132 @@ const dropdowns = {
     attributes: attributes
 }
 
-// make a new subject
-const create_dropdown = (dropdown_class, data, placeholder_text, parent='#requirements') => () => {
-    // Create dropdown container
-    const containerId = `dropdown-${Date.now()}`;
-    const container = $(`
-        <div class="dropdown-container" id="${containerId}">
-            <select class="${dropdown_class}-select" data-id="${containerId}" style="width: 50%">
-                <option value=""></option>
-            </select>
-            <button class="up-btn" data-container="${containerId}">U</button>
-            <button class="down-btn" data-container="${containerId}">D</button>
-            <button class="remove-btn" data-container="${containerId}">Remove</button>
-            <button class="duplicate-btn" data-container="${containerId}">Duplicate</button>
+var requirements_ids = ["Major"]
+const create_requirements_tab = (id='Minor') => {
+    const tab = $(`
+         <div class="requirements-tab" id=${id}>
+            <h3>${id}</h3>
 
-            <span class="prereqs"></span>
-        </div>
-    `);
-    container.appendTo(parent)
+            <div id="${id}-requirements">
+                <table>
+                </table>
+            </div>
+            <br>
 
-    var selector = container.find('select')
-    selector.select2({
+            <div>
+                Add new requirements <br>
+                <button class="new-class-button">By class name</button>
+                <button class="new-department-button">By department</button>
+                <button class="new-attribute-button">By attribute</button>
+                <button class="new-wildcard-button">"Pick one of..."</button>
+            </div>
+        </div>    
+    `)
+    
+    // make a new subject
+    const create_dropdown = (dropdown_class, data, placeholder_text, preface = '', parent = `#${id}-requirements`) => () => {
+        // Create dropdown container
+        const containerId = `dropdown-${Date.now()}`;
+        const container = $(`
+            <tr>
+                <div class="dropdown-container" id="${containerId}">
+                    <td>
+                        ${preface}
+                        <select class="${dropdown_class}-select" data-id="${containerId}" style="width: 50%">
+                            <option value=""></option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="up-btn" data-container="${containerId}">U</button>
+                        <button class="down-btn" data-container="${containerId}">D</button>
+                        <button class="remove-btn" data-container="${containerId}">X</button>
+                        <button class="duplicate-btn" data-container="${containerId}">Duplicate</button>
+
+                        <span class="prereqs"></span>
+                    </td>
+                </div>
+            </tr>
+        `);
+        $(parent).children('table').append(container)
+
+        var selector = container.find('select')
+        selector.select2({
             data: data,
             placeholder: placeholder_text,
             allowClear: true
+        });
+
+        container.find('.up-btn').click(() => { container.insertBefore(container.prev()) })
+        container.find('.down-btn').click(() => { container.insertAfter(container.next()) })
+        container.find('.remove-btn').click(() => { container.remove() })
+        container.find(".duplicate-btn").click(() => {
+            var duplicate = create_dropdown(dropdown_class, data, placeholder_text)()
+
+            duplicate.find('select').val(selector.val()).trigger('change')
+            duplicate.insertAfter(container)
+        })
+
+
+        // Handle selection change
+        // prereqs
+        container.find('select').on('change', function () {
+            const selected = $(this).val();
+            // container.find('.prereqs').text(data[selected] == undefined ? '' : `Prereqs: ${total_catalog[data[selected].text.split(':')[0]].prereqs}`)
+        });
+
+        return container
+    }
+
+    tab.find('.new-class-button').click(create_dropdown("class", dropdowns.all_classes, "Search or select class name"));
+    tab.find('.new-department-button').click(create_dropdown("department", dropdowns.departments, "Search or select department", 'Any class in '));
+    tab.find('.new-attribute-button').click(create_dropdown("attribute", dropdowns.attributes, "Search or select attribute", 'Any class with attribute '));
+    tab.find('.new-wildcard-button').click(() => {
+        const containerId = `multi-select-${Date.now()}`;
+        const container = $(`
+            <tr>
+                <div class="multi-select">
+                    <td>
+                    One of:            
+                        <div id=${containerId}>
+                            <table class="multi-selections">
+                            </table>
+                        </div>
+                    </td>
+
+                    <td>
+                        <button class="up-btn">U</button>
+                        <button class="down-btn">D</button>
+                        <button class="remove-btn">X</button>
+                    </td>
+                </div>
+            </tr>
+        `)
+        container.find('.up-btn').click(() => { container.insertBefore(container.prev()) })
+        container.find('.down-btn').click(() => { container.insertAfter(container.next()) })
+        container.find('.remove-btn').click(() => { container.remove() })
+
+        $(`#${id}-requirements`).children('table').append(container)
+
+        create_dropdown("class", dropdowns.all_classes, "Search or select class name", '', `#${containerId}`)()
+        create_dropdown("class", dropdowns.all_classes, "Search or select class name", '', `#${containerId}`)()
+
+        container.click(() => { if (container.find('.multi-selections').children().length == 0) container.remove() })
     });
 
-    container.find('.up-btn').click(() => {container.insertBefore(container.prev())})
-    container.find('.down-btn').click(() => {container.insertAfter(container.next())})
-    container.find('.remove-btn').click(() => {container.remove()})
-    container.find(".duplicate-btn").click(() =>{
-        var duplicate = create_dropdown(dropdown_class, data, placeholder_text)()
+    $('#requirement-tabs').append(tab)
 
-        duplicate.find('select').val(selector.val()).trigger('change')
-        duplicate.insertAfter(container)
-    })
-    
-
-    // Handle selection change
-    // prereqs
-    container.find('select').on('change', function() {
-        const selected = $(this).val();
-        // container.find('.prereqs').text(data[selected] == undefined ? '' : `Prereqs: ${total_catalog[data[selected].text.split(':')[0]].prereqs}`)
-    });
-
-    return container
+    return tab
 }
 
-$('#new-class-button').click(create_dropdown("class", dropdowns.all_classes, "Search or select class name"));
-$('#new-department-button').click(create_dropdown("department", dropdowns.departments, "Search or select department"));
-$('#new-attribute-button').click(create_dropdown("attribute", dropdowns.attributes, "Search or select attribute"));
+var major = create_requirements_tab('Major')
+const update_tab_selection = () => {
+    const tabs = $('#requirements')
 
-$('#new-wildcard-button').click(()=>{
-    const containerId = `multi-select-${Date.now()}`;
-    const container = $(`
-        <div class="multi-select">
-        One of:
-            <div class="multi-selections" id=${containerId}>
-            </div>
-        </div>
-    `)
-    container.appendTo('#requirements')
-
-    create_dropdown("class", dropdowns.all_classes, "Search or select class name", `#${containerId}`)()
-    create_dropdown("class", dropdowns.all_classes, "Search or select class name", `#${containerId}`)()
-
-    container.click(()=>{if (container.find('.multi-selections').children().length == 0) container.remove()})
-});
-
+    for (var i = 0; i < tabs.children().length - 1; i++) {
+        const button = $(tabs.children()[i])
+        var selected_requirement = requirements_ids[i]
+        if (button.attr('active') == 'true') $(`#${selected_requirement}`).attr('style', 'display:block;')
+        else $(`#${selected_requirement}`).attr('style', 'display:none;')
+    }
+}
+update_tab_selection();

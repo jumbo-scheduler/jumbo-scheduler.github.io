@@ -9,7 +9,7 @@ table, th, td {
 
 
 .multi-selections {
-    padding-left: 2%
+    padding-left: 4%
 }
 
 table {
@@ -19,3 +19,44 @@ table {
 th {
     width: 50%;
 }
+
+ /* Style the tab */
+ #requirements {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .requirement-link {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .requirement-link:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .requirement-link.active {
+    background-color: #ccc;
+  }
+
+/* Change background color of buttons on hover */
+#new-requirement {
+    background-color: #3172AE;
+    color: #fff;
+}
+
+.requirements-tab {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
