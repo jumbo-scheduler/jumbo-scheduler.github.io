@@ -1,5 +1,5 @@
 /*
-    INSTRUCTIONS: Copy/paste into terminal. wait for errors to stop, then call read_classes()
+    INSTRUCTIONS: Open SIS, copy/paste into console. wait for errors to stop, then call read_classes()
 */
 
 const class_table = document.getElementsByClassName("tfp_accordion_row cls-show-js");
@@ -17,15 +17,17 @@ for (let row of show_more) {
 const read_classes = () => {
     for (let i = 0; i < class_table.length; i++) {
         let row = class_table[i]
-        let class_name = row.children[0].innerText
-        let attributes =  class_table[i].children[2].children[1].children[0].children[0].children[3].children[1].children[0].children[0].children[0].children[0].children[0].children.length > 1 ? class_table[i].children[2].children[1].children[0].children[0].children[3].children[1].children[0].children[0].children[0].children[0].children[0].children[1].innerText.slice(17).split(', ').map(x => x.split('\n').join().split(',').join('')) : []
-        let prereqs = class_table[i].children[2].children[1].children[0].children[0].children[3].children[1].children[0].children[0].children[0].children[0].children[2].children[1].innerText
-        let credits = class_table[i].children[2].children[1].children[0].children[0].children[3].children[0].children[4].innerText
+        let class_name = row.children[0].innerText.split(' ')[0]
+        let attributes =  row.children[2].children[1].children[0].children[0].children[3].children[1].children[0].children[0].children[0].children[0].children[0].children.length > 1 ? class_table[i].children[2].children[1].children[0].children[0].children[3].children[1].children[0].children[0].children[0].children[0].children[0].children[1].innerText.slice(17).split(', ').map(x => x.split('\n').join().split(',').join('')) : []
+        let prereqs = row.children[2].children[1].children[0].children[0].children[3].children[1].children[0].children[0].children[0].children[0].children[2].children[1].innerText
+        let credits = row.children[2].children[1].children[0].children[0].children[3].children[0].children[4].innerText
+        let location = row.children[2].children[1].children[0].children[0].children[3].children[0].children[3].children[0].children[0].children[1].innerText
         class_directory[class_name] = {
-            name: row.children[0].innerText.split(" ").slice(1).join(' '),
+            name: `${class_name}: ${row.children[0].innerText.split(' ').slice(1).join(' ')}`,
             attributes: attributes,
             prereqs: prereqs,
-            credits: credits
+            credits: parseInt(credits),
+            location: location
         }
     }
 

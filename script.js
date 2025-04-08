@@ -21,6 +21,11 @@ const edit_catalogs = (fn, catalog) => {
     return JSON.stringify(catalog, 4, ' ')
 }
 
+const total_catalog_no_SMFA = {}
+for (var subject in total_catalog) {
+    if (total_catalog[subject].location == "Medford/Somerville") total_catalog_no_SMFA[subject] = total_catalog[subject]
+}
+
 
 const attributes = [
     "BFA-Language/Culture",
@@ -201,19 +206,19 @@ class Year {
     createDisplay() {
         $(this.parent).empty();
 
-        var title = $('<h2>').text(`${this.name[0].toUpperCase()}${this.name.slice(1)} Year`);
+        var title = $("<h2>").text(`${this.name[0].toUpperCase()}${this.name.slice(1)} Year`);
         $(this.parent).append(title);
 
         // create table and tbody
-        this.table = $('<table>');
-        var tblBody = $('<tbody>');
+        this.table = $("<table>");
+        var tblBody = $("<tbody>");
 
-        var row = $('<tr>');
+        var row = $("<tr>");
 
-        var fall_header = $('<th>').text("FALL");
+        var fall_header = $("<th>").text("FALL");
         row.append(fall_header);
 
-        var spring_header = $('<th>').text("SPRING");
+        var spring_header = $("<th>").text("SPRING");
         row.append(spring_header);
 
         tblBody.append(`
@@ -261,7 +266,9 @@ const verifyTerm = (term) => {
 const a = (catalog) => {
     do {
         var output = []
-        for (var i = 0; i < 6; i++) {
+
+        const max_classes = 6 - Math.floor(3.0 *Math.random())
+        for (var i = 0; i < max_classes; i++) {
             var selection = Object.keys(catalog)[Math.floor(Math.random() * Object.keys(catalog).length)]
             output.push(catalog[selection])
         }
@@ -271,10 +278,10 @@ const a = (catalog) => {
 
 
 var track = [
-    new Year('freshman', a(fall_catalog), a(spring_catalog)),
-    new Year('sophomore', a(fall_catalog), a(spring_catalog)),
-    new Year('junior', a(fall_catalog), a(spring_catalog)),
-    new Year('senior', a(fall_catalog), a(spring_catalog))
+    new Year("freshman", a(fall_catalog), a(spring_catalog)),
+    new Year("sophomore", a(fall_catalog), a(spring_catalog)),
+    new Year("junior", a(fall_catalog), a(spring_catalog)),
+    new Year("senior", a(fall_catalog), a(spring_catalog))
 ]
 
 for (const year of track) year.createDisplay()
@@ -282,7 +289,7 @@ for (const year of track) year.createDisplay()
 const create_dropdown_data = (catalog) => {
     var dropdown_data = []
     var index = 0
-    for (var class_name in total_catalog) {
+    for (var class_name in catalog) {
         dropdown_data.push({
             id: index++,
             text: catalog[class_name].name
@@ -291,14 +298,16 @@ const create_dropdown_data = (catalog) => {
     return dropdown_data
 }
 
+const smfaCheckbox = $("#allow-smfa").find('input')
 const dropdowns = {
     all_classes: create_dropdown_data(total_catalog),
+    no_smfa: create_dropdown_data(total_catalog_no_SMFA),
     departments: departments,
     attributes: attributes
 }
 
-var requirements_ids = ["Major"]
-const create_requirements_tab = (id='Minor') => {
+var requirements_ids = []
+const create_requirements_tab = (id) => {
     const tab = $(`
          <div class="requirements-tab" id=${id}>
             <h3>${id}</h3>
@@ -320,7 +329,7 @@ const create_requirements_tab = (id='Minor') => {
     `)
     
     // make a new subject
-    const create_dropdown = (dropdown_class, data, placeholder_text, preface = '', parent = `#${id}-requirements`) => () => {
+    const create_dropdown = (dropdown_class, data, placeholder_text, preface = "", parent = `#${id}-requirements`) => () => {
         // Create dropdown container
         const containerId = `dropdown-${Date.now()}`;
         const container = $(`
@@ -328,7 +337,7 @@ const create_requirements_tab = (id='Minor') => {
                 <div class="dropdown-container" id="${containerId}">
                     <td>
                         ${preface}
-                        <select class="${dropdown_class}-select" data-id="${containerId}" style="width: 50%">
+                        <select class="select ${dropdown_class}-select" data-id="${containerId}">
                             <option value=""></option>
                         </select>
                     </td>
@@ -343,40 +352,39 @@ const create_requirements_tab = (id='Minor') => {
                 </div>
             </tr>
         `);
-        $(parent).children('table').append(container)
+        $(parent).children("table").append(container)
 
-        var selector = container.find('select')
+        var selector = container.find("select")
         selector.select2({
             data: data,
             placeholder: placeholder_text,
-            allowClear: true
+            allowClear: true,
+            width: '100%'
         });
 
-        container.find('.up-btn').click(() => { container.insertBefore(container.prev()) })
-        container.find('.down-btn').click(() => { container.insertAfter(container.next()) })
-        container.find('.remove-btn').click(() => { container.remove() })
+        container.find(".up-btn").click(() => { container.insertBefore(container.prev()) })
+        container.find(".down-btn").click(() => { container.insertAfter(container.next()) })
+        container.find(".remove-btn").click(() => { container.remove() })
         container.find(".duplicate-btn").click(() => {
             var duplicate = create_dropdown(dropdown_class, data, placeholder_text, preface)()
 
-            duplicate.find('select').val(selector.val()).trigger('change')
+            duplicate.find("select").val(selector.val()).trigger("change")
             duplicate.insertAfter(container)
         })
 
 
         // Handle selection change
-        // prereqs
-        container.find('select').on('change', function () {
-            const selected = $(this).val();
-            // container.find('.prereqs').text(data[selected] == undefined ? '' : `Prereqs: ${total_catalog[data[selected].text.split(':')[0]].prereqs}`)
+        container.find("select").on("change", function () {
+            fetch_classes()
         });
 
         return container
     }
 
-    tab.find('.new-class-button').click(create_dropdown("class", dropdowns.all_classes, "Search or select class name"));
-    tab.find('.new-department-button').click(create_dropdown("department", dropdowns.departments, "Search or select department", 'Any class in '));
-    tab.find('.new-attribute-button').click(create_dropdown("attribute", dropdowns.attributes, "Search or select attribute", 'Any class with attribute '));
-    tab.find('.new-wildcard-button').click(() => {
+    tab.find(".new-class-button").click(create_dropdown("class", smfaCheckbox.is(':checked') ? dropdowns.all_classes : dropdowns.no_smfa, "Search or select class name"));
+    tab.find(".new-department-button").click(create_dropdown("department", dropdowns.departments, "Search or select department", "Any class in "));
+    tab.find(".new-attribute-button").click(create_dropdown("attribute", dropdowns.attributes, "Search or select attribute", "Any class with attribute "));
+    tab.find(".new-wildcard-button").click(() => {
         const containerId = `multi-select-${Date.now()}`;
         const container = $(`
             <tr>
@@ -397,32 +405,77 @@ const create_requirements_tab = (id='Minor') => {
                 </div>
             </tr>
         `)
-        container.find('.up-btn').click(() => { container.insertBefore(container.prev()) })
-        container.find('.down-btn').click(() => { container.insertAfter(container.next()) })
-        container.find('.remove-btn').click(() => { container.remove() })
+        container.find(".up-btn").click(() => { container.insertBefore(container.prev()) })
+        container.find(".down-btn").click(() => { container.insertAfter(container.next()) })
+        container.find(".remove-btn").click(() => { container.remove() })
 
-        $(`#${id}-requirements`).children('table').append(container)
+        $(`#${id}-requirements`).children("table").append(container)
 
-        create_dropdown("class", dropdowns.all_classes, "Search or select class name", '', `#${containerId}`)()
-        create_dropdown("class", dropdowns.all_classes, "Search or select class name", '', `#${containerId}`)()
+        create_dropdown("class", dropdowns.all_classes, "Search or select class name", "", `#${containerId}`)()
+        create_dropdown("class", dropdowns.all_classes, "Search or select class name", "", `#${containerId}`)()
 
-        container.click(() => { if (container.find('.multi-selections').children().length == 0) container.remove() })
+        container.click(() => { if (container.find(".multi-selections").children().length == 0) container.remove() })
     });
 
-    $('#requirement-tabs').append(tab)
+    $("#requirement-tabs").prepend(tab)
 
     return tab
 }
 
-var major = create_requirements_tab('Major')
 const update_tab_selection = () => {
-    const tabs = $('#requirements')
+    const tabs = $("#requirements")
 
     for (var i = 0; i < tabs.children().length - 1; i++) {
         const button = $(tabs.children()[i])
         var selected_requirement = requirements_ids[i]
-        if (button.hasClass('active')) $(`#${selected_requirement}`).attr('style', 'display:block;')
-        else $(`#${selected_requirement}`).attr('style', 'display:none;')
+        if (button.hasClass("active")) $(`#${selected_requirement}`).attr("style", "display:block;")
+        else $(`#${selected_requirement}`).attr("style", "display:none;")
     }
 }
-update_tab_selection();
+
+const new_tab_button = $("#new-requirement")
+const create_new_tab = (name="Minor") => {
+    var tab_name = name
+    var index = 2
+    while (requirements_ids.includes(tab_name)) tab_name = `Minor${index++}`
+    requirements_ids.push(tab_name)
+
+    const tab = $(`<button class="tab">${tab_name}</button>`)
+    tab.click(() => {
+        $(".tab").removeClass("active")
+        tab.addClass("active")
+        update_tab_selection()
+    })
+    tab.insertBefore(new_tab_button)
+
+    create_requirements_tab(tab_name)
+    return tab
+}
+new_tab_button.click(() => {create_new_tab()})
+
+create_new_tab("Major").click()
+
+
+const updateClassSelection = () => {
+    $(".class-select").empty().select2({
+        data: smfaCheckbox.is(':checked') ? dropdowns.all_classes : dropdowns.no_smfa,
+        placeholder: "Search or select class name",
+        allowClear: true,
+        width: '100%'
+    })
+}
+smfaCheckbox.click(updateClassSelection)
+updateClassSelection()
+
+
+var classes = []
+const fetch_classes = () => {
+    classes = []
+    for (var id of requirements_ids) {
+        var dropdowns = $(`#${id}-requirements`).find("select")
+
+        for (var i = 0; i < dropdowns.length; dropdowns++) {
+            classes.push($(dropdowns[i]).select2('data')[0].text)
+        }
+    }
+}
