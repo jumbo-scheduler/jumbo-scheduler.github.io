@@ -364,12 +364,14 @@ const create_requirements_tab = (id) => {
 
         container.find(".up-btn").click(() => { container.insertBefore(container.prev()) })
         container.find(".down-btn").click(() => { container.insertAfter(container.next()) })
-        container.find(".remove-btn").click(() => { container.remove() })
+        container.find(".remove-btn").click(() => { container.remove(); fetch_classes() })
         container.find(".duplicate-btn").click(() => {
             var duplicate = create_dropdown(dropdown_class, data, placeholder_text, preface)()
 
             duplicate.find("select").val(selector.val()).trigger("change")
             duplicate.insertAfter(container)
+
+            fetch_classes()
         })
 
 
@@ -407,7 +409,7 @@ const create_requirements_tab = (id) => {
         `)
         container.find(".up-btn").click(() => { container.insertBefore(container.prev()) })
         container.find(".down-btn").click(() => { container.insertAfter(container.next()) })
-        container.find(".remove-btn").click(() => { container.remove() })
+        container.find(".remove-btn").click(() => { container.remove(); fetch_classes() })
 
         $(`#${id}-requirements`).children("table").append(container)
 
@@ -468,13 +470,38 @@ smfaCheckbox.click(updateClassSelection)
 updateClassSelection()
 
 
+class Subject {
+    constructor() {
+
+    }
+}
+
 var classes = []
 const fetch_classes = () => {
     classes = []
     for (var id of requirements_ids) {
         var dropdowns = $(`#${id}-requirements`).find("select")
 
-        for (var i = 0; i < dropdowns.length; dropdowns++) {
+        console.log(dropdowns)
+        for (var i = 0; i < dropdowns.length; i++) {
+            const dropdownTypes = $(dropdowns[i]).attr('class').split(' ')
+
+            if (dropdownTypes.includes('class-select')) {
+                console.log('CLASS')
+            }
+
+            else if (dropdownTypes.includes('department-select')) {
+                console.log('DEPARTMENT')
+            }
+
+            else if (dropdownTypes.includes('attribute-select')) {
+                console.log('ATTRIBUTE')
+            }
+
+            else if (dropdownTypes.includes('multi-select')) {
+                console.log('MULTI')
+            }
+
             classes.push($(dropdowns[i]).select2('data')[0].text)
         }
     }
