@@ -390,11 +390,11 @@ const create_requirements_tab = (id) => {
         const containerId = `multi-select-${Date.now()}`;
         const container = $(`
             <tr>
-                <div class="multi-select">
+                <div>
                     <td>
                     One of:            
                         <div id=${containerId}>
-                            <table class="multi-selections">
+                            <table class="multi-select">
                             </table>
                         </div>
                     </td>
@@ -416,7 +416,7 @@ const create_requirements_tab = (id) => {
         create_dropdown("class", dropdowns.all_classes, "Search or select class name", "", `#${containerId}`)()
         create_dropdown("class", dropdowns.all_classes, "Search or select class name", "", `#${containerId}`)()
 
-        container.click(() => { if (container.find(".multi-selections").children().length == 0) container.remove() })
+        container.click(() => { if (container.find(".multi-select").children().length == 0) container.remove() })
     });
 
     $("#requirement-tabs").prepend(tab)
@@ -470,39 +470,55 @@ smfaCheckbox.click(updateClassSelection)
 updateClassSelection()
 
 
-class Subject {
-    constructor() {
+const dropdown_enum = {
+    class: 0,
+    attribute: 1,
+    subject: 2,
+    department: 3,
+    multi: 4,
+}
 
+class Selection {
+    constructor(type, config) {
+        this.type = type
+        this.config = config;
+
+        this.locked = type == dropdown_enum.class;
     }
 }
 
 var classes = []
 const fetch_classes = () => {
     classes = []
-    for (var id of requirements_ids) {
-        var dropdowns = $(`#${id}-requirements`).find("select")
+    const classSelects = $(`.class-select`)
+    for (var i = 0; i < classSelects.length; i++) {
+        const selection = $(classSelects[i])
+        if (selection.select2('data')[0].text != '') {
+            classes.push(new Selection(dropdown_enum.class, [selection.select2("data")[0].text.split(':')[0]]))
+        }
+    }
 
-        console.log(dropdowns)
-        for (var i = 0; i < dropdowns.length; i++) {
-            const dropdownTypes = $(dropdowns[i]).attr('class').split(' ')
+    const attributeSelects = $(`.attribute-select`)
+    for (var i = 0; i < attributeSelects.length; i++) {
+        const selection = $(attributeSelects[i])
+        if (selection.select2('data')[0].text != '') {
+            classes.push(new Selection(dropdown_enum.attribute, [selection.select2("data")[0].text]))
+        }
+    }
 
-            if (dropdownTypes.includes('class-select')) {
-                console.log('CLASS')
-            }
+    const departmentSelects = $(`.department-select`)
+    for (var i = 0; i < departmentSelects.length; i++) {
+        const selection = $(departmentSelects[i])
+        if (selection.select2('data')[0].text != '') {
+            classes.push(new Selection(dropdown_enum.department, [selection.select2("data")[0].text]))
+        }
+    }
 
-            else if (dropdownTypes.includes('department-select')) {
-                console.log('DEPARTMENT')
-            }
-
-            else if (dropdownTypes.includes('attribute-select')) {
-                console.log('ATTRIBUTE')
-            }
-
-            else if (dropdownTypes.includes('multi-select')) {
-                console.log('MULTI')
-            }
-
-            classes.push($(dropdowns[i]).select2('data')[0].text)
+    const multiSelects = $(`.multi-select`)
+    for (var i = 0; i < multiSelects.length; i++) {
+        const selection = $(departmentSelects[i])
+        if (selection.select2('data')[0].text != '') {
+            classes.push(new Selection(dropdown_enum.department, [selection.select2("data")[0].text]))
         }
     }
 }
