@@ -413,8 +413,8 @@ const create_requirements_tab = (id) => {
 
         $(`#${id}-requirements`).children("table").append(container)
 
-        create_dropdown("class", dropdowns.all_classes, "Search or select class name", "", `#${containerId}`)()
-        create_dropdown("class", dropdowns.all_classes, "Search or select class name", "", `#${containerId}`)()
+        create_dropdown("multi-class", dropdowns.all_classes, "Search or select class name", "", `#${containerId}`)()
+        create_dropdown("multi-class", dropdowns.all_classes, "Search or select class name", "", `#${containerId}`)()
 
         container.click(() => { if (container.find(".multi-select").children().length == 0) container.remove() })
     });
@@ -487,38 +487,111 @@ class Selection {
     }
 }
 
-var classes = []
+var selected_requirements = []
 const fetch_classes = () => {
-    classes = []
-    const classSelects = $(`.class-select`)
-    for (var i = 0; i < classSelects.length; i++) {
-        const selection = $(classSelects[i])
-        if (selection.select2('data')[0].text != '') {
-            classes.push(new Selection(dropdown_enum.class, [selection.select2("data")[0].text.split(':')[0]]))
+    selected_requirements = []
+    var output = []
+
+    for (const requirements_id of requirements_ids) {
+        var classes = []
+        var attributes = []
+        var departments = []
+        var multis = []
+
+        const req_tab = $($(`#${requirements_id}`)[0])
+        const classSelects = req_tab.find(`.class-select`)
+        for (var i = 0; i < classSelects.length; i++) {
+            const selection = $(classSelects[i])
+            if (selection.select2('data')[0].text != '') {
+                const entry = new Selection(dropdown_enum.class, [selection.select2("data")[0].text.split(':')[0]])
+                classes.push(entry)
+                selected_requirements.push(entry)
+            }
+        }
+
+        const attributeSelects = req_tab.find(`.attribute-select`)
+        for (var i = 0; i < attributeSelects.length; i++) {
+            const selection = $(attributeSelects[i])
+            if (selection.select2('data')[0].text != '') {
+                const entry = new Selection(dropdown_enum.attribute, [selection.select2("data")[0].text])
+                attributes.push(entry)
+                selected_requirements.push(entry)
+            }
+        }
+
+        const departmentSelects = req_tab.find(`.department-select`)
+        for (var i = 0; i < departmentSelects.length; i++) {
+            const selection = $(departmentSelects[i])
+            if (selection.select2('data')[0].text != '') {
+                const entry = new Selection(dropdown_enum.department, [selection.select2("data")[0].text])
+                departments.push(entry)
+                selected_requirements.push(entry)
+            }
+        }
+
+        const multiSelects = req_tab.find(`.multi-select`)
+        for (var i = 0; i < multiSelects.length; i++) {
+            const selects = $(multiSelects[i]).find("select")
+            const selections = []
+
+            for (var j = 0; j < selects.length; j++) {
+                const selection = $(selects[i])
+                if (selection.select2('data')[0].text != '') {
+                    selections.push(selection.select2("data")[0].text.split(':')[0])
+                }
+            }
+
+            if (selections.length > 0) {
+                const entry = new Selection(dropdown_enum.multi, selections)
+                multis.push(entry)
+                selected_requirements.push(entry)
+            }
+        }
+        
+        if (classes.length > 0 || attributes.length > 0 || departments.length > 0 || multis > 0) {
+            output.push({
+                name: requirements_id,
+                classes: classes,
+                attributes: attributes,
+                departments: departments,
+                multis: multis
+            })
         }
     }
 
-    const attributeSelects = $(`.attribute-select`)
-    for (var i = 0; i < attributeSelects.length; i++) {
-        const selection = $(attributeSelects[i])
-        if (selection.select2('data')[0].text != '') {
-            classes.push(new Selection(dropdown_enum.attribute, [selection.select2("data")[0].text]))
-        }
-    }
-
-    const departmentSelects = $(`.department-select`)
-    for (var i = 0; i < departmentSelects.length; i++) {
-        const selection = $(departmentSelects[i])
-        if (selection.select2('data')[0].text != '') {
-            classes.push(new Selection(dropdown_enum.department, [selection.select2("data")[0].text]))
-        }
-    }
-
-    const multiSelects = $(`.multi-select`)
-    for (var i = 0; i < multiSelects.length; i++) {
-        const selection = $(departmentSelects[i])
-        if (selection.select2('data')[0].text != '') {
-            classes.push(new Selection(dropdown_enum.department, [selection.select2("data")[0].text]))
-        }
-    }
+    exportReq(output)
 }
+
+
+const exportReq = (input) => {
+    var output = ""
+
+    for (const tab of input) {
+        output += `${tab.name} requires\n`
+
+        const classes = tab.classes
+        if (classes.length > 0) {
+            output += "\tTHE FOLLOWING CLASSES:\n"
+            for (const subject of classes) output += `\t\t${subject.config[0]}\n`
+        }
+
+        const attributes = tab.attributes
+        if (attributes.length > 0) {
+            output += "\tONE CLASS WITH ATTRIBUTES:\n"
+            for (const attribute of attributes) output += `\t\t${attribute.config[0]}\n`
+        }
+
+        const departments = tab.departments
+        if (departments.length > 0) {
+            output += "\tONE CLASS IN DEPARTMENT:\n"
+            for (const department of departments) output += `\t\t${department.config[0]}\n`
+        }
+    }
+
+    var file = new Blob([output], {type: "text/plain"});
+    const downloadButton = $("#export-req")[0]
+    downloadButton.href = URL.createObjectURL(file)
+    downloadButton.download = "course-requirements.txt"
+    
+}
+
