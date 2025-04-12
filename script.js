@@ -310,7 +310,11 @@ var requirements_ids = []
 const create_requirements_tab = (id) => {
     const tab = $(`
          <div class="requirements-tab" id=${id}>
-            <h3>${id}</h3>
+            <h3>
+                <span class=tab-title>${id}</span> 
+                <button class="rename-tab-button">✏️</button>
+                <button class="delete-tab-button">❌</button>
+            </h3>
 
             <div id="${id}-requirements">
                 <table>
@@ -342,10 +346,10 @@ const create_requirements_tab = (id) => {
                         </select>
                     </td>
                     <td>
-                        <button class="up-btn" data-container="${containerId}">U</button>
-                        <button class="down-btn" data-container="${containerId}">D</button>
-                        <button class="remove-btn" data-container="${containerId}">X</button>
-                        <button class="duplicate-btn" data-container="${containerId}">Duplicate</button>
+                        <button class="up-btn" data-container="${containerId}">🔼</button>
+                        <button class="down-btn" data-container="${containerId}">🔽</button>
+                        <button class="remove-btn" data-container="${containerId}">❌</button>
+                        <button class="duplicate-btn" data-container="${containerId}">📋</button>
 
                         <span class="prereqs"></span>
                     </td>
@@ -383,6 +387,41 @@ const create_requirements_tab = (id) => {
         return container
     }
 
+    tab.find(".rename-tab-button").click(() => {
+        // ensure no duplicate names
+        var newName = prompt("Enter new name for requirement")
+        var duplicateNumber = 2
+        while (requirements_ids.includes(newName)) {newName = `${newName}${duplicateNumber++}`}
+        
+        // edit the header and shit
+        // id change
+        var oldID = tab.attr("id")
+        tab.find(".tab-title")[0].innerText = newName
+        tab.attr("id", newName)
+        tab.find(`#${oldID}-requirements`).attr("id", `${newName}-requirements`)
+
+        // button change
+        const tabIndex = requirements_ids.indexOf(oldID)
+        requirements_ids[tabIndex] = newName
+        $("#requirements").children("button")[tabIndex].innerText = newName
+    })
+    tab.find(".delete-tab-button").click(() => {
+        if (requirements_ids.length == 1) return
+
+        const id = tab.attr("id")
+        const tabIndex = requirements_ids.indexOf(id)
+
+        // remove button
+        requirements_ids.splice(tabIndex, 1)
+        $($("#requirements").children("button")[tabIndex]).remove()
+
+        // remove tab data
+        $(`#${id}`).remove()
+        
+        // select another tab
+        $("#requirements").children("button")[tabIndex < requirements_ids.length ? tabIndex : tabIndex - 1].click()
+    })
+
     tab.find(".new-class-button").click(create_dropdown("class", smfaCheckbox.is(':checked') ? dropdowns.all_classes : dropdowns.no_smfa, "Search or select class name"));
     tab.find(".new-department-button").click(create_dropdown("department", dropdowns.departments, "Search or select department", "Any class in "));
     tab.find(".new-attribute-button").click(create_dropdown("attribute", dropdowns.attributes, "Search or select attribute", "Any class with attribute "));
@@ -400,9 +439,9 @@ const create_requirements_tab = (id) => {
                     </td>
 
                     <td>
-                        <button class="up-btn">U</button>
-                        <button class="down-btn">D</button>
-                        <button class="remove-btn">X</button>
+                        <button class="up-btn">🔼</button>
+                        <button class="down-btn">🔽</button>
+                        <button class="remove-btn">❌</button>
                     </td>
                 </div>
             </tr>
@@ -595,3 +634,6 @@ const exportReq = (input) => {
     
 }
 
+$("#import-req").click(() => {
+
+})

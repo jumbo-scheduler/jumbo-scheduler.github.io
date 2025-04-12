@@ -12969,13 +12969,13 @@
      "location": "Medford/Somerville"
     },
     "MATH-0193": {
-     "name": "MATH-0193: Special Topics - Representation Theory",
+     "name": "MATH-0193: Special Topics - Cauchy random walks",
      "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Mathematics"
      ],
      "prereqs": "None",
-     "credits": 2,
+     "credits": 4,
      "location": "Medford/Somerville"
     },
     "MATH-0195": {
@@ -14288,8 +14288,8 @@
      "name": "OTS-0183: Independent Study - Hand Therapy Exam Prep-Cert",
      "attributes": [],
      "prereqs": "None",
-     "credits": 3,
-     "location": ""
+     "credits": 2,
+     "location": "Medford/Somerville"
     },
     "OTS-0184": {
      "name": "OTS-0184: Independent Study - Assistive Technology",
