@@ -331,9 +331,9 @@ const create_requirements_tab = (id) => {
             </div>
         </div>    
     `)
-    
+
     // make a new subject
-    const create_dropdown = (dropdown_class, data, placeholder_text, preface = "", parent = `#${id}-requirements`) => () => {
+    const create_dropdown = (dropdown_class, data, placeholder_text, preface = "", attach_to = "") => () => {
         // Create dropdown container
         const containerId = `dropdown-${Date.now()}`;
         const container = $(`
@@ -356,8 +356,10 @@ const create_requirements_tab = (id) => {
                 </div>
             </tr>
         `);
-        $(parent).children("table").append(container)
-
+        
+        if (attach_to == "") reqirements_contents.children("table").append(container)
+        else $(attach_to).children("table").append(container)
+    
         var selector = container.find("select")
         selector.select2({
             data: data,
@@ -390,6 +392,8 @@ const create_requirements_tab = (id) => {
     tab.find(".rename-tab-button").click(() => {
         // ensure no duplicate names
         var newName = prompt("Enter new name for requirement")
+        if (newName.length == 0 || newName == null) return
+
         var duplicateNumber = 2
         while (requirements_ids.includes(newName)) {newName = `${newName}${duplicateNumber++}`}
         
@@ -450,7 +454,7 @@ const create_requirements_tab = (id) => {
         container.find(".down-btn").click(() => { container.insertAfter(container.next()) })
         container.find(".remove-btn").click(() => { container.remove(); fetch_classes() })
 
-        $(`#${id}-requirements`).children("table").append(container)
+        reqirements_contents.children("table").append(container)
 
         create_dropdown("multi-class", dropdowns.all_classes, "Search or select class name", "", `#${containerId}`)()
         create_dropdown("multi-class", dropdowns.all_classes, "Search or select class name", "", `#${containerId}`)()
@@ -459,6 +463,7 @@ const create_requirements_tab = (id) => {
     });
 
     $("#requirement-tabs").prepend(tab)
+    const reqirements_contents = $(`#${id}-requirements`)
 
     return tab
 }
