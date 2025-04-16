@@ -1,3 +1,8 @@
+/*
+    WHAT THE FUCK IS ORGANIZATION
+    X LINE JS FILE GO BRRRRRRRRR
+*/
+
 // use for save/load files
 function loadFile(filePath) {
     let result = null;
@@ -26,64 +31,63 @@ for (var subject in total_catalog) {
     if (total_catalog[subject].location == "Medford/Somerville") total_catalog_no_SMFA[subject] = total_catalog[subject]
 }
 
-
 const attributes = [
-    "BFA-Language/Culture",
-    "BFA-Social Science",
-    "LA-Distribution-Social Sciences",
-    "SoE-HASS",
-    "SoE-HASS-Social Sciences",
-    "World Civilization Requirement",
-    "BFA-Science/Technology",
-    "LA-Distribution-Natural Sciences",
-    "Native American Culture",
     "African Cult/Lang - Diasporas",
-    "LA-Distribution-Arts",
-    "SoE-HASS-Arts",
     "African Cult/Lang-Reg Origin",
-    "Middle Eastern Cult/Lang",
-    "BFA-Humanities",
-    "LA-Distribution-Humanities",
-    "SoE-HASS-Humanities",
-    "First Class in Multi Sequence",
-    "Foreign Language Level 3+",
-    "Foreign Language Level 22+",
-    "Judaic Culture/Language",
-    "BFA Art History",
-    "Classical Culture/Language",
-    "Italian Culture/Language",
-    "East Asian Cult/Lang-Reg Orign",
-    "SoE-Natural Sciences",
-    "LA-Distribution-Mathematics",
-    "SoE-Engineering",
-    "Part Time Equivalent",
-    "Full Time Equivalent",
-    "Graduate Teaching Assistantship",
-    "Graduate Research Assistantship",
-    "SOE – Pre-Registration Eligible",
-    "SOE-Computing",
-    "SoE-Mathematics",
-    "BFA Studio Art",
-    "MFA Studio Art",
     "BFA Advanced Studio",
-    "East Asian Cult/Lang-Diasporas",
-    "S/SoE Asia Cult/Lang-Reg Orign",
-    "South/Southeast Asia Cult/Lang",
-    "Sign Language/Deaf Culture",
-    "New Course This Semester",
-    "BFA Intermediate Studio",
     "BFA All Levels Studio",
+    "BFA Art History",
+    "BFA Intermediate Studio",
     "BFA Introductory Studio",
+    "BFA Studio Art",
+    "BFA-Humanities",
+    "BFA-Language/Culture",
+    "BFA-Science/Technology",
+    "BFA-Social Science",
+    "Classical Culture/Language",
     "College Writing I",
     "College Writing II",
-    "Germanic Culture/Language",
-    "Russian Culture/Language",
-    "Hispanic Cult/Lang - Diasporas",
+    "Combined Degree with The Museum School",
+    "East Asian Cult/Lang-Diasporas",
+    "East Asian Cult/Lang-Reg Orign",
+    "First Class in Multi Sequence",
+    "Foreign Language Level 22+",
+    "Foreign Language Level 3+",
     "French Culture/Language",
+    "Full Time Equivalent",
+    "Germanic Culture/Language",
+    "Graduate Research Assistantship",
+    "Graduate Teaching Assistantship",
+    "Hispanic Cult/Lang - Diasporas",
     "Hispanic Cult/Lang-Region Orig",
+    "Italian Culture/Language",
+    "Judaic Culture/Language",
+    "LA-Distribution-Arts",
+    "LA-Distribution-Humanities",
+    "LA-Distribution-Mathematics",
+    "LA-Distribution-Natural Sciences",
+    "LA-Distribution-Social Sciences",
+    "MFA Studio Art",
+    "Middle Eastern Cult/Lang",
+    "Native American Culture",
+    "New Course This Semester",
     "Occupational Therapy Level II Fieldwork- Full Time",
-    "Combined Degree with The Museum School"
-]
+    "Part Time Equivalent",
+    "Russian Culture/Language",
+    "S/SoE Asia Cult/Lang-Reg Orign",
+    "SOE – Pre-Registration Eligible",
+    "SOE-Computing",
+    "Sign Language/Deaf Culture",
+    "SoE-Engineering",
+    "SoE-HASS",
+    "SoE-HASS-Arts",
+    "SoE-HASS-Humanities",
+    "SoE-HASS-Social Sciences",
+    "SoE-Mathematics",
+    "SoE-Natural Sciences",
+    "South/Southeast Asia Cult/Lang",
+    "World Civilization Requirement"
+  ]
 const departments = [
     "AAST",
     "ACL",
@@ -288,10 +292,9 @@ for (const year of track) year.createDisplay()
 
 const create_dropdown_data = (catalog) => {
     var dropdown_data = []
-    var index = 0
     for (var class_name in catalog) {
         dropdown_data.push({
-            id: index++,
+            id: class_name,
             text: catalog[class_name].name
         })
     }
@@ -299,11 +302,39 @@ const create_dropdown_data = (catalog) => {
 }
 
 const smfaCheckbox = $("#allow-smfa").find('input')
+smfaCheckbox.prop('checked', true)
 const dropdowns = {
     all_classes: create_dropdown_data(total_catalog),
     no_smfa: create_dropdown_data(total_catalog_no_SMFA),
     departments: departments,
     attributes: attributes
+}
+
+const edit_tab_name = (tab, newName) => {
+    var oldID = tab.attr("id")
+    tab.find(".tab-title")[0].innerText = newName
+    tab.attr("id", newName)
+    tab.find(`#${oldID}-requirements`).attr("id", `${newName}-requirements`)
+
+    // button change
+    const tabIndex = requirements_ids.indexOf(oldID)
+    requirements_ids[tabIndex] = newName
+    $("#requirements").children("button")[tabIndex].innerText = newName
+}
+
+const delete_tab = (tab) => {
+    const id = tab.attr("id")
+    const tabIndex = requirements_ids.indexOf(id)
+
+    // remove button
+    requirements_ids.splice(tabIndex, 1)
+    $($("#requirements").children("button")[tabIndex]).remove()
+
+    // remove tab data
+    $(`#${id}`).remove()
+    
+    // select another tab
+    $("#requirements").children("button")[tabIndex < requirements_ids.length ? tabIndex : tabIndex - 1].click()
 }
 
 var requirements_ids = []
@@ -327,7 +358,7 @@ const create_requirements_tab = (id) => {
                 <button class="new-class-button">By class name</button>
                 <button class="new-department-button">By department</button>
                 <button class="new-attribute-button">By attribute</button>
-                <button class="new-wildcard-button">"Pick one of..."</button>
+                <button class="new-multi-class-button">"Pick one of..."</button>
             </div>
         </div>    
     `)
@@ -359,7 +390,7 @@ const create_requirements_tab = (id) => {
         
         if (attach_to == "") reqirements_contents.children("table").append(container)
         else $(attach_to).children("table").append(container)
-    
+
         var selector = container.find("select")
         selector.select2({
             data: data,
@@ -392,44 +423,25 @@ const create_requirements_tab = (id) => {
     tab.find(".rename-tab-button").click(() => {
         // ensure no duplicate names
         var newName = prompt("Enter new name for requirement")
-        if (newName.length == 0 || newName == null) return
+        if (newName.length == 0 || newName == null || newName == undefined) return
 
         var duplicateNumber = 2
         while (requirements_ids.includes(newName)) {newName = `${newName}${duplicateNumber++}`}
         
         // edit the header and shit
         // id change
-        var oldID = tab.attr("id")
-        tab.find(".tab-title")[0].innerText = newName
-        tab.attr("id", newName)
-        tab.find(`#${oldID}-requirements`).attr("id", `${newName}-requirements`)
-
-        // button change
-        const tabIndex = requirements_ids.indexOf(oldID)
-        requirements_ids[tabIndex] = newName
-        $("#requirements").children("button")[tabIndex].innerText = newName
+        edit_tab_name(tab, newName)
     })
     tab.find(".delete-tab-button").click(() => {
         if (requirements_ids.length == 1) return
 
-        const id = tab.attr("id")
-        const tabIndex = requirements_ids.indexOf(id)
-
-        // remove button
-        requirements_ids.splice(tabIndex, 1)
-        $($("#requirements").children("button")[tabIndex]).remove()
-
-        // remove tab data
-        $(`#${id}`).remove()
-        
-        // select another tab
-        $("#requirements").children("button")[tabIndex < requirements_ids.length ? tabIndex : tabIndex - 1].click()
+        delete_tab(tab)
     })
 
     tab.find(".new-class-button").click(create_dropdown("class", smfaCheckbox.is(':checked') ? dropdowns.all_classes : dropdowns.no_smfa, "Search or select class name"));
     tab.find(".new-department-button").click(create_dropdown("department", dropdowns.departments, "Search or select department", "Any class in "));
     tab.find(".new-attribute-button").click(create_dropdown("attribute", dropdowns.attributes, "Search or select attribute", "Any class with attribute "));
-    tab.find(".new-wildcard-button").click(() => {
+    tab.find(".new-multi-class-button").click(() => {
         const containerId = `multi-select-${Date.now()}`;
         const container = $(`
             <tr>
@@ -494,12 +506,12 @@ const create_new_tab = (name="Minor") => {
     })
     tab.insertBefore(new_tab_button)
 
-    create_requirements_tab(tab_name)
-    return tab
+    return create_requirements_tab(tab_name)
 }
 new_tab_button.click(() => {create_new_tab()})
 
-create_new_tab("Major").click()
+create_new_tab("Major")
+$($("#requirements").find("button")[0]).click()
 
 
 const updateClassSelection = () => {
@@ -545,9 +557,9 @@ const fetch_classes = () => {
         const req_tab = $($(`#${requirements_id}`)[0])
         const classSelects = req_tab.find(`.class-select`)
         for (var i = 0; i < classSelects.length; i++) {
-            const selection = $(classSelects[i])
-            if (selection.select2('data')[0].text != '') {
-                const entry = new Selection(dropdown_enum.class, [selection.select2("data")[0].text.split(':')[0]])
+            const selection = $(classSelects[i]).select2("data")
+            if (selection.length > 0 && selection[0].text != '') {
+                const entry = new Selection(dropdown_enum.class, [selection[0].text.split(':')[0]])
                 classes.push(entry)
                 selected_requirements.push(entry)
             }
@@ -555,9 +567,9 @@ const fetch_classes = () => {
 
         const attributeSelects = req_tab.find(`.attribute-select`)
         for (var i = 0; i < attributeSelects.length; i++) {
-            const selection = $(attributeSelects[i])
-            if (selection.select2('data')[0].text != '') {
-                const entry = new Selection(dropdown_enum.attribute, [selection.select2("data")[0].text])
+            const selection = $(attributeSelects[i]).select2("data")
+            if (selection.length > 0 && selection[0].text != '') {
+                const entry = new Selection(dropdown_enum.attribute, [selection[0].text])
                 attributes.push(entry)
                 selected_requirements.push(entry)
             }
@@ -565,9 +577,9 @@ const fetch_classes = () => {
 
         const departmentSelects = req_tab.find(`.department-select`)
         for (var i = 0; i < departmentSelects.length; i++) {
-            const selection = $(departmentSelects[i])
-            if (selection.select2('data')[0].text != '') {
-                const entry = new Selection(dropdown_enum.department, [selection.select2("data")[0].text])
+            const selection = $(departmentSelects[i]).select2("data")
+            if (selection.length > 0 && selection[0].text != '') {
+                const entry = new Selection(dropdown_enum.department, [selection[0].text])
                 departments.push(entry)
                 selected_requirements.push(entry)
             }
@@ -579,9 +591,9 @@ const fetch_classes = () => {
             const selections = []
 
             for (var j = 0; j < selects.length; j++) {
-                const selection = $(selects[i])
-                if (selection.select2('data')[0].text != '') {
-                    selections.push(selection.select2("data")[0].text.split(':')[0])
+                const selection = $(selects[j]).select2("data")
+                if (selection.length > 0 && selection[0].text != '') {
+                    selections.push(selection[0].text.split(':')[0])
                 }
             }
 
@@ -592,7 +604,7 @@ const fetch_classes = () => {
             }
         }
         
-        if (classes.length > 0 || attributes.length > 0 || departments.length > 0 || multis > 0) {
+        if (classes.length > 0 || attributes.length > 0 || departments.length > 0 || multis.length > 0) {
             output.push({
                 name: requirements_id,
                 classes: classes,
@@ -630,15 +642,136 @@ const exportReq = (input) => {
             output += "\tONE CLASS IN DEPARTMENT:\n"
             for (const department of departments) output += `\t\t${department.config[0]}\n`
         }
+
+        const multis = tab.multis
+        if (multis.length > 0) {
+            for (const multi of multis) {
+                output += "\tONE OF THE FOLLOWING CLASSES:\n"
+                for (const option of multi.config) output += `\t\t${option}\n`
+            }
+        }
     }
 
     var file = new Blob([output], {type: "text/plain"});
     const downloadButton = $("#export-req")[0]
     downloadButton.href = URL.createObjectURL(file)
     downloadButton.download = "course-requirements.txt"
-    
 }
 
-$("#import-req").click(() => {
+const requirementInput = $("#import-req").find("input")
+requirementInput.change(() => {
+    const file = requirementInput.prop('files')[0]
+    if (file != null) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const contents = e.target.result.split('\n').map(x => x.split('\t').join(''));
+            
+            const get_category = (line) => (
+                {
+                    "THE FOLLOWING CLASSES:": "CLASSES",
+                    "ONE CLASS WITH ATTRIBUTES:": "ATTRIBUTES",
+                    "ONE CLASS IN DEPARTMENT:": "DEPARTMENTS",
+                    "ONE OF THE FOLLOWING CLASSES:": "MULTI"
+                }[line]
+            )
 
+            var category = undefined
+            var current_tab = null
+            var current_multi_box = null
+            smfaCheckbox.prop('checked', true)
+
+            // parse input
+            for (const line of contents) {
+                if (line.length == 0) break 
+                // category
+                if (get_category(line) != undefined) {
+                    category = get_category(line)
+                    if (category == "MULTI") {
+                        if (current_tab == null) window.location.reload() // oops
+
+                        if (current_multi_box != null) {
+                            var delete_buttons = current_multi_box.find(".remove-btn")
+                            $(delete_buttons[delete_buttons.length - 1]).click()
+                        }
+
+                        current_tab.find(".new-multi-class-button").click()
+
+                        current_multi_box = $(current_tab.find(".multi-select")[current_tab.find(".multi-select").length - 1])
+                        current_multi_box.find(".remove-btn")[1].click()
+                    }
+                }
+                // name
+                else if (line.includes(" requires")) {
+                    if (current_multi_box != null) {
+                        var delete_buttons = current_multi_box.find(".remove-btn")
+                        $(delete_buttons[delete_buttons.length - 1]).click()
+                        current_multi_box = null
+                    }
+
+                    const tab_name = line.slice(0, line.length - 9)
+                    current_tab = create_new_tab(tab_name)
+                    $("#requirements").find("button")[requirements_ids.length - 1].click()
+                }
+                // everything else
+                else {
+                    if (current_tab == null) window.location.reload() // oops
+
+                    switch(category) {
+                        case "CLASSES":
+                            if (!Object.keys(total_catalog).includes(line)) {
+                                console.error(`Unknown class "${line}". Was it removed from the catalog?`)
+                                break
+                            }
+                            current_tab.find(".new-class-button").click()
+
+                            var dropdowns = current_tab.find("select")
+                            $(dropdowns[dropdowns.length - 1]).val(line).trigger("change")
+                            break
+                        case "ATTRIBUTES":
+                            if (!attributes.includes(line)) {
+                                console.error(`Unknown attribute "${line}".`)
+                                break
+                            }
+                            current_tab.find(".new-attribute-button").click()
+
+                            var dropdowns = current_tab.find("select")
+                            $(dropdowns[dropdowns.length - 1]).val(line).trigger("change")
+                            break
+                        case "DEPARTMENTS":
+                            if (!departments.includes(line)) {
+                                console.error(`Unknown department "${line}".`)
+                                break
+                            }
+                            current_tab.find(".new-department-button").click()
+
+                            var dropdowns = current_tab.find("select")
+                            $(dropdowns[dropdowns.length - 1]).val(line).trigger("change")
+                            break
+                        case "MULTI":
+                            if (current_multi_box == null) window.location.reload() // oops
+
+                            var dropdowns = current_multi_box.find("Select")
+                            $(dropdowns[dropdowns.length - 1]).val(line).trigger("change")
+
+                            var duplication_buttons = current_multi_box.find(".duplicate-btn")
+                            $(duplication_buttons[duplication_buttons.length - 1]).click()
+                            break
+                    }
+                }
+            }
+
+            if (current_multi_box != null) {
+                var delete_buttons = current_multi_box.find(".remove-btn")
+                $(delete_buttons[delete_buttons.length - 1]).click()
+            }
+        };
+        
+        // clear all tabs
+        $(".delete-tab-button").click()
+        edit_tab_name($(`#${requirements_ids[0]}`), `delete-me`)
+        try {delete_tab($(`#delete-me`))}
+        catch(err) {}
+
+        reader.readAsText(file);
+    }
 })
