@@ -447,7 +447,10 @@ const create_requirements_tab = (id) => {
             <tr>
                 <div>
                     <td>
-                    One of:            
+                    One of:
+                    <button class="new-multi-class-button">By class name</button>
+                    <button class="new-multi-department-button">By department</button>
+                    <button class="new-multi-attribute-button">By attribute</button>
                         <div id=${containerId}>
                             <table class="multi-select">
                             </table>
@@ -458,18 +461,29 @@ const create_requirements_tab = (id) => {
                         <button class="up-btn">🔼</button>
                         <button class="down-btn">🔽</button>
                         <button class="remove-btn">❌</button>
+                        <button class="duplicate-btn">📋</button>
                     </td>
                 </div>
             </tr>
         `)
+        // multiselect add new class buttons
+        container.find(".new-multi-class-button").click(create_dropdown("multi-class", dropdowns.all_classes, "Search or select class name", "", `#${containerId}`));
+        container.find(".new-multi-department-button").click(create_dropdown("multi-department", dropdowns.departments, "Search or select department", "Any class in ", `#${containerId}`));
+        container.find(".new-multi-attribute-button").click(create_dropdown("multi-attribute", dropdowns.attributes, "Search or select attribute", "Any class with attribute ", `#${containerId}`));
+        // multiselect edit class buttons
         container.find(".up-btn").click(() => { container.insertBefore(container.prev()) })
         container.find(".down-btn").click(() => { container.insertAfter(container.next()) })
         container.find(".remove-btn").click(() => { container.remove(); fetch_classes() })
+        container.find(".duplicate-btn").click(() => {
+            var duplicate = create_dropdown(dropdown_class, data, placeholder_text, preface)()
+
+            duplicate.find("select").val(selector.val()).trigger("change")
+            duplicate.insertAfter(container)
+
+            fetch_classes()
+        })
 
         reqirements_contents.children("table").append(container)
-
-        create_dropdown("multi-class", dropdowns.all_classes, "Search or select class name", "", `#${containerId}`)()
-        create_dropdown("multi-class", dropdowns.all_classes, "Search or select class name", "", `#${containerId}`)()
 
         container.click(() => { if (container.find(".multi-select").children().length == 0) container.remove() })
     });

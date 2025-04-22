@@ -14,20 +14,28 @@ table, th, td {
 
 table {
     width: 100%;
+    border-collapse: collapse;
 }
 
 th {
     width: 50%;
 }
 
- /* Style the tab */
- #requirements {
+body {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* ===========================  Requirements tab  ==========================*/
+
+/* Style the tab */
+#requirements {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
-  }
+}
   
-  /* Style the buttons that are used to open the tab content */
+/* Style the buttons that are used to open the tab content */
 #requirements button {
     background-color: inherit;
     float: left;
@@ -36,15 +44,15 @@ th {
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
-  }
+}
   
-  #requirements button:hover {
+#requirements button:hover {
     background-color: #ddd;
-  }
-  
-  #requirements button.active {
+}
+
+#requirements button.active {
     background-color: #ccc;
-  }
+}
 
 #requirements #new-requirement {
     background-color: #3172AE;
@@ -61,4 +69,20 @@ th {
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
-  }
+}
+
+
+/* =============================  schedule  =============================== */
+
+#schedule-tables {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#select {
+    width: 100%;
+}
+
+#multi-select {
+    width: 100%;
+}
