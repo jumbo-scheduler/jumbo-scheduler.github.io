@@ -198,6 +198,14 @@ const departments = [
     "SKT"
 ]
 
+/*  Year
+ *
+ *  Purpose: Contains all data for a year of classes and displays them
+ *           in a table
+ *  Input:   Name of the year (i.e., Freshman, Sophomore, etc.)
+ *           Two arrays of Courses from the course catalog; fall classes
+ *           and spring classes
+ */
 class Year {
     constructor(name, fall_classes, spring_classes) {
         this.fall_classes = fall_classes
@@ -260,13 +268,20 @@ class Year {
     }
 }
 
-const verifyTerm = (term) => {
+/*  verifyTerm
+ *  
+ *  Purpose: Verifies that the number of credits are valid for a term
+ *  Input:   An array of Courses from the course catalog
+ */
+const verifyTerm = (term, upperBound = 18) => {
     var totalCredits = 0
     for (var subject of term) totalCredits += subject.credits
     return 12 <= totalCredits && totalCredits <= 18
 }
 
-// temp
+
+
+// temp DO NOT TOUCH ========================================================
 const a = (catalog) => {
     do {
         var output = []
@@ -289,6 +304,9 @@ var track = [
 ]
 
 for (const year of track) year.createDisplay()
+// ==========================================================================
+
+
 
 const create_dropdown_data = (catalog) => {
     var dropdown_data = []
