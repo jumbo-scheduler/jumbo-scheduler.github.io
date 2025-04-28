@@ -1,6 +1,6 @@
 /*
     WHAT THE FUCK IS ORGANIZATION
-    X LINE JS FILE GO BRRRRRRRRR
+    809+ LINE JS FILE GO BRRRRRRRRR
 */
 
 // use for save/load files
@@ -276,7 +276,7 @@ class Year {
 const verifyTerm = (term, upperBound = 18) => {
     var totalCredits = 0
     for (var subject of term) totalCredits += subject.credits
-    return 12 <= totalCredits && totalCredits <= 18
+    return 12 <= totalCredits && totalCredits <= upperBound
 }
 
 
@@ -385,8 +385,12 @@ const create_requirements_tab = (id) => {
     const create_dropdown = (dropdown_class, data, placeholder_text, preface = "", attach_to = "") => () => {
         // Create dropdown container
         const containerId = `dropdown-${Date.now()}`;
+        var borderAddition =  ``
+        if (dropdown_class != 'multi-class' && dropdown_class != 'multi-attribute' && dropdown_class != 'multi-department') {
+            borderAddition = `class="dropdown-separator"`
+        }
         const container = $(`
-            <tr>
+            <tr ${borderAddition}>
                 <div class="dropdown-container" id="${containerId}">
                     <td>
                         ${preface}
@@ -462,7 +466,7 @@ const create_requirements_tab = (id) => {
     tab.find(".new-multi-class-button").click(() => {
         const containerId = `multi-select-${Date.now()}`;
         const container = $(`
-            <tr>
+            <tr class="dropdown-separator">
                 <div>
                     <td>
                     One of:

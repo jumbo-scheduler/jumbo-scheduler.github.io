@@ -71,6 +71,17 @@ body {
     border-top: none;
 }
 
+.dropdown-separator {
+    border: 10px solid rgb(0, 60, 255);
+    padding: 2px;
+}
+
+/*temp*/
+
+td {
+    padding: 8px;
+}
+
 
 /* =============================  schedule  =============================== */
 
