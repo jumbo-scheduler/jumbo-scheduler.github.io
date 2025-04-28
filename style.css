@@ -72,15 +72,45 @@ body {
 }
 
 .dropdown-separator {
-    border: 10px solid rgb(0, 60, 255);
+    border-collapse: separate;
     padding: 2px;
 }
 
-/*temp*/
+.multi-dropdown-separator {
+    border-color: white;
+}
+
+.multi-select {
+    border-radius: 10px;
+    border-collapse: separate;
+    box-shadow: 2px 2px 7px #7687a6;
+    padding: 5px;
+    margin: 10px 0px 5px 0px;
+}
+
+table {
+    border-width: 0px;
+}
+
+tr {
+    border-width: 0.5px;
+    border-color: #000;
+}
+
+#Major-requirements {
+    box-shadow: 2px 2px 7px #7687a6;
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: #29adff;
+    padding: 10px;
+}
 
 td {
     padding: 8px;
+    border-width: 0px;
+    border-color: #000;
 }
+
 
 
 /* =============================  schedule  =============================== */

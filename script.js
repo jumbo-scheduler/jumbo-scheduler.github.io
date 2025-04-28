@@ -386,7 +386,9 @@ const create_requirements_tab = (id) => {
         // Create dropdown container
         const containerId = `dropdown-${Date.now()}`;
         var borderAddition =  ``
-        if (dropdown_class != 'multi-class' && dropdown_class != 'multi-attribute' && dropdown_class != 'multi-department') {
+        if (dropdown_class == 'multi-class' && dropdown_class == 'multi-attribute' && dropdown_class == 'multi-department') {
+            borderAddition = `class="multi-dropdown-separator"`
+        } else {
             borderAddition = `class="dropdown-separator"`
         }
         const container = $(`
