@@ -26,7 +26,24 @@ body {
     margin-right: 10px;
 }
 
+h1 {
+    font-family: "drawing-set", "arial";
+}
+
+p {
+    font-family: "drawing-set", "arial";
+}
+
+
+/* ==============================  Fonts  ==================================*/
+
+@font-face {
+	font-family: "drawing-set";
+	src: url("./fonts/DrawingSet.otf");
+}
+
 /* ===========================  Requirements tab  ==========================*/
+
 
 /* Style the tab */
 #requirements {
@@ -44,6 +61,10 @@ body {
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
+}
+
+.requirements-help-text {
+    padding: 2px;
 }
   
 #requirements button:hover {
