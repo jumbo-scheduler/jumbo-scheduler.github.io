@@ -367,6 +367,7 @@ const create_requirements_tab = (id) => {
 
             <div id="${id}-requirements">
                 <table>
+                    <div class="requirements-help-text">Add requirements with the buttons below.</div>
                 </table>
             </div>
             <br>
@@ -381,6 +382,8 @@ const create_requirements_tab = (id) => {
         </div>    
     `)
 
+
+    
     // make a new subject
     const create_dropdown = (dropdown_class, data, placeholder_text, preface = "", attach_to = "") => () => {
         // Create dropdown container
@@ -412,7 +415,7 @@ const create_requirements_tab = (id) => {
             </tr>
         `);
         
-        if (attach_to == "") reqirements_contents.children("table").append(container)
+        if (attach_to == "") requirements_contents.children("table").append(container)
         else $(attach_to).children("table").append(container)
 
         var selector = container.find("select")
@@ -425,7 +428,14 @@ const create_requirements_tab = (id) => {
 
         container.find(".up-btn").click(() => { container.insertBefore(container.prev()) })
         container.find(".down-btn").click(() => { container.insertAfter(container.next()) })
-        container.find(".remove-btn").click(() => { container.remove(); fetch_classes() })
+        container.find(".remove-btn").click(() => {
+            container.remove(); fetch_classes()
+            // if the dropdowns list is empty, show the help text
+            const requirements_tab = $(".requirements-tab");
+            if (requirements_tab.find(".dropdown-separator").length == 0) {
+                requirements_tab.find(".requirements-help-text").show();
+            }
+        })
         container.find(".duplicate-btn").click(() => {
             var duplicate = create_dropdown(dropdown_class, data, placeholder_text, preface)()
 
@@ -440,9 +450,17 @@ const create_requirements_tab = (id) => {
         container.find("select").on("change", function () {
             fetch_classes()
         });
+     
+        // if the dropdowns list is not empty, clear the help text
+        const requirements_tab = $(".requirements-tab");
+        if (requirements_tab.find(".dropdown-separator").length != 0) {
+            requirements_tab.find(".requirements-help-text").hide();
+        }
 
         return container
     }
+
+
 
     tab.find(".rename-tab-button").click(() => {
         // ensure no duplicate names
@@ -462,11 +480,12 @@ const create_requirements_tab = (id) => {
         delete_tab(tab)
     })
 
+
+
     tab.find(".new-class-button").click(create_dropdown("class", smfaCheckbox.is(':checked') ? dropdowns.all_classes : dropdowns.no_smfa, "Search or select class name"));
     tab.find(".new-department-button").click(create_dropdown("department", dropdowns.departments, "Search or select department", "Any class in "));
     tab.find(".new-attribute-button").click(create_dropdown("attribute", dropdowns.attributes, "Search or select attribute", "Any class with attribute "));
     tab.find(".new-multi-class-button").click(() => {
-        const containerId = `multi-select-${Date.now()}`;
         const container = $(`
             <tr class="dropdown-separator">
                 <div>
@@ -475,8 +494,9 @@ const create_requirements_tab = (id) => {
                     <button class="new-multi-class-button">By class name</button>
                     <button class="new-multi-department-button">By department</button>
                     <button class="new-multi-attribute-button">By attribute</button>
-                        <div id=${containerId}>
+                        <div class="multi-select-wrapper">
                             <table class="multi-select">
+                                <div class="multi-requirements-help-text">Add requirements with the buttons above.</div>
                             </table>
                         </div>
                     </td>
@@ -491,13 +511,26 @@ const create_requirements_tab = (id) => {
             </tr>
         `)
         // multiselect add new class buttons
-        container.find(".new-multi-class-button").click(create_dropdown("multi-class", dropdowns.all_classes, "Search or select class name", "", `#${containerId}`));
-        container.find(".new-multi-department-button").click(create_dropdown("multi-department", dropdowns.departments, "Search or select department", "Any class in ", `#${containerId}`));
-        container.find(".new-multi-attribute-button").click(create_dropdown("multi-attribute", dropdowns.attributes, "Search or select attribute", "Any class with attribute ", `#${containerId}`));
+        container.find(".new-multi-class-button").click(create_dropdown("multi-class", dropdowns.all_classes, "Search or select class name", "", container));
+        container.find(".new-multi-department-button").click(create_dropdown("multi-department", dropdowns.departments, "Search or select department", "Any class in " ,container));
+        container.find(".new-multi-attribute-button").click(create_dropdown("multi-attribute", dropdowns.attributes, "Search or select attribute", "Any class with attribute ", container));
         // multiselect edit class buttons
         container.find(".up-btn").click(() => { container.insertBefore(container.prev()) })
         container.find(".down-btn").click(() => { container.insertAfter(container.next()) })
-        container.find(".remove-btn").click(() => { container.remove(); fetch_classes() })
+        container.find(".remove-btn").click(() => {
+            container.remove(); fetch_classes()
+            // if the dropdowns list is empty, show the general help text
+            const requirements_tab = $(".requirements-tab");
+            if (requirements_tab.find(".dropdown-separator").length == 0) {
+                requirements_tab.find(".requirements-help-text").show();
+            }
+
+            // if the dropdowns list is empty, show the multi-requirements help text
+            const multi_container = $(container);
+            if (multi_container.find(".multi-class").length == 0 && multi-container.find(".multi-department").length == 0 && multi-container.find(".multi-attributes").length == 0) {
+                multi_container.find(".multi-requirements-help-text").show();
+            }
+        })
         container.find(".duplicate-btn").click(() => {
             var duplicate = create_dropdown(dropdown_class, data, placeholder_text, preface)()
 
@@ -507,13 +540,26 @@ const create_requirements_tab = (id) => {
             fetch_classes()
         })
 
-        reqirements_contents.children("table").append(container)
+        requirements_contents.children("table").append(container)
 
         container.click(() => { if (container.find(".multi-select").children().length == 0) container.remove() })
+
+        // if the dropdowns list is not empty, clear the general help text
+        const requirements_tab = $(".requirements-tab");
+        if (requirements_tab.find(".dropdown-separator").length != 0) {
+            requirements_tab.find(".requirements-help-text").hide();
+        }
+
+        // if the dropdowns list is not empty, clear the multi-requirements help text
+        const multi_container = $(container);
+        if (multi_container.find(".multi-class").length != 0 && multi-container.find(".multi-department").length != 0 && multi-container.find(".multi-attributes").length != 0) {
+            multi_container.find(".multi-requirements-help-text").hide();
+        }
     });
 
     $("#requirement-tabs").prepend(tab)
-    const reqirements_contents = $(`#${id}-requirements`)
+    const requirements_contents = $(`#${id}-requirements`)
+    
 
     return tab
 }
