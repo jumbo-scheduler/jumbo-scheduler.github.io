@@ -1,332 +1,6 @@
-/*
-    WHAT THE FUCK IS ORGANIZATION
-    809+ LINE JS FILE GO BRRRRRRRRR
-*/
-
-// use for save/load files
-function loadFile(filePath) {
-    let result = null;
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", filePath, false);
-    xmlhttp.send();
-    if (xmlhttp.status == 200) result = xmlhttp.responseText;
-    else { throw new Error(xmlhttp.status) }
-    return result;
-}
-
-const fall_catalog = JSON.parse(loadFile("/course-catalog/fall25.json"))
-const spring_catalog = JSON.parse(loadFile("/course-catalog/spring25.json"))
-const total_catalog = { ...spring_catalog, ...fall_catalog };
-// runs fn on each element in catalog and returns the edited catalog. essentially array.map
-const edit_catalogs = (fn, catalog) => {
-    for (var a in catalog) {
-        catalog[a] = fn(catalog[a])
-    }
-
-    return JSON.stringify(catalog, 4, ' ')
-}
-
-const total_catalog_no_SMFA = {}
-for (var subject in total_catalog) {
-    if (total_catalog[subject].location == "Medford/Somerville") total_catalog_no_SMFA[subject] = total_catalog[subject]
-}
-
-const attributes = [
-    "African Cult/Lang - Diasporas",
-    "African Cult/Lang-Reg Origin",
-    "BFA Advanced Studio",
-    "BFA All Levels Studio",
-    "BFA Art History",
-    "BFA Intermediate Studio",
-    "BFA Introductory Studio",
-    "BFA Studio Art",
-    "BFA-Humanities",
-    "BFA-Language/Culture",
-    "BFA-Science/Technology",
-    "BFA-Social Science",
-    "Classical Culture/Language",
-    "College Writing I",
-    "College Writing II",
-    "Combined Degree with The Museum School",
-    "East Asian Cult/Lang-Diasporas",
-    "East Asian Cult/Lang-Reg Orign",
-    "First Class in Multi Sequence",
-    "Foreign Language Level 22+",
-    "Foreign Language Level 3+",
-    "French Culture/Language",
-    "Full Time Equivalent",
-    "Germanic Culture/Language",
-    "Graduate Research Assistantship",
-    "Graduate Teaching Assistantship",
-    "Hispanic Cult/Lang - Diasporas",
-    "Hispanic Cult/Lang-Region Orig",
-    "Italian Culture/Language",
-    "Judaic Culture/Language",
-    "LA-Distribution-Arts",
-    "LA-Distribution-Humanities",
-    "LA-Distribution-Mathematics",
-    "LA-Distribution-Natural Sciences",
-    "LA-Distribution-Social Sciences",
-    "MFA Studio Art",
-    "Middle Eastern Cult/Lang",
-    "Native American Culture",
-    "New Course This Semester",
-    "Occupational Therapy Level II Fieldwork- Full Time",
-    "Part Time Equivalent",
-    "Russian Culture/Language",
-    "S/SoE Asia Cult/Lang-Reg Orign",
-    "SOE – Pre-Registration Eligible",
-    "SOE-Computing",
-    "Sign Language/Deaf Culture",
-    "SoE-Engineering",
-    "SoE-HASS",
-    "SoE-HASS-Arts",
-    "SoE-HASS-Humanities",
-    "SoE-HASS-Social Sciences",
-    "SoE-Mathematics",
-    "SoE-Natural Sciences",
-    "South/Southeast Asia Cult/Lang",
-    "World Civilization Requirement"
-  ]
-const departments = [
-    "AAST",
-    "ACL",
-    "AFR",
-    "AMER",
-    "ANTH",
-    "ARB",
-    "ARCH",
-    "AST",
-    "BIO",
-    "BIOE",
-    "BME",
-    "CEE",
-    "CER",
-    "CH",
-    "CHBE",
-    "CHEM",
-    "CHNS",
-    "CIS",
-    "CLS",
-    "CS",
-    "CSHD",
-    "CST",
-    "CVS",
-    "DATA",
-    "DEIJ",
-    "DH",
-    "DIG",
-    "DNC",
-    "DRW",
-    "DRWM",
-    "DS",
-    "EC",
-    "ECS",
-    "ED",
-    "EDS",
-    "EE",
-    "EM",
-    "EN",
-    "ENE",
-    "ENG",
-    "ENP",
-    "ENT",
-    "ENV",
-    "ES",
-    "EXP",
-    "FIB",
-    "FMS",
-    "FR",
-    "GER",
-    "GIS",
-    "GRA",
-    "GRAC",
-    "GRK",
-    "HAA",
-    "HEB",
-    "HIST",
-    "IDIS",
-    "ILCS",
-    "ILVS",
-    "INTR",
-    "ITAL",
-    "JPN",
-    "JS",
-    "LAS",
-    "LAT",
-    "LING",
-    "LST",
-    "MATH",
-    "MDIA",
-    "ME",
-    "MES",
-    "MSE",
-    "MTL",
-    "MUS",
-    "NU",
-    "OTS",
-    "PAI",
-    "PAIM",
-    "PE",
-    "PHIL",
-    "PHT",
-    "PHTM",
-    "PHY",
-    "POR",
-    "PRT",
-    "PS",
-    "PSY",
-    "RCD",
-    "REL",
-    "RS",
-    "RUS",
-    "SCP",
-    "SMFA",
-    "SOC",
-    "SPN",
-    "STS",
-    "TCS",
-    "TML",
-    "TPS",
-    "UCOE",
-    "UCPC",
-    "UEP",
-    "VMS",
-    "WGSS",
-    "MDVL",
-    "ML",
-    "SKT"
-]
-
-/*  Year
- *
- *  Purpose: Contains all data for a year of classes and displays them
- *           in a table
- *  Input:   Name of the year (i.e., Freshman, Sophomore, etc.)
- *           Two arrays of Courses from the course catalog; fall classes
- *           and spring classes
+/* scheduleInput.js 
+ * handles the input for creating the user's required
  */
-class Year {
-    constructor(name, fall_classes, spring_classes) {
-        this.fall_classes = fall_classes
-        this.spring_classes = spring_classes
-
-        this.name = name;
-        this.parent = $(`#${name}`);
-    }
-
-    createDisplay() {
-        $(this.parent).empty();
-
-        var title = $("<h2>").text(`${this.name[0].toUpperCase()}${this.name.slice(1)} Year`);
-        $(this.parent).append(title);
-
-        // create table and tbody
-        this.table = $("<table>");
-        var tblBody = $("<tbody>");
-
-        var row = $("<tr>");
-
-        var fall_header = $("<th>").text("FALL");
-        row.append(fall_header);
-
-        var spring_header = $("<th>").text("SPRING");
-        row.append(spring_header);
-
-        tblBody.append(`
-            <tr>
-                <th>FALL</th>
-                <td>Credits</td>
-                <th>SPRING</th>
-                <td>Credits</td>
-            </tr>    
-        `);
-
-        for (var i = 0; i < Math.max(this.fall_classes.length, this.spring_classes.length); i++) {
-            tblBody.append(`
-                <tr>
-                    <td>
-                        ${i < this.fall_classes.length ? this.fall_classes[i].name : ""}
-                    </td>
-                    <td class="credit_count">
-                        ${i < this.fall_classes.length ? this.fall_classes[i].credits : ""}
-                    </td>
-                    <td>
-                        ${i < this.spring_classes.length ? this.spring_classes[i].name : ""}
-                    </td>
-                    <td class="credit_count">
-                        ${i < this.spring_classes.length ? this.spring_classes[i].credits : ""}
-                    </td>
-                </tr>
-            `)
-        }
-
-        // append the tbody inside the table
-        this.table.append(tblBody);
-        // put table in the parent
-        $(this.parent).append(this.table);
-    }
-}
-
-/*  verifyTerm
- *  
- *  Purpose: Verifies that the number of credits are valid for a term
- *  Input:   An array of Courses from the course catalog
- */
-const verifyTerm = (term, upperBound = 18) => {
-    var totalCredits = 0
-    for (var subject of term) totalCredits += subject.credits
-    return 12 <= totalCredits && totalCredits <= upperBound
-}
-
-
-
-// temp DO NOT TOUCH ========================================================
-const a = (catalog) => {
-    do {
-        var output = []
-
-        const max_classes = 6 - Math.floor(3.0 *Math.random())
-        for (var i = 0; i < max_classes; i++) {
-            var selection = Object.keys(catalog)[Math.floor(Math.random() * Object.keys(catalog).length)]
-            output.push(catalog[selection])
-        }
-    } while (!verifyTerm(output))
-    return output
-}
-
-
-var track = [
-    new Year("freshman", a(fall_catalog), a(spring_catalog)),
-    new Year("sophomore", a(fall_catalog), a(spring_catalog)),
-    new Year("junior", a(fall_catalog), a(spring_catalog)),
-    new Year("senior", a(fall_catalog), a(spring_catalog))
-]
-
-for (const year of track) year.createDisplay()
-// ==========================================================================
-
-
-
-const create_dropdown_data = (catalog) => {
-    var dropdown_data = []
-    for (var class_name in catalog) {
-        dropdown_data.push({
-            id: class_name,
-            text: catalog[class_name].name
-        })
-    }
-    return dropdown_data
-}
-
-const smfaCheckbox = $("#allow-smfa").find('input')
-smfaCheckbox.prop('checked', true)
-const dropdowns = {
-    all_classes: create_dropdown_data(total_catalog),
-    no_smfa: create_dropdown_data(total_catalog_no_SMFA),
-    departments: departments,
-    attributes: attributes
-}
 
 const edit_tab_name = (tab, newName) => {
     var oldID = tab.attr("id")
@@ -350,7 +24,7 @@ const delete_tab = (tab) => {
 
     // remove tab data
     $(`#${id}`).remove()
-    
+
     // select another tab
     $("#requirements").children("button")[tabIndex < requirements_ids.length ? tabIndex : tabIndex - 1].click()
 }
@@ -383,12 +57,12 @@ const create_requirements_tab = (id) => {
     `)
 
 
-    
+
     // make a new subject
     const create_dropdown = (dropdown_class, data, placeholder_text, preface = "", attach_to = "") => () => {
         // Create dropdown container
         const containerId = `dropdown-${Date.now()}`;
-        var borderAddition =  ``
+        var borderAddition = ``
         if (dropdown_class == 'multi-class' && dropdown_class == 'multi-attribute' && dropdown_class == 'multi-department') {
             borderAddition = `class="multi-dropdown-separator"`
         } else {
@@ -414,7 +88,7 @@ const create_requirements_tab = (id) => {
                 </div>
             </tr>
         `);
-        
+
         if (attach_to == "") requirements_contents.children("table").append(container)
         else $(attach_to).children("table").append(container)
 
@@ -450,7 +124,7 @@ const create_requirements_tab = (id) => {
         container.find("select").on("change", function () {
             fetch_classes()
         });
-     
+
         // if the dropdowns list is not empty, clear the help text
         const requirements_tab = $(".requirements-tab");
         if (requirements_tab.find(".dropdown-separator").length != 0) {
@@ -468,8 +142,8 @@ const create_requirements_tab = (id) => {
         if (newName.length == 0 || newName == null || newName == undefined) return
 
         var duplicateNumber = 2
-        while (requirements_ids.includes(newName)) {newName = `${newName}${duplicateNumber++}`}
-        
+        while (requirements_ids.includes(newName)) { newName = `${newName}${duplicateNumber++}` }
+
         // edit the header and shit
         // id change
         edit_tab_name(tab, newName)
@@ -512,7 +186,7 @@ const create_requirements_tab = (id) => {
         `)
         // multiselect add new class buttons
         container.find(".new-multi-class-button").click(create_dropdown("multi-class", dropdowns.all_classes, "Search or select class name", "", container));
-        container.find(".new-multi-department-button").click(create_dropdown("multi-department", dropdowns.departments, "Search or select department", "Any class in " ,container));
+        container.find(".new-multi-department-button").click(create_dropdown("multi-department", dropdowns.departments, "Search or select department", "Any class in ", container));
         container.find(".new-multi-attribute-button").click(create_dropdown("multi-attribute", dropdowns.attributes, "Search or select attribute", "Any class with attribute ", container));
         // multiselect edit class buttons
         container.find(".up-btn").click(() => { container.insertBefore(container.prev()) })
@@ -527,7 +201,7 @@ const create_requirements_tab = (id) => {
 
             // if the dropdowns list is empty, show the multi-requirements help text
             const multi_container = $(container);
-            if (multi_container.find(".multi-class").length == 0 && multi-container.find(".multi-department").length == 0 && multi-container.find(".multi-attributes").length == 0) {
+            if (multi_container.find(".multi-class").length == 0 && multi - container.find(".multi-department").length == 0 && multi - container.find(".multi-attributes").length == 0) {
                 multi_container.find(".multi-requirements-help-text").show();
             }
         })
@@ -552,14 +226,14 @@ const create_requirements_tab = (id) => {
 
         // if the dropdowns list is not empty, clear the multi-requirements help text
         const multi_container = $(container);
-        if (multi_container.find(".multi-class").length != 0 && multi-container.find(".multi-department").length != 0 && multi-container.find(".multi-attributes").length != 0) {
+        if (multi_container.find(".multi-class").length != 0 && multi - container.find(".multi-department").length != 0 && multi - container.find(".multi-attributes").length != 0) {
             multi_container.find(".multi-requirements-help-text").hide();
         }
     });
 
     $("#requirement-tabs").prepend(tab)
     const requirements_contents = $(`#${id}-requirements`)
-    
+
 
     return tab
 }
@@ -576,7 +250,7 @@ const update_tab_selection = () => {
 }
 
 const new_tab_button = $("#new-requirement")
-const create_new_tab = (name="Minor") => {
+const create_new_tab = (name = "Minor") => {
     var tab_name = name
     var index = 2
     while (requirements_ids.includes(tab_name)) tab_name = `Minor${index++}`
@@ -592,10 +266,31 @@ const create_new_tab = (name="Minor") => {
 
     return create_requirements_tab(tab_name)
 }
-new_tab_button.click(() => {create_new_tab()})
+new_tab_button.click(() => { create_new_tab() })
 
 create_new_tab("Major")
 $($("#requirements").find("button")[0]).click()
+
+const create_dropdown_data = (catalog) => {
+    var dropdown_data = []
+    for (var class_name in catalog) {
+        dropdown_data.push({
+            id: class_name,
+            text: catalog[class_name].name
+        })
+    }
+    return dropdown_data
+}
+
+const smfaCheckbox = $("#allow-smfa").find('input')
+smfaCheckbox.prop('checked', true)
+const dropdowns = {
+    all_classes: create_dropdown_data(total_catalog),
+    no_smfa: create_dropdown_data(total_catalog_no_SMFA),
+    departments: departments,
+    attributes: attributes
+}
+
 
 
 const updateClassSelection = () => {
@@ -687,7 +382,7 @@ const fetch_classes = () => {
                 selected_requirements.push(entry)
             }
         }
-        
+
         if (classes.length > 0 || attributes.length > 0 || departments.length > 0 || multis.length > 0) {
             output.push({
                 name: requirements_id,
@@ -736,7 +431,7 @@ const exportReq = (input) => {
         }
     }
 
-    var file = new Blob([output], {type: "text/plain"});
+    var file = new Blob([output], { type: "text/plain" });
     const downloadButton = $("#export-req")[0]
     downloadButton.href = URL.createObjectURL(file)
     downloadButton.download = "course-requirements.txt"
@@ -747,9 +442,9 @@ requirementInput.change(() => {
     const file = requirementInput.prop('files')[0]
     if (file != null) {
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             const contents = e.target.result.split('\n').map(x => x.split('\t').join(''));
-            
+
             const get_category = (line) => (
                 {
                     "THE FOLLOWING CLASSES:": "CLASSES",
@@ -766,7 +461,7 @@ requirementInput.change(() => {
 
             // parse input
             for (const line of contents) {
-                if (line.length == 0) break 
+                if (line.length == 0) break
                 // category
                 if (get_category(line) != undefined) {
                     category = get_category(line)
@@ -800,7 +495,7 @@ requirementInput.change(() => {
                 else {
                     if (current_tab == null) window.location.reload() // oops
 
-                    switch(category) {
+                    switch (category) {
                         case "CLASSES":
                             if (!Object.keys(total_catalog).includes(line)) {
                                 console.error(`Unknown class "${line}". Was it removed from the catalog?`)
@@ -849,12 +544,12 @@ requirementInput.change(() => {
                 $(delete_buttons[delete_buttons.length - 1]).click()
             }
         };
-        
+
         // clear all tabs
         $(".delete-tab-button").click()
         edit_tab_name($(`#${requirements_ids[0]}`), `delete-me`)
-        try {delete_tab($(`#delete-me`))}
-        catch(err) {}
+        try { delete_tab($(`#delete-me`)) }
+        catch (err) { }
 
         reader.readAsText(file);
     }
