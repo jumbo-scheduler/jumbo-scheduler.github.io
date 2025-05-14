@@ -2,33 +2,31 @@
  * handles the input for creating the user's required
  */
 
-const edit_tab_name = (tab, newName) => {
-    var oldID = tab.attr("id")
-    tab.find(".tab-title")[0].innerText = newName
-    tab.attr("id", newName)
-    tab.find(`#${oldID}-requirements`).attr("id", `${newName}-requirements`)
-
-    // button change
-    const tabIndex = requirements_ids.indexOf(oldID)
-    requirements_ids[tabIndex] = newName
-    $("#requirements").children("button")[tabIndex].innerText = newName
+// smfaCheckbox: filters for classes in SMFA when clicked  
+//#region =====================================================
+const smfaCheckbox = $("#allow-smfa").find('input')
+smfaCheckbox.prop('checked', true)
+const dropdowns = {
+    all_classes: create_dropdown_data(total_catalog),
+    no_smfa: create_dropdown_data(total_catalog_no_SMFA),
+    departments: departments,
+    attributes: attributes
 }
 
-const delete_tab = (tab) => {
-    const id = tab.attr("id")
-    const tabIndex = requirements_ids.indexOf(id)
-
-    // remove button
-    requirements_ids.splice(tabIndex, 1)
-    $($("#requirements").children("button")[tabIndex]).remove()
-
-    // remove tab data
-    $(`#${id}`).remove()
-
-    // select another tab
-    $("#requirements").children("button")[tabIndex < requirements_ids.length ? tabIndex : tabIndex - 1].click()
+const updateClassSelection = () => {
+    $(".class-select").empty().select2({
+        data: smfaCheckbox.is(':checked') ? dropdowns.all_classes : dropdowns.no_smfa,
+        placeholder: "Search or select class name",
+        allowClear: true,
+        width: '100%'
+    })
 }
+smfaCheckbox.click(updateClassSelection)
+updateClassSelection()
+//#endregion =====================================================
 
+// functionality for an individual tab
+//#region =====================================================
 var requirements_ids = []
 const create_requirements_tab = (id) => {
     const tab = $(`
@@ -56,10 +54,8 @@ const create_requirements_tab = (id) => {
         </div>    
     `)
 
-
-
     // make a new subject
-    const create_dropdown = (dropdown_class, data, placeholder_text, preface = "", attach_to = "") => () => {
+    const create_dropdown = (dropdown_class, data, placeholder_text, preface = "", attach_to = null) => () => {
         // Create dropdown container
         const containerId = `dropdown-${Date.now()}`;
         var borderAddition = ``
@@ -78,6 +74,7 @@ const create_requirements_tab = (id) => {
                         </select>
                     </td>
                     <td>
+                        ${preface == "" ? '' : `<br>`}
                         <button class="up-btn" data-container="${containerId}">🔼</button>
                         <button class="down-btn" data-container="${containerId}">🔽</button>
                         <button class="remove-btn" data-container="${containerId}">❌</button>
@@ -89,8 +86,8 @@ const create_requirements_tab = (id) => {
             </tr>
         `);
 
-        if (attach_to == "") requirements_contents.children("table").append(container)
-        else $(attach_to).children("table").append(container)
+        if (attach_to == null) requirements_contents.children("table").append(container)
+        else attach_to.append(container)
 
         var selector = container.find("select")
         selector.select2({
@@ -100,6 +97,7 @@ const create_requirements_tab = (id) => {
             width: '100%'
         });
 
+        // edit buttons
         container.find(".up-btn").click(() => { container.insertBefore(container.prev()) })
         container.find(".down-btn").click(() => { container.insertAfter(container.next()) })
         container.find(".remove-btn").click(() => {
@@ -119,7 +117,6 @@ const create_requirements_tab = (id) => {
             fetch_classes()
         })
 
-
         // Handle selection change
         container.find("select").on("change", function () {
             fetch_classes()
@@ -133,8 +130,6 @@ const create_requirements_tab = (id) => {
 
         return container
     }
-
-
 
     tab.find(".rename-tab-button").click(() => {
         // ensure no duplicate names
@@ -155,87 +150,147 @@ const create_requirements_tab = (id) => {
     })
 
 
-
     tab.find(".new-class-button").click(create_dropdown("class", smfaCheckbox.is(':checked') ? dropdowns.all_classes : dropdowns.no_smfa, "Search or select class name"));
     tab.find(".new-department-button").click(create_dropdown("department", dropdowns.departments, "Search or select department", "Any class in "));
     tab.find(".new-attribute-button").click(create_dropdown("attribute", dropdowns.attributes, "Search or select attribute", "Any class with attribute "));
-    tab.find(".new-multi-class-button").click(() => {
+    
+    const create_multi_dropdown = () => () => {
         const container = $(`
-            <tr class="dropdown-separator">
-                <div>
-                    <td>
-                    One of:
-                    <button class="new-multi-class-button">By class name</button>
-                    <button class="new-multi-department-button">By department</button>
-                    <button class="new-multi-attribute-button">By attribute</button>
-                        <div class="multi-select-wrapper">
-                            <table class="multi-select">
-                                <div class="multi-requirements-help-text">Add requirements with the buttons above.</div>
-                            </table>
-                        </div>
-                    </td>
+        <tr class="dropdown-separator">
+            <div>
+                <td>
+                One of:
+                <button class="new-multi-class-button">A class</button>
+                <button class="new-multi-department-button">In department</button>
+                <button class="new-multi-attribute-button">With attribute</button>
+                    <div class="multi-select-wrapper">
+                        <div class="multi-requirements-help-text">Add requirements with the buttons above.</div>
+                        <table class="multi-select">
+                        </table>
+                    </div>
+                </td>
 
-                    <td>
-                        <button class="up-btn">🔼</button>
-                        <button class="down-btn">🔽</button>
-                        <button class="remove-btn">❌</button>
-                        <button class="duplicate-btn">📋</button>
-                    </td>
-                </div>
-            </tr>
-        `)
-        // multiselect add new class buttons
-        container.find(".new-multi-class-button").click(create_dropdown("multi-class", dropdowns.all_classes, "Search or select class name", "", container));
-        container.find(".new-multi-department-button").click(create_dropdown("multi-department", dropdowns.departments, "Search or select department", "Any class in ", container));
-        container.find(".new-multi-attribute-button").click(create_dropdown("multi-attribute", dropdowns.attributes, "Search or select attribute", "Any class with attribute ", container));
-        // multiselect edit class buttons
+                <td>
+                    <button class="up-btn">🔼</button>
+                    <button class="down-btn">🔽</button>
+                    <button class="remove-btn">❌</button>
+                    <button class="duplicate-btn">📋</button>
+                </td>
+            </div>
+        </tr>
+    `)
+
+        // edit buttons
         container.find(".up-btn").click(() => { container.insertBefore(container.prev()) })
         container.find(".down-btn").click(() => { container.insertAfter(container.next()) })
         container.find(".remove-btn").click(() => {
-            container.remove(); fetch_classes()
-            // if the dropdowns list is empty, show the general help text
+            container.remove();
+            fetch_classes();
+
+            // if the dropdowns list is empty, show the help text
             const requirements_tab = $(".requirements-tab");
             if (requirements_tab.find(".dropdown-separator").length == 0) {
                 requirements_tab.find(".requirements-help-text").show();
             }
-
-            // if the dropdowns list is empty, show the multi-requirements help text
-            const multi_container = $(container);
-            if (multi_container.find(".multi-class").length == 0 && multi - container.find(".multi-department").length == 0 && multi - container.find(".multi-attributes").length == 0) {
-                multi_container.find(".multi-requirements-help-text").show();
-            }
         })
         container.find(".duplicate-btn").click(() => {
-            var duplicate = create_dropdown(dropdown_class, data, placeholder_text, preface)()
-
-            duplicate.find("select").val(selector.val()).trigger("change")
+            var duplicate = create_multi_dropdown()()
             duplicate.insertAfter(container)
+
+            var multiSelections = container.find("select")
+            for (var i = 0; i < multiSelections.length; i++) {
+                if ($(multiSelections[i]).hasClass("multi-class-select")) {     
+                    const copiedString = $(multiSelections[i]).val()
+                    if (copiedString != "") {
+                        var selectionDuplicate = create_dropdown("multi-class", smfaCheckbox.is(':checked') ? dropdowns.all_classes : dropdowns.no_smfa, "Search or select class name", "", duplicate.find(".multi-select"))()
+                        selectionDuplicate.find("select").val(copiedString).trigger("change")   
+                    }
+                }
+                else if ($(multiSelections[i]).hasClass("multi-department-select")) {     
+                    const copiedString = $(multiSelections[i]).val()
+                    if (copiedString != "") {
+                        var selectionDuplicate = create_dropdown("multi-department", dropdowns.departments, "Search or select department", "Any class in ",duplicate.find(".multi-select"))()
+                        selectionDuplicate.find("select").val(copiedString).trigger("change")   
+                    }
+                }
+
+                else if ($(multiSelections[i]).hasClass("multi-attribute-select")) {     
+                    const copiedString = $(multiSelections[i]).val()
+                    if (copiedString != "") {
+                        var selectionDuplicate = create_dropdown("multi-attribute", dropdowns.attributes, "Search or select attribute", "Any class with attribute ", duplicate.find(".multi-select"))()
+                        selectionDuplicate.find("select").val(copiedString).trigger("change")   
+                    }
+                }
+                else {
+                    // what? how?
+                }
+            }
+
+            if (duplicate.find(".multi-select")[0].children.length > 0) duplicate.find(".multi-requirements-help-text").hide();
 
             fetch_classes()
         })
 
+        // multiselect add new class buttons
+        container.find(".new-multi-class-button").click(create_dropdown("multi-class", smfaCheckbox.is(':checked') ? dropdowns.all_classes : dropdowns.no_smfa, "Search or select class name", "", container.find(".multi-select")));
+        container.find(".new-multi-department-button").click(create_dropdown("multi-department", dropdowns.departments, "Search or select department", "Any class in ", container.find(".multi-select")));
+        container.find(".new-multi-attribute-button").click(create_dropdown("multi-attribute", dropdowns.attributes, "Search or select attribute", "Any class with attribute ", container.find(".multi-select")));
+
+
         requirements_contents.children("table").append(container)
 
-        container.click(() => { if (container.find(".multi-select").children().length == 0) container.remove() })
+        // if the dropdowns list is not empty, clear the multi-requirements help text
+        container.click(() => {
+            if (container.find(".multi-select")[0].children.length > 0) container.find(".multi-requirements-help-text").hide();
+        })
 
-        // if the dropdowns list is not empty, clear the general help text
+        // if the dropdowns list is not empty, clear the help text
         const requirements_tab = $(".requirements-tab");
         if (requirements_tab.find(".dropdown-separator").length != 0) {
             requirements_tab.find(".requirements-help-text").hide();
         }
 
-        // if the dropdowns list is not empty, clear the multi-requirements help text
-        const multi_container = $(container);
-        if (multi_container.find(".multi-class").length != 0 && multi - container.find(".multi-department").length != 0 && multi - container.find(".multi-attributes").length != 0) {
-            multi_container.find(".multi-requirements-help-text").hide();
-        }
-    });
+        return container
+    }
+    tab.find(".new-multi-class-button").click(create_multi_dropdown());
 
     $("#requirement-tabs").prepend(tab)
     const requirements_contents = $(`#${id}-requirements`)
 
-
     return tab
+}
+//#endregion =====================================================
+
+// functionality for tab selection, creating a new tab, and 
+// deleting a tab
+//#region =====================================================
+const edit_tab_name = (tab, newName) => {
+    var oldID = tab.attr("id")
+    tab.find(".tab-title")[0].innerText = newName
+    tab.attr("id", newName)
+    tab.find(`#${oldID}-requirements`).attr("id", `${newName}-requirements`)
+
+    // button change
+    const tabIndex = requirements_ids.indexOf(oldID)
+    requirements_ids[tabIndex] = newName
+    $("#requirements").children("button")[tabIndex].innerText = newName
+
+    fetch_classes()
+}
+
+const delete_tab = (tab) => {
+    const id = tab.attr("id")
+    const tabIndex = requirements_ids.indexOf(id)
+
+    // remove button
+    requirements_ids.splice(tabIndex, 1)
+    $($("#requirements").children("button")[tabIndex]).remove()
+
+    // remove tab data
+    $(`#${id}`).remove()
+
+    // select another tab
+    $("#requirements").children("button")[tabIndex < requirements_ids.length ? tabIndex : tabIndex - 1].click()
 }
 
 const update_tab_selection = () => {
@@ -270,47 +325,15 @@ new_tab_button.click(() => { create_new_tab() })
 
 create_new_tab("Major")
 $($("#requirements").find("button")[0]).click()
+//#endregion =====================================================
 
-const create_dropdown_data = (catalog) => {
-    var dropdown_data = []
-    for (var class_name in catalog) {
-        dropdown_data.push({
-            id: class_name,
-            text: catalog[class_name].name
-        })
-    }
-    return dropdown_data
-}
-
-const smfaCheckbox = $("#allow-smfa").find('input')
-smfaCheckbox.prop('checked', true)
-const dropdowns = {
-    all_classes: create_dropdown_data(total_catalog),
-    no_smfa: create_dropdown_data(total_catalog_no_SMFA),
-    departments: departments,
-    attributes: attributes
-}
-
-
-
-const updateClassSelection = () => {
-    $(".class-select").empty().select2({
-        data: smfaCheckbox.is(':checked') ? dropdowns.all_classes : dropdowns.no_smfa,
-        placeholder: "Search or select class name",
-        allowClear: true,
-        width: '100%'
-    })
-}
-smfaCheckbox.click(updateClassSelection)
-updateClassSelection()
-
-
+// fetching and exporting user input
+//#region =====================================================
 const dropdown_enum = {
     class: 0,
     attribute: 1,
-    subject: 2,
-    department: 3,
-    multi: 4,
+    department: 2,
+    multi: 3,
 }
 
 class Selection {
@@ -370,9 +393,14 @@ const fetch_classes = () => {
             const selections = []
 
             for (var j = 0; j < selects.length; j++) {
-                const selection = $(selects[j]).select2("data")
-                if (selection.length > 0 && selection[0].text != '') {
-                    selections.push(selection[0].text.split(':')[0])
+                if ($(selects[j]).hasClass("multi-class-select")) {     
+                    selections.push(new Selection(dropdown_enum.class, $(selects[j]).val()))
+                }
+                else if ($(selects[j]).hasClass("multi-department-select")) {     
+                    selections.push(new Selection(dropdown_enum.department, $(selects[j]).val()))
+                }
+                else if ($(selects[j]).hasClass("multi-attribute-select")) {     
+                    selections.push(new Selection(dropdown_enum.attribute, $(selects[j]).val()))
                 }
             }
 
@@ -396,7 +424,6 @@ const fetch_classes = () => {
 
     exportReq(output)
 }
-
 
 const exportReq = (input) => {
     var output = ""
@@ -425,8 +452,22 @@ const exportReq = (input) => {
         const multis = tab.multis
         if (multis.length > 0) {
             for (const multi of multis) {
-                output += "\tONE OF THE FOLLOWING CLASSES:\n"
-                for (const option of multi.config) output += `\t\t${option}\n`
+                output += "\tONE OF THE FOLLOWING CHOICES:\n"
+                for (const option of multi.config) {
+                    prefaceLookup = [
+                        "",
+                        "Anything with the attribute \"",
+                        "Any class in the "
+                    ]
+
+                    suffixLookup = [
+                        "",
+                        '\"',
+                        " department"
+                    ]
+
+                    output += "\t\t" + prefaceLookup[option.type] + option.config + suffixLookup[option.type] + '\n'
+                }
             }
         }
     }
@@ -436,7 +477,10 @@ const exportReq = (input) => {
     downloadButton.href = URL.createObjectURL(file)
     downloadButton.download = "course-requirements.txt"
 }
+//#endregion =====================================================
 
+// importing user input from file
+//#region =====================================================
 const requirementInput = $("#import-req").find("input")
 requirementInput.change(() => {
     const file = requirementInput.prop('files')[0]
@@ -450,7 +494,7 @@ requirementInput.change(() => {
                     "THE FOLLOWING CLASSES:": "CLASSES",
                     "ONE CLASS WITH ATTRIBUTES:": "ATTRIBUTES",
                     "ONE CLASS IN DEPARTMENT:": "DEPARTMENTS",
-                    "ONE OF THE FOLLOWING CLASSES:": "MULTI"
+                    "ONE OF THE FOLLOWING CHOICES:": "MULTI"
                 }[line]
             )
 
@@ -481,12 +525,6 @@ requirementInput.change(() => {
                 }
                 // name
                 else if (line.includes(" requires")) {
-                    if (current_multi_box != null) {
-                        var delete_buttons = current_multi_box.find(".remove-btn")
-                        $(delete_buttons[delete_buttons.length - 1]).click()
-                        current_multi_box = null
-                    }
-
                     const tab_name = line.slice(0, line.length - 9)
                     current_tab = create_new_tab(tab_name)
                     $("#requirements").find("button")[requirements_ids.length - 1].click()
@@ -538,11 +576,6 @@ requirementInput.change(() => {
                     }
                 }
             }
-
-            if (current_multi_box != null) {
-                var delete_buttons = current_multi_box.find(".remove-btn")
-                $(delete_buttons[delete_buttons.length - 1]).click()
-            }
         };
 
         // clear all tabs
@@ -554,3 +587,4 @@ requirementInput.change(() => {
         reader.readAsText(file);
     }
 })
+//#endregion =====================================================

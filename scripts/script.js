@@ -2,20 +2,18 @@
  * handles back end and global variables (mostly the class catalog)
 */
 
-// use for save/load files
-function loadFile(filePath) {
-    let result = null;
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", filePath, false);
-    xmlhttp.send();
-    if (xmlhttp.status == 200) result = xmlhttp.responseText;
-    else { throw new Error(xmlhttp.status) }
-    return result;
+// helper functions
+//#region =====================================================
+const create_dropdown_data = (catalog) => {
+    var dropdown_data = []
+    for (var class_name in catalog) {
+        dropdown_data.push({
+            id: class_name,
+            text: catalog[class_name].name
+        })
+    }
+    return dropdown_data
 }
-
-const fall_catalog = JSON.parse(loadFile("/course-catalog/fall25.json"))
-const spring_catalog = JSON.parse(loadFile("/course-catalog/spring25.json"))
-const total_catalog = { ...spring_catalog, ...fall_catalog };
 
 // runs fn on each element in catalog (an object) and returns the edited catalog. essentially array.map
 const edit_catalogs = (fn, catalog) => {
@@ -26,6 +24,22 @@ const edit_catalogs = (fn, catalog) => {
     return JSON.stringify(catalog, 4, ' ')
 }
 
+
+// use for save/load files
+function loadFile(filePath) {
+    let result = null;
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", filePath, false);
+    xmlhttp.send();
+    if (xmlhttp.status == 200) result = xmlhttp.responseText;
+    else { throw new Error(xmlhttp.status) }
+    return result;
+}
+//#endregion =====================================================
+
+const fall_catalog = JSON.parse(loadFile("/course-catalog/fall25.json"))
+const spring_catalog = JSON.parse(loadFile("/course-catalog/spring25.json"))
+const total_catalog = { ...spring_catalog, ...fall_catalog };
 
 const total_catalog_no_SMFA = {}
 for (var subject in total_catalog) {
