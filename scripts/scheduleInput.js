@@ -59,7 +59,7 @@ const create_requirements_tab = (id) => {
         // Create dropdown container
         const containerId = `dropdown-${Date.now()}`;
         var borderAddition = ``
-        if (dropdown_class == 'multi-class' && dropdown_class == 'multi-attribute' && dropdown_class == 'multi-department') {
+        if (dropdown_class == 'multi-class' || dropdown_class == 'multi-attribute' || dropdown_class == 'multi-department') {
             borderAddition = `class="multi-dropdown-separator"`
         } else {
             borderAddition = `class="dropdown-separator"`
@@ -151,7 +151,7 @@ const create_requirements_tab = (id) => {
 
 
     tab.find(".new-class-button").click(create_dropdown("class", smfaCheckbox.is(':checked') ? dropdowns.all_classes : dropdowns.no_smfa, "Search or select class name"));
-    tab.find(".new-department-button").click(create_dropdown("department", dropdowns.departments, "Search or select department", "Any class in "));
+    tab.find(".new-department-button").click(create_dropdown("department", dropdowns.departments, "Search or select department", "Any class in department "));
     tab.find(".new-attribute-button").click(create_dropdown("attribute", dropdowns.attributes, "Search or select attribute", "Any class with attribute "));
     
     const create_multi_dropdown = () => () => {
@@ -209,7 +209,7 @@ const create_requirements_tab = (id) => {
                 else if ($(multiSelections[i]).hasClass("multi-department-select")) {     
                     const copiedString = $(multiSelections[i]).val()
                     if (copiedString != "") {
-                        var selectionDuplicate = create_dropdown("multi-department", dropdowns.departments, "Search or select department", "Any class in ",duplicate.find(".multi-select"))()
+                        var selectionDuplicate = create_dropdown("multi-department", dropdowns.departments, "Search or select department", "Any class in department ",duplicate.find(".multi-select"))()
                         selectionDuplicate.find("select").val(copiedString).trigger("change")   
                     }
                 }
@@ -233,7 +233,7 @@ const create_requirements_tab = (id) => {
 
         // multiselect add new class buttons
         container.find(".new-multi-class-button").click(create_dropdown("multi-class", smfaCheckbox.is(':checked') ? dropdowns.all_classes : dropdowns.no_smfa, "Search or select class name", "", container.find(".multi-select")));
-        container.find(".new-multi-department-button").click(create_dropdown("multi-department", dropdowns.departments, "Search or select department", "Any class in ", container.find(".multi-select")));
+        container.find(".new-multi-department-button").click(create_dropdown("multi-department", dropdowns.departments, "Search or select department", "Any class in department ", container.find(".multi-select")));
         container.find(".new-multi-attribute-button").click(create_dropdown("multi-attribute", dropdowns.attributes, "Search or select attribute", "Any class with attribute ", container.find(".multi-select")));
 
 
@@ -455,15 +455,15 @@ const exportReq = (input) => {
                 output += "\tONE OF THE FOLLOWING CHOICES:\n"
                 for (const option of multi.config) {
                     prefaceLookup = [
-                        "",
+                        "\"",
                         "Anything with the attribute \"",
-                        "Any class in the "
+                        "Any class in the \""
                     ]
 
                     suffixLookup = [
-                        "",
+                        "\"",
                         '\"',
-                        " department"
+                        "\" department"
                     ]
 
                     output += "\t\t" + prefaceLookup[option.type] + option.config + suffixLookup[option.type] + '\n'
@@ -479,8 +479,33 @@ const exportReq = (input) => {
 }
 //#endregion =====================================================
 
+
+
+
 // importing user input from file
 //#region =====================================================
+
+
+// helper function to strip everything in a string that isn't in a single set of ""
+function strip_quotes(str) {
+    var start = 0;
+    var end = str.length - 1;
+
+    while (start + 1 < end) { // because "" always returns a blank string
+        if (str[start] != "\"") {
+            start++;
+        }
+        if (str[end] != "\"") {
+            end--;
+        }
+        if (str[start] == "\"" && str[end] == "\"") {
+            return str.substring(start + 1, end);
+        }
+    }
+    return "";
+}
+
+
 const requirementInput = $("#import-req").find("input")
 requirementInput.change(() => {
     const file = requirementInput.prop('files')[0]
@@ -501,11 +526,14 @@ requirementInput.change(() => {
             var category = undefined
             var current_tab = null
             var current_multi_box = null
+            var current_multi_table_row = null
             smfaCheckbox.prop('checked', true)
+            const req_error_box = document.getElementById("requirements-error-wrapper");
+            var import_error_text = "";
 
             // parse input
             for (const line of contents) {
-                if (line.length == 0) break
+                if (line.length == 0) continue
                 // category
                 if (get_category(line) != undefined) {
                     category = get_category(line)
@@ -518,9 +546,9 @@ requirementInput.change(() => {
                         }
 
                         current_tab.find(".new-multi-class-button").click()
-
                         current_multi_box = $(current_tab.find(".multi-select")[current_tab.find(".multi-select").length - 1])
-                        current_multi_box.find(".remove-btn")[1].click()
+                        current_multi_box.find(".remove-btn").click()
+                        current_multi_table_row = $(current_tab.find("tr")[current_tab.find("tr").length - 1])
                     }
                 }
                 // name
@@ -534,9 +562,12 @@ requirementInput.change(() => {
                     if (current_tab == null) window.location.reload() // oops
 
                     switch (category) {
-                        case "CLASSES":
+
+                        case "CLASSES":  // ------------------------------------------------------------------------
                             if (!Object.keys(total_catalog).includes(line)) {
-                                console.error(`Unknown class "${line}". Was it removed from the catalog?`)
+                                var err_msg = `Unknown class "${line}". Was it removed from the catalog?`;
+                                console.error(err_msg);
+                                import_error_text += err_msg + "<br>";
                                 break
                             }
                             current_tab.find(".new-class-button").click()
@@ -544,37 +575,83 @@ requirementInput.change(() => {
                             var dropdowns = current_tab.find("select")
                             $(dropdowns[dropdowns.length - 1]).val(line).trigger("change")
                             break
-                        case "ATTRIBUTES":
+
+
+                        case "ATTRIBUTES":  // ---------------------------------------------------------------------
                             if (!attributes.includes(line)) {
-                                console.error(`Unknown attribute "${line}".`)
+                                var err_msg = `Unknown attribute "${line}".`;
+                                console.error(err_msg);
+                                import_error_text += err_msg + "<br>";
                                 break
                             }
-                            current_tab.find(".new-attribute-button").click()
+                            current_tab.find(".new-attribute-button").click();
 
                             var dropdowns = current_tab.find("select")
                             $(dropdowns[dropdowns.length - 1]).val(line).trigger("change")
                             break
-                        case "DEPARTMENTS":
+
+
+                        case "DEPARTMENTS":  // ---------------------------------------------------------------------
                             if (!departments.includes(line)) {
-                                console.error(`Unknown department "${line}".`)
-                                break
+                                var err_msg = `Unknown department "${line}".`;
+                                console.error(err_msg);
+                                import_error_text += err_msg + "<br>";
+                                break;
                             }
-                            current_tab.find(".new-department-button").click()
+                            current_tab.find(".new-department-button").click();
 
-                            var dropdowns = current_tab.find("select")
-                            $(dropdowns[dropdowns.length - 1]).val(line).trigger("change")
-                            break
-                        case "MULTI":
+                            var dropdowns = current_tab.find("select");
+                            $(dropdowns[dropdowns.length - 1]).val(line).trigger("change");
+                            break;
+
+
+                        case "MULTI":  // ---------------------------------------------------------------------------
                             if (current_multi_box == null) window.location.reload() // oops
 
-                            var dropdowns = current_multi_box.find("Select")
-                            $(dropdowns[dropdowns.length - 1]).val(line).trigger("change")
+                            stripped_line = strip_quotes(line);
+                            console.log(">" + stripped_line + "<");
 
-                            var duplication_buttons = current_multi_box.find(".duplicate-btn")
-                            $(duplication_buttons[duplication_buttons.length - 1]).click()
-                            break
+                            if (line.includes("Anything with the attribute \"")) { // ATTRIBUTES
+                                if (!attributes.includes(stripped_line)) {
+                                    var err_msg = `Multi-Selector: Unknown attribute "${stripped_line}".`;
+                                    console.error(err_msg);
+                                    import_error_text += err_msg + "<br>";
+                                    break
+                                }
+                                current_multi_table_row.find(".new-multi-attribute-button").click();
+
+
+                            } else if (line.includes("Any class in the ")) { // DEPARTMENTS
+                                if (!departments.includes(stripped_line)) {
+                                    var err_msg = `Multi-Selector: Unknown department "${stripped_line}".`;
+                                    console.error(err_msg);
+                                    import_error_text += err_msg + "<br>";
+                                    break;
+                                }
+                                current_multi_table_row.find(".new-multi-department-button").click();
+
+
+                            } else { // CLASSES
+                                if (!Object.keys(total_catalog).includes(stripped_line)) {
+                                    var err_msg = `Multi-Selector: Unknown class "${stripped_line}". Was it removed from the catalog?`;
+                                    console.error(err_msg);
+                                    import_error_text += err_msg + "<br>";
+                                    break
+                                }
+                                current_multi_table_row.find(".new-multi-class-button").click();
+                            }
+
+                            // ----------------------------------------------------------------------------------------
+
+
+                            var dropdowns = current_multi_box.find("select");
+                            $(dropdowns[dropdowns.length - 1]).val(stripped_line).trigger("change");
+                            break;
                     }
                 }
+            }
+            if (import_error_text != "") {
+                req_error_box.innerHTML = `<div class="error-box"><p class="error-box-title">Import Errors:</p>` + import_error_text + `</div>`;
             }
         };
 

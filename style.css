@@ -63,7 +63,7 @@ p {
     transition: 0.3s;
 }
 
-.requirements-help-text {
+.requirements-help-text, .multi-requirements-help-text {
     padding: 2px;
 }
   
@@ -81,7 +81,7 @@ p {
 }
 
 #requirements #new-requirement:hover {
-    background-color: #3172AE;
+    background-color: #73b0ea;
     color: #fff;
 }
 
@@ -101,7 +101,7 @@ p {
     border-color: white;
 }
 
-.multi-select {
+.multi-select-wrapper {
     border-radius: 10px;
     border-collapse: separate;
     box-shadow: 2px 2px 7px #7687a6;
@@ -121,8 +121,15 @@ tr {
 #Major-requirements {
     box-shadow: 2px 2px 7px #7687a6;
     border-radius: 10px;
-    border-width: 1px;
-    border-color: #29adff;
+    padding: 10px;
+}
+
+.error-box {
+    background-color: #f7f5f5;
+    border-color: red;
+    box-shadow: 2px 2px 7px #a67676;
+    border-radius: 10px;
+    margin: 5px;
     padding: 10px;
 }
 
