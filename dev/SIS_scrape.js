@@ -14,7 +14,7 @@ for (let row of show_more) {
 }
 
 // scrape the data from each row
-const read_classes = () => {
+const read_classes = (term = "fall") => {
     for (let i = 0; i < class_table.length; i++) {
         let row = class_table[i]
         let class_name = row.children[0].innerText.split(' ')[0]
@@ -22,12 +22,18 @@ const read_classes = () => {
         let prereqs = row.children[2].children[1].children[0].children[0].children[3].children[1].children[0].children[0].children[0].children[0].children[2].children[1].innerText
         let credits = row.children[2].children[1].children[0].children[0].children[3].children[0].children[4].innerText
         let location = row.children[2].children[1].children[0].children[0].children[3].children[0].children[3].children[0].children[0].children[1].innerText
-        class_directory[class_name] = {
-            name: `${class_name}: ${row.children[0].innerText.split(' ').slice(1).join(' ')}`,
-            attributes: attributes,
-            prereqs: prereqs,
-            credits: parseInt(credits),
-            location: location
+        
+        let class_number = class_name.split('-')[1]
+        if (class_number < 200) { // only allow classes under 200 (most undergrad classes)
+            class_directory[class_name] = {
+                name: `${class_name}: ${row.children[0].innerText.split(' ').slice(1).join(' ')}`,
+                attributes: attributes,
+                prereqs: prereqs,
+                credits: parseInt(credits),
+                location: location,
+                offeredInFall: term == "fall",
+                offeredInSpring: term == "spring"
+            }
         }
     }
 

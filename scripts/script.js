@@ -24,7 +24,6 @@ const edit_catalogs = (fn, catalog) => {
     return JSON.stringify(catalog, 4, ' ')
 }
 
-
 // use for save/load files
 function loadFile(filePath) {
     let result = null;
@@ -39,15 +38,26 @@ function loadFile(filePath) {
 function parseCatalog(name) {
     return JSON.parse(loadFile(`/course-catalog/${name}`))
 }
+
+function mergeCatalogs(fall, spring) {
+    var output = fall
+    for (let subject in spring) {
+        if (fall[subject] == undefined) fall[subject] = spring[subject]
+        else fall[subject].offeredInSpring = true
+    }
+    return output
+}
 //#endregion =====================================================
 
-const fall_catalog = parseCatalog("fall.json")
-const spring_catalog = parseCatalog("spring.json")
-const total_catalog = { ...spring_catalog, ...fall_catalog };
+const total_catalog = parseCatalog("catalog.json");
 
+const fall_catalog = {}
+const spring_catalog = {}
 const total_catalog_no_SMFA = {}
 for (var subject in total_catalog) {
     if (total_catalog[subject].location == "Medford/Somerville") total_catalog_no_SMFA[subject] = total_catalog[subject]
+    if (total_catalog[subject].offeredInFall) fall_catalog[subject] = total_catalog[subject]
+    if (total_catalog[subject].offeredInSpring) spring_catalog[subject] = total_catalog[subject]
 }
 
 // tags
