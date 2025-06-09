@@ -35,10 +35,14 @@ function loadFile(filePath) {
     else { throw new Error(xmlhttp.status) }
     return result;
 }
+
+function parseCatalog(name) {
+    return JSON.parse(loadFile(`/course-catalog/${name}`))
+}
 //#endregion =====================================================
 
-const fall_catalog = JSON.parse(loadFile("/course-catalog/fall25.json"))
-const spring_catalog = JSON.parse(loadFile("/course-catalog/spring25.json"))
+const fall_catalog = parseCatalog("fall.json")
+const spring_catalog = parseCatalog("spring.json")
 const total_catalog = { ...spring_catalog, ...fall_catalog };
 
 const total_catalog_no_SMFA = {}
