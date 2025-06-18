@@ -24,7 +24,7 @@ const read_classes = (term = "fall") => {
         let location = row.children[2].children[1].children[0].children[0].children[3].children[0].children[3].children[0].children[0].children[1].innerText
         
         let class_number = class_name.split('-')[1]
-        if (class_number < 200) { // only allow classes under 200 (most undergrad classes)
+        if (class_number < 200 && location != "") { // only allow classes under 200 (most undergrad classes)
             class_directory[class_name] = {
                 name: `${class_name}: ${row.children[0].innerText.split(' ').slice(1).join(' ')}`,
                 attributes: attributes,

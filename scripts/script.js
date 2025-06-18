@@ -39,11 +39,14 @@ function parseCatalog(name) {
     return JSON.parse(loadFile(`/course-catalog/${name}`))
 }
 
-function mergeCatalogs(fall, spring) {
-    var output = fall
-    for (let subject in spring) {
-        if (fall[subject] == undefined) fall[subject] = spring[subject]
-        else fall[subject].offeredInSpring = true
+function mergeCatalogs(main, toMerge) {
+    var output = main
+    for (let subject in toMerge) {
+        if (main[subject] == undefined) main[subject] = toMerge[subject]
+        else {
+            main[subject].offeredInSpring = main[subject].offeredInSpring || toMerge[subject].offeredInSpring
+            main[subject].offeredInFall = main[subject].offeredInFall || toMerge[subject].offeredInFall
+        }
     }
     return output
 }
