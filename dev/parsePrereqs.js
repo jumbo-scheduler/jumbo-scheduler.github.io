@@ -81,4 +81,4 @@ function parseCatalogPrereqs() {
         }
     }
 }
-parseCatalogPrereqs();
+// parseCatalogPrereqs();
