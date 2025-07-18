@@ -583,7 +583,7 @@ const exportReq = (input) => {
 
         const attributes = tab.attributes;
         if (attributes.length > 0) {
-            output += "\tONE CLASS WITH ATTRIBUTES:\n";
+            output += "\tCLASSES WITH ATTRIBUTES:\n";
             for (const attribute of attributes)
                 output += `\t\t${attribute.config[0]}\n`;
         }
