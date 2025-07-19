@@ -661,7 +661,6 @@ const importRequirements = (contents) => {
     var category = undefined;
     var current_tab = null;
     var current_multi_box = null;
-    var current_multi_table_row = null;
     smfaCheckbox.prop("checked", true);
     const req_error_box = document.getElementById("requirements-error-wrapper");
     var import_error_text = "";
@@ -673,24 +672,18 @@ const importRequirements = (contents) => {
         if (get_category(line) != undefined) {
             category = get_category(line);
             if (category == "MULTI") {
-                if (current_tab == null) window.location.reload(); // oops
-
-                if (current_multi_box != null) {
-                    var delete_buttons = current_multi_box.find(".remove-btn");
-                    $(delete_buttons[delete_buttons.length - 1]).click();
+                if (current_tab == null) {
+                     window.location.reload(); // oops
+                } else {
+                    current_tab.find(".new-multi-class-button")
+                        [current_tab.find(".new-multi-class-button").length - 1]
+                        .click();
+                    current_multi_box = $(
+                        current_tab.find(".dropdown-separator")[
+                            current_tab.find(".dropdown-separator").length - 1
+                        ]
+                    );
                 }
-
-                current_tab.find(".new-multi-class-button").click();
-                current_multi_box = $(
-                    
-                    current_tab.find(".multi-select")[
-                        current_tab.find(".multi-select").length - 1
-                    ]
-                );
-                current_multi_box.find(".remove-btn").click();
-                current_multi_table_row = $(
-                    current_tab.find("tr")[current_tab.find("tr").length - 1]
-                );
             }
         }
         // name
@@ -755,7 +748,7 @@ const importRequirements = (contents) => {
                     if (current_multi_box == null) window.location.reload(); // oops
 
                     stripped_line = strip_quotes(line);
-                    // console.log(">" + stripped_line + "<");
+
 
                     if (line.includes('Anything with the attribute "')) {
                         // ATTRIBUTES
@@ -763,41 +756,38 @@ const importRequirements = (contents) => {
                             var err_msg = `Multi-Selector: Unknown attribute "${stripped_line}".`;
                             console.error(err_msg);
                             import_error_text += err_msg + "<br>";
-                            break;
+                        } else {
+                            current_multi_box
+                                .find(".new-multi-attribute-button")
+                                .click();
                         }
-                        current_multi_table_row
-                            .find(".new-multi-attribute-button")
-                            .click();
                     } else if (line.includes("Any class in the ")) {
                         // DEPARTMENTS
                         if (!departments.includes(stripped_line)) {
                             var err_msg = `Multi-Selector: Unknown department "${stripped_line}".`;
                             console.error(err_msg);
                             import_error_text += err_msg + "<br>";
-                            break;
+                        } else {
+                            current_multi_box
+                                .find(".new-multi-department-button")
+                                .click();
                         }
-                        current_multi_table_row
-                            .find(".new-multi-department-button")
-                            .click();
                     } else {
                         // CLASSES
-                        if (
-                            !Object.keys(total_catalog).includes(stripped_line)
-                        ) {
+                        if (!Object.keys(total_catalog).includes(stripped_line)) {
                             var err_msg = `Multi-Selector: Unknown class "${stripped_line}". Was it removed from the catalog?`;
                             console.error(err_msg);
                             import_error_text += err_msg + "<br>";
-                            break;
+                        } else {
+                            current_multi_box
+                                .find(".new-multi-class-button")
+                                .click();
                         }
-                        current_multi_table_row
-                            .find(".new-multi-class-button")
-                            .click();
                     }
 
                     // ----------------------------------------------------------------------------------------
 
                     var dropdowns = current_multi_box.find("select");
-                    console.log(stripped_line);
                     $(dropdowns[dropdowns.length - 1])
                         .val(stripped_line)
                         .trigger("change");
