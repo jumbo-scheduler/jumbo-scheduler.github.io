@@ -12,6 +12,10 @@ const tokenizePhrases = (line) => {
     //   {type: "OR", value: "or"},
     //   {type: "PHRASE", value: "COMP 40"}
     //  ]
+
+    // CS11 80 character limit
+    // returns NONE for anything over 100 characters
+    if (line.length > 100) return [{ type: "NONE", value: null }];
     
     // Find all "and"/"or" (case-insensitive) positions
     const boolRegex = /\b(and|or)\b/gi;
@@ -74,16 +78,24 @@ const sanitize = (phrase) => {
     // convert to uppercase
     phrase = phrase.toUpperCase();
 
-    // if the phrase is a department name followed by a space then a number, return the phrase with a "-"" in between
-    if (/^[A-Z]{2,4} \d{1,3}[A-Z]?$/.test(phrase)) return phrase.replace(" ", "-");
+    // if the phrase is a department name followed by a space then a number, return the phrase with a "-"" in between and the number padded to 4 digits
+    if (/^[A-Z]{2,4} \d{1,4}[A-Z]?$/.test(phrase)) {
+        const parts = phrase.split(" ");
+        const dept = parts[0];
+        let num = parts[1];
+        // pad number to 4 digits
+        num = num.padStart(4, '0');
+        return `${dept}-${num}`;
+    }
+
 
     // if the phrase is a department name followed by a space then a list of numbers separated by slashes or commas, return an array of the phrases with a "-" in between
-    if (/^[A-Z]{2,4} (\d{1,3}[A-Z]?([\/,] ?\d{1,3}[A-Z]?)+)$/.test(phrase)) {
+    if (/^[A-Z]{2,4} (\d{1,4}[A-Z]?([\/,] ?\d{1,4}[A-Z]?)+)$/.test(phrase)) {
         console.log(phrase)
     }
 
     // if the phrase contains one of the following, return "NONE"
-    const nonePhrases = ["NONE", "GRADUATE", "PERMISSION", "CONSENT", "EQUIVALENT"];
+    const nonePhrases = ["NONE", "GRADUATE", "GRAD", "PERMISSION", "CONSENT", "EQUIVALENT", "RESTRICTED", "MAJOR", "NOT", "MINOR"];
     const noneRegex = new RegExp(nonePhrases.join("|"), "i");
     if (noneRegex.test(phrase)) return "NONE";
 
@@ -93,7 +105,7 @@ const sanitize = (phrase) => {
     phrase = phrase.replace(removeRegex, "").trim();
 
     // remove the following phrases wherever they appear
-    const removeAnywhere = ["COURSE", "COURSES", "PRIOR"]
+    const removeAnywhere = ["COURSE", "COURSES", "PRIOR", "COMPLETION OF", "REQUIRES"]
     const removeAnywhereRegex = new RegExp(`\\b(${removeAnywhere.join("|")})\\b`, "gi");
     phrase = phrase.replace(removeAnywhereRegex, "").replace(/\s+/g, " ").trim();
 
@@ -120,12 +132,47 @@ const parseLine = (line) => {
     // repeatedly parse phrases into more specific types until no phrases remain or 100 iterations have occurred
     for (var tries = 0; tries < 100; tries++) { 
         var unparsedPhrases = false;
-        for (const token of tokens) { 
+        for (var i = 0; i < tokens.length; i++) {
+            const token = tokens[i];
+
             // sort phrases into more specific types
             if (token.type == "PHRASE") {
                 unparsedPhrases = true;
                 const phrase = sanitize(token.value)
-                
+      
+                // check for "CONCURRENT ENROLLMENT IN XXX"
+                const concurrentRegex = /^CONCURRENT ENROLLMENT IN (.+)$/i;
+                if (concurrentRegex.test(phrase)) {
+                    const match = phrase.match(concurrentRegex);
+                    token.type = "CONCURRENT"
+                    token.value = match[1].trim()
+                    continue; // move to next token
+                }
+
+                // if the phrase is a department name followed by a list of numbers, e.g. "COMP 11 & 12", "MATH 22, 23", "CHEM 1A or 1B", split it into multiple SUBJECT tokens separated by AND/OR tokens
+                const departmentRegex = /^([A-Z]{2,4})\s+((?:\d{1,3}[A-Z]?)(?:\s*([&,]|or|and)\s*\d{1,3}[A-Z]?)+)$/i;
+                if (departmentRegex.test(phrase)) {
+                    const match = phrase.match(departmentRegex);
+                    const dept = match[1];
+                    const numbers = match[2].split(/\s*([&,]|or|and)\s*/).filter(s => s.trim().length > 0);
+                    const newTokens = [];
+                    for (let i = 0; i < numbers.length; i++) {
+                        const part = numbers[i].trim();
+                        if (part === "&" || part === ",") {
+                            newTokens.push({ type: "AND", value: "and" });
+                        } else if (part.toLowerCase() === "or") {
+                            newTokens.push({ type: "OR", value: "or" });
+                        } else {
+                            newTokens.push({ type: "SUBJECT", value: `${dept}-${part}` });
+                        }
+                    }
+                    // replace the current token with the new tokens
+                    const index = tokens.indexOf(token);
+                    tokens.splice(index, 1, ...newTokens);
+                    continue; // move to next token
+                }
+
+                // if the phrase is "NONE", return type "NONE"
                 if (phrase == "NONE") {
                     token.type = "NONE"
                     token.value = null;
@@ -171,6 +218,16 @@ const parseLine = (line) => {
                     token.value = phrase
                 }
 
+                // check if the current phrase can be tokenized again
+                const tokenizedAgain = tokenizePhrases(phrase);
+                if (tokenizedAgain.length > 1) {
+                    // replace the current token with the new tokens
+                    const index = tokens.indexOf(token);
+                    tokens.splice(index, 1, ...tokenizedAgain);
+                    continue; // move to next token
+                }
+
+
                 // nothing else worked, just try again next iteration
                 if (token.type == "PHRASE") token.value = phrase
             }
@@ -181,7 +238,7 @@ const parseLine = (line) => {
 
     if (unparsedPhrases) {
         console.log(tokens)
-        throw new Error(`Infinite loop detected in parseLine when parsing line: ${line}`)
+        throw new Error(`Infinite loop detected in parseLine when parsing class: ${line}`)
     }
 
     return tokens
@@ -192,5 +249,8 @@ const buildTree = (tokens) => {
 
 const parsePrereqs = (catalog) => {
     // run parseLine on each class's prereq string and store the result in a new field "parsedPrereq"
-    for (const subject in catalog) catalog[subject].parsedPrereq = buildTree(parseLine(catalog[subject].prereqs))
+    for (const subject in catalog) {
+        console.log(`Parsing prereqs for ${subject}`)
+        catalog[subject].parsedPrereq = buildTree(parseLine(catalog[subject].prereqs))
+    }
 }
