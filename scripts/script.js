@@ -54,15 +54,7 @@ function mergeCatalogs(main, toMerge) {
 
 const total_catalog = parseCatalog("catalog.json");
 
-const fall_catalog = {}
-const spring_catalog = {}
-const total_catalog_no_SMFA = {}
-for (var subject in total_catalog) {
-    if (total_catalog[subject].location == "Medford/Somerville") total_catalog_no_SMFA[subject] = total_catalog[subject]
-    if (total_catalog[subject].offeredInFall) fall_catalog[subject] = total_catalog[subject]
-    if (total_catalog[subject].offeredInSpring) spring_catalog[subject] = total_catalog[subject]
-}
-
+const class_names = Object.keys(total_catalog);
 // tags
 const attributes = [
     "African Cult/Lang - Diasporas",
@@ -230,3 +222,16 @@ const departments = [
     "ML",
     "SKT"
 ]
+
+parsePrereqs(total_catalog)
+
+
+const fall_catalog = {}
+const spring_catalog = {}
+const total_catalog_no_SMFA = {}
+for (var subject in total_catalog) {
+    if (total_catalog[subject].location == "Medford/Somerville") total_catalog_no_SMFA[subject] = total_catalog[subject]
+    if (total_catalog[subject].offeredInFall) fall_catalog[subject] = total_catalog[subject]
+    if (total_catalog[subject].offeredInSpring) spring_catalog[subject] = total_catalog[subject]
+}
+
