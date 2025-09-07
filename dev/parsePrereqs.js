@@ -15,6 +15,20 @@ const initialSanitize = (line) => {
         line = line.split(":").slice(1).join(":").trim();
     }
 
+    // add a space in between the slash when this pattern appears: "CLASS 0001/CLASS 0002"
+    line = line.replace(/([A-Z]{2,4} \d{1,4}[A-Z]?)\/([A-Z]{2,4} \d{1,4}[A-Z]?)/g, "$1 / $2");
+
+    // same thing but with the pattern "DEPT1/DEPT2 1234"
+    line = line.replace(/([A-Z]{2,4})\/([A-Z]{2,4}) (\d{1,4}[A-Z]?)/g, "$1 / $2 $3");
+
+    // substitute entire lines
+    const entireLineSubstitutions = {
+        "OPEN TO EDUCATION AND SCI, TECH, AND SOCIETY MAJOR ONLY OR CONSENT": "NONE",        
+    }
+    if (line in entireLineSubstitutions) {
+        return entireLineSubstitutions[line];
+    }
+
     // substitute specific phrases for specific others
     const substitutions = {
         "PRE OR CO-REQUISITE": "CONCURRENT ENROLLMENT",
@@ -24,11 +38,23 @@ const initialSanitize = (line) => {
         "CONCURRENT ENROLLMENT OR COMPLETION": "CONCURRENT ENROLLMENT",
         "CONCURRENT ENROLLMENT OF": "CONCURRENT ENROLLMENT IN",
         "STUDENTS MUST ALSO ENROLL IN": "CONCURRENT ENROLLMENT IN",
+        "SIMULTANEOUS ENROLLMENT IN": "CONCURRENT ENROLLMENT IN",
 
-        "CS/MATH": "MATH",
         "ECONOMICS": "EC",
         "PHYSICS": "PHY",
         "ENGLISH": "ENG",
+        "SCOCIOLOGY": "SOC",
+        "LATIN": "LAT",
+        "SPANISH": "SPAN",
+        "TDPS": "TPS",
+        "GREEK": "GRK",
+        "MECHANICAL ENGINEERING": "ME",
+        "CHEMISTRY": "CHEM",
+        "PORTUGUESE": "POR",
+        
+        "PSY 10 LEVEL": "PSY 12 or 13",
+        "PSY 20 LEVEL": "PSY 22, 25, 27, or 28",
+        "100-LEVEL LAT COURSE OTHER THAN LAT 120": "LAT 140, 191, 181, or 132"
     }
     var pendingSubstitution = true;
     while (pendingSubstitution) {
@@ -49,12 +75,15 @@ const initialSanitize = (line) => {
     line = line.replace(/\//g, "OR");
 
     // remove the following phrases wherever they appear
-    const removeAnywhere = ["ANY", "COURSE", "COURSES", "PRIOR", "COMPLETION OF", "REQUIRES", "COMPLETION", "COMPLETED", "CLASS", "ABOVE", "MUST HAVE"]
+    const removeAnywhere = ["ANY", "COURSE", "COURSES", "PRIOR", "COMPLETION OF", "REQUIRES", "COMPLETION", "COMPLETED", "CLASS", "ABOVE", "MUST HAVE", "AANDS OR SOE STUDENTS WITH", "WITH C- OR BETTER"]
     const removeAnywhereRegex = new RegExp(`\\b(${removeAnywhere.join("|")})\\b`, "gi");
     line = line.replace(removeAnywhereRegex, "").replace(/\s+/g, " ").trim();
 
     // remove periods (can't have this in the regex because it would match any character and escaping doesnt work if you use the RegExp constructor)
     line = line.replace(/\./g, "").trim();
+
+    // same thing for (s)
+    line = line.replace(/\(S\)/g, "").trim();
 
     return line;
 }
@@ -71,22 +100,16 @@ const initialTokenize = (line) => {
     //   {type: "PHRASE", value: "COMP 40"}
     //  ]
 
-    // CS11 80 character limit
-    // returns NONE for anything over 100 characters
-    if (line.length > 100) return [{ type: "NONE", value: null }];
-
-    // remove any restrictions on major, minor, graduate, etc.
-    // i.e. return NONE if any of the following phrases appear anywhere in the line
-    const nonePhrases = ["NONE", "SMFA", "STUDENTS ONLY", "GRADUATE", "GRAD", "PERMISSION", "CONSENT", "EQUIVALENT", "RESTRICTED", "MAJOR", "NOT", "MINOR", "MAY BE ENROLLED", "SEQUENCE"];
-    const noneRegex = new RegExp(nonePhrases.join("|"), "i");
-    if (noneRegex.test(line)) return [{ type: "NONE", value: null }];
-
-
     // if the line is empty, throw an error
     if (line.trim().length == 0) throw new Error("Empty prerequisite line");
 
     line = initialSanitize(line);
     console.log("Sanitized line:", line);
+
+    // return NONE for any of the following phrases
+    const nonePhrases = ["MASTERS", "ONLY ONE CREDIT OF"];
+    const noneRegex = new RegExp(nonePhrases.join("|"), "i");
+    if (noneRegex.test(line)) return {type: "NONE", value: null};
 
     // array of tokens to return
     const tokens = [];
@@ -120,8 +143,14 @@ const initialTokenize = (line) => {
             }
         }
         // add the parenthetical expression as an EXPRESSION token
-        const innerTokens = initialTokenize(match[1]);
-        tokens.push({ type: "EXPRESSION", value: innerTokens });
+        // if the expression contains the word concurrent and no mention of a class neighboring the word, just push none instead
+        const inner = match[1];
+        if (/CONCURRENT/.test(inner) && !/[A-Z]{2,4}-\d{1,4}[A-Z]?/.test(inner)) {
+            tokens.push({ type: "NONE", value: null });
+        } else {
+            const innerTokens = initialTokenize(inner);
+            tokens.push({ type: "EXPRESSION", value: innerTokens });
+        }
         lastIndex = parenRegex.lastIndex;
     }
 
@@ -229,12 +258,12 @@ const sanitize = (phrase) => {
 
     // if the phrase contains one of the following, return "NONE"
     // most of these cases is utter bullshit
-    const nonePhrases = ["NONE", "PERMISSION", "CONSENT", "EQUIVALENT", "COLLEGE WRITING REQUIREMENT", "CAP ADVISING", "MFA"];
+    const nonePhrases = ["NONE", "PERMISSION", "CONSENT", "EQUIVALENT", "COLLEGE WRITING REQUIREMENT", "CAP ADVISING", "MFA", "STUDENTS ONLY", "GRADUATE", "GRAD", "RESTRICTED", "MAJOR", "NOT", "MINOR", "MAY BE ENROLLED", "SEQUENCE"];
     const noneRegex = new RegExp(nonePhrases.join("|"), "i");
     if (noneRegex.test(phrase)) return "NONE";
 
     // remove the following phrases if they appear at the start or end of the phrase
-    const removePhrases = ["THE", "STANDING", "1", "OR", "ENROLLMENT IN", "A- IN", "SOE STUDENTS WHO HAVE",]
+    const removePhrases = ["THE", "STANDING", "1", "OR", "ENROLLMENT IN", "A- IN", "SOE STUDENTS WHO HAVE", "AT LEAST", "STUDENTS WITH"]
     const removeRegex = new RegExp(`^(${removePhrases.join("|")})\\s+|\\s+(${removePhrases.join("|")})$`, "gi");
     phrase = phrase.replace(removeRegex, "").trim();
 
@@ -354,7 +383,7 @@ const parseLine = (tokens) => {
                     token.value = 1;
                     continue; // move to next token
                 }
-                if (/^(JUNIOR|JUNIORS|JR'S)$/i.test(phrase)) {
+                if (/^(JUNIOR|JUNIORS|JR'S|JR)$/i.test(phrase)) {
                     token.type = "YEAR"
                     token.value = 2;
                     continue; // move to next token
@@ -468,6 +497,62 @@ const parseLine = (tokens) => {
 }
 
 const buildTree = (tokens) => {
+    // builds a tree structure from an array of parsed tokens
+    // mainly focuses on grouping booleans and handling REPEAT tokens
+    // the tree will only have nodes of the form {type: "SUBJECT"/"DEPARTMENT"/"YEAR"/"CONCURRENT"/"ONE OF"/"ALL OF", value: token/string/null/array}
+
+    // if the tokens is NONE, return null
+    if (tokens.length == 1 && tokens[0].type == "NONE") {
+        return null;
+    }
+
+    // if the tokens is a single token, return the token
+    if (tokens.length == 1) {
+        const token = tokens[0];
+        if (token.type == "EXPRESSION") {
+            return buildTree(token.value);
+        }
+
+        return token;
+    }
+
+    // iterate through the tokens and build the tree
+    for (let i = 0; i < tokens.length; i++) {
+        const token = tokens[i];
+        
+        // convert a group of tokens seperated by AND into an ALL OF node
+        if (token.type == "AND") {
+            if (i == 0 || i == tokens.length - 1) {
+                throw new Error("AND token cannot be at the start or end of the token list");
+            }
+            
+            const left = tokens[i - 1];
+            const right = tokens[i + 1];
+
+            // if the right side is an expression, build its tree
+            if (right.type == "EXPRESSION") {
+                right.value = buildTree(right.value);
+            }
+
+            // if the left side is an ALL OF node, merge the right side into it
+            if (left.type == "ALL OF") {
+                left.value.push(right);
+                tokens.splice(i, 2); // remove the AND and right tokens
+                i -= 1; // move the index back to account for the removed tokens
+                continue; // move to next token
+            }
+
+            const allOfNode = { type: "ALL OF", value: [left, right] };
+
+            // replace the left, AND, and right tokens with the ALL OF node
+            tokens.splice(i - 1, 3, allOfNode);
+
+            // move the index back to account for the removed tokens
+            i -= 1;
+        }
+    }
+
+    // throw new Error("buildTree not implemented yet");
 }
 
 const parsePrereqs = (catalog) => {

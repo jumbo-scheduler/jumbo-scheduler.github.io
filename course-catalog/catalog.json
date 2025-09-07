@@ -4229,7 +4229,7 @@
     "attributes": [
       "SoE-Engineering"
     ],
-    "prereqs": "Senior standing in Computer Science, Data Science, or Cognitive and Brain Science. No Graduate Enrollment.",
+    "prereqs": "Senior standing",
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
@@ -4575,7 +4575,7 @@
     "attributes": [
       "SOE-Computing"
     ],
-    "prereqs": "Graduate standing OR Major in (Data Science OR Computer Science) in SOE OR Major in (Computer Science) in A&S",
+    "prereqs": "None",
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
@@ -13732,7 +13732,7 @@
       "SoE-HASS",
       "SoE-HASS-Arts"
     ],
-    "prereqs": "BFA or BFA+ BA/BS combined degree students only",
+    "prereqs": "None",
     "credits": 4,
     "location": "Mo 3:30PM - 8:30PM",
     "offeredInFall": true,
@@ -15987,7 +15987,7 @@
       "SoE-HASS",
       "SoE-HASS-Social Sciences"
     ],
-    "prereqs": "PS (11 or 21, 41 or 42 or 61) and any two PS courses\nSophomores Standing; No Graduate Students.",
+    "prereqs": "(PS 11 or 21, 41 or 42 or 61) and any two PS courses\nSophomores Standing; No Graduate Students.",
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
@@ -16405,7 +16405,7 @@
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences"
     ],
-    "prereqs": "PSY 31 or BIO 132 or CEE 6 or CEE 156 or CHSD 40, and major in: Psychology, Biopsychology, Engineering Psychology, Human Factors, Clinical Psychology, or Cognitive Brain Science.",
+    "prereqs": "PSY 31 or BIO 132 or CEE 6 or CEE 156 or CHSD 40",
     "credits": 5,
     "location": "Medford/Somerville",
     "offeredInFall": true,
@@ -32624,7 +32624,7 @@
       "SoE-HASS",
       "SoE-HASS-Social Sciences"
     ],
-    "prereqs": "PSY (22, 27, 28 or 53) or ENP 64. Undergraduates only.",
+    "prereqs": "(PSY 22, 27, 28 or 53) or ENP 64. Undergraduates only.",
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
@@ -33378,7 +33378,7 @@
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences"
     ],
-    "prereqs": "Bio 13 pre-req & Bio 41 co-req or pre-req",
+    "prereqs": "Bio 13 & concurrent enrollment in Bio 41",
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": false,
