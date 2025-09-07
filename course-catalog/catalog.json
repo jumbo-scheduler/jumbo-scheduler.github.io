@@ -4528,7 +4528,7 @@
     "attributes": [
       "SOE-Computing"
     ],
-    "prereqs": "Prior completion of CS 15 andn senior standing, or graduate standing",
+    "prereqs": "Prior completion of CS 15 and senior standing, or graduate standing",
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
@@ -10903,20 +10903,6 @@
       "SoE-HASS-Arts"
     ],
     "prereqs": "Restricted to History of Art and Architecture Junior or Senior majors",
-    "credits": 3,
-    "location": "Medford/Somerville",
-    "offeredInFall": true,
-    "offeredInSpring": false
-  },
-  "HAA-0101": {
-    "name": "HAA-0101: Historiography And Methodology Of Art History",
-    "attributes": [
-      "BFA Art History",
-      "LA-Distribution-Arts",
-      "SoE-HASS",
-      "SoE-HASS-Arts"
-    ],
-    "prereqs": "First-year MA in Art History and first-year MA in Art History with Museum Studies",
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
@@ -20070,7 +20056,7 @@
       "SOE – Pre-Registration Eligible",
       "SoE-Engineering"
     ],
-    "prereqs": "Senior standing in the BSBME program and prior completion of BME 66",
+    "prereqs": "senior and prior completion of BME 66",
     "credits": 5,
     "location": "Medford/Somerville",
     "offeredInFall": false,
@@ -20240,7 +20226,7 @@
       "SOE – Pre-Registration Eligible",
       "SoE-Engineering"
     ],
-    "prereqs": "Human Factors or Engineering Psychology",
+    "prereqs": "None",
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": false,
