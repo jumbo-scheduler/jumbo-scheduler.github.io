@@ -10784,7 +10784,7 @@
       "SoE-HASS-Arts",
       "SoE-HASS-Humanities"
     ],
-    "prereqs": "Requires the completion of ENG 0001 and ENG 0002 or ENG 0003 and ENG 0004 Or equivalent(s).",
+    "prereqs": "Requires the completion of (ENG 0001 and ENG 0002) or (ENG 0003 and ENG 0004) Or equivalent(s).",
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
