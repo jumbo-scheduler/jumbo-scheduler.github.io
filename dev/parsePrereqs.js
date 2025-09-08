@@ -1,6 +1,12 @@
 // I WILL DIE FOR COPILOT
 // parses prerequisite strings into a tree structure
 
+
+// use Ors for anything that needs to be filtered absolutely immediately or the parsing will break (use of booleans like OR is the main reason)
+const removeOrs = ["AANDS STUDENTS WITH", "EQV", "OR HIGHER", "AANDS OR SOE STUDENTS WITH", "WITH C- OR BETTER", "OR ABOVE", "PRIOR COMPLETION OF", "REQUIRES COMPLETION OF ANY", "REQUIRES THE COMPLETION OF ANY", "REQUIRES THE COMPLETION OF"]
+// use anywhere for more responsive removals
+const removeAnywhere = ["PLUS", "MUST HAVE", "CLASSES", "ANY", "ENROLLMENT IN", "ENROLLMENT", "ONE OF", "PRIOR", "COURSE", "COMPLETION OF", "REQUIRES", "COMPLETION", "CLASS", "COURSES", "ABOVE", "IN", "COMPLETED"];
+
 const initialSanitize = (line) => {
     // initial sanitization of a prerequisite line before tokenization
 
@@ -15,6 +21,17 @@ const initialSanitize = (line) => {
         line = line.split(":").slice(1).join(":").trim();
     }
 
+    // remove stupid ass parentheticals
+    const stupidAssParentheticals = [
+        "OR EQUIVALENTS",
+        "MAY BE ENROLLED IN THE SAME SEMESTER",
+        "CONCURRENT OR COMPLETED",
+        "MUST BE TAKEN CONCURRENT",
+        "RESTRICTED UNDERGRADUATES IN THEIR FIRST OR SECOND YEAR",
+    ]
+    const sapRegex = new RegExp(`\(${stupidAssParentheticals.join("|")}\)`, "g");
+    line = line.replace(sapRegex, "")
+
     // add a space in between the slash when this pattern appears: "CLASS 0001/CLASS 0002"
     line = line.replace(/([A-Z]{2,4} \d{1,4}[A-Z]?)\/([A-Z]{2,4} \d{1,4}[A-Z]?)/g, "$1 / $2");
 
@@ -23,7 +40,7 @@ const initialSanitize = (line) => {
 
     // substitute entire lines
     const entireLineSubstitutions = {
-        "OPEN TO EDUCATION AND SCI, TECH, AND SOCIETY MAJOR ONLY OR CONSENT": "NONE",        
+        "OPEN TO EDUCATION AND SCI, TECH, AND SOCIETY MAJOR ONLY OR CONSENT": "NONE",
     }
     if (line in entireLineSubstitutions) {
         return entireLineSubstitutions[line];
@@ -35,26 +52,43 @@ const initialSanitize = (line) => {
         "PRE OR CO REQUISITE": "CONCURRENT ENROLLMENT",
         "CONCURRENT ENROLLMENT IN OR PRIOR COMPLETION OF": "CONCURRENT ENROLLMENT IN",
         "CURRENT ENROLLMENT": "CONCURRENT ENROLLMENT",
+        "PREVIOUS OR CONCURRENT": "CONCURRENT",
+        "SAME TERM ENROLLMENT": "CONCURRENT ENROLLMENT",
+        "COMPLETION OF OR CONCURRENT ENROLLMENT": "CONCURRENT ENROLLMENT",
+        "COMPLETION OR CONCURRENT ENROLLMENT": "CONCURRENT ENROLLMENT",
         "CONCURRENT ENROLLMENT OR COMPLETION": "CONCURRENT ENROLLMENT",
         "CONCURRENT ENROLLMENT OF": "CONCURRENT ENROLLMENT IN",
         "STUDENTS MUST ALSO ENROLL IN": "CONCURRENT ENROLLMENT IN",
+        "SAME TIME ENROLLMENT": "CONCURRENT ENROLLMENT",
         "SIMULTANEOUS ENROLLMENT IN": "CONCURRENT ENROLLMENT IN",
+        "OR CONCURRENT": "CONCURRENT ENROLLMENT",
+        "PRIOR COMPLETION OR CONCURRENT ENROLLMENT IN": "CONCURRENT ENROLLMENT IN",
 
+        "ARCHEOLOGY": "ARCH",
         "ECONOMICS": "EC",
         "PHYSICS": "PHY",
         "ENGLISH": "ENG",
-        "SCOCIOLOGY": "SOC",
+        "SOCIOLOGY": "SOC",
         "LATIN": "LAT",
-        "SPANISH": "SPAN",
+        "SPANISH": "SPN",
         "TDPS": "TPS",
         "GREEK": "GRK",
         "MECHANICAL ENGINEERING": "ME",
         "CHEMISTRY": "CHEM",
         "PORTUGUESE": "POR",
-        
-        "PSY 10 LEVEL": "PSY 12 or 13",
-        "PSY 20 LEVEL": "PSY 22, 25, 27, or 28",
-        "100-LEVEL LAT COURSE OTHER THAN LAT 120": "LAT 140, 191, 181, or 132"
+        "MATHEMATICS": "MATH",
+        "EDUCATION": "ED",
+        "PHILOSOPHY": "PHIL",
+        "COMPUTER SCIENCE": "CS",
+
+        "PHY 1 AND 11 SHARED LAB": "PHY 1",
+        "PHY 2 AND 12 SHARED LAB": "PHY 2",
+        "PSY 10 LEVEL": "(PSY 12 or 13)",
+        "PSY 20 LEVEL": "(PSY 22, 25, 27, or 28)",
+        "AT LEAST ONE CS CLASS NUMBERED ABOVE 100": "(CS 105, 112, 115, 117, 118, 121, 131, 132, 134, 135, 136, 138, 150, 151, 152, 160, 163, 165, 166, 170, 175, 182, 191, 195, or 197)",
+        "100-LEVEL LAT COURSE OTHER THAN LAT 120": "(LAT 140, 191, 181, or 132)",
+        "30-LEVEL SPN": "(SPN 30, 31, 32, or 33)",
+        "BIOLOGY GROUP B": "(BIO 75, 108, 110, 112, 115, 116, 117, 118, 134, 186 or 246)"
     }
     var pendingSubstitution = true;
     while (pendingSubstitution) {
@@ -70,20 +104,22 @@ const initialSanitize = (line) => {
 
     // replace "&" with "AND"
     line = line.replace(/&/g, "AND");
-    
+
     // replace "/" with "OR"
     line = line.replace(/\//g, "OR");
 
     // remove the following phrases wherever they appear
-    const removeAnywhere = ["ANY", "COURSE", "COURSES", "PRIOR", "COMPLETION OF", "REQUIRES", "COMPLETION", "COMPLETED", "CLASS", "ABOVE", "MUST HAVE", "AANDS OR SOE STUDENTS WITH", "WITH C- OR BETTER"]
-    const removeAnywhereRegex = new RegExp(`\\b(${removeAnywhere.join("|")})\\b`, "gi");
-    line = line.replace(removeAnywhereRegex, "").replace(/\s+/g, " ").trim();
+    const removeOrRegex = new RegExp(`\\b(${removeOrs.join("|")})\\b`, "gi");
+    line = line.replace(removeOrRegex, "").replace(/\s+/g, " ").trim();
 
     // remove periods (can't have this in the regex because it would match any character and escaping doesnt work if you use the RegExp constructor)
     line = line.replace(/\./g, "").trim();
 
-    // same thing for (s)
-    line = line.replace(/\(S\)/g, "").trim();
+    // remove (s)
+    line = line.replace("(S)", "").trim();
+
+    // remove empty ()
+    line = line.replace("()", " NONE ").trim();
 
     return line;
 }
@@ -106,10 +142,15 @@ const initialTokenize = (line) => {
     line = initialSanitize(line);
     console.log("Sanitized line:", line);
 
+    // // i aint reading all that
+    // // returns NONE for anything too long
+    // const maxLength = 80
+    // if (line.length > maxLength) return [{ type: "NONE", value: null }];
+
     // return NONE for any of the following phrases
-    const nonePhrases = ["MASTERS", "ONLY ONE CREDIT OF"];
+    const nonePhrases = ["MASTERS", "ONLY ONE CREDIT OF", "5TH YEARS"];
     const noneRegex = new RegExp(nonePhrases.join("|"), "i");
-    if (noneRegex.test(line)) return {type: "NONE", value: null};
+    if (noneRegex.test(line)) return [{ type: "NONE", value: null }];
 
     // array of tokens to return
     const tokens = [];
@@ -145,12 +186,9 @@ const initialTokenize = (line) => {
         // add the parenthetical expression as an EXPRESSION token
         // if the expression contains the word concurrent and no mention of a class neighboring the word, just push none instead
         const inner = match[1];
-        if (/CONCURRENT/.test(inner) && !/[A-Z]{2,4}-\d{1,4}[A-Z]?/.test(inner)) {
-            tokens.push({ type: "NONE", value: null });
-        } else {
-            const innerTokens = initialTokenize(inner);
-            tokens.push({ type: "EXPRESSION", value: innerTokens });
-        }
+        const innerTokens = initialTokenize(inner);
+        tokens.push({ type: "EXPRESSION", value: innerTokens });
+
         lastIndex = parenRegex.lastIndex;
     }
 
@@ -178,7 +216,7 @@ const initialTokenize = (line) => {
         }
     }
 
-   // remove any stray parentheses from PHRASE tokens
+    // remove any stray parentheses from PHRASE tokens
     tokens.forEach((token, idx) => {
         if (token.type === "PHRASE") {
             token.value = token.value.replace(/[()]/g, "").trim();
@@ -240,6 +278,12 @@ const initialTokenize = (line) => {
         }
     }
 
+    // remove any separators that are back to back
+    for (let i = 1; i < tokens.length - 1; i++) {
+        if (tokens[i - 1].type == "SEPARATOR" && (tokens[i].type == "AND" || tokens[i].type == "OR")) tokens.splice(i - 1, 1);
+    }
+
+    console.log("Initial tokenization result: ", tokens)
     return tokens
 }
 
@@ -258,14 +302,18 @@ const sanitize = (phrase) => {
 
     // if the phrase contains one of the following, return "NONE"
     // most of these cases is utter bullshit
-    const nonePhrases = ["NONE", "PERMISSION", "CONSENT", "EQUIVALENT", "COLLEGE WRITING REQUIREMENT", "CAP ADVISING", "MFA", "STUDENTS ONLY", "GRADUATE", "GRAD", "RESTRICTED", "MAJOR", "NOT", "MINOR", "MAY BE ENROLLED", "SEQUENCE"];
+    const nonePhrases = ["MSCS", "PHD", "POSTBACS", "NONE", "PERMISSION", "CONSENT", "EQUIVALENT", "COLLEGE WRITING REQUIREMENT", "CAP ADVISING", "MFA", "STUDENTS ONLY", "GRADUATE", "GRADUATE STUDENTS", "OR GRADUATE STANDING", "GRAD", "RESTRICTED", "MAJOR", "NOT", "MINOR", "MAY BE ENROLLED", "SEQUENCE"];
     const noneRegex = new RegExp(nonePhrases.join("|"), "i");
     if (noneRegex.test(phrase)) return "NONE";
 
     // remove the following phrases if they appear at the start or end of the phrase
-    const removePhrases = ["THE", "STANDING", "1", "OR", "ENROLLMENT IN", "A- IN", "SOE STUDENTS WHO HAVE", "AT LEAST", "STUDENTS WITH"]
+    const removePhrases = ["CLASSES IN", "EITHER", "THE", "STANDING", "OR", "ENROLLMENT IN", "A- IN", "SOE STUDENTS WHO HAVE", "AT LEAST", "STUDENTS WITH"]
     const removeRegex = new RegExp(`^(${removePhrases.join("|")})\\s+|\\s+(${removePhrases.join("|")})$`, "gi");
     phrase = phrase.replace(removeRegex, "").trim();
+
+    // remove the following phrases if they appear anywhere
+    const removeAnywhereRegex = new RegExp(`\\b(${removeAnywhere.join("|")})\\b`, "gi");
+    phrase = phrase.replace(removeAnywhereRegex, "").replace(/\s+/g, " ").trim();
 
     // replace words with numbers
     const numberMap = {
@@ -294,7 +342,7 @@ const parseLine = (tokens) => {
     //  ]
 
     // repeatedly parse phrases into more specific types until no phrases remain or 5 iterations have occurred
-    for (var tries = 0; tries < 5; tries++) {
+    for (var tries = 0; tries < 10; tries++) {
         console.groupCollapsed(`Parsing iteration ${tries + 1}`);
         var unparsedPhrases = false;
 
@@ -313,8 +361,8 @@ const parseLine = (tokens) => {
                 unparsedPhrases = true;
                 const phrase = sanitize(token.value)
 
-                // check for "CONCURRENT ENROLLMENT IN XXX"
-                const concurrentRegex = /^CONCURRENT ENROLLMENT IN (.+)$/i;
+                // check for "CONCURRENT IN XXX"
+                const concurrentRegex = /^CONCURRENT (.+)$/i;
                 if (concurrentRegex.test(phrase)) {
                     const match = phrase.match(concurrentRegex);
                     token.type = "CONCURRENT"
@@ -322,9 +370,9 @@ const parseLine = (tokens) => {
                     continue; // move to next token
                 }
 
-                // check for "XXX" CONCURRENT ENROLLMENT
-                const concurrentRegex2 = /^(.+?) CONCURRENT ENROLLMENT$/i;  
-                if (concurrentRegex2.test(phrase)) {   
+                // check for "XXX CONCURRENT"
+                const concurrentRegex2 = /^(.+?) CONCURRENT$/i;
+                if (concurrentRegex2.test(phrase)) {
                     const match = phrase.match(concurrentRegex2);
                     token.type = "CONCURRENT"
                     token.value = match[1].trim()
@@ -341,7 +389,7 @@ const parseLine = (tokens) => {
                 }
 
                 // if the phrase is a department name followed by a list of numbers, e.g. "COMP 11 & 12", "MATH 22, 23", "CHEM 1A or 1B", split it into multiple SUBJECT tokens separated by AND/OR tokens
-                const departmentRegex = /^([A-Z]{2,4})\s+((?:\d{1,3}[A-Z]?)(?:\s*([&,]|or|and)\s*\d{1,3}[A-Z]?)+)$/i;
+                const departmentRegex = /^([A-Z]{2,4})\s+((?:\d{1,4}[A-Z]?)(?:\s*([&,]|or|and)\s*\d{1,4}[A-Z]?)+)$/i;
                 if (departmentRegex.test(phrase)) {
                     const match = phrase.match(departmentRegex);
                     const dept = match[1];
@@ -373,7 +421,7 @@ const parseLine = (tokens) => {
                 // if the phrase is a class year, e.g. freshman, sophomore, junior, senior, return type "YEAR"
                 // maps freshman -> 0, sophomore -> 1, junior -> 2, senior -> 3
                 // includes plurals and shorthand like "1st year"
-                if (/^(FRESHMAN|FRESHMEN|FIRST YEARS|FIRST YEAR STUDENTS ONLY)$/i.test(phrase)) {
+                if (/^(FRESHMAN|FRESHMEN|FIRST YEARS|FIRST YEAR STUDENTS ONLY|FIRST-YEARS)$/i.test(phrase)) {
                     token.type = "YEAR"
                     token.value = 0;
                     continue; // move to next token
@@ -400,22 +448,10 @@ const parseLine = (tokens) => {
                     // does this class acc exist?
                     if (!class_names.includes(phrase)) {
                         console.warn(`Warning: class ${phrase} not found in catalog`)
-                        // just classify as NONE
-                        token.type = "NONE"
-                        token.value = null;
                     }
-                    else {
-                        token.type = "SUBJECT"
-                        token.value = phrase
-                    }
-
-                    continue; // move to next token
-                }
-
-                // if the phrase is a department name, e.g. "COMP", "MATH", "ECON", return type "DEPARTMENT"
-                if (departments.includes(phrase)) {
-                    token.type = "DEPARTMENT"
+                    token.type = "SUBJECT"
                     token.value = phrase
+
                     continue; // move to next token
                 }
 
@@ -425,9 +461,17 @@ const parseLine = (tokens) => {
                     const match = phrase.match(repeatRegex);
                     const count = parseInt(match[1]);
                     const rest = match[2].trim();
+
                     // replace the current token with a REPEAT token and a PHRASE token
                     const index = tokens.indexOf(token);
                     tokens.splice(index, 1, { type: "REPEAT", value: count }, { type: "PHRASE", value: rest });
+                    continue; // move to next token
+                }
+
+                // if the phrase is a department name, e.g. "COMP", "MATH", "ECON", return type "DEPARTMENT"
+                if (departments.includes(phrase)) {
+                    token.type = "DEPARTMENT"
+                    token.value = phrase
                     continue; // move to next token
                 }
 
@@ -447,8 +491,25 @@ const parseLine = (tokens) => {
                     continue
                 }
             }
+        }
 
-            else if (token.type == "AND" || token.type == "OR" || token.type == "SEPARATOR") {
+        // do token-wise parsing
+        for (var i = 0; i < tokens.length; i++) {
+            const token = tokens[i]
+            if (i < tokens.length - 1) {
+                nextToken = tokens[i + 1]
+                // if the previous token is a number and the next token is not a phrase, duplicate 
+                if (
+                    token.type === "PHRASE" &&
+                    /^\d+$/.test(token.value) &&
+                    nextToken.type === "EXPRESSION"
+                ) {
+                    token.type = "REPEAT"
+                    token.value = parseInt(token.value)
+                }
+            }
+
+            if (token.type == "AND" || token.type == "OR" || token.type == "SEPARATOR") {
                 if (i > 0 && i < tokens.length - 1) {
                     // here we do parsing at the token scale if needed
                     const prevToken = tokens[i - 1];
@@ -456,11 +517,12 @@ const parseLine = (tokens) => {
 
                     // if the previous token is a SUBJECT and the next token is a PHRASE that is just a number, e.g. "COMP-11 and 15", convert the PHRASE to a SUBJECT with the same department as the previous SUBJECT
                     if (prevToken.type == "SUBJECT" && nextToken.type == "PHRASE") {
-                        const numberRegex = /^\d{1,3}[A-Z]?$/;
+
+                        const numberRegex = /^\d{1,4}[A-Z]?$/;
                         if (numberRegex.test(nextToken.value)) {
                             const dept = prevToken.value.split("-")[0];
                             nextToken.type = "SUBJECT"
-                            nextToken.value = `${dept}-${nextToken.value}`
+                            nextToken.value = `${dept}-${nextToken.value.padStart('0', 4)}`
                             i++; // skip the next token since we just parsed it
                             continue; // move to next token
                         }
@@ -481,16 +543,40 @@ const parseLine = (tokens) => {
                     }
                 }
             }
-
-
-            if (!unparsedPhrases) break
         }
 
         console.groupEnd();
+
+        if (!unparsedPhrases) break
     }
 
-    if (unparsedPhrases) {
-        throw new Error(`Infinite loop detected in parseLine when parsing class with tokens: ${JSON.stringify(tokens, null, 2)}}`);
+    // remove any lingering phrases from the token array
+    for (let i = tokens.length - 1; i >= 0; i--) {
+        if (tokens[i].type === "PHRASE" && removeAnywhere.includes(tokens[i].value)) {
+            tokens.splice(i, 1);
+        }
+    }
+
+    // if there is a phrase that doesn't match, throw an error
+    for (const token of tokens) {
+        if (token.type === "PHRASE" && token.value.trim().length > 0) {
+            throw new Error(`Unparsed phrase token detected: "${token.value}" in tokens: ${JSON.stringify(tokens, null, 2)}`);
+        }
+    }
+
+    // remove any lingering separator tokens if they are the last token or if the next token is NONE
+    for (let i = tokens.length - 1; i >= 0; i--) {
+        if (
+            tokens[i].type === "SEPARATOR" &&
+            (i === tokens.length - 1 || (tokens[i + 1] && tokens[i + 1].type === "NONE"))
+        ) {
+            tokens.splice(i, 1);
+        }
+    }
+
+    // convert any remaining separators into OR
+    for (const token of tokens) {
+        if (token.type == "SEPARATOR") token.type = "OR"
     }
 
     return tokens
@@ -519,13 +605,74 @@ const buildTree = (tokens) => {
     // iterate through the tokens and build the tree
     for (let i = 0; i < tokens.length; i++) {
         const token = tokens[i];
-        
+        if (token.type == "EXPRESSION") {
+            tokens[i] = buildTree(token.value)
+        }
+    }
+
+    // iterate through the tokens and build the tree
+    for (let i = 0; i < tokens.length; i++) {
+        const token = tokens[i];
+
+        // a REPEAT and DEPARTMENT/SUBJECT token should be replaced by an ALL OF node with REPEAT.value copies of DEPARTMENT/SUBJECT
+        if (token.type == "REPEAT") {
+            if (token.type == "REPEAT") {
+                if (i >= tokens.length - 1) throw new Error(`REPEAT node without anything to repeat`)
+
+                if ((tokens[i + 1].type == "DEPARTMENT" || tokens[i + 1].type == "SUBJECT")) {
+                    const deptToken = tokens[i + 1];
+                    const allOfNode = {
+                        type: "ALL OF",
+                        value: Array(token.value).fill(deptToken)
+                    };
+                    // Replace REPEAT and DEPARTMENT tokens with the ALL OF node
+                    tokens.splice(i, 2, allOfNode);
+                    // Move index back to account for removed tokens
+                    i -= 1;
+                    continue
+                }
+
+                var toRepeat
+
+                if (tokens[i + 1].type == "EXPRESSION") {
+                    expression = tokens[i + 1].value
+                    toRepeat = buildTree(expression)
+                }
+                else {
+                    toRepeat = tokens[i + 1]
+                }
+
+                const allOfNode = {
+                    type: "ALL OF",
+                    value: []
+                }
+                if (toRepeat.type == "ALL OF") {
+                    for (var j = 0; j < token.value; j++) {
+                        for (const node of toRepeat.value) allOfNode.value.push(node)
+                    }
+                }
+                else {
+                    for (var j = 0; j < token.value; j++) {
+                        allOfNode.value.push(toRepeat.value)
+                    }
+                }
+
+                tokens.splice(i, 2, allOfNode);
+                // Move index back to account for removed tokens
+                i -= 1;
+            }
+        }
+    }
+
+    // iterate through the tokens and build the tree
+    for (let i = 0; i < tokens.length; i++) {
+        const token = tokens[i];
         // convert a group of tokens seperated by AND into an ALL OF node
         if (token.type == "AND") {
             if (i == 0 || i == tokens.length - 1) {
                 throw new Error("AND token cannot be at the start or end of the token list");
             }
-            
+
             const left = tokens[i - 1];
             const right = tokens[i + 1];
 
@@ -536,7 +683,11 @@ const buildTree = (tokens) => {
 
             // if the left side is an ALL OF node, merge the right side into it
             if (left.type == "ALL OF") {
-                left.value.push(right);
+                if (right.type != "ALL OF") left.value.push(right);
+                else {
+                    for (const node of right.value) left.value.push(node)
+                }
+
                 tokens.splice(i, 2); // remove the AND and right tokens
                 i -= 1; // move the index back to account for the removed tokens
                 continue; // move to next token
@@ -550,9 +701,69 @@ const buildTree = (tokens) => {
             // move the index back to account for the removed tokens
             i -= 1;
         }
+
+        // convert a group of tokens seperated by OR into a ONE OF node
+        if (token.type == "OR") {
+            if (i == 0 || i == tokens.length - 1) {
+                throw new Error("OR token cannot be at the start or end of the token list");
+            }
+
+            const left = tokens[i - 1];
+            const right = tokens[i + 1];
+
+            // if the right side is an expression, build its tree
+            if (right.type == "EXPRESSION") {
+                right.value = buildTree(right.value);
+            }
+
+            // if the left side is an ALL OF node, merge the right side into it
+            if (left.type == "ONE OF") {
+                left.value.push(right);
+                tokens.splice(i, 2); // remove the AND and right tokens
+                i -= 1; // move the index back to account for the removed tokens
+                continue; // move to next token
+            }
+
+            const oneOfNode = { type: "ONE OF", value: [left, right] };
+
+            // replace the left, OR, and right tokens with the ONE OF node
+            tokens.splice(i - 1, 3, oneOfNode);
+
+            // move the index back to account for the removed tokens
+            i -= 1;
+        }
     }
 
-    // throw new Error("buildTree not implemented yet");
+    if (tokens.length > 1) {
+        if (tokens.length == 2) return cleanTree(tokens[0])
+
+        console.log("Failed tree: ", tokens)
+        throw new Error(`buildTree failed`)
+    }
+
+    return cleanTree(tokens[0])
+}
+
+function cleanTree(node) {
+    if (!node) return null;
+    if (node.type === "NONE") return null;
+
+    // Handle group nodes recursively
+    if ((node.type === "ONE OF" || node.type === "ALL OF") && Array.isArray(node.value)) {
+        // Clean each child node
+        const cleanedChildren = node.value
+            .map(cleanTree)
+            .filter(child => child !== null);
+
+        // If no children remain, remove this node
+        if (cleanedChildren.length === 0) return null;
+
+        // Return the cleaned group node
+        return { type: node.type, value: cleanedChildren };
+    }
+
+    // For SUBJECT, YEAR, and DEPARTMENT, just return the node
+    return node;
 }
 
 const parsePrereqs = (catalog) => {
