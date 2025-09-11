@@ -1,5 +1,39 @@
+
+/**
+ * Parses prerequisite strings into a tree structure for course catalog requirements.
+ * 
+ * Main Functions:
+ * - initialSanitize(line): Cleans and normalizes a prerequisite string before tokenization.
+ * - initialTokenize(line): Tokenizes a sanitized prerequisite string into logical tokens (PHRASE, AND, OR, SEPARATOR, EXPRESSION).
+ * - sanitize(phrase): Standardizes a phrase, converting department/class formats and removing irrelevant words.
+ * - parseLine(tokens): Converts preliminary tokens into specific types (SUBJECT, DEPARTMENT, YEAR, CONCURRENT, NONE, AND, OR, SEPARATOR, EXPRESSION, REPEAT).
+ * - buildTree(tokens): Builds a logical tree structure from parsed tokens, grouping by AND/OR and handling REPEAT tokens.
+ * - cleanTree(node): Recursively cleans a tree node, removing empty or NONE nodes.
+ * - parsePrereqs(catalog): Parses all prerequisite strings in a course catalog and attaches the parsed tree to each course.
+ * 
+ * Token Types:
+ * - PHRASE: Any phrase not recognized as a logical operator or expression.
+ * - AND: Logical "and".
+ * - OR: Logical "or".
+ * - SEPARATOR: Comma or semicolon (converted to OR).
+ * - EXPRESSION: Parenthetical expression (array of tokens).
+ * - SUBJECT: A class (e.g. "COMP-0011").
+ * - DEPARTMENT: A department (e.g. "COMP").
+ * - YEAR: Class year (0-3 for freshman-senior).
+ * - CONCURRENT: Class that can be taken concurrently.
+ * - NONE: No prerequisite.
+ * - REPEAT: Indicates repetition (e.g. "2 courses").
+ * - ONE OF: Logical "or" group.
+ * - ALL OF: Logical "and" group.
+ * 
+ * Error Handling:
+ * - Throws errors for empty lines, unparsed phrases, malformed trees, and invalid token sequences.
+ * 
+ * Usage:
+ * 1. Call parsePrereqs(catalog) with a catalog object containing prerequisite strings.
+ * 2. Each course will have a "parsedPrereq" field containing the parsed prerequisite tree.
+ */
 // I WILL DIE FOR COPILOT
-// parses prerequisite strings into a tree structure
 
 
 // use Ors for anything that needs to be filtered absolutely immediately or the parsing will break (use of booleans like OR is the main reason)
@@ -7,6 +41,21 @@ const removeOrs = ["AANDS STUDENTS WITH", "EQV", "OR HIGHER", "AANDS OR SOE STUD
 // use anywhere for more responsive removals
 const removeAnywhere = ["PLUS", "MUST HAVE", "CLASSES", "ANY", "ENROLLMENT IN", "ENROLLMENT", "ONE OF", "PRIOR", "COURSE", "COMPLETION OF", "REQUIRES", "COMPLETION", "CLASS", "COURSES", "ABOVE", "IN", "COMPLETED"];
 
+
+/**
+ * Performs initial sanitization of a prerequisite line before tokenization.
+ * - Converts to uppercase.
+ * - Keeps only the first line.
+ * - Removes text preceding a colon.
+ * - Removes specific parentheticals.
+ * - Normalizes slashes and department/class patterns.
+ * - Applies phrase substitutions and removals.
+ * - Replaces "&" with "AND" and "/" with "OR".
+ * - Removes periods and empty parentheses.
+ *
+ * @param {string} line - The prerequisite line to sanitize.
+ * @returns {string} The sanitized prerequisite line.
+ */
 const initialSanitize = (line) => {
     // initial sanitization of a prerequisite line before tokenization
 
@@ -123,6 +172,7 @@ const initialSanitize = (line) => {
 
     return line;
 }
+
 
 const initialTokenize = (line) => {
     // converts a line into an array of tokens of the form {type: "PHRASE"/"AND"/"OR"/"SEPARATOR/EXPRESSION", value: token/string/null}
@@ -329,6 +379,29 @@ const sanitize = (phrase) => {
     return phrase;
 }
 
+/**
+ * Parses an array of preliminary prerequisite tokens into a more specific array of tokens,
+ * identifying types such as SUBJECT, DEPARTMENT, YEAR, CONCURRENT, NONE, AND, OR, SEPARATOR, and EXPRESSION.
+ * Handles nested expressions, department lists, class years, concurrent enrollment, and more.
+ * Throws an error if any unparsed phrase tokens remain after parsing.
+ *
+ * @param {Array<Object>} tokens - Array of tokens from tokenizePhrases, each with a `type` and `value`.
+ * @returns {Array<Object>} Array of parsed tokens with specific types and values.
+ *
+ * Token types:
+ * - SUBJECT: A class (e.g. "COMP-0011")
+ * - DEPARTMENT: A department (e.g. "COMP")
+ * - YEAR: Class year (0-3 for freshman-senior)
+ * - CONCURRENT: Class that can be taken concurrently
+ * - NONE: No prerequisite
+ * - AND: Logical "and"
+ * - OR: Logical "or"
+ * - SEPARATOR: Comma or semicolon (converted to OR)
+ * - EXPRESSION: Parenthetical expression (array of tokens)
+ * - REPEAT: Indicates repetition (e.g. "2 courses")
+ *
+ * @throws {Error} If any unparsed phrase tokens remain after parsing.
+ */
 const parseLine = (tokens) => {
     // parses a preliminarily parsed prerequisite line (array of tokens from tokenizePhrases) into a more specific array of tokens of the form {type: "SUBJECT"/"DEPARTMENT"/"YEAR"/"CONCURRENT"/"NONE"/"AND"/"OR"/"SEPARATOR"/"EXPRESSION", value: token/string/null}  
     // where SUBJECT is a class (e.g. "COMP-11"), DEPARTMENT is a department (e.g. "COMP"), YEAR is a class year (0-3 for freshman-senior), CONCURRENT is a class that can be taken concurrently (e.g. "CONCURRENT ENROLLMENT IN COMP-11"), NONE is no prerequisite, AND is the word "and", OR is the word "or", SEPARATOR is a comma or semicolon, and EXPRESSION is a parenthetical expression
@@ -613,7 +686,7 @@ const buildTree = (tokens) => {
         const token = tokens[i];
         if (token.type == "CONCURRENT") { // a CONCURRENT token should take whatever follows it as a value
             if (i == tokens.length - 1) throw new Error(`CANNOT END A TREE WITH CONCURRENT`)
-            token.value = tokens.splice(i + 1, 1)
+            token.value = tokens.splice(i + 1, 1)[0]
         }
     }
 
