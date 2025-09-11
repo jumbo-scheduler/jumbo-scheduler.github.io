@@ -361,30 +361,30 @@ const parseLine = (tokens) => {
                 unparsedPhrases = true;
                 const phrase = sanitize(token.value)
 
+                if (phrase == "CONCURRENT") {
+                    token.type = "CONCURRENT"
+                    token.value = null
+                    continue
+                }
+
                 // check for "CONCURRENT IN XXX"
                 const concurrentRegex = /^CONCURRENT (.+)$/i;
-                if (concurrentRegex.test(phrase)) {
-                    const match = phrase.match(concurrentRegex);
-                    token.type = "CONCURRENT"
-                    token.value = match[1].trim()
-                    continue; // move to next token
-                }
-
                 // check for "XXX CONCURRENT"
                 const concurrentRegex2 = /^(.+?) CONCURRENT$/i;
-                if (concurrentRegex2.test(phrase)) {
-                    const match = phrase.match(concurrentRegex2);
-                    token.type = "CONCURRENT"
-                    token.value = match[1].trim()
-                    continue; // move to next token
-                }
-
                 // check for the "XXX COREQUISITE"
                 const coreqRegex = /^(.+?) COREQUISITE$/i;
-                if (coreqRegex.test(phrase)) {
-                    const match = phrase.match(coreqRegex);
-                    token.type = "CONCURRENT"
-                    token.value = match[1].trim()
+                if (
+                    concurrentRegex.test(phrase) ||
+                    concurrentRegex2.test(phrase) ||
+                    coreqRegex.test(phrase)
+                ) {
+                    const match = phrase.match(concurrentRegex);
+                    token.type = "CONCURRENT"                    
+                    token.value = null
+
+                    // replace the current token with the new tokens
+                    tokens.splice(i, 1, [token, {type: "PHRASE", value: match}])
+
                     continue; // move to next token
                 }
 
@@ -406,8 +406,7 @@ const parseLine = (tokens) => {
                         }
                     }
                     // replace the current token with the new tokens
-                    const index = tokens.indexOf(token);
-                    tokens.splice(index, 1, ...newTokens);
+                    tokens.splice(i, 1, ...newTokens);
                     continue; // move to next token
                 }
 
@@ -463,8 +462,7 @@ const parseLine = (tokens) => {
                     const rest = match[2].trim();
 
                     // replace the current token with a REPEAT token and a PHRASE token
-                    const index = tokens.indexOf(token);
-                    tokens.splice(index, 1, { type: "REPEAT", value: count }, { type: "PHRASE", value: rest });
+                    tokens.splice(i, 1, { type: "REPEAT", value: count }, { type: "PHRASE", value: rest });
                     continue; // move to next token
                 }
 
@@ -607,6 +605,15 @@ const buildTree = (tokens) => {
         const token = tokens[i];
         if (token.type == "EXPRESSION") {
             tokens[i] = buildTree(token.value)
+        }
+    }
+
+    // iterate through the tokens and build the tree
+    for (let i = 0; i < tokens.length; i++) {
+        const token = tokens[i];
+        if (token.type == "CONCURRENT") { // a CONCURRENT token should take whatever follows it as a value
+            if (i == tokens.length - 1) throw new Error(`CANNOT END A TREE WITH CONCURRENT`)
+            token.value = tokens.splice(i + 1, 1)
         }
     }
 

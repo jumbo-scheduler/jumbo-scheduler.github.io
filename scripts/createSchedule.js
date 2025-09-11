@@ -6,11 +6,35 @@
  *  
  *  Purpose: Verifies that the number of credits are valid for a term
  *  Input:   An array of Courses from the course catalog
+ *  Output: A boolean if a term has valid number of credits
  */
 const verifyTerm = (term, upperBound = 18) => {
     var totalCredits = 0
     for (var subject of term) totalCredits += subject.credits
     return 12 <= totalCredits && totalCredits <= upperBound
+}
+
+
+const prereqsSatisfied = (node, completedClasses=[], currentClasses=[]) => {
+    // no prereqs, automatically allowed
+    if (node == null) return true
+
+    if (node.prereqsSatisfied) return true
+
+    console.log(node)
+
+    switch (node.type) {
+        case "ALL OF":
+            for (const child of node.value) {
+                if (!prereqsSatisfied(child)) return false
+            }
+            return true
+        case "CONCURRENT":
+            const allClasses = [...completedClasses, ...currentClasses]
+            return prereqsSatisfied(node.value, allClasses)
+        default: 
+            throw new Error(`UNKNOWN TYPE IN PREREQ TREE: ${node.type}`)
+    }
 }
 
 
