@@ -55,8 +55,6 @@ const prereqsSatisfied = (node=null, completedClasses=[], currentClasses=[]) => 
     }
 }
 
-
-
 // temp DO NOT TOUCH ========================================================
 
 /**
