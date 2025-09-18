@@ -1,8 +1,17 @@
-/* scheduleInput.js
- * handles the input for creating the user's required
+/**
+ * Handles the input for creating the user's required course schedule.
+ * Provides UI functionality for selecting classes, departments, and attributes,
+ * as well as importing and exporting requirements.
+ *
+ * @file scheduleInput.js
  */
 
-// smfaCheckbox: filters for classes in SMFA when clicked
+
+/***************************************
+ * 
+ *   SMFA checkbox
+ * 
+ ***************************************/
 //#region =====================================================
 const smfaCheckbox = $("#allow-smfa").find("input");
 smfaCheckbox.prop("checked", true);
@@ -13,6 +22,10 @@ const dropdowns = {
     attributes: attributes,
 };
 
+/**
+ * Updates the class selection dropdowns based on the SMFA checkbox state.
+ * @function
+ */
 const updateClassSelection = () => {
     $(".class-select")
         .empty()
@@ -29,8 +42,18 @@ smfaCheckbox.click(updateClassSelection);
 updateClassSelection();
 //#endregion =====================================================
 
-// functionality for an individual tab
-//#region =====================================================
+
+/***************************************
+ * 
+ *   Requirements controls
+ * 
+ ***************************************/
+
+/**
+ * Creates a new requirements tab with UI controls for adding requirements.
+ * @param {string} id - The unique identifier for the tab.
+ * @returns {JQuery<HTMLElement>} The created tab element.
+ */
 var requirements_ids = [];
 const create_requirements_tab = (id) => {
     const tab = $(`
@@ -123,7 +146,7 @@ const create_requirements_tab = (id) => {
             });
             container.find(".remove-btn").click(() => {
                 container.remove();
-                fetch_classes();
+                fetch_all_requirements();
                 // if the dropdowns list is empty, show the help text
                 const requirements_tab = $(".requirements-tab");
                 if (requirements_tab.find(".dropdown-separator").length == 0) {
@@ -141,12 +164,12 @@ const create_requirements_tab = (id) => {
                 duplicate.find("select").val(selector.val()).trigger("change");
                 duplicate.insertAfter(container);
 
-                fetch_classes();
+                fetch_all_requirements();
             });
 
             // Handle selection change
             container.find("select").on("change", function () {
-                fetch_classes();
+                fetch_all_requirements();
             });
 
             // if the dropdowns list is not empty, clear the help text
@@ -240,7 +263,7 @@ const create_requirements_tab = (id) => {
         });
         container.find(".remove-btn").click(() => {
             container.remove();
-            fetch_classes();
+            fetch_all_requirements();
 
             // if the dropdowns list is empty, show the help text
             const requirements_tab = $(".requirements-tab");
@@ -313,7 +336,7 @@ const create_requirements_tab = (id) => {
             if (duplicate.find(".multi-select")[0].children.length > 0)
                 duplicate.find(".multi-requirements-help-text").hide();
 
-            fetch_classes();
+            fetch_all_requirements();
         });
 
         // multiselect add new class buttons
@@ -376,11 +399,19 @@ const create_requirements_tab = (id) => {
 
     return tab;
 };
-//#endregion =====================================================
 
-// functionality for tab selection, creating a new tab, and
-// deleting a tab
+
+/***************************************
+ * 
+ *   Tab creation and modification
+ * 
+ ***************************************/
 //#region =====================================================
+/**
+ * Edits the name of a requirements tab and updates associated UI elements.
+ * @param {JQuery<HTMLElement>} tab - The tab element to rename.
+ * @param {string} newName - The new name for the tab.
+ */
 const edit_tab_name = (tab, newName) => {
     var oldID = tab.attr("id");
     tab.find(".tab-title")[0].innerText = newName;
@@ -392,9 +423,13 @@ const edit_tab_name = (tab, newName) => {
     requirements_ids[tabIndex] = newName;
     $("#requirements").children("button")[tabIndex].innerText = newName;
 
-    fetch_classes();
+    fetch_all_requirements();
 };
 
+/**
+ * Deletes a requirements tab and updates the UI accordingly.
+ * @param {JQuery<HTMLElement>} tab - The tab element to delete.
+ */
 const delete_tab = (tab) => {
     const id = tab.attr("id");
     const tabIndex = requirements_ids.indexOf(id);
@@ -412,6 +447,10 @@ const delete_tab = (tab) => {
         [tabIndex < requirements_ids.length ? tabIndex : tabIndex - 1].click();
 };
 
+/**
+ * Updates the visibility of requirement tabs based on selection.
+ * @function
+ */
 const update_tab_selection = () => {
     const tabs = $("#requirements");
 
@@ -424,6 +463,11 @@ const update_tab_selection = () => {
     }
 };
 
+/**
+ * Creates a new requirements tab and adds it to the UI.
+ * @param {string} [name="Minor"] - The name for the new tab.
+ * @returns {JQuery<HTMLElement>} The created tab element.
+ */
 const new_tab_button = $("#new-requirement");
 const create_new_tab = (name = "Minor") => {
     var tab_name = name;
@@ -449,15 +493,28 @@ create_new_tab("Major");
 $($("#requirements").find("button")[0]).click();
 //#endregion =====================================================
 
-// fetching and exporting user input
+
+
+/***************************************
+ * 
+ *   Fetching and exporting user input
+ * 
+ ***************************************/
+
 //#region =====================================================
 const dropdown_enum = {
-    class: 0,
-    attribute: 1,
-    department: 2,
-    multi: 3,
+    class: "CLASS",
+    attribute: "ATTRIBUTE",
+    department: "DEPARTMENT",
+    multi: "MULTI",
 };
 
+/**
+ * Represents a selection made in a dropdown.
+ * @class
+ * @param {string} type - The type of dropdown (class, attribute, department, multi).
+ * @param {any} config - The configuration or value for the selection.
+ */
 class Selection {
     constructor(type, config) {
         this.type = type;
@@ -467,9 +524,12 @@ class Selection {
     }
 }
 
-var selected_requirements = [];
-const fetch_classes = () => {
-    selected_requirements = [];
+/**
+ * Fetches the current user-selected requirements from the UI and exports them.
+ * @returns {Array<Selection>} The list of selected requirements.
+ * @function
+ */
+const fetch_all_requirements = () => {
     var output = [];
 
     for (const requirements_id of requirements_ids) {
@@ -487,7 +547,6 @@ const fetch_classes = () => {
                     selection[0].text.split(":")[0],
                 ]);
                 classes.push(entry);
-                selected_requirements.push(entry);
             }
         }
 
@@ -499,7 +558,6 @@ const fetch_classes = () => {
                     selection[0].text,
                 ]);
                 attributes.push(entry);
-                selected_requirements.push(entry);
             }
         }
 
@@ -511,7 +569,6 @@ const fetch_classes = () => {
                     selection[0].text,
                 ]);
                 departments.push(entry);
-                selected_requirements.push(entry);
             }
         }
 
@@ -545,7 +602,6 @@ const fetch_classes = () => {
             if (selections.length > 0) {
                 const entry = new Selection(dropdown_enum.multi, selections);
                 multis.push(entry);
-                selected_requirements.push(entry);
             }
         }
 
@@ -566,8 +622,13 @@ const fetch_classes = () => {
     }
 
     exportReq(output);
+    return output
 };
 
+/**
+ * Exports the requirements data to a text file and sets up the download link.
+ * @param {Array<Object>} input - The requirements data to export.
+ */
 const exportReq = (input) => {
     var output = "";
 
@@ -629,7 +690,11 @@ const exportReq = (input) => {
 // importing user input from file
 //#region =====================================================
 
-// helper function to strip everything in a string that isn't in a single set of ""
+/**
+ * Strips everything in a string except the content within a single set of quotes.
+ * @param {string} str - The input string.
+ * @returns {string} The stripped string.
+ */
 function strip_quotes(str) {
     var start = 0;
     var end = str.length - 1;
@@ -649,6 +714,11 @@ function strip_quotes(str) {
     return "";
 }
 
+/**
+ * Handles the change event for the requirements import input.
+ * Reads the file and calls importRequirements.
+ * @function
+ */
 const importRequirements = (contents) => {
     const get_category = (line) =>
         ({
@@ -827,7 +897,12 @@ requirementInput.change(() => {
 });
 //#endregion =====================================================
 
-// load preexisting majors based on the query string
+
+
+/**
+ * Loads preexisting majors based on the query string and imports their requirements.
+ * @function
+ */
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("reqs") != null) {
     const reqs = urlParams.get("reqs").split(",");
