@@ -6,18 +6,28 @@ class Schedule {
             [[],[]],
             [[],[]]
         ],
-        this.allClassesList = []
+        // 1D array of all classes that have been added to the schedule
+        this.allClassesList = [];
+        // 2D array of crosslisted classes that are yet to be resolved
+        this.crosslistedClasses = [];
     }
-        
+    
+    /**
+     * The member variable years for the Schedule object is populated.
+     * 
+     * @returns none
+     */
     populateSchedule() {
         let allMajors = fetch_all_requirements();
         for (major of allMajors) {
-
+            for (course of major.class) {
+                this.allClassesList.push(course);
+            }
         }
     }
 
     renderSchedule() {
-        
+        print("Rendering schedule...");
     }
 
     /**
