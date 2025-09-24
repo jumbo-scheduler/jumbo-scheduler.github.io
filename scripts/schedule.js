@@ -11,6 +11,23 @@ class Schedule {
         // 2D array of crosslisted classes that are yet to be resolved
         this.crosslistedClasses = [];
     }
+
+    /**
+     * merges all majors into one array
+     * @returns an array of requirements
+     */
+    static getRequirements() {
+        let allMajors = fetch_all_requirements();
+        var output = []
+        for (var major of allMajors) {
+            for (var course of major.class) {
+                course.satisfied = false
+                output.push(course);
+            }
+        }
+        // currently just merges all together, no minimization
+        return output
+    }
     
     /**
      * The member variable years for the Schedule object is populated.
@@ -18,12 +35,7 @@ class Schedule {
      * @returns none
      */
     populateSchedule() {
-        let allMajors = fetch_all_requirements();
-        for (major of allMajors) {
-            for (course of major.class) {
-                this.allClassesList.push(course);
-            }
-        }
+        this.allClassesList = getRequirements()
     }
 
     renderSchedule() {
