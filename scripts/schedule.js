@@ -1,15 +1,16 @@
 class Schedule {
     constructor() {
         this.years = [
-            [[],[]],
-            [[],[]],
-            [[],[]],
-            [[],[]]
+            [new Term(), new Term()],
+            [new Term(), new Term()],
+            [new Term(), new Term()],
+            [new Term(), new Term()]
         ],
         // 1D array of all classes that have been added to the schedule
-        this.allClassesList = [];
-        // 2D array of crosslisted classes that are yet to be resolved
-        this.crosslistedClasses = [];
+        this.completedClasses = []
+
+        // 1D array of all classes, departments, and attributes.
+        this.requirements = []
     }
 
     /**
@@ -20,14 +21,61 @@ class Schedule {
         let allMajors = fetch_all_requirements();
         var output = []
         for (var major of allMajors) {
-            for (var course of major.class) {
-                course.satisfied = false
-                output.push(course);
+            for (var course of major.classes) {
+                output.push({
+                    type: "CLASS",
+                    value: course.config[0]
+                });
+            }
+
+            for (var department of major.departments) {
+                output.push({
+                    type: "DEPARTMENT",
+                    value: department.config[0]
+                });
+            }
+
+            for (var attribute of major.attributes) {
+                output.push({
+                    type: "ATTRIBUTE",
+                    value: attribute.config[0]
+                });
+            }
+
+            for (var multi of major.multis) {
+                output.push({
+                    type: "ONE OF",
+                    value: multi
+                });
             }
         }
         // currently just merges all together, no minimization
         return output
     }
+
+    /**
+     * checks if the classes in completedClasses satisfy the requirements
+     * @returns a boolean for if the schedule is complete
+     */
+    requirementsCompleted() {
+        // make a copy because we are going to by modifying the array
+        completedClassPool = this.completedClasses.slice(0)
+
+        // check explicitly required classes first
+        for (var requirement of this.requirements) {
+            if (requirement.type == "CLASS") {
+                if (completedClassPool.includes(requirement.value)) {
+                    // remove the class from the pool (forbids duplicates)
+                    completedClassPool.splice(completedClassPool.indexOf(requirement.value), 1)
+                }
+                else return false
+            }
+        }
+
+        // TODO: add functionality for more
+
+        return true
+    }  
     
     /**
      * The member variable years for the Schedule object is populated.
@@ -35,24 +83,21 @@ class Schedule {
      * @returns none
      */
     populateSchedule() {
-        this.allClassesList = getRequirements()
+        this.requirements = getRequirements()
+        this.completedClasses = []
+
+        for (var year = 0; year < 4; year++) {
+            for (var term = 0; term < 2; term++) {
+                this.currentClasses = this.years[year][term].classes
+
+                this.completedClasses.push(...this.currentClasses)
+            }
+        }
     }
 
     renderSchedule() {
         print("Rendering schedule...");
-    }
-
-    /**
-     * Verifies that the number of credits in a term is within valid bounds.
-     * 
-     * @param {Array<Object>} term - An array of course objects for the term.
-     * @param {number} [upperBound=18] - The maximum allowed credits for the term.
-     * @returns {boolean} True if the term has a valid number of credits, false otherwise.
-     */
-    verifyTerm(term, upperBound = 18) {
-        var totalCredits = 0
-        for (var subject of term) totalCredits += subject.credits
-        return 12 <= totalCredits && totalCredits <= upperBound
+        // bro lied
     }
 
     /**
@@ -94,8 +139,36 @@ class Schedule {
 }
 
 class Class {
-    constructor(name="None") {
+    constructor(name="None", object=null) {
         this.frozen = false // user wants this class to stay in current position in schedule
         this.name = name
+        this.object = object
+    }
+}
+
+class Term {
+    constructor() {
+        this.classes = []
+        this.credits = 0
+        this.minCredits = 12
+        this.maxCredits = 18
+    }
+
+    /** 
+    *   looks up a course in the catalog by name and adds it to the classes property
+    *   @param {string} name - the name of the class
+    *   @returns {boolean} - if adding was successful (because too many classes)
+    */
+    addClass(name) {
+        const classObject = total_catalog[name]
+        if (classObject === undefined) throw new Error(`Unknown class name "${name}"`)
+        
+        if (this.credits + classObject.credits <= this.maxCredits) {
+            this.classes.push(new Class(name, classObject))
+            this.credits += classObject.credits
+            return true
+        }
+
+        return false // could not fit
     }
 }
