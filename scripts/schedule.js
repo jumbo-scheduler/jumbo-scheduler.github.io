@@ -171,4 +171,19 @@ class Term {
 
         return false // could not fit
     }
+
+    /**
+     * removes a class from the classes array
+     * @param {string} name - the class to remove 
+     * @returns {boolean} - if the class was found in the classes array
+     */
+    removeClass(name) {
+        const classObject = total_catalog[name]
+        if (classObject === undefined) throw new Error(`Unknown class name "${name}"`)
+
+        if (this.classes.includes(classObject)) return false
+    
+        this.classes.splice(this.classes.indexOf(classObject), 1)
+        this.credits -= classObject.credits
+    }
 }
