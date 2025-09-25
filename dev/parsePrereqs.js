@@ -41,6 +41,8 @@ const removeOrs = ["AANDS STUDENTS WITH", "EQV", "OR HIGHER", "AANDS OR SOE STUD
 // use anywhere for more responsive removals
 const removeAnywhere = ["PLUS", "MUST HAVE", "CLASSES", "ANY", "ENROLLMENT IN", "ENROLLMENT", "ONE OF", "PRIOR", "COURSE", "COMPLETION OF", "REQUIRES", "COMPLETION", "CLASS", "COURSES", "ABOVE", "IN", "COMPLETED"];
 
+var debug = false
+var classesToConsole = ["BIO-0015", "PHY-0011"] // any classes in this array will make debug be true when running
 
 /**
  * Performs initial sanitization of a prerequisite line before tokenization.
@@ -79,7 +81,7 @@ const initialSanitize = (line) => {
         "RESTRICTED UNDERGRADUATES IN THEIR FIRST OR SECOND YEAR",
     ]
     const sapRegex = new RegExp(`\(${stupidAssParentheticals.join("|")}\)`, "g");
-    line = line.replace(sapRegex, "")
+    line = line.replace(sapRegex, "");
 
     // add a space in between the slash when this pattern appears: "CLASS 0001/CLASS 0002"
     line = line.replace(/([A-Z]{2,4} \d{1,4}[A-Z]?)\/([A-Z]{2,4} \d{1,4}[A-Z]?)/g, "$1 / $2");
@@ -190,7 +192,7 @@ const initialTokenize = (line) => {
     if (line.trim().length == 0) throw new Error("Empty prerequisite line");
 
     line = initialSanitize(line);
-    console.log("Sanitized line:", line);
+    if (debug) console.log("Sanitized line:", line);
 
     // // i aint reading all that
     // // returns NONE for anything too long
@@ -234,7 +236,6 @@ const initialTokenize = (line) => {
             }
         }
         // add the parenthetical expression as an EXPRESSION token
-        // if the expression contains the word concurrent and no mention of a class neighboring the word, just push none instead
         const inner = match[1];
         const innerTokens = initialTokenize(inner);
         tokens.push({ type: "EXPRESSION", value: innerTokens });
@@ -280,7 +281,7 @@ const initialTokenize = (line) => {
         }
     });
 
-    console.log("Tokens after parenthetical extraction:", Array.from(tokens));
+    if (debug) console.log("Tokens after parenthetical extraction:", Array.from(tokens));
 
     // split PHRASE tokens by AND/OR/SEPARATOR
     const splitRegex = /\s+(and|or)\s+|([,;])/gi;
@@ -333,8 +334,8 @@ const initialTokenize = (line) => {
         if (tokens[i - 1].type == "SEPARATOR" && (tokens[i].type == "AND" || tokens[i].type == "OR")) tokens.splice(i - 1, 1);
     }
 
-    console.log("Initial tokenization result: ", tokens)
-    return tokens
+    if (debug) console.log("Initial tokenization result: ", tokens)
+    return tokens;
 }
 
 const sanitize = (phrase) => {
@@ -416,13 +417,13 @@ const parseLine = (tokens) => {
 
     // repeatedly parse phrases into more specific types until no phrases remain or 5 iterations have occurred
     for (var tries = 0; tries < 10; tries++) {
-        console.groupCollapsed(`Parsing iteration ${tries + 1}`);
+        if (debug) console.groupCollapsed(`Parsing iteration ${tries + 1}`);
         var unparsedPhrases = false;
 
         // iterate through tokens, including children of EXPRESSION tokens
         for (var i = 0; i < tokens.length; i++) {
             const token = tokens[i];
-            console.log("Parsing token:", token);
+            if (debug) console.log("Parsing token:", token);
 
             if (token.type == "EXPRESSION") {
                 token.value = parseLine(token.value);
@@ -451,7 +452,11 @@ const parseLine = (tokens) => {
                     concurrentRegex2.test(phrase) ||
                     coreqRegex.test(phrase)
                 ) {
-                    const match = phrase.match(concurrentRegex);
+                    var match;
+                    if (concurrentRegex.test(phrase))  match = phrase.match(concurrentRegex);
+                    if (concurrentRegex2.test(phrase))  match = phrase.match(concurrentRegex2);
+                    if (coreqRegex.test(phrase)) match = phrase.match(coreqRegex);
+
                     token.type = "CONCURRENT"                    
                     token.value = null
 
@@ -519,7 +524,7 @@ const parseLine = (tokens) => {
                 if (classRegex.test(phrase)) {
                     // does this class acc exist?
                     if (!class_names.includes(phrase)) {
-                        console.warn(`Warning: class ${phrase} not found in catalog`)
+                        if (debug) console.warn(`Warning: class ${phrase} not found in catalog`)
                     }
                     token.type = "SUBJECT"
                     token.value = phrase
@@ -616,7 +621,7 @@ const parseLine = (tokens) => {
             }
         }
 
-        console.groupEnd();
+        if (debug) console.groupEnd();
 
         if (!unparsedPhrases) break
     }
@@ -682,7 +687,7 @@ const buildTree = (tokens) => {
     }
 
     // iterate through the tokens and build the tree
-    for (let i = 0; i < tokens.length; i++) {
+    for (let i = tokens.length - 1; i >= 0; i++) {
         const token = tokens[i];
         if (token.type == "CONCURRENT") { // a CONCURRENT token should take whatever follows it as a value
             if (i == tokens.length - 1) throw new Error(`CANNOT END A TREE WITH CONCURRENT`)
@@ -703,7 +708,7 @@ const buildTree = (tokens) => {
                     const deptToken = tokens[i + 1];
                     const allOfNode = {
                         type: "ALL OF",
-                        value: Array(token.value).fill(deptToken)
+                        value: Array.from({ length: token.value }, () => ({ ...deptToken }))
                     };
                     // Replace REPEAT and DEPARTMENT tokens with the ALL OF node
                     tokens.splice(i, 2, allOfNode);
@@ -733,7 +738,7 @@ const buildTree = (tokens) => {
                 }
                 else {
                     for (var j = 0; j < token.value; j++) {
-                        allOfNode.value.push(toRepeat.value)
+                        allOfNode.value.push(toRepeat)
                     }
                 }
 
@@ -815,13 +820,13 @@ const buildTree = (tokens) => {
     }
 
     if (tokens.length > 1) {
-        if (tokens.length == 2) return cleanTree(tokens[0])
+        if (tokens[1].type == "NONE") return cleanTree(tokens[0])
 
-        console.log("Failed tree: ", tokens)
+        console.error("Failed tree: ", tokens, "Token types:", tokens.map(t => t.type), "Context:", JSON.stringify(tokens, null, 2))
         throw new Error(`buildTree failed`)
     }
 
-    return cleanTree(tokens[0])
+    return cleanTree(tokens[0]);
 }
 
 function cleanTree(node) {
@@ -849,15 +854,19 @@ function cleanTree(node) {
 const parsePrereqs = (catalog) => {
     // run parseLine on each class's prereq string and store the result in a new field "parsedPrereq"
     for (const subject in catalog) {
-        console.group(`Parsing prereqs for ${subject}`)
-        console.log("Original prereq string:", catalog[subject].prereqs)
+        debug = classesToConsole.includes(subject)
+        if (debug) console.group(`Parsing prereqs for ${subject}`)
+        if (debug) console.log("Original prereq string:", catalog[subject].prereqs)
         const initialTokens = initialTokenize(catalog[subject].prereqs)
-        console.log("Initial tokens:", Array.from(initialTokens))
+        if (debug) console.log("Initial tokens:", Array.from(initialTokens))
         const parsedTokens = parseLine(initialTokens)
-        console.log("Parsed tokens:", Array.from(parsedTokens))
+        if (debug) console.log("Parsed tokens:", Array.from(parsedTokens))
         const prereqTree = buildTree(parsedTokens)
-        console.log("Prereq tree:", prereqTree)
-        catalog[subject].parsedPrereq = prereqTree
-        console.groupEnd()
+        if (debug) console.log("Prereq tree:", prereqTree)
+
+        if (prereqTree != null && prereqTree.length > 1) throw new Error(subject)
+
+        catalog[subject].parsedPrereq = prereqTree;
+        if (debug) console.groupEnd();
     }
 }
