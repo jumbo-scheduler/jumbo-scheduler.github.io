@@ -42,7 +42,7 @@ const removeOrs = ["AANDS STUDENTS WITH", "EQV", "OR HIGHER", "AANDS OR SOE STUD
 const removeAnywhere = ["PLUS", "MUST HAVE", "CLASSES", "ANY", "ENROLLMENT IN", "ENROLLMENT", "ONE OF", "PRIOR", "COURSE", "COMPLETION OF", "REQUIRES", "COMPLETION", "CLASS", "COURSES", "ABOVE", "IN", "COMPLETED"];
 
 var debug = false
-var classesToConsole = ["BIO-0015", "PHY-0011"] // any classes in this array will make debug be true when running
+var classesToConsole = [] // any classes in this array will make debug be true when running
 
 /**
  * Performs initial sanitization of a prerequisite line before tokenization.
@@ -99,6 +99,7 @@ const initialSanitize = (line) => {
 
     // substitute specific phrases for specific others
     const substitutions = {
+        "COMPLETION OR SAME TIME ENROLLMENT OF": "CONCURRENT ENROLLMENT IN",
         "PRE OR CO-REQUISITE": "CONCURRENT ENROLLMENT",
         "PRE OR CO REQUISITE": "CONCURRENT ENROLLMENT",
         "CONCURRENT ENROLLMENT IN OR PRIOR COMPLETION OF": "CONCURRENT ENROLLMENT IN",
@@ -461,7 +462,7 @@ const parseLine = (tokens) => {
                     token.value = null
 
                     // replace the current token with the new tokens
-                    tokens.splice(i, 1, [token, {type: "PHRASE", value: match}])
+                    tokens.splice(i, 1, token, {type: "PHRASE", value: match[1]})
 
                     continue; // move to next token
                 }
@@ -662,7 +663,6 @@ const buildTree = (tokens) => {
     // builds a tree structure from an array of parsed tokens
     // mainly focuses on grouping booleans and handling REPEAT tokens
     // the tree will only have nodes of the form {type: "SUBJECT"/"DEPARTMENT"/"YEAR"/"CONCURRENT"/"ONE OF"/"ALL OF", value: token/string/null/array}
-
     // if the tokens is NONE, return null
     if (tokens.length == 1 && tokens[0].type == "NONE") {
         return null;
@@ -687,7 +687,7 @@ const buildTree = (tokens) => {
     }
 
     // iterate through the tokens and build the tree
-    for (let i = tokens.length - 1; i >= 0; i++) {
+    for (let i = tokens.length - 1; i >= 0; i--) {
         const token = tokens[i];
         if (token.type == "CONCURRENT") { // a CONCURRENT token should take whatever follows it as a value
             if (i == tokens.length - 1) throw new Error(`CANNOT END A TREE WITH CONCURRENT`)
@@ -854,7 +854,7 @@ function cleanTree(node) {
 const parsePrereqs = (catalog) => {
     // run parseLine on each class's prereq string and store the result in a new field "parsedPrereq"
     for (const subject in catalog) {
-        debug = classesToConsole.includes(subject)
+        if (classesToConsole.length > 0) debug = classesToConsole.includes(subject)
         if (debug) console.group(`Parsing prereqs for ${subject}`)
         if (debug) console.log("Original prereq string:", catalog[subject].prereqs)
         const initialTokens = initialTokenize(catalog[subject].prereqs)
@@ -864,7 +864,7 @@ const parsePrereqs = (catalog) => {
         const prereqTree = buildTree(parsedTokens)
         if (debug) console.log("Prereq tree:", prereqTree)
 
-        if (prereqTree != null && prereqTree.length > 1) throw new Error(subject)
+        if (prereqTree != null && prereqTree.length > 1) throw new Error(`${subject} has invalid tree`)
 
         catalog[subject].parsedPrereq = prereqTree;
         if (debug) console.groupEnd();
