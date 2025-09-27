@@ -1,25 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
     <head>
         <title>Planning courses? It's Peanuts!</title>
+        <meta charset="UTF-8">
 
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" type="image/x-icon" href="/peanut.ico">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="icon" type="image/x-icon" href="/img/pnuts_icon_SMALL.png">
 
-        
         <script src="scripts/jquery.js"></script>
 
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     </head>
     <body>
-        <h1>P-NUTs: Planning Necessary Undergrad Tracks</h1>
+        <header>
+            <a id="logo" href="/">
+                <img src="/img/pnuts_logo.svg" />
+            </a>
+            <div id="settings">
+                <div id="allow-smfa">Allow classes in SMFA <input type="checkbox"></div>
+                <a id="export-req"><button>Export Requirements</button></a>
+                <div id="import-req">Import Requirements: <input type="file" accept="text/plain"></div>
+                <div id="requirements-error-wrapper"></div>
+            </div>
+        </header>
 
-        <p id="credits">
-            Design and coding by <a href="https://henryty83.github.io">Henry Ty</a> <br>
-            Graphic design and UI by <a href="https://joonchicken.github.io">Joon Heo</a> <br>
-            Idea by <a href="https://blusquare.github.io">Dhyey Maharaja</a>
-        </p>
 
         <div id="requirements">
             <button id="new-requirement">New</button>
@@ -29,13 +34,6 @@
 
         <br>
 
-        <div id="settings">
-            <div id="allow-smfa">Allow classes in SMFA <input type="checkbox"></div>
-            <a id="export-req"><button>Export Requirements</button></a>
-            <div id="import-req">Import Requirements: <input type="file" accept="text/plain"></div>
-            <div id="requirements-error-wrapper"></div>
-        </div>
-
         <script src="dev/parsePrereqs.js"></script>
         <script src="scripts/script.js"></script>
         <script src="scripts/scheduleInput.js" defer></script>
@@ -43,8 +41,13 @@
         <script src="scripts/year.js"></script>
         <script src="scripts/createSchedule.js"></script>
 
+        <p id="credits">
+            Backend by <a href="https://henryty83.github.io">Henry Ty</a> <br>
+            Frontend by <a href="https://joonchicken.github.io">Joon Heo</a> <br>
+            Idea by <a href="https://blusquare.github.io">Dhyey Maharaja</a>
+        </p>
         <p id="contact">
-            v0: Last updated April 2025 <br>
+            v0: Last updated October 2025 <br>
             Any issues?  <a href="mailto:Dhyey.Maharaja@tufts.edu">Send an email</a> or submit a <a href="https://github.com/jumbo-scheduler/jumbo-scheduler.github.io">pull request</a>
         </p>
     </body>

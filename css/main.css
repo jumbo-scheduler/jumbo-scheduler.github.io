@@ -1,0 +1,23 @@
+* {
+    margin: 0px;
+}
+
+body {
+    padding: 10px;
+}
+
+header {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+    #logo > img {
+        height: 90px;
+    }
+
+    #settings {
+        text-align: right;
+    }
+}

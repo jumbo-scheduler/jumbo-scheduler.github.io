@@ -17,7 +17,7 @@ const smfaCheckbox = $("#allow-smfa").find("input");
 smfaCheckbox.prop("checked", true);
 const dropdowns = {
     all_classes: create_dropdown_data(total_catalog),
-    no_smfa: create_dropdown_data(total_catalog_no_SMFA),
+    //no_smfa: create_dropdown_data(total_catalog_no_SMFA),
     departments: departments,
     attributes: attributes,
 };
