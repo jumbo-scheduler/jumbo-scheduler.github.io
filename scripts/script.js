@@ -54,6 +54,14 @@ function mergeCatalogs(main, toMerge) {
 
 const total_catalog = parseCatalog("catalog.json");
 
+/**
+ * gets data of a specific class
+ * @returns an object containing the data associated with the class
+ */
+function getClass(className) {
+    return total_catalog[className];
+}
+
 const class_names = Object.keys(total_catalog);
 // tags
 const attributes = [

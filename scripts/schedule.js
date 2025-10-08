@@ -1,3 +1,16 @@
+/*
+    Functions in this file:
+    Schedule.getRequirements
+    Schedule.requirementsCompleted
+    Schedule.populateSchedule
+    Schedule.renderSchedule
+    Schedule.prereqsSatisfied
+    Term.addClass
+    Term.removeClass
+*/
+
+
+
 class Schedule {
     constructor() {
         this.years = [
