@@ -1108,7 +1108,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "None",
@@ -1122,7 +1122,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "Concurrent enrollment in BIO 13",
@@ -1286,7 +1286,7 @@
     "offeredInSpring": false
   },
   "BIO-0115": {
-    "name": "BIO-0115: Physiology – Circulation, Respiration, and Renal",
+    "name": "BIO-0115: Physiology - Circulation, Respiration, and Renal",
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
@@ -1341,7 +1341,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Junior, Senior, or Graduate students only",
@@ -1355,7 +1355,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "((BIO 13 or BME 33) and (Junior or Senior standing)) or Graduate Standing",
@@ -1451,7 +1451,7 @@
   "BME-0007": {
     "name": "BME-0007: Biomedical Engineering Senior Design I",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Senior BME First Majors",
@@ -1463,7 +1463,7 @@
   "BME-0010": {
     "name": "BME-0010: Electrical Circuits and Biomedical Applications",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of MATH 34 and PHY 12",
@@ -1475,7 +1475,7 @@
   "BME-0011": {
     "name": "BME-0011: Biomechanics: Solids and Fluids",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion or concurrent enrollment in (PHY 11 and MATH 34)",
@@ -1487,7 +1487,7 @@
   "BME-0033": {
     "name": "BME-0033: Biomedical Concepts at the Molecular, Protein and Cellular Scales I",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "Pre or Co-Requisite of CHEM 1 or PHY 11",
@@ -1499,7 +1499,7 @@
   "BME-0045": {
     "name": "BME-0045: Biomedical Concepts at the Tissue, Organ and Systems Scales II",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "BME 44",
@@ -1511,7 +1511,7 @@
   "BME-0066": {
     "name": "BME-0066: Engineering Design Process",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Completion of ES 2 or CS 11",
@@ -1523,7 +1523,7 @@
   "BME-0087": {
     "name": "BME-0087: Internship",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 3,
@@ -1535,7 +1535,7 @@
     "name": "BME-0089: Honors Thesis A",
     "attributes": [
       "First Class in Multi Sequence",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1547,7 +1547,7 @@
   "BME-0091": {
     "name": "BME-0091: Undergraduate research",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1559,7 +1559,7 @@
   "BME-0123": {
     "name": "BME-0123: Bioelectricity",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Completion of MATH 42 & (PHY 12 or ES 3) or graduate standing",
@@ -1571,7 +1571,7 @@
   "BME-0131": {
     "name": "BME-0131: Principles Of Medical Imaging",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1583,7 +1583,7 @@
   "BME-0141": {
     "name": "BME-0141: Analytical Tools For Biomedical Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "Junior, Senior, or Graduate students only",
@@ -1595,7 +1595,7 @@
   "BME-0143": {
     "name": "BME-0143: Biological Systems Analysis",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1607,7 +1607,7 @@
   "BME-0153": {
     "name": "BME-0153: Biomaterials and Regenerative Medicine",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Junior, Senior, or Graduate students only",
@@ -1619,7 +1619,7 @@
   "BME-0155": {
     "name": "BME-0155: Bio-surfaces and Interfaces",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1631,7 +1631,7 @@
   "BME-0162": {
     "name": "BME-0162: Molecular Biotechnology",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Junior, Senior, or Graduate students only",
@@ -1643,7 +1643,7 @@
   "BME-0165": {
     "name": "BME-0165: Principles Of Controlled Release And Drug Delivery",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1655,7 +1655,7 @@
   "BME-0168": {
     "name": "BME-0168: Biotechnology Processing Projects Lab",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "((BIO 13 or BME 33) and (Junior or Senior standing)) or Graduate Standing\nCompletion of Bio 13 or equivalent",
@@ -1667,7 +1667,7 @@
   "BME-0169": {
     "name": "BME-0169: Orthopaedic Biomechanics",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "BME 11 or ME 21 or Graduate Standing",
     "credits": 3,
@@ -1678,7 +1678,7 @@
   "BME-0173": {
     "name": "BME-0173: Cellular Agriculture & Biofabricated Foods",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1690,7 +1690,7 @@
   "BME-0175": {
     "name": "BME-0175: Tissue Engineering Research Laboratory",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1702,7 +1702,7 @@
   "BME-0193": {
     "name": "BME-0193: Special Topics - Sustainability in Biomanufacturing Process Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1715,7 +1715,7 @@
     "name": "CEE-0006: Fundamentals of Biostatistics",
     "attributes": [
       "LA-Distribution-Mathematics",
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 3,
@@ -1726,7 +1726,7 @@
   "CEE-0022": {
     "name": "CEE-0022: Structural Analysis",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of ES 9",
@@ -1738,7 +1738,7 @@
   "CEE-0025": {
     "name": "CEE-0025: Reinforced Concrete Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Completion of CEE 22",
@@ -1750,7 +1750,7 @@
   "CEE-0032": {
     "name": "CEE-0032: Engineering for a Sustainable and Resilient Society",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "At least simultaneous enrollment in: MATH 34, (CHEM 1 or CHEM 11 or PHY 11), and (ES 2, CS 10, or CS 11)",
@@ -1762,7 +1762,7 @@
   "CEE-0034": {
     "name": "CEE-0034: Pollutant Fate and Transport",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of CHEM 2, BIO 13, CEE 32 & ES 7",
@@ -1774,7 +1774,7 @@
   "CEE-0042": {
     "name": "CEE-0042: Introduction To Geotechnical Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of ES 9",
@@ -1786,7 +1786,7 @@
   "CEE-0057": {
     "name": "CEE-0057: Public Health",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1798,7 +1798,7 @@
   "CEE-0090": {
     "name": "CEE-0090: Cataldo Scholar Research",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1810,7 +1810,7 @@
   "CEE-0092": {
     "name": "CEE-0092: Nano Course",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 1,
@@ -1821,7 +1821,7 @@
   "CEE-0101": {
     "name": "CEE-0101: The Energy Transition",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Junior, Senior, or Graduate students only",
@@ -1833,7 +1833,7 @@
   "CEE-0111": {
     "name": "CEE-0111: Hydrology of the Built Environment",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of CEE 32 & ES 8, or graduate standing",
@@ -1845,7 +1845,7 @@
   "CEE-0123": {
     "name": "CEE-0123: Advanced Structural Systems Analysis",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1857,7 +1857,7 @@
   "CEE-0124": {
     "name": "CEE-0124: Advanced Steel Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1869,7 +1869,7 @@
   "CEE-0127": {
     "name": "CEE-0127: Structural Health Monitoring",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "(ES 55 and (ES 56 or CEE 156)) or graduate standing",
@@ -1881,7 +1881,7 @@
   "CEE-0132": {
     "name": "CEE-0132: Data Science for Sustainability",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "(ES 2, CS 10 or CS 11) and (ES 56, CEE 156, EE 24, EE 104, BME 141, MATH 166, or ME 102); OR graduate standing",
@@ -1893,7 +1893,7 @@
   "CEE-0133": {
     "name": "CEE-0133: Sustainable Water Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Completion of CEE 32 or CHBE 22, or graduate standing",
@@ -1905,7 +1905,7 @@
   "CEE-0143": {
     "name": "CEE-0143: Site Remediation",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "(CEE 12 and CEE 32), or CHBE 22, or graduate standing",
@@ -1917,7 +1917,7 @@
   "CEE-0152": {
     "name": "CEE-0152: Environmental Health Data-Lab",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "(ES 55 and (ES 56 or CEE 156)) or graduate standing",
@@ -1929,7 +1929,7 @@
   "CEE-0154": {
     "name": "CEE-0154: Principles Epidemiology",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1941,7 +1941,7 @@
   "CEE-0159": {
     "name": "CEE-0159: Water, Sanitation, and Hygiene (WASH) Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "CEE 32 and CEE 52 or graduate standing",
@@ -1953,7 +1953,7 @@
   "CEE-0187": {
     "name": "CEE-0187: Geographical Information Systems",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "ES 56 or CEE 156 or graduate standing",
@@ -1965,7 +1965,7 @@
   "CEE-0193": {
     "name": "CEE-0193: Special Topics - Fundamentals of Wind Turbines",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -1977,7 +1977,7 @@
   "CEE-0199": {
     "name": "CEE-0199: Internship In Civil And Environmental Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -2079,7 +2079,7 @@
   "CH-0114": {
     "name": "CH-0114: Principles Epidemiology",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -2092,7 +2092,7 @@
     "name": "CH-0116: Fundamentals of Biostatistics",
     "attributes": [
       "LA-Distribution-Mathematics",
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 3,
@@ -2187,7 +2187,7 @@
   "CH-0191": {
     "name": "CH-0191: Biology of Water & Health",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 3,
@@ -2218,7 +2218,7 @@
   "CHBE-0022": {
     "name": "CHBE-0022: Transport Phenomena II",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "CHBE 21 and Math 51",
@@ -2230,7 +2230,7 @@
   "CHBE-0039": {
     "name": "CHBE-0039: Applied Numerical Methods For Chemical & Biological Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "CHBE 10 and CHBE 11",
@@ -2242,7 +2242,7 @@
   "CHBE-0051": {
     "name": "CHBE-0051: Chemical And Biological Engineering Laboratory",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -2254,7 +2254,7 @@
   "CHBE-0095": {
     "name": "CHBE-0095: Undergraduate Research",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -2266,7 +2266,7 @@
   "CHBE-0096": {
     "name": "CHBE-0096: Honors Thesis Research A",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -2278,7 +2278,7 @@
   "CHBE-0099": {
     "name": "CHBE-0099: Internship In Chemical & Biological Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 1,
@@ -2289,7 +2289,7 @@
   "CHBE-0109": {
     "name": "CHBE-0109: Process Dynamics And Control",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "CHBE 21 and CHBE 22",
@@ -2301,7 +2301,7 @@
   "CHBE-0111": {
     "name": "CHBE-0111: Thermal-fluid Transport I",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -2313,7 +2313,7 @@
   "CHBE-0114": {
     "name": "CHBE-0114: Theory And Applications Of Polymer Materials And Processing",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -2325,7 +2325,7 @@
   "CHBE-0122": {
     "name": "CHBE-0122: Physical Chemistry Of Polymers",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -2337,7 +2337,7 @@
   "CHBE-0140": {
     "name": "CHBE-0140: Surface And Colloid Chemistry",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "CHEM 31 and CHBE 21 or graduate standing",
@@ -2349,7 +2349,7 @@
   "CHBE-0143": {
     "name": "CHBE-0143: Site Remediation Tech",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "(CEE 12 and CEE 32), or CHBE 22, or graduate standing",
@@ -2361,7 +2361,7 @@
   "CHBE-0159": {
     "name": "CHBE-0159: Synthetic Biology",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Junior, Senior, or Graduate students only",
@@ -2373,7 +2373,7 @@
   "CHBE-0160": {
     "name": "CHBE-0160: Biochemical Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Junior, Senior, or Graduate students only",
@@ -2385,7 +2385,7 @@
   "CHBE-0162": {
     "name": "CHBE-0162: Molecular Biotechnology",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Junior, Senior, or Graduate students only",
@@ -2397,7 +2397,7 @@
   "CHBE-0164": {
     "name": "CHBE-0164: Biomaterials and Regenerative Medicine",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Junior, Senior, or Graduate students only",
@@ -2409,7 +2409,7 @@
   "CHBE-0168": {
     "name": "CHBE-0168: Biotechnology Processing Projects Lab",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "((BIO 13 or BME 33) and (Junior or Senior standing)) or Graduate Standing",
@@ -2423,7 +2423,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "None",
@@ -2437,7 +2437,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "Chem 1, 11, or 16",
@@ -2449,7 +2449,7 @@
   "CHEM-0003": {
     "name": "CHEM-0003: Frontiers in Chemistry",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "Completion or concurrent enrollment in CHEM 1 or CHEM 11",
     "credits": 1,
@@ -2474,7 +2474,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "Requires simultaneous enrollment in Chem 3 and prior completion or simultaneous enrollment in Math 32",
@@ -2488,7 +2488,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "Chem 2 or 12, AND (Math 34 or equivalent) AND (PHY 2 or 12).",
@@ -2502,7 +2502,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "Requires completion or same term enrollment of CHEM 0031.",
@@ -2542,7 +2542,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "CHEM 0002 or 0012 or graduate standing",
@@ -2556,7 +2556,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "CHEM 51 or concurrent",
@@ -3549,7 +3549,7 @@
   "CS-0045": {
     "name": "CS-0045: Computer Organization",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "ES 4",
     "credits": 4,
@@ -3606,7 +3606,7 @@
   "CS-0097": {
     "name": "CS-0097: Senior Capstone Project I",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SOE-Computing"
     ],
     "prereqs": "Seniors",
@@ -5214,7 +5214,7 @@
   "DS-0093": {
     "name": "DS-0093: Directed Study",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 0,
@@ -5225,7 +5225,7 @@
   "DS-0099": {
     "name": "DS-0099: Internship in Data Science",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 1,
@@ -5236,7 +5236,7 @@
   "DS-0143": {
     "name": "DS-0143: Data Science for Sustainability",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "(ES 2, CS 10 or CS 11) and (ES 56, CEE 156, EE 24, EE 104, BME 141, MATH 166, or ME 102); OR graduate standing",
@@ -5259,7 +5259,7 @@
   "DS-0193": {
     "name": "DS-0193: Directed Study",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 0,
@@ -6291,7 +6291,7 @@
   "EE-0013": {
     "name": "EE-0013: Quantum for Engineers",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "SOE students who have completed PHY 12 and MATH 34",
@@ -6303,7 +6303,7 @@
   "EE-0018": {
     "name": "EE-0018: Electromagnetic Fields And Waves W/lab",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -6315,7 +6315,7 @@
   "EE-0020": {
     "name": "EE-0020: Introduction to Circuits and Electronics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -6327,7 +6327,7 @@
   "EE-0025": {
     "name": "EE-0025: Computer Organization",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "ES 4",
@@ -6339,7 +6339,7 @@
   "EE-0031": {
     "name": "EE-0031: Junior Design Project - Engineering Project",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "EE 14, EE 21, and EE 23",
@@ -6351,7 +6351,7 @@
   "EE-0097": {
     "name": "EE-0097: Senior Design Project",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -6363,7 +6363,7 @@
   "EE-0099": {
     "name": "EE-0099: Undergraduate Internship In Electrical Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -6375,7 +6375,7 @@
   "EE-0103": {
     "name": "EE-0103: Introduction To Vlsi Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -6387,7 +6387,7 @@
   "EE-0104": {
     "name": "EE-0104: Probabilistic Systems Analysis",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "Math 0042 or equivalent or Graduate Student",
     "credits": 3,
@@ -6398,7 +6398,7 @@
   "EE-0105": {
     "name": "EE-0105: Feedback-control Systems",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "EE 23 & (Math 70 or JR standing)",
@@ -6410,7 +6410,7 @@
   "EE-0110": {
     "name": "EE-0110: Optimization in Deep Learning",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "MATH 0042 and MATH 0070 and one of (EE 0024, EE 0104, or MATH 0165), or graduate standing",
@@ -6422,7 +6422,7 @@
   "EE-0113": {
     "name": "EE-0113: Semiconduct Device W/lab",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -6434,7 +6434,7 @@
   "EE-0117": {
     "name": "EE-0117: Introduction Microwaves",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -6446,7 +6446,7 @@
   "EE-0123": {
     "name": "EE-0123: Bioelectricity",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Completion of MATH 42 & (PHY 12 or ES 3) or graduate standing",
@@ -6458,7 +6458,7 @@
   "EE-0125": {
     "name": "EE-0125: Digital Signal Processing",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -6470,7 +6470,7 @@
   "EE-0129": {
     "name": "EE-0129: Computer Communication Networks",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -6482,7 +6482,7 @@
   "EE-0135": {
     "name": "EE-0135: Advanced Electromagnetics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -6494,7 +6494,7 @@
   "EE-0152": {
     "name": "EE-0152: Real-Time Embedded Systems",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "CS 11 or CS 15 or graduate standing",
@@ -6506,7 +6506,7 @@
   "EE-0153": {
     "name": "EE-0153: Networked Embedded Systems",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -6518,7 +6518,7 @@
   "EE-0191": {
     "name": "EE-0191: Electrical Engineering Seminar",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 2,
@@ -6529,7 +6529,7 @@
   "EE-0193": {
     "name": "EE-0193: Special Topics - Probability in High Dimensions",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -6541,7 +6541,7 @@
   "EE-0199": {
     "name": "EE-0199: Internship",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 2,
@@ -6563,7 +6563,7 @@
   "EM-0052": {
     "name": "EM-0052: Technical & Managerial Communication",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-HASS",
       "SoE-HASS-Social Sciences"
     ],
@@ -6611,7 +6611,7 @@
   "EN-0001": {
     "name": "EN-0001: Applications in Engineering - Eng with Augmented Reality",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "First Year Students Only",
@@ -6623,7 +6623,7 @@
   "ENE-0090": {
     "name": "ENE-0090: Engineering Education Field Experience",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 0,
@@ -7487,7 +7487,7 @@
   "ENV-0025": {
     "name": "ENV-0025: Environment & Technology",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -7563,7 +7563,7 @@
   "ENV-0112": {
     "name": "ENV-0112: Hydrology/water Resource",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of CEE 32 & ES 8, or graduate standing",
@@ -7636,7 +7636,7 @@
   "ENV-0161": {
     "name": "ENV-0161: The Energy Transition",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Junior, Senior, or Graduate students only",
@@ -7725,7 +7725,7 @@
   "ES-0004": {
     "name": "ES-0004: Introduction To Digital Logic Circuits W/ Lab",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -7737,7 +7737,7 @@
   "ES-0005": {
     "name": "ES-0005: Introduction To Mechanics- Statics And Dynamics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of or current enrollment in MATH 32 and PHY 11",
@@ -7749,7 +7749,7 @@
   "ES-0008": {
     "name": "ES-0008: Fluid Mechanics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of or simultaneous enrollment in MATH 42",
@@ -7761,7 +7761,7 @@
   "ES-0011": {
     "name": "ES-0011: Fundamentals Of Biological Systems",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "None",
@@ -7773,7 +7773,7 @@
   "ES-0015": {
     "name": "ES-0015: Modern Optics and Photonics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "PHY 12 Pre or Co Requisite",
@@ -7785,7 +7785,7 @@
   "ES-0018": {
     "name": "ES-0018: Computer Aided Design w/ Lab",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -7797,7 +7797,7 @@
   "ES-0025": {
     "name": "ES-0025: Environment And Technology",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -7809,7 +7809,7 @@
   "ES-0055": {
     "name": "ES-0055: Numerical Methods",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "Prior completion of (ES 2 or CS 10 or CS 11) & MATH 51",
@@ -7821,7 +7821,7 @@
   "ES-0056": {
     "name": "ES-0056: Probability And Statistics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "Prior completion of MATH 42 or graduate standng",
@@ -7835,7 +7835,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -7847,7 +7847,7 @@
   "ES-0065": {
     "name": "ES-0065: Music Recording and Production with Audio Electronics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -7859,7 +7859,7 @@
   "ES-0085": {
     "name": "ES-0085: Professional Preparation for Cooperative Education",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-HASS"
     ],
     "prereqs": "None",
@@ -11694,7 +11694,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Mathematics",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "None",
@@ -11708,7 +11708,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Mathematics",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "None",
@@ -11722,7 +11722,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Mathematics",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "None",
@@ -11736,7 +11736,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Mathematics",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "Math 34",
@@ -11763,7 +11763,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Mathematics",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "None",
@@ -11777,7 +11777,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Mathematics",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "None",
@@ -11906,7 +11906,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Mathematics",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "MATH 34 or graduate standing",
@@ -11920,7 +11920,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Mathematics",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "MATH 165 or EE 104 or graduate standing",
@@ -12021,7 +12021,7 @@
   "ME-0010": {
     "name": "ME-0010: Materials & Manufacturing I",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "ME or HF Majors",
@@ -12033,7 +12033,7 @@
   "ME-0020": {
     "name": "ME-0020: Mechanics I",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Physics 11 and Math 34\nME or HF Majors",
@@ -12045,7 +12045,7 @@
   "ME-0030": {
     "name": "ME-0030: Electronics & Controls I",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Junior Standing and completion of ES 2 or CS 11\nME or HF Majors",
@@ -12057,7 +12057,7 @@
   "ME-0035": {
     "name": "ME-0035: Introductory Robotics And Mechatronics - Intro Robotics & Mechatronics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of ME 30 or EE 31",
@@ -12069,7 +12069,7 @@
   "ME-0041": {
     "name": "ME-0041: Engineering Design II",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "ME 40\nME or HF Majors",
@@ -12081,7 +12081,7 @@
   "ME-0051": {
     "name": "ME-0051: Thermal Fluid Systems II",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "ME 50 & MATH 51\nME or HF Majors",
@@ -12093,7 +12093,7 @@
   "ME-0074": {
     "name": "ME-0074: Senior Design Project",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "ME 40 and senior standing\nME or HF Majors",
@@ -12105,7 +12105,7 @@
   "ME-0093": {
     "name": "ME-0093: Special Topics - Intro to Music Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -12117,7 +12117,7 @@
   "ME-0094": {
     "name": "ME-0094: Undergraduate Research",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -12129,7 +12129,7 @@
   "ME-0096": {
     "name": "ME-0096: Thesis",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -12141,7 +12141,7 @@
   "ME-0099": {
     "name": "ME-0099: Internship In Mechanical Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 1,
@@ -12152,7 +12152,7 @@
   "ME-0101": {
     "name": "ME-0101: Numerical Methods",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "None",
@@ -12164,7 +12164,7 @@
   "ME-0114": {
     "name": "ME-0114: Theory And Applications Of Polymer Materials And Processing",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -12176,7 +12176,7 @@
   "ME-0120": {
     "name": "ME-0120: Solid Mechanics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -12188,7 +12188,7 @@
   "ME-0126": {
     "name": "ME-0126: Acoustics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "MATH 51 or graduate standing",
@@ -12200,7 +12200,7 @@
   "ME-0130": {
     "name": "ME-0130: Digital Control Of Dynamic Systems",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -12212,7 +12212,7 @@
   "ME-0136": {
     "name": "ME-0136: Digital Signal Processing",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -12224,7 +12224,7 @@
   "ME-0140": {
     "name": "ME-0140: Inventive Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "ME or HF Majors",
@@ -12236,7 +12236,7 @@
   "ME-0150": {
     "name": "ME-0150: Thermal-fluid Transport I",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -12248,7 +12248,7 @@
   "ME-0152": {
     "name": "ME-0152: High Reynolds Number Flow",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "Completion of ME 51 or graduate standing",
     "credits": 3,
@@ -12259,7 +12259,7 @@
   "ME-0154": {
     "name": "ME-0154: Aerodynamics",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "ME 50 or graduate standing",
     "credits": 3,
@@ -12270,7 +12270,7 @@
   "ME-0173": {
     "name": "ME-0173: Data Science for Sustainability",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "(ES 2, CS 10 or CS 11) and (ES 56, CEE 156, EE 24, EE 104, BME 141, MATH 166, or ME 102); OR graduate standing",
@@ -12282,7 +12282,7 @@
   "ME-0174": {
     "name": "ME-0174: The Energy Transition",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Junior, Senior, or Graduate students only",
@@ -12294,7 +12294,7 @@
   "ME-0176": {
     "name": "ME-0176: Structural Health Monitoring",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "(ES 55 and (ES 56 or CEE 156)) or graduate standing",
     "credits": 3,
@@ -12305,7 +12305,7 @@
   "ME-0193": {
     "name": "ME-0193: Special Topics - Medical Robotics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -12354,7 +12354,7 @@
   "MSE-0110": {
     "name": "MSE-0110: Semiconduct Device W/lab",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -12366,7 +12366,7 @@
   "MSE-0151": {
     "name": "MSE-0151: Biomaterials and Regenerative Medicine",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Junior, Senior, or Graduate students only",
@@ -12378,7 +12378,7 @@
   "MSE-0171": {
     "name": "MSE-0171: Theory And Applications Of Polymer Materials And Processing",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -13632,7 +13632,7 @@
   "PHY-0001": {
     "name": "PHY-0001: Physics 1 and 11 Shared Lab",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 0,
@@ -13643,7 +13643,7 @@
   "PHY-0002": {
     "name": "PHY-0002: Physics 2 and 12 Shared Lab",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 0,
@@ -13656,7 +13656,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "CONCURRENT PHY 1",
@@ -13670,7 +13670,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "CONCURRENT PHY 2 and 12 shared lab",
@@ -13684,7 +13684,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "None",
@@ -16051,7 +16051,7 @@
   "STS-0101": {
     "name": "STS-0101: The Energy Transition",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Junior, Senior, or Graduate students only",
@@ -17743,7 +17743,7 @@
     "offeredInSpring": true
   },
   "BIO-0116": {
-    "name": "BIO-0116: Physiology – Endocrine, Neural, and Digestion",
+    "name": "BIO-0116: Physiology - Endocrine, Neural, and Digestion",
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences"
@@ -17898,7 +17898,7 @@
   "BME-0006": {
     "name": "BME-0006: Scientific Reading, Writing, and Presentations",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-HASS-Social Sciences"
     ],
     "prereqs": "BME First Majors Only",
@@ -17910,7 +17910,7 @@
   "BME-0008": {
     "name": "BME-0008: Biomedical Engineering Senior Design II",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "BME first majors with senior standing who have earned credit in BME 0007",
@@ -17922,7 +17922,7 @@
   "BME-0009": {
     "name": "BME-0009: BME Senior Design Project",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "senior and prior completion of BME 66",
@@ -17934,7 +17934,7 @@
   "BME-0012": {
     "name": "BME-0012: Biothermodynamics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -17948,7 +17948,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "Math 42 Corequisite",
@@ -17960,7 +17960,7 @@
   "BME-0034": {
     "name": "BME-0034: Biomedical Concepts at the Molecular, Protein and Cellular Scales II",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "BME 33\nBME Majors Only",
@@ -17972,7 +17972,7 @@
   "BME-0044": {
     "name": "BME-0044: Biomedical Concepts at the Tissue, Organ and Systems Scales I",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "BME 33 or BIO 13\nBME Majors Only",
@@ -17984,7 +17984,7 @@
   "BME-0088": {
     "name": "BME-0088: Internship",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 3,
@@ -17995,7 +17995,7 @@
   "BME-0090": {
     "name": "BME-0090: Honors Thesis B",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Requires completion of BME 0089 sequence A.",
@@ -18007,7 +18007,7 @@
   "BME-0092": {
     "name": "BME-0092: Undergraduate research",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18019,7 +18019,7 @@
   "BME-0100": {
     "name": "BME-0100: Design Of Medical Instrumentation",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Completion of BME 10, EE 21, ME 31 or graduate standing",
@@ -18031,7 +18031,7 @@
   "BME-0120": {
     "name": "BME-0120: Project Study In Human Systems",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Completion of (ENP 53 or PSY 53), ENP 64, ENP 161, and senior standing",
@@ -18045,7 +18045,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "Math 42 Corequisite",
     "credits": 3,
@@ -18056,7 +18056,7 @@
   "BME-0151": {
     "name": "BME-0151: Introduction To Biophotonics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of PHY 12 or Graduate Standing",
@@ -18068,7 +18068,7 @@
   "BME-0154": {
     "name": "BME-0154: Tissue Engineering and Regenerative Medicine",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18080,7 +18080,7 @@
   "BME-0156": {
     "name": "BME-0156: Biophotonics Laboratory",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18092,7 +18092,7 @@
   "BME-0166": {
     "name": "BME-0166: Computer Interface Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18106,7 +18106,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Mathematics",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SOE-Computing"
     ],
     "prereqs": "Requires the completion of CS 15 or graduate standing.",
@@ -18118,7 +18118,7 @@
   "BME-0174": {
     "name": "BME-0174: Cellular Agriculture & Cultured Meat Lab",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18130,7 +18130,7 @@
   "BME-0176": {
     "name": "BME-0176: 3D Printing the Human Body",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18142,7 +18142,7 @@
   "BME-0184": {
     "name": "BME-0184: BME Entrepreneurship & Strategy",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-HASS"
     ],
     "prereqs": "None",
@@ -18154,7 +18154,7 @@
   "BME-0185": {
     "name": "BME-0185: Drug Product Formulation",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18177,7 +18177,7 @@
   "CEE-0012": {
     "name": "CEE-0012: Hydraulics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of ES 8",
@@ -18189,7 +18189,7 @@
   "CEE-0024": {
     "name": "CEE-0024: Steel Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Completion of CEE 22",
@@ -18201,7 +18201,7 @@
   "CEE-0036": {
     "name": "CEE-0036: Environmental Engineering Processes",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of CEE 32 & CEE 52",
@@ -18213,7 +18213,7 @@
   "CEE-0052": {
     "name": "CEE-0052: Public Health Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18236,7 +18236,7 @@
   "CEE-0086": {
     "name": "CEE-0086: Integrated Planning and Management of Civil Infrastructure Systems",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of ES 55 and (ES 56 or CEE 156)",
@@ -18248,7 +18248,7 @@
   "CEE-0088": {
     "name": "CEE-0088: Capstone Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Seniors",
@@ -18260,7 +18260,7 @@
   "CEE-0093": {
     "name": "CEE-0093: Special Topics In Civil And Environmental Engineering A - Construction Engineering and Project Management",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18283,7 +18283,7 @@
   "CEE-0096": {
     "name": "CEE-0096: Research Thesis B",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Requires completion of CEE 0095 sequence A.",
@@ -18306,7 +18306,7 @@
   "CEE-0106": {
     "name": "CEE-0106: Structural Dynamics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "CEE 22 or ME 41 or graduate standing",
@@ -18318,7 +18318,7 @@
   "CEE-0112": {
     "name": "CEE-0112: River Hydraulics and Stream Restoration",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of (MATH 51 and CEE 12) or graduate standing",
@@ -18330,7 +18330,7 @@
   "CEE-0129": {
     "name": "CEE-0129: Bridge Design And Rehabilitation",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of (CEE 24 and CEE 25) or graduate standing",
@@ -18342,7 +18342,7 @@
   "CEE-0136": {
     "name": "CEE-0136: Air Pollution and Control",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Completion of (ES 8 and CEE 32) or CHBE 22 or graduate standing",
@@ -18354,7 +18354,7 @@
   "CEE-0145": {
     "name": "CEE-0145: Computer Methods In Geotechnical Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18379,7 +18379,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Mathematics",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "Prior completion of MATH 42 or graduate standng",
@@ -18391,7 +18391,7 @@
   "CEE-0189": {
     "name": "CEE-0189: Introduction to Remote Sensing",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18553,7 +18553,7 @@
   "CHBE-0021": {
     "name": "CHBE-0021: Transport Phenomena I",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "CHEM 2, PHY 11, and MATH 51 (concurrent or completed)",
@@ -18565,7 +18565,7 @@
   "CHBE-0045": {
     "name": "CHBE-0045: Chemical And Biological Separations",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "CHBE 0022",
@@ -18577,7 +18577,7 @@
   "CHBE-0052": {
     "name": "CHBE-0052: Chemical And Biological Engineering Laboratory",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18589,7 +18589,7 @@
   "CHBE-0060": {
     "name": "CHBE-0060: Product & Process Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "CHBE 45 and CHBE 102",
@@ -18601,7 +18601,7 @@
   "CHBE-0102": {
     "name": "CHBE-0102: Reactor Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "CHBE 21 & CHBE 22(must be taken concurrent)",
@@ -18613,7 +18613,7 @@
   "CHBE-0112": {
     "name": "CHBE-0112: Thermal-fluid Transport II",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18625,7 +18625,7 @@
   "CHBE-0161": {
     "name": "CHBE-0161: Protein Purification",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18637,7 +18637,7 @@
   "CHBE-0165": {
     "name": "CHBE-0165: Biomolecular Engineering and Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Chem 51 or graduate standing",
@@ -18649,7 +18649,7 @@
   "CHBE-0166": {
     "name": "CHBE-0166: Cell/microbe Cultivation",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18661,7 +18661,7 @@
   "CHBE-0185": {
     "name": "CHBE-0185: Drug Product Formulation",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -18723,7 +18723,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "CHEM 0051",
@@ -18737,7 +18737,7 @@
     "attributes": [
       "BFA-Science/Technology",
       "LA-Distribution-Natural Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Natural Sciences"
     ],
     "prereqs": "Requires the completion of CHEM 0053 and completion or same time enrollment of CHEM 0052.",
@@ -19280,7 +19280,7 @@
   "CS-0098": {
     "name": "CS-0098: Senior Capstone Project II",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SOE-Computing"
     ],
     "prereqs": "CS 97 and senior standing",
@@ -20679,7 +20679,7 @@
   "EE-0014": {
     "name": "EE-0014: Embedded Systems",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "ES 4 and CS 11",
@@ -20691,7 +20691,7 @@
   "EE-0021": {
     "name": "EE-0021: Electronics I W/lab",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "ES-0003 or EE-0020",
@@ -20703,7 +20703,7 @@
   "EE-0022": {
     "name": "EE-0022: Electronics II W/lab",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -20715,7 +20715,7 @@
   "EE-0023": {
     "name": "EE-0023: Linear Systems",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "None",
@@ -20727,7 +20727,7 @@
   "EE-0024": {
     "name": "EE-0024: Probabilistic Systems Analysis",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "Math 0042 or equivalent or Graduate Student",
@@ -20739,7 +20739,7 @@
   "EE-0094": {
     "name": "EE-0094: Directed Study - Diffusion Models",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -20751,7 +20751,7 @@
   "EE-0098": {
     "name": "EE-0098: Senior Design Project - Part 2",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -20763,7 +20763,7 @@
   "EE-0100": {
     "name": "EE-0100: Design Of Medical Instrumentation",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Completion of BME 10, EE 21, ME 31 or graduate standing",
@@ -20775,7 +20775,7 @@
   "EE-0114": {
     "name": "EE-0114: Physics of Solar Cells",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -20787,7 +20787,7 @@
   "EE-0126": {
     "name": "EE-0126: Computer Architecture",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 3,
@@ -20809,7 +20809,7 @@
   "EE-0137": {
     "name": "EE-0137: Radar Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -20821,7 +20821,7 @@
   "EE-0143": {
     "name": "EE-0143: Iterative Methods for Machine Learning",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -20833,7 +20833,7 @@
   "EE-0147": {
     "name": "EE-0147: Analog And Mixed Signal Mos Integrated Circuit Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -20845,7 +20845,7 @@
   "EE-0155": {
     "name": "EE-0155: Parallel Computing",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -20857,7 +20857,7 @@
   "EE-0171": {
     "name": "EE-0171: Power Electronics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -20869,7 +20869,7 @@
   "EE-0192": {
     "name": "EE-0192: Electrical Engineering Seminar",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 2,
@@ -20880,7 +20880,7 @@
   "EE-0194": {
     "name": "EE-0194: Directed Study - Explainable AI Models",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -21189,7 +21189,7 @@
     "attributes": [
       "BFA-Social Science",
       "LA-Distribution-Social Sciences",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-HASS",
       "SoE-HASS-Social Sciences"
     ],
@@ -21222,7 +21222,7 @@
   "ENP-0163": {
     "name": "ENP-0163: Analytical Methods In Human Factors Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -21234,7 +21234,7 @@
   "ENP-0165": {
     "name": "ENP-0165: Industrial Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -21464,7 +21464,7 @@
   "ES-0002": {
     "name": "ES-0002: Introduction To Computing In Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -21476,7 +21476,7 @@
   "ES-0007": {
     "name": "ES-0007: Thermodynamics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of CHEM 1 and PHY 11; prior or simultaneous enrollment in MATH 42",
@@ -21488,7 +21488,7 @@
   "ES-0009": {
     "name": "ES-0009: Applied Mechanics (strength Of Materials)",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Completion of ES 5",
@@ -21500,7 +21500,7 @@
   "ES-0010": {
     "name": "ES-0010: Introduction To Materials Science",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Requires the completion of CHEM 0001 or 11 or equivalents.",
@@ -21512,7 +21512,7 @@
   "ES-0019": {
     "name": "ES-0019: Computer Aided Product Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -24180,7 +24180,7 @@
   "ME-0011": {
     "name": "ME-0011: Materials & Manufacturing II",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Prior completion of ME 10 and CHEM 1 or 11",
@@ -24192,7 +24192,7 @@
   "ME-0021": {
     "name": "ME-0021: Mechanics II",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "ME 20",
@@ -24204,7 +24204,7 @@
   "ME-0031": {
     "name": "ME-0031: Electronics & Controls II",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Mechanical Engineering 30 and Physics 11",
@@ -24216,7 +24216,7 @@
   "ME-0040": {
     "name": "ME-0040: Engineering Design I",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Sophomores, Juniors, Seniors\nNone",
@@ -24228,7 +24228,7 @@
   "ME-0050": {
     "name": "ME-0050: Thermal Fluid Systems I",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "CHEM 1, PHY 11, and (previous or concurrent completion of MATH 42 or MATH 44) and Sophomore Standing",
@@ -24240,7 +24240,7 @@
   "ME-0070": {
     "name": "ME-0070: Instruments And Experiments",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -24252,7 +24252,7 @@
   "ME-0090": {
     "name": "ME-0090: Nano Course - Engineering Design Abroad - Cartagena, Colombia",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "None",
     "credits": 1,
@@ -24263,7 +24263,7 @@
   "ME-0100": {
     "name": "ME-0100: Applied Mathematics For Engineers",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "None",
@@ -24275,7 +24275,7 @@
   "ME-0116": {
     "name": "ME-0116: Composite Materials",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -24287,7 +24287,7 @@
   "ME-0121": {
     "name": "ME-0121: Advanced Dynamics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -24299,7 +24299,7 @@
   "ME-0127": {
     "name": "ME-0127: Architectural Acoustics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -24311,7 +24311,7 @@
   "ME-0134": {
     "name": "ME-0134: Robotics",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Completion of ME 35 or graduate standing",
@@ -24323,7 +24323,7 @@
   "ME-0141": {
     "name": "ME-0141: Assistive Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Senior and Graduate Students",
@@ -24335,7 +24335,7 @@
   "ME-0151": {
     "name": "ME-0151: Thermal-fluid Transport II",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -24347,7 +24347,7 @@
   "ME-0159": {
     "name": "ME-0159: Power Generation Systems",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -24359,7 +24359,7 @@
   "ME-0178": {
     "name": "ME-0178: Structural Dynamics",
     "attributes": [
-      "SOE – Pre-Registration Eligible"
+      "SOE - Pre-Registration Eligible"
     ],
     "prereqs": "CEE 22 or ME 41 or graduate standing",
     "credits": 3,
@@ -24393,7 +24393,7 @@
   "MSE-0111": {
     "name": "MSE-0111: Physics of Solar Cells",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -24405,7 +24405,7 @@
   "MSE-0152": {
     "name": "MSE-0152: Tissue Engineering and Regenerative Medicine",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -24417,7 +24417,7 @@
   "MSE-0172": {
     "name": "MSE-0172: Composite Materials",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -26841,7 +26841,7 @@
     "name": "TPS-0023: LGBTQ+ Theatre and Performance",
     "attributes": [
       "LA-Distribution-Arts",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-HASS",
       "SoE-HASS-Arts"
     ],
@@ -27723,7 +27723,7 @@
     "name": "CEE-0095: Research Thesis A",
     "attributes": [
       "First Class in Multi Sequence",
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -27735,7 +27735,7 @@
   "CEE-0146": {
     "name": "CEE-0146: Foundation Engineering",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Requires the completion of CEE 42 or graduate standing",
@@ -27775,7 +27775,7 @@
   "CHBE-0121": {
     "name": "CHBE-0121: Principles Of Polymerization",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "CHEM 31 and CHEM 51",
@@ -28453,7 +28453,7 @@
   "EE-0109": {
     "name": "EE-0109: Convex Optimization",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Math 70 or graduate standing",
@@ -28465,7 +28465,7 @@
   "EE-0170": {
     "name": "EE-0170: Power Systems",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -28725,7 +28725,7 @@
   "ES-0100": {
     "name": "ES-0100: Actionable Engineering Diplomacy",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "Completion of MATH 34 or Graduate Standing",
@@ -28737,7 +28737,7 @@
   "ES-0101": {
     "name": "ES-0101: Numerical Methods",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "None",
@@ -29914,7 +29914,7 @@
   "ME-0102": {
     "name": "ME-0102: Statistical Quality Control",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Mathematics"
     ],
     "prereqs": "None",
@@ -29926,7 +29926,7 @@
   "ME-0110": {
     "name": "ME-0110: Manufacturing Processes And Materials Technology",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -29938,7 +29938,7 @@
   "ME-0146": {
     "name": "ME-0146: Micro-fabrication And Design",
     "attributes": [
-      "SOE – Pre-Registration Eligible",
+      "SOE - Pre-Registration Eligible",
       "SoE-Engineering"
     ],
     "prereqs": "None",
@@ -32472,7 +32472,7 @@
     "offeredInSpring": true
   },
   "FMS-0140": {
-    "name": "FMS-0140: Independent Filmmaking – Postproduction",
+    "name": "FMS-0140: Independent Filmmaking - Postproduction",
     "attributes": [
       "LA-Distribution-Arts",
       "SoE-HASS",
