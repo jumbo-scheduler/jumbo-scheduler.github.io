@@ -1,3 +1,7 @@
+:root {
+    --roundness: 7px;
+}
+
 * {
     margin: 0px;
 }
@@ -17,7 +21,62 @@ header {
         height: 90px;
     }
 
-    #settings {
+    #global-settings {
+        width: 200px;
+        height: 60px;
+        display: grid;
+        gap: 2px;
+
         text-align: right;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 40% 60%;
     }
+
+    label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    #allow-smfa-label {
+        border: none;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    #import-req-label, #export-req-label {
+        border: 1px solid #ccc;
+        border-radius: var(--roundness);
+    }
+
+    #import-req-label:hover, #export-req-label:hover {
+        background-color: #ccc;
+    }
+
+    input[type="file"], input[type="button"] {
+        display: none;
+    }
+}
+
+
+
+#class-finder-button {
+    all: unset;
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    top: 150px;
+
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0e0ff;
+    border-top-left-radius: var(--roundness);
+    border-bottom-left-radius: var(--roundness);
+    box-shadow: #ccc3 5px 5px 5px;
 }

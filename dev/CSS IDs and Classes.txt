@@ -1,0 +1,47 @@
+
+All important HTML IDs and Classes are documented herein
+
+=============================================================
+=                                                           =
+=    Legend:                                                =
+=       🍬 is a wrapper component. Not too important.       =
+=       ⚠️ is something that is functionally important      =
+=          to the site                                      =
+=                                                           =
+=============================================================
+
+
+=== Header
+    
+    ⚠️#allow-smfa ....................... input->checkbox
+    ⚠️#import-req ....................... input->file
+    ⚠️#export-req ....................... input->button
+
+
+=== Class Finder
+    
+    ⚠️#class-finder-button .............. button (spawns class finder)
+
+    ⚠️#class-finder-window .............. div
+    TO BE COMPLETED
+
+
+=== Tabs
+
+    ⚠️#tab-bar .......................... div
+    ⚠️.tab .............................. button
+    └───⚠️.tab-close-button ............. button
+    ⚠️#new-tab-button ................... button
+
+
+=== Degree General Controls
+
+    ⚠️.collapse-button .................. button
+    ⚠️.rename-button .................... button
+    ⚠️.color-button ..................... button
+    ⚠️.settings-button .................. button
+
+    ⚠️
+
+
+=== Classes
