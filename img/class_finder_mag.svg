@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="29.436886mm"
+   height="39.339947mm"
+   viewBox="0 0 29.436886 39.339947"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     transform="translate(-30.913063,-94.862939)">
+    <g
+       id="g2"
+       transform="matrix(1.7794548,0,0,1.7794548,-254.14486,-25.896681)">
+      <path
+         id="rect1"
+         style="fill:#ffffff;stroke:#ffffff;stroke-width:1.999;stroke-linecap:round;stroke-linejoin:round"
+         d="m 108.23114,154.3677 a 5.8284984,5.8284984 45 0 1 -0.82359,0.0591 5.8284984,5.8284984 45 0 1 -0.8239,-0.0592 l 4.2e-4,9.43539 c 0,0.45627 0.36736,0.82341 0.82363,0.82341 0.45627,0 0.82341,-0.36737 0.82341,-0.82364 z"
+         transform="rotate(-30)" />
+      <circle
+         style="fill:#ffffff;fill-opacity:0;stroke:#ffffff;stroke-width:2.599;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         id="path1"
+         cx="107.40756"
+         cy="148.59831"
+         r="5.8284984"
+         transform="rotate(-30)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:61.976px;line-height:0;font-family:'Noto Sans KR';-inkscape-font-specification:'Noto Sans KR Bold';text-align:start;letter-spacing:2.27542px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.999;stroke-linecap:round;stroke-linejoin:round"
+         x="171.9959"
+         y="150.89624"
+         id="text2"><tspan
+           id="tspan2"
+           style="stroke-width:1.999"
+           x="171.9959"
+           y="150.89624" /></text>
+    </g>
+  </g>
+</svg>
