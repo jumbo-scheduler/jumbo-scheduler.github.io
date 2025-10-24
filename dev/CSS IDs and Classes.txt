@@ -31,7 +31,7 @@ All important HTML IDs and Classes are documented herein
         |                        - cf-attributes   (dropdown)
         └───🍬#class-finder-results ............. div
             └───⚠️#cf-results-list .............. div (populate here)
-                └───⚠️#cf-result ................ div (populate single result)
+                └───⚠️#cf-result ................ div (single result)
 
 
 

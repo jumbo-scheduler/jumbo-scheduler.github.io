@@ -139,6 +139,10 @@ header {
                 height: 100%;
             }
         }
+
+        #class-finder-close:hover > img {
+            filter: brightness(75%);
+        }
     }
 
     #class-finder {
