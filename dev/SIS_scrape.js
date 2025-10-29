@@ -1,5 +1,9 @@
 /*
-    INSTRUCTIONS: Open SIS, copy/paste into console. wait for errors to stop, then call read_classes()
+    INSTRUCTIONS: 
+    1) Open SIS, copy/paste into console. wait for errors to stop, then call read_classes()
+    2) Copy paste output into course-catalog/temp.json
+    3) Open jumbo-scheduler, call mergeCatalogs(total_catalog, parseCatalog("temp.json")) 
+    4) Copy paste output into course-catalog/catalog.json
 */
 
 const class_table = document.getElementsByClassName("tfp_accordion_row cls-show-js");
