@@ -4,6 +4,10 @@
     2) Copy paste output into course-catalog/temp.json
     3) Open jumbo-scheduler, call mergeCatalogs(total_catalog, parseCatalog("temp.json")) 
     4) Copy paste output into course-catalog/catalog.json
+    
+    5) fix any bugs that will inevitably throw in the prereq parser
+       - Usually these will be an abbreviation that needs to be added (substitutions variable in initialSanitize)
+       - Or it's a typo in the actual prereq. Feel free to edit any prereqs in the actual JSON
 */
 
 const class_table = document.getElementsByClassName("tfp_accordion_row cls-show-js");

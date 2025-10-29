@@ -46933,7 +46933,7 @@
     "attributes": [
       "SoE-Engineering"
     ],
-    "prereqs": "ME, HFE, HFP or ENP grads or undergrads",
+    "prereqs": "None",
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
@@ -47863,7 +47863,7 @@
       "SoE-HASS",
       "SoE-HASS-Humanities"
     ],
-    "prereqs": "PS41, PS42 or PS43",
+    "prereqs": "PS-41, PS-42 or PS-43",
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": true,

@@ -132,6 +132,7 @@ const initialSanitize = (line) => {
         "EDUCATION": "ED",
         "PHILOSOPHY": "PHIL",
         "COMPUTER SCIENCE": "CS",
+        "COMPE": "EE",
 
         "PHY 1 AND 11 SHARED LAB": "PHY 1",
         "PHY 2 AND 12 SHARED LAB": "PHY 2",
