@@ -137,6 +137,11 @@ header {
     background-color: var(--deep-blue);
 }
 
+#cf-subject-menu, #cf-attributes-menu {
+    height: 300px !important;
+    overflow-y: scroll !important;
+}
+
 #class-finder-window {
     position: fixed;
     z-index: 10;
@@ -217,10 +222,6 @@ header {
                     border-radius: var(--roundness);
                     margin: 5px 0px 10px;
                     padding: 1px 5px;
-                }
-
-                .ui-selectmenu-text {
-                    color: FieldText !important;
                 }
 
                 input[type="submit"] {
