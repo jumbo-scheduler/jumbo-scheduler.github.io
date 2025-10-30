@@ -257,6 +257,7 @@ header {
                         border: solid 1px var(--deep-blue);
                         border-radius: var(--roundness);
                         background-color: white;
+                        color: black;
                     }
                 }
             }

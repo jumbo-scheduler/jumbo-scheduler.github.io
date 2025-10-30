@@ -29,26 +29,8 @@ const class_finder_template = `
                     <input type="submit" value="SEARCH" />
                 </form>
                 <div id="class-finder-results">
-                    <p id="cf-num-results">Found n results</p>
+                    <p id="cf-num-results">Enter a search query on the left</p>
                     <div id="cf-results-list">
-                        <div class="cf-result">
-
-                        </div>
-                        <div class="cf-result">
-
-                        </div>
-                        <div class="cf-result">
-
-                        </div>
-                        <div class="cf-result">
-
-                        </div>
-                        <div class="cf-result">
-
-                        </div>
-                        <div class="cf-result">
-
-                        </div>
                     </div>
                 </div>
             </div>
@@ -84,6 +66,7 @@ window.onload = () => {
     finderWindow.find("select").selectmenu();
     finderWindow.find("#class-finder-close").on("click", () => {
         finderWindow.find("#class-finder-search").trigger("reset"); // clear the search
+        $("#cf-num-results").text(`Enter a search query on the left`)
         finderWindow.hide();
     })
 
@@ -94,7 +77,7 @@ window.onload = () => {
         if (finderWindow.is(":visible")) {
             // clear the search
             finderWindow.find("#class-finder-search").trigger("reset")
-
+            $("#cf-num-results").text(`Enter a search query on the left`)
             finderWindow.hide();
         } else {
             finderWindow.show();
@@ -139,7 +122,12 @@ const searchForClass = () => {
         // also extract the subject
         var sortedResults = quicksort(results)
 
-        console.log(sortedResults)
+
+        // populate the results tab
+        $("#cf-num-results").text(`Found ${sortedResults.length} results`)
+        $("#cf-results-list").empty()
+
+        for (var result of sortedResults) addResult(result)
     })
 }
 
@@ -162,12 +150,27 @@ const getStringMatchValue = (string, searchQuery) => {
 
     // if we have multiple words in the query, weight the score by how many matches
     var score = 0
-    for (var query of searchQuery) {
+    for (var i in searchQuery) {
+        var query = searchQuery[i]
+
         // pad any numbers to 4 digits
         if (parseInt(query) != undefined) query = query.padStart(4, '0')
 
+        // a match is a plus, 
         if (string.includes(query)) score += 10
     }
 
     return score
+}
+
+// JOON CHANGE THIS TO MAKE IT NOT UGLY
+const addResult = (result) => {
+    // this is rlly shitty code. def a first draft. pls change immediately
+    const result_template = 
+        `<div class=cf-result>
+            ${result.name} <br>
+            ${result.credits} credits <br>
+            Available in ${result.offeredInSpring ? `Spring${result.offeredInFall ? ` and Fall` : ``}` : `Fall`}
+        </div>`
+    $("#cf-results-list").append(result_template)
 }
