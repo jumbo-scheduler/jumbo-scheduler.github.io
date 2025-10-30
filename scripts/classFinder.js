@@ -67,27 +67,16 @@ window.onload = () => {
     // subjects
     finderWindow.find("#cf-subject").append(`
         <option selected disabled>Pick subject</option>
-        <option>Biology</option>
-        <option>Physics</option>
-        <option>Chemistry</option>
-        <option>Math</option>
-        <option>Mechanical Engineering</option>
+        <option>${departments.join(`</option>\n<option>`)}</option>
     `);
     // attributes
     finderWindow.find("#cf-attributes").append(`
         <option selected disabled>Pick attribute</option>
         <optgroup label="SOE">
-            <option>SOE-Pre-registraton Eligible</option>
-            <option>SOE-HASS</option>
-            <option>SOE-Computing</option>
+            <option>${engineeringAttributes.join(`</option>\n<option>`)}</option>
         </optgroup>
         <optgroup label="A&S">
-            <option>idk</option>
-            <option>what</option>
-            <option>the</option>
-            <option>A&S</option>
-            <option>attributes</option>
-            <option>are</option>
+            <option>${artsScienceAttributes.join(`</option>\n<option>`)}</option>
         </optgroup>
     `);
 

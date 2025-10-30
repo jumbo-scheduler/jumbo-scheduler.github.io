@@ -121,6 +121,10 @@ const attributes = [
     "South/Southeast Asia Cult/Lang",
     "World Civilization Requirement"
   ]
+
+const engineeringAttributes = attributes.filter(name => name.toUpperCase().slice(0, 3) == "SOE")
+const artsScienceAttributes = attributes.filter(name => name.toUpperCase().slice(0, 3) != "SOE")
+
 const departments = [
     "AAST",
     "ACL",
