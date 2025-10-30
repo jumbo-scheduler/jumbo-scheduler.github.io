@@ -10,7 +10,6 @@
  * Loads preexisting majors based on the query string and imports their requirements.
  * @function
  */
-const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("reqs") != null) {
     const reqs = urlParams.get("reqs").split(",");
 

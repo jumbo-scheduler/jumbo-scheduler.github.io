@@ -82,16 +82,92 @@ window.onload = () => {
 
     finderWindow.draggable({handle: "#class-finder-topbar", cancel: "img"});
     finderWindow.find("select").selectmenu();
-    finderWindow.find("#class-finder-close").on("click", () => finderWindow.hide());
-    
+    finderWindow.find("#class-finder-close").on("click", () => {
+        finderWindow.find("#class-finder-search").trigger("reset"); // clear the search
+        finderWindow.hide();
+    })
+
     finderWindow.hide();
 
     $("#class-finder-button").on("click", function (e) { 
         e.preventDefault();
         if (finderWindow.is(":visible")) {
+            // clear the search
+            finderWindow.find("#class-finder-search").trigger("reset")
+
             finderWindow.hide();
         } else {
             finderWindow.show();
         }
     });
+
+    searchForClass()
+}
+
+// handle submission:
+//      extracts form data
+//      searches the catalog for appropriate classes
+//      populates the results div
+const searchForClass = () => {
+    finderWindow.on("submit", e => {
+        e.preventDefault(); // no refresh
+
+        // extract form data
+        const quickSearchQuery = finderWindow.find("#cf-quick-search").val()
+        const subjectQuery = finderWindow.find("#cf-subject").val()
+        const attributeQuery = finderWindow.find("#cf-attributes").val()
+
+        // ok search time
+        var results = []
+        for (subject in total_catalog) {
+            var department = subject.split("-")[0]
+            var matchesFilters = true
+
+            // filter by department and attribute
+            matchesFilters = 
+                (subjectQuery == null || subjectQuery == department) && // matches department
+                (attributeQuery == null || total_catalog[subject].atrributes.includes(attributeQuery)) // matches attribute
+
+            if (matchesFilters) {
+                total_catalog[subject].stringMatch = getStringMatchValue(total_catalog[subject].name, quickSearchQuery)
+                if (total_catalog[subject].stringMatch > 0) results.push(total_catalog[subject])
+            }
+        }
+
+        // now we sort based on string matching
+        // quick sort my beloved
+        // also extract the subject
+        var sortedResults = quicksort(results)
+
+        console.log(sortedResults)
+    })
+}
+
+const quicksort = (array) => {
+    if (array.length < 2) return array
+    const pivot = array[0]
+
+    const before = quicksort(array.slice(1).filter(x => x.stringMatch >= pivot.stringMatch))
+    const after = quicksort(array.slice(1).filter(x => x.stringMatch < pivot.stringMatch))
+
+    return before.concat(pivot, after)
+}
+
+const getStringMatchValue = (string, searchQuery) => {
+    string = string.toUpperCase()
+    searchQuery = searchQuery.toUpperCase().split(" ")
+
+    // first look for exact matches
+    if (searchQuery.length == 1 && string.includes(searchQuery[0])) return Infinity
+
+    // if we have multiple words in the query, weight the score by how many matches
+    var score = 0
+    for (var query of searchQuery) {
+        // pad any numbers to 4 digits
+        if (parseInt(query) != undefined) query = query.padStart(4, '0')
+
+        if (string.includes(query)) score += 10
+    }
+
+    return score
 }
