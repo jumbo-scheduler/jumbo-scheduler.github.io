@@ -49,7 +49,7 @@ window.onload = () => {
     // subjects
     finderWindow.find("#cf-subject").append(`
         <option selected disabled>Pick subject</option>
-        <option>${departments.join(`</option>\n<option>`)}</option>
+        <option>${departments.map(x => `${departmentsPlaintext[x]} (${x})`).join(`</option>\n<option>`)}</option>
     `);
     // attributes
     finderWindow.find("#cf-attributes").append(`
@@ -67,6 +67,7 @@ window.onload = () => {
     finderWindow.find("#class-finder-close").on("click", () => {
         finderWindow.find("#class-finder-search").trigger("reset"); // clear the search
         $("#cf-num-results").text(`Enter a search query on the left`)
+        $("#cf-results-list").empty()
         finderWindow.hide();
     })
 
@@ -78,6 +79,7 @@ window.onload = () => {
             // clear the search
             finderWindow.find("#class-finder-search").trigger("reset")
             $("#cf-num-results").text(`Enter a search query on the left`)
+            $("#cf-results-list").empty()
             finderWindow.hide();
         } else {
             finderWindow.show();
@@ -97,7 +99,7 @@ const searchForClass = () => {
 
         // extract form data
         const quickSearchQuery = finderWindow.find("#cf-quick-search").val()
-        const subjectQuery = finderWindow.find("#cf-subject").val()
+        const subjectQuery = finderWindow.find("#cf-subject").val() == null ? null : finderWindow.find("#cf-subject").val().split('(')[1].split(')')[0]
         const attributeQuery = finderWindow.find("#cf-attributes").val()
 
         // ok search time
@@ -143,10 +145,24 @@ const quicksort = (array) => {
 
 const getStringMatchValue = (string, searchQuery) => {
     string = string.toUpperCase()
-    searchQuery = searchQuery.toUpperCase().split(" ")
 
-    // first look for exact matches
-    if (searchQuery.length == 1 && string.includes(searchQuery[0])) return Infinity
+    // if no query, show in alphabetical order with ascending class number
+    if (searchQuery == "") {
+        const className = string.split('-')[0]
+        const number = string.split('-')[1].slice(0, 4)
+
+        const alphabet = "ZYXWVUTSRQPONMLKIJHGFEDCBA"
+
+        return (
+            27 * 27 * 27 * alphabet.indexOf(className[0]) +
+                 27 * 27 * alphabet.indexOf(className[1]) + 
+                      27 * alphabet.indexOf(className[2])
+                                                        +
+            9999 - parseInt(number)    
+        )
+    }
+
+    searchQuery = searchQuery.toUpperCase().split(" ")
 
     // if we have multiple words in the query, weight the score by how many matches
     var score = 0
@@ -157,7 +173,17 @@ const getStringMatchValue = (string, searchQuery) => {
         if (parseInt(query) != undefined) query = query.padStart(4, '0')
 
         // a match is a plus, 
-        if (string.includes(query)) score += 10
+        if (string.includes(query)) {
+            // bias matches that occur earlier in the string
+            console.log(100 - string.indexOf(query))
+            score += 100 - string.indexOf(query)
+
+            // also, matches should only be valid if they are in the same pattern
+            // that is, if query is A B C
+            // this will not match a string A C B
+            // we do this by cutting of any parts of a string preceeding a match
+            string = string.slice(string.indexOf(query))
+        }
     }
 
     return score
