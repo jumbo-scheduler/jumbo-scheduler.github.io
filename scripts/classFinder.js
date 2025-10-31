@@ -111,7 +111,7 @@ const searchForClass = () => {
             // filter by department and attribute
             matchesFilters = 
                 (subjectQuery == null || subjectQuery == department) && // matches department
-                (attributeQuery == null || total_catalog[subject].atrributes.includes(attributeQuery)) // matches attribute
+                (attributeQuery == null || total_catalog[subject].attributes.includes(attributeQuery)) // matches attribute
 
             if (matchesFilters) {
                 total_catalog[subject].stringMatch = getStringMatchValue(total_catalog[subject].name, quickSearchQuery)
@@ -145,6 +145,7 @@ const quicksort = (array) => {
 
 const getStringMatchValue = (string, searchQuery) => {
     string = string.toUpperCase()
+    searchQuery = searchQuery.toUpperCase()
 
     // if no query, show in alphabetical order with ascending class number
     if (searchQuery == "") {
@@ -162,20 +163,24 @@ const getStringMatchValue = (string, searchQuery) => {
         )
     }
 
-    searchQuery = searchQuery.toUpperCase().split(" ")
+    // fine ill add support for "cs11"
+    if ((/^([A-Z]{2,4})([0-9]{1,4})$/).test(searchQuery)) {
+        const match = searchQuery.match(/^([A-Z]{2,4})([0-9]{1,4})$/)
+        searchQuery = [`${match[1]}`, match[2].padStart(4, '0')]
+    }
+    else searchQuery = searchQuery.split(/ |-/)
 
     // if we have multiple words in the query, weight the score by how many matches
     var score = 0
-    for (var i in searchQuery) {
+    for (var i = 0; i < searchQuery.length; i++) {
         var query = searchQuery[i]
 
         // pad any numbers to 4 digits
-        if (parseInt(query) != undefined) query = query.padStart(4, '0')
+        if (!isNaN(parseInt(query, 10))) query = query.padStart(4, '0')
 
         // a match is a plus, 
         if (string.includes(query)) {
             // bias matches that occur earlier in the string
-            console.log(100 - string.indexOf(query))
             score += 100 - string.indexOf(query)
 
             // also, matches should only be valid if they are in the same pattern

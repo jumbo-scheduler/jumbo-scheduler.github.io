@@ -287,6 +287,7 @@ const departmentsPlaintext = {
   "GER": "German",
   "GIS": "Geographic Information Systems",
   "GRA": "Graphic Arts",
+  "GRAC": "idk something to do with graphics",
   "GRK": "Greek",
   "HAA": "History of Art and Architecture",
   "HEB": "Hebrew",
