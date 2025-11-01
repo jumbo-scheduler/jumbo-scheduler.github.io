@@ -6,7 +6,7 @@
     4) Copy paste output into course-catalog/catalog.json
     
     5) fix any bugs that will inevitably throw in the prereq parser
-       - Usually these will be an abbreviation that needs to be added (substitutions variable in initialSanitize)
+       - Usually these will be an abbreviation that needs to be added (first variable in parsePrereqs.js)
        - Or it's a typo in the actual prereq. Feel free to edit any prereqs in the actual JSON
 */
 

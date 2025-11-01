@@ -4,17 +4,6 @@
 
 // helper functions
 //#region =====================================================
-const create_dropdown_data = (catalog) => {
-    var dropdown_data = []
-    for (var class_name in catalog) {
-        dropdown_data.push({
-            id: class_name,
-            text: catalog[class_name].name
-        })
-    }
-    return dropdown_data
-}
-
 // runs fn on each element in catalog (an object) and returns the edited catalog. essentially array.map
 const edit_catalogs = (fn, catalog) => {
     for (var a in catalog) {
@@ -345,16 +334,6 @@ const departmentsPlaintext = {
 }
 
 parsePrereqs(total_catalog)
-
-
-const fall_catalog = {}
-const spring_catalog = {}
-const total_catalog_no_SMFA = {}
-for (var subject in total_catalog) {
-    if (total_catalog[subject].location == "Medford/Somerville") total_catalog_no_SMFA[subject] = total_catalog[subject]
-    if (total_catalog[subject].offeredInFall) fall_catalog[subject] = total_catalog[subject]
-    if (total_catalog[subject].offeredInSpring) spring_catalog[subject] = total_catalog[subject]
-}
 
 // query strings
 const urlParams = new URLSearchParams(window.location.search)
