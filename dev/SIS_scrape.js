@@ -24,7 +24,9 @@ for (let row of show_more) {
 }
 
 // scrape the data from each row
-const read_classes = (term = "fall") => {
+const read_classes = (term) => {
+    if (term != "fall" && term != "spring") throw new Error("term must be 'fall' or 'spring'");
+
     for (let i = 0; i < class_table.length; i++) {
         let row = class_table[i]
         let class_name = row.children[0].innerText.split(' ')[0]
