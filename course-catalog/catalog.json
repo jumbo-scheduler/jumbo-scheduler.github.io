@@ -29149,7 +29149,7 @@
     "prereqs": "None",
     "credits": 4,
     "location": "Medford/Somerville",
-    "offeredInFall": false,
+    "offeredInFall": true,
     "offeredInSpring": true,
     "parsedPrereq": null
   },
@@ -34224,7 +34224,7 @@
     "prereqs": "None",
     "credits": 4,
     "location": "Medford/Somerville",
-    "offeredInFall": false,
+    "offeredInFall": true,
     "offeredInSpring": true,
     "parsedPrereq": null
   },
@@ -45980,7 +45980,20 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "YEAR",
+          "value": 0
+        },
+        {
+          "type": "YEAR",
+          "value": 1
+        }
+      ]
+    }
   },
   "AMER-0047": {
     "name": "AMER-0047: Dissent and Democracy: American Literature to 1900",
@@ -45994,7 +46007,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ANTH-0026": {
     "name": "ANTH-0026: Anthropology of Socialism and Postsocialism",
@@ -46010,7 +46024,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ANTH-0133": {
     "name": "ANTH-0133: Journalisms and Freedoms of Expression",
@@ -46025,7 +46040,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ARCH-0035": {
     "name": "ARCH-0035: Ancient Natural Disasters",
@@ -46045,7 +46061,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ARCH-0164": {
     "name": "ARCH-0164: Greek Art And Archaeology",
@@ -46061,7 +46078,24 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "CLS-0027"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "ARCH-0027"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "HAA-0019"
+        }
+      ]
+    }
   },
   "ARCH-0185": {
     "name": "ARCH-0185: Think Like an Archaeologist!",
@@ -46075,7 +46109,21 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "ALL OF",
+          "value": [
+            {
+              "type": "DEPARTMENT",
+              "value": "ARCH"
+            }
+          ]
+        }
+      ]
+    }
   },
   "AST-0061": {
     "name": "AST-0061: Exoplanets and Their Orbits",
@@ -46087,7 +46135,25 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "ALL OF",
+          "value": [
+            {
+              "type": "SUBJECT",
+              "value": "AST-0031"
+            },
+            {
+              "type": "SUBJECT",
+              "value": "AST-0051"
+            }
+          ]
+        }
+      ]
+    }
   },
   "AST-0161": {
     "name": "AST-0161: Exoplanets and Their Orbits",
@@ -46099,7 +46165,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "BIO-0021": {
     "name": "BIO-0021: Civic Biology II",
@@ -46108,7 +46175,11 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "SUBJECT",
+      "value": "BIO-0020"
+    }
   },
   "BIO-0065": {
     "name": "BIO-0065: Cancer Biology: From Development to Treatment",
@@ -46120,7 +46191,16 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "BIO-0013"
+        }
+      ]
+    }
   },
   "BIO-0122": {
     "name": "BIO-0122: Regeneration in Biology: From Nature to Medicine",
@@ -46132,7 +46212,20 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ALL OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "BIO-0013"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "BIO-0014"
+        }
+      ]
+    }
   },
   "BIO-0133": {
     "name": "BIO-0133: Ecological Statistics & Data w/Lab",
@@ -46145,7 +46238,8 @@
     "credits": 5,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "BIO-0191": {
     "name": "BIO-0191: Protein Structure and Function",
@@ -46157,7 +46251,20 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "CHEM-0171"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "BIO-0152"
+        }
+      ]
+    }
   },
   "CEE-0062": {
     "name": "CEE-0062: Project Management and Engineering Economics",
@@ -46169,7 +46276,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CEE-0103": {
     "name": "CEE-0103: Climate Change Science and Engineering",
@@ -46181,7 +46289,20 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "YEAR",
+          "value": 2
+        },
+        {
+          "type": "YEAR",
+          "value": 3
+        }
+      ]
+    }
   },
   "CEE-0184": {
     "name": "CEE-0184: Resilient and Equitable Infrastructure",
@@ -46193,7 +46314,11 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "SUBJECT",
+      "value": "CEE-0032"
+    }
   },
   "CHBE-0011": {
     "name": "CHBE-0011: Chemical Engineering Thermodynamics",
@@ -46205,7 +46330,20 @@
     "credits": 4,
     "location": "Tu, Th 1:30PM - 2:45PM",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ALL OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "CHBE-0010"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "CHEM-0031"
+        }
+      ]
+    }
   },
   "CHBE-0116": {
     "name": "CHBE-0116: Composite Materials",
@@ -46217,7 +46355,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CHEM-0035": {
     "name": "CHEM-0035: Biophysical Chemistry",
@@ -46226,7 +46365,42 @@
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "ALL OF",
+          "value": [
+            {
+              "type": "ONE OF",
+              "value": [
+                {
+                  "type": "SUBJECT",
+                  "value": "CHEM-0002"
+                },
+                {
+                  "type": "SUBJECT",
+                  "value": "CHEM-12"
+                }
+              ]
+            },
+            {
+              "type": "SUBJECT",
+              "value": "MATH-0032"
+            },
+            {
+              "type": "SUBJECT",
+              "value": "PHY-0001"
+            }
+          ]
+        },
+        {
+          "type": "SUBJECT",
+          "value": "PHY-11"
+        }
+      ]
+    }
   },
   "CHNS-0079": {
     "name": "CHNS-0079: Women And Gender In Modern Chinese Culture",
@@ -46244,7 +46418,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CHNS-0101": {
     "name": "CHNS-0101: Foundations Chinese Thought",
@@ -46262,7 +46437,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CLS-0035": {
     "name": "CLS-0035: Ancient Natural Disasters",
@@ -46282,7 +46458,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CLS-0056": {
     "name": "CLS-0056: Greek And Roman Comedy",
@@ -46297,7 +46474,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CLS-0079": {
     "name": "CLS-0079: War and Diplomacy in the Ancient World",
@@ -46315,7 +46493,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CLS-0105": {
     "name": "CLS-0105: Nature and the Environment in Greek Mythology",
@@ -46331,7 +46510,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CLS-0108": {
     "name": "CLS-0108: Alexander the Great: History, Myth, Legend, and Legacy",
@@ -46349,7 +46529,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CLS-0135": {
     "name": "CLS-0135: Ancient Natural Disasters",
@@ -46369,7 +46550,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CLS-0164": {
     "name": "CLS-0164: Greek Art And Archaeology",
@@ -46385,7 +46567,24 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "CLS-0027"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "ARCH-0027"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "HAA-0019"
+        }
+      ]
+    }
   },
   "CLS-0169": {
     "name": "CLS-0169: North Africa in Antiquity",
@@ -46406,7 +46605,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CLS-0189": {
     "name": "CLS-0189: Seminar In Ancient Philosophy - Ignorance and Argument",
@@ -46420,7 +46620,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CS-0107": {
     "name": "CS-0107: Compilers",
@@ -46433,7 +46634,25 @@
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "ALL OF",
+          "value": [
+            {
+              "type": "SUBJECT",
+              "value": "CS-0040"
+            },
+            {
+              "type": "SUBJECT",
+              "value": "CS-0105"
+            }
+          ]
+        }
+      ]
+    }
   },
   "CS-0110": {
     "name": "CS-0110: Debugging Cloud Computing",
@@ -46444,7 +46663,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CS-0145": {
     "name": "CS-0145: Bayesian Deep Learning",
@@ -46455,7 +46675,20 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "CS-0135"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "CS-0136"
+        }
+      ]
+    }
   },
   "CS-0155": {
     "name": "CS-0155: Special Topics in Social Context of Computing - Computing & the Queer Community",
@@ -46464,7 +46697,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CS-0162": {
     "name": "CS-0162: Quantum Computer Science",
@@ -46475,7 +46709,42 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "ALL OF",
+          "value": [
+            {
+              "type": "SUBJECT",
+              "value": "MATH-0034"
+            },
+            {
+              "type": "SUBJECT",
+              "value": "MATH-0070"
+            },
+            {
+              "type": "ONE OF",
+              "value": [
+                {
+                  "type": "SUBJECT",
+                  "value": "CS-0061"
+                },
+                {
+                  "type": "SUBJECT",
+                  "value": "MATH-0061"
+                },
+                {
+                  "type": "SUBJECT",
+                  "value": "MATH-0065"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
   },
   "CS-0172": {
     "name": "CS-0172: HCI for Disability",
@@ -46486,7 +46755,55 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ALL OF",
+      "value": [
+        {
+          "type": "ONE OF",
+          "value": [
+            {
+              "type": "SUBJECT",
+              "value": "CS-0171"
+            },
+            {
+              "type": "SUBJECT",
+              "value": "CS-0133"
+            },
+            {
+              "type": "ONE OF",
+              "value": [
+                {
+                  "type": "YEAR",
+                  "value": 3
+                },
+                {
+                  "type": "DEPARTMENT",
+                  "value": "PSY"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "ONE OF",
+          "value": [
+            {
+              "type": "SUBJECT",
+              "value": "ES-0002"
+            },
+            {
+              "type": "SUBJECT",
+              "value": "CS-0010"
+            },
+            {
+              "type": "SUBJECT",
+              "value": "CS-0011"
+            }
+          ]
+        }
+      ]
+    }
   },
   "CS-0179": {
     "name": "CS-0179: Experimental Methods for Engineers",
@@ -46497,7 +46814,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CSHD-0149": {
     "name": "CSHD-0149: Evidence-Based Interventions with Children and Youth",
@@ -46511,7 +46829,20 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "CSDH-0143"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "CSDH-191"
+        }
+      ]
+    }
   },
   "CSHD-0185": {
     "name": "CSHD-0185: Promoting Positive Youth Development: Applying Developmental Science In The Community",
@@ -46525,7 +46856,11 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "SUBJECT",
+      "value": "CSHD-0001"
+    }
   },
   "CSHD-0195": {
     "name": "CSHD-0195: Developmental Disorders In Language And Reading",
@@ -46534,7 +46869,11 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "SUBJECT",
+      "value": "CSHD-0001"
+    }
   },
   "CSHD-0196": {
     "name": "CSHD-0196: Contemporary Families in the 21st Century",
@@ -46548,7 +46887,20 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "CSHD-0001"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "PSY-0001"
+        }
+      ]
+    }
   },
   "CVS-0085": {
     "name": "CVS-0085: Performance for Social Change",
@@ -46564,7 +46916,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CVS-0111": {
     "name": "CVS-0111: Environmental Justice And World Literature",
@@ -46580,7 +46933,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CVS-0118": {
     "name": "CVS-0118: Seminar: Hannah Arendt",
@@ -46596,7 +46950,8 @@
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CVS-0119": {
     "name": "CVS-0119: Who Owns the Past? Art, Heritage, and Global Conflicts",
@@ -46610,7 +46965,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CVS-0145": {
     "name": "CVS-0145: Community Organizing II",
@@ -46619,7 +46975,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "CVS-0155": {
     "name": "CVS-0155: Promoting Positive Youth Development: Applying Developmental Science In The Community",
@@ -46633,7 +46990,11 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "SUBJECT",
+      "value": "CSHD-0001"
+    }
   },
   "DH-0118": {
     "name": "DH-0118: Uncovering the Past: Historical Soc in Digital Age",
@@ -46650,7 +47011,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "DNC-0023": {
     "name": "DNC-0023: Modern III",
@@ -46663,7 +47025,8 @@
     "credits": 2,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "DNC-0039": {
     "name": "DNC-0039: Tap Dance II",
@@ -46676,7 +47039,8 @@
     "credits": 2,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "DNC-0047": {
     "name": "DNC-0047: Kathak Storytelling",
@@ -46693,7 +47057,8 @@
     "credits": 2,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "DNC-0067": {
     "name": "DNC-0067: Latin Social Dance",
@@ -46706,7 +47071,8 @@
     "credits": 2,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "EC-0130": {
     "name": "EC-0130: Topics In Environmental Economics",
@@ -46720,7 +47086,25 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "ALL OF",
+          "value": [
+            {
+              "type": "SUBJECT",
+              "value": "EC-0011"
+            },
+            {
+              "type": "SUBJECT",
+              "value": "EC-13"
+            }
+          ]
+        }
+      ]
+    }
   },
   "EC-0179": {
     "name": "EC-0179: Law And Economics",
@@ -46734,7 +47118,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ECS-0044": {
     "name": "ECS-0044: Geochemical Cycles",
@@ -46746,7 +47131,38 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "ALL OF",
+          "value": [
+            {
+              "type": "ONE OF",
+              "value": [
+                {
+                  "type": "SUBJECT",
+                  "value": "ECS-0001"
+                },
+                {
+                  "type": "SUBJECT",
+                  "value": "ECS-0003"
+                }
+              ]
+            },
+            {
+              "type": "SUBJECT",
+              "value": "CHEM-0001"
+            }
+          ]
+        },
+        {
+          "type": "SUBJECT",
+          "value": "CHEM-0011"
+        }
+      ]
+    }
   },
   "ED-0160": {
     "name": "ED-0160: Post-Colonial Theories in Education",
@@ -46755,7 +47171,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "EE-0107": {
     "name": "EE-0107: Communications Systems",
@@ -46767,7 +47184,16 @@
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "EE-0023"
+        }
+      ]
+    }
   },
   "EE-0140": {
     "name": "EE-0140: Machine Learning via Sequential Interaction",
@@ -46779,7 +47205,33 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ALL OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "MATH-0070"
+        },
+        {
+          "type": "ONE OF",
+          "value": [
+            {
+              "type": "SUBJECT",
+              "value": "EE-0024"
+            },
+            {
+              "type": "SUBJECT",
+              "value": "EE-0104"
+            },
+            {
+              "type": "SUBJECT",
+              "value": "MATH-0165"
+            }
+          ]
+        }
+      ]
+    }
   },
   "EE-0141": {
     "name": "EE-0141: Trusted and Responsible AI",
@@ -46791,7 +47243,24 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "EE-0143"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "CS-0131"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "CS-0135"
+        }
+      ]
+    }
   },
   "EE-0156": {
     "name": "EE-0156: Advanced Topics In Computer Architecture",
@@ -46806,7 +47275,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "EE-0166": {
     "name": "EE-0166: Digital IC Design",
@@ -46818,7 +47288,20 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "EE-0025"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "EE-0103"
+        }
+      ]
+    }
   },
   "EE-0180": {
     "name": "EE-0180: Wearable System Design",
@@ -46830,7 +47313,28 @@
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "EE-0020"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "ES-0004"
+        },
+        {
+          "type": "DEPARTMENT",
+          "value": "EE"
+        },
+        {
+          "type": "DEPARTMENT",
+          "value": "BME"
+        }
+      ]
+    }
   },
   "EM-0062": {
     "name": "EM-0062: Project Management and Engineering Economics",
@@ -46842,7 +47346,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ENG-0038": {
     "name": "ENG-0038: First African American Writers",
@@ -46856,7 +47361,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ENG-0059": {
     "name": "ENG-0059: The Paranoid Imagination",
@@ -46870,7 +47376,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ENG-0107": {
     "name": "ENG-0107: Chaucer",
@@ -46884,7 +47391,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ENG-0111": {
     "name": "ENG-0111: English Literature Of The 17th Century",
@@ -46898,7 +47406,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ENG-0112": {
     "name": "ENG-0112: Topics In Shakespeare - Hamlet",
@@ -46912,7 +47421,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ENG-0182": {
     "name": "ENG-0182: American Gothic",
@@ -46926,7 +47436,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ENP-0112": {
     "name": "ENP-0112: Engineering Forensics",
@@ -46937,7 +47448,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ENV-0035": {
     "name": "ENV-0035: Ancient Natural Disasters",
@@ -46957,7 +47469,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ENV-0106": {
     "name": "ENV-0106: Nature and the Environment in Greek Mythology",
@@ -46973,7 +47486,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ENV-0143": {
     "name": "ENV-0143: Evolutionary Biology",
@@ -46985,7 +47499,8 @@
     "credits": 5,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ENV-0158": {
     "name": "ENV-0158: Occupational & Environmental Health",
@@ -46996,7 +47511,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ENV-0160": {
     "name": "ENV-0160: Environmental Justice And World Literature",
@@ -47012,7 +47528,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "FMS-0103": {
     "name": "FMS-0103: Journalisms and Freedoms of Expression",
@@ -47026,7 +47543,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "FMS-0125": {
     "name": "FMS-0125: Jewish Experience On Film",
@@ -47044,7 +47562,8 @@
     "credits": 3,
     "location": "Tu 4:30PM - 7:30PM",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "FMS-0141": {
     "name": "FMS-0141: Creating Children’s Media",
@@ -47058,7 +47577,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "FMS-0150": {
     "name": "FMS-0150: Advanced Documentary Production",
@@ -47071,7 +47591,20 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "FMS-0010"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "FMS-13"
+        }
+      ]
+    }
   },
   "FMS-0188": {
     "name": "FMS-0188: The Horror Film",
@@ -47084,7 +47617,8 @@
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "FR-0092": {
     "name": "FR-0092: Special Topics - Laughter, Politics, Media: Fra",
@@ -47100,7 +47634,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "FR-0139": {
     "name": "FR-0139: New Narratives of the Maghreb",
@@ -47119,7 +47654,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "FR-0172": {
     "name": "FR-0172: Twentieth-century French Novel I",
@@ -47133,7 +47669,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "FR-0192": {
     "name": "FR-0192: Special Topics - Enchanted Ethics",
@@ -47147,7 +47684,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "GER-0068": {
     "name": "GER-0068: Masterpieces of German Literature",
@@ -47163,7 +47701,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "GER-0072": {
     "name": "GER-0072: Laughing and Crying",
@@ -47179,7 +47718,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "GRK-0112": {
     "name": "GRK-0112: Elementary Ancient Greek II",
@@ -47188,7 +47728,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "GRK-0181": {
     "name": "GRK-0181: Greek Seminar - The Greco-Roman World & the Invention of America",
@@ -47206,7 +47747,16 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "GRK-0003"
+        }
+      ]
+    }
   },
   "HAA-0006": {
     "name": "HAA-0006: Early Mesopotamian Art and Architecture",
@@ -47222,7 +47772,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "HAA-0032": {
     "name": "HAA-0032: High Renaissance In Italy",
@@ -47238,7 +47789,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "HAA-0104": {
     "name": "HAA-0104: Greek Art And Archaeology",
@@ -47254,7 +47806,24 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "CLS-0027"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "ARCH-0027"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "HAA-0019"
+        }
+      ]
+    }
   },
   "HAA-0132": {
     "name": "HAA-0132: High Renaissance In Italy",
@@ -47270,7 +47839,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "HIST-0060": {
     "name": "HIST-0060: World Revolution: Global Communism",
@@ -47281,7 +47851,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "HIST-0100": {
     "name": "HIST-0100: UncoveringPast:HistSocDigital",
@@ -47298,7 +47869,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "HIST-0101": {
     "name": "HIST-0101: Alexander the Great: History, Myth, Legend, and Legacy",
@@ -47316,7 +47888,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "HIST-0154": {
     "name": "HIST-0154: Health And Healing In Medieval And Early Modern Europe",
@@ -47333,7 +47906,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ILCS-0062": {
     "name": "ILCS-0062: Laughing and Crying",
@@ -47349,7 +47923,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ILCS-0064": {
     "name": "ILCS-0064: Being Human: Literature & Existentialism",
@@ -47358,7 +47933,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ILCS-0069": {
     "name": "ILCS-0069: Satire in Russian and Czech Literature",
@@ -47374,7 +47950,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ILCS-0199": {
     "name": "ILCS-0199: Senior Honors Thesis B",
@@ -47383,7 +47960,8 @@
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ILVS-0004": {
     "name": "ILVS-0004: Introduction To Arts Of Africa",
@@ -47401,7 +47979,20 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "YEAR",
+          "value": 0
+        },
+        {
+          "type": "YEAR",
+          "value": 1
+        }
+      ]
+    }
   },
   "ILVS-0024": {
     "name": "ILVS-0024: Being Human: Literature & Existentialism",
@@ -47410,7 +48001,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ILVS-0025": {
     "name": "ILVS-0025: Laughing and Crying",
@@ -47426,7 +48018,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ILVS-0029": {
     "name": "ILVS-0029: Dance on Camera",
@@ -47439,7 +48032,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ILVS-0056": {
     "name": "ILVS-0056: Political Cinema",
@@ -47453,7 +48047,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ILVS-0059": {
     "name": "ILVS-0059: The Paranoid Imagination",
@@ -47467,7 +48062,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ILVS-0160": {
     "name": "ILVS-0160: Environmental Justice And World Literature",
@@ -47483,7 +48079,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ILVS-0164": {
     "name": "ILVS-0164: Who Owns the Past? Art, Heritage, and Global Conflicts",
@@ -47497,7 +48094,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ILVS-0177": {
     "name": "ILVS-0177: The Horror Film",
@@ -47510,7 +48108,8 @@
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ILVS-0186": {
     "name": "ILVS-0186: How Films Think",
@@ -47524,7 +48123,20 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ALL OF",
+      "value": [
+        {
+          "type": "DEPARTMENT",
+          "value": "ENG"
+        },
+        {
+          "type": "DEPARTMENT",
+          "value": "FMS"
+        }
+      ]
+    }
   },
   "ITAL-0072": {
     "name": "ITAL-0072: Arte Povera and Post-WWII Sculpture",
@@ -47540,7 +48152,8 @@
     "credits": 3,
     "location": "Fenway",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ITAL-0199": {
     "name": "ITAL-0199: Honors Thesis B",
@@ -47554,7 +48167,8 @@
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "JS-0030": {
     "name": "JS-0030: Religious, Philosophical Roots of Modern World 2",
@@ -47568,7 +48182,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "JS-0035": {
     "name": "JS-0035: Religion and Ethics",
@@ -47586,7 +48201,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "JS-0157": {
     "name": "JS-0157: Seminar: Hannah Arendt",
@@ -47602,7 +48218,8 @@
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "LAS-0019": {
     "name": "LAS-0019: Modern Latin America",
@@ -47623,7 +48240,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "LAT-0113": {
     "name": "LAT-0113: Intermediate Latin",
@@ -47632,7 +48250,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "LAT-0120": {
     "name": "LAT-0120: Review and Readings - Ovid",
@@ -47647,7 +48266,16 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "LAT-0003"
+        }
+      ]
+    }
   },
   "LING-0155": {
     "name": "LING-0155: Development Of Language",
@@ -47661,7 +48289,20 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "PSY-0001"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "CSHD-0001"
+        }
+      ]
+    }
   },
   "MATH-0164": {
     "name": "MATH-0164: The Mathematics of Poverty and Inequality",
@@ -47673,7 +48314,20 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ALL OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "MATH-0042"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "MATH-0051"
+        }
+      ]
+    }
   },
   "ME-0122": {
     "name": "ME-0122: Advanced Vibrations",
@@ -47685,7 +48339,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ME-0123": {
     "name": "ME-0123: Biomechanics",
@@ -47697,7 +48352,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "ME-0125": {
     "name": "ME-0125: Mechanics of Materials at the Micro & Nano Scale",
@@ -47708,7 +48364,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "MUS-0026": {
     "name": "MUS-0026: History of Jazz",
@@ -47723,7 +48380,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "MUS-0053": {
     "name": "MUS-0053: Composer of The Year - Mahler Then and Now",
@@ -47736,7 +48394,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "MUS-0160": {
     "name": "MUS-0160: Music, Emotion, and Therapy in the Stoic Tradition",
@@ -47754,7 +48413,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "MUS-0165": {
     "name": "MUS-0165: Studies In 20th- and 21st-Century Music - Studies in Creative Process",
@@ -47767,7 +48427,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "PAIM-0070": {
     "name": "PAIM-0070: Contemporary Portrait",
@@ -47780,7 +48441,8 @@
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "PHIL-0044": {
     "name": "PHIL-0044: Philosophy as a Way of Life",
@@ -47794,7 +48456,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "PHIL-0188": {
     "name": "PHIL-0188: Seminar In The History Of Philosophy - Ignorance and Argument",
@@ -47808,7 +48471,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "POR-0022": {
     "name": "POR-0022: Composition And Conversation II",
@@ -47823,7 +48487,8 @@
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "POR-0092": {
     "name": "POR-0092: Special Topics In Portuguese-speaking Cultures",
@@ -47837,7 +48502,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "PS-0102": {
     "name": "PS-0102: Congress, Bureaucracy, And Public Policy",
@@ -47851,7 +48517,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "PS-0157": {
     "name": "PS-0157: Seminar: Hannah Arendt",
@@ -47867,7 +48534,24 @@
     "credits": 4,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "SUBJECT",
+          "value": "PS-41"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "PS-42"
+        },
+        {
+          "type": "SUBJECT",
+          "value": "PS-43"
+        }
+      ]
+    }
   },
   "PS-0180": {
     "name": "PS-0180: Regionalism In African International Relations",
@@ -47885,7 +48569,16 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": {
+      "type": "ONE OF",
+      "value": [
+        {
+          "type": "YEAR",
+          "value": 1
+        }
+      ]
+    }
   },
   "RCD-0051": {
     "name": "RCD-0051: Introduction to Asian American Studies",
@@ -47905,7 +48598,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "RCD-0070": {
     "name": "RCD-0070: Colonial Schooling in Comparative Perspective",
@@ -47921,7 +48615,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "REL-0030": {
     "name": "REL-0030: Religious, Philosophical Roots of Modern World 2",
@@ -47935,7 +48630,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "REL-0053": {
     "name": "REL-0053: Asian Religions",
@@ -47955,7 +48651,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "REL-0062": {
     "name": "REL-0062: Jesus from the 1st to the 21st Century",
@@ -47969,7 +48666,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "REL-0162": {
     "name": "REL-0162: Jesus from the 1st to the 21st Century",
@@ -47983,7 +48681,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "REL-0171": {
     "name": "REL-0171: Modern Hinduism",
@@ -48000,7 +48699,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "REL-0176": {
     "name": "REL-0176: Islam And Modernity",
@@ -48019,7 +48719,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "RUS-0064": {
     "name": "RUS-0064: Being Human: Literature & Existentialism",
@@ -48028,7 +48729,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "RUS-0069": {
     "name": "RUS-0069: Satire in Russian and Czech Literature",
@@ -48044,7 +48746,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "RUS-0092": {
     "name": "RUS-0092: Special Topics - Tarkovsky & Slow Cinema",
@@ -48061,7 +48764,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "SOC-0074": {
     "name": "SOC-0074: Race, Caste, and Capitalism",
@@ -48075,7 +48779,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "SOC-0118": {
     "name": "SOC-0118: Uncovering the Past: Historical Soc in Digital Age",
@@ -48092,7 +48797,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "SOC-0189": {
     "name": "SOC-0189: DuBois and the Souls of Sociology",
@@ -48101,7 +48807,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "STS-0001": {
     "name": "STS-0001: STS Lunch Seminar",
@@ -48110,7 +48817,8 @@
     "credits": 1,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "STS-0058": {
     "name": "STS-0058: Sound and Sonic Imagination",
@@ -48126,7 +48834,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "STS-0102": {
     "name": "STS-0102: Global Environmental History",
@@ -48143,7 +48852,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "STS-0154": {
     "name": "STS-0154: Health And Healing In Medieval And Early Modern Europe",
@@ -48160,7 +48870,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "TPS-0029": {
     "name": "TPS-0029: Greek And Roman Comedy",
@@ -48175,7 +48886,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "TPS-0035": {
     "name": "TPS-0035: Performance for Social Change",
@@ -48191,7 +48903,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "TPS-0050": {
     "name": "TPS-0050: Acting Shakespeare",
@@ -48204,7 +48917,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "TPS-0060": {
     "name": "TPS-0060: Costume Technology",
@@ -48217,7 +48931,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "UEP-0020": {
     "name": "UEP-0020: Global Cities",
@@ -48231,7 +48946,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "UEP-0105": {
     "name": "UEP-0105: Urban Planning And Design",
@@ -48245,7 +48961,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "UEP-0185": {
     "name": "UEP-0185: Impact Investing for Catalytic Impact: Filling Capital Gaps",
@@ -48254,7 +48971,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "VMS-0121": {
     "name": "VMS-0121: Beyond the Studio: Collab & Participatory Art",
@@ -48267,7 +48985,8 @@
     "credits": 3,
     "location": "Fenway",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "VMS-0123": {
     "name": "VMS-0123: Liquidities: Art & Water, 1800-Present",
@@ -48280,7 +48999,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "VMS-0130": {
     "name": "VMS-0130: Arte Povera and Post-WWII Sculpture",
@@ -48296,7 +49016,8 @@
     "credits": 3,
     "location": "Fenway",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "VMS-0190": {
     "name": "VMS-0190: The Art of Building Empire",
@@ -48312,7 +49033,8 @@
     "credits": 3,
     "location": "Fenway",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "VMS-0192": {
     "name": "VMS-0192: Latin American Icons",
@@ -48326,7 +49048,8 @@
     "credits": 3,
     "location": "Fenway",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "WGSS-0042": {
     "name": "WGSS-0042: Women And Gender In Modern Chinese Culture",
@@ -48344,7 +49067,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "WGSS-0123": {
     "name": "WGSS-0123: Frankenstein's Sisters: Austen & Shelley",
@@ -48358,7 +49082,8 @@
     "credits": 3,
     "location": "Medford/Somerville",
     "offeredInFall": true,
-    "offeredInSpring": false
+    "offeredInSpring": false,
+    "parsedPrereq": null
   },
   "WGSS-0132": {
     "name": "WGSS-0132: Myth, Ritual, And Symbol",
@@ -48376,6 +49101,113 @@
     "prereqs": "None",
     "credits": 3,
     "location": "Medford/Somerville",
+    "offeredInFall": true,
+    "offeredInSpring": false,
+    "parsedPrereq": null
+  },
+  "CS-0196": {
+    "name": "CS-0196: Cybersecurity Clinic II",
+    "attributes": [
+      "SOE-Computing"
+    ],
+    "prereqs": "CS 195",
+    "credits": 3,
+    "location": "Medford/Somerville",
+    "offeredInFall": true,
+    "offeredInSpring": false
+  },
+  "DH-0130": {
+    "name": "DH-0130: Natural Language Processing and the Human Record",
+    "attributes": [],
+    "prereqs": "CLS 161 or CS 11 or CS 10 or permission",
+    "credits": 3,
+    "location": "Medford/Somerville",
+    "offeredInFall": true,
+    "offeredInSpring": false
+  },
+  "EC-0155": {
+    "name": "EC-0155: Sustainable Finance and Investment",
+    "attributes": [
+      "BFA-Social Science",
+      "LA-Distribution-Social Sciences",
+      "SoE-HASS",
+      "SoE-HASS-Social Sciences"
+    ],
+    "prereqs": "EC 50 or 150",
+    "credits": 3,
+    "location": "Medford/Somerville",
+    "offeredInFall": true,
+    "offeredInSpring": false
+  },
+  "ENV-0188": {
+    "name": "ENV-0188: Impact Investing for Catalytic Impact: Filling Capital Gaps",
+    "attributes": [],
+    "prereqs": "Graduate students only; undergraduates require instructor permission",
+    "credits": 3,
+    "location": "Medford/Somerville",
+    "offeredInFall": true,
+    "offeredInSpring": false
+  },
+  "GIS-0103": {
+    "name": "GIS-0103: Introduction to Remote Sensing",
+    "attributes": [
+      "SOE – Pre-Registration Eligible",
+      "SoE-Engineering"
+    ],
+    "prereqs": "None",
+    "credits": 3,
+    "location": "Medford/Somerville",
+    "offeredInFall": true,
+    "offeredInSpring": false
+  },
+  "GIS-0111": {
+    "name": "GIS-0111: Python II",
+    "attributes": [],
+    "prereqs": "None",
+    "credits": 1,
+    "location": "Medford/Somerville",
+    "offeredInFall": true,
+    "offeredInSpring": false
+  },
+  "GIS-0112": {
+    "name": "GIS-0112: Programming with R",
+    "attributes": [],
+    "prereqs": "None",
+    "credits": 1,
+    "location": "Medford/Somerville",
+    "offeredInFall": true,
+    "offeredInSpring": false
+  },
+  "MATH-0169": {
+    "name": "MATH-0169: Machine Learning via Sequential Interaction",
+    "attributes": [
+      "SOE – Pre-Registration Eligible",
+      "SoE-Engineering"
+    ],
+    "prereqs": "MATH 0070 and (EE 0024 or EE 0104 or MATH 0165)",
+    "credits": 3,
+    "location": "Medford/Somerville",
+    "offeredInFall": true,
+    "offeredInSpring": false
+  },
+  "PHY-0192": {
+    "name": "PHY-0192: Physics Seminar - Neutrino Research",
+    "attributes": [
+      "BFA-Science/Technology",
+      "LA-Distribution-Natural Sciences"
+    ],
+    "prereqs": "PHY 13",
+    "credits": 3,
+    "location": "Medford/Somerville",
+    "offeredInFall": true,
+    "offeredInSpring": false
+  },
+  "VMS-0050": {
+    "name": "VMS-0050: Mapping “East Asias” in New England",
+    "attributes": [],
+    "prereqs": "None",
+    "credits": 3,
+    "location": "Fenway",
     "offeredInFall": true,
     "offeredInSpring": false
   }

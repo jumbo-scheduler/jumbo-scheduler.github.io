@@ -1,11 +1,13 @@
 /*
     INSTRUCTIONS: 
-    1) Open SIS, copy/paste into console. wait for errors to stop, then call read_classes()
-    2) Copy paste output into course-catalog/temp.json
-    3) Open jumbo-scheduler, call mergeCatalogs(total_catalog, parseCatalog("temp.json")) 
-    4) Copy paste output into course-catalog/catalog.json
+    1) Open SIS, copy/paste into console. wait for errors to stop
+    2) Call read_classes("fall") OR read_classes("spring")
+    3) Copy paste output (as Object) into course-catalog/temp.json
+    4) Open jumbo-scheduler in localhost, call mergeCatalogs(total_catalog, parseCatalog("temp.json")); 
+    5) Copy paste output (as Object) into course-catalog/catalog.json
+    6) Clear the contents of temp.json
     
-    5) fix any bugs that will inevitably throw in the prereq parser
+    7) fix any bugs that will inevitably throw in the prereq parser
        - Usually these will be an abbreviation that needs to be added (first variable in parsePrereqs.js)
        - Or it's a typo in the actual prereq. Feel free to edit any prereqs in the actual JSON
 */
