@@ -1,51 +1,53 @@
 const class_finder_template = `
-    <section id="class-finder-window" class="hasshadow">
-        <div id="class-finder-topbar">
-            <div id="class-finder-header">
-                <img src="/img/class_finder_mag.svg">
-                <h2>Find a course</h2>
+    <div id="class-finder-window-wrapper">
+        <section id="class-finder-window" class="hasshadow">
+            <div id="class-finder-topbar">
+                <div id="class-finder-header">
+                    <img src="/img/class_finder_mag.svg">
+                    <h2>Find a course</h2>
+                </div>
+                <button id="class-finder-close">
+                    <img src="/img/class_finder_x.svg">
+                </button>
             </div>
-            <button id="class-finder-close">
-                <img src="/img/class_finder_x.svg">
-            </button>
-        </div>
-        <div id="class-finder">
-            <div id="class-finder-search-container">
-                <form id="class-finder-search">
-                    <label for="cf-quick-search">
-                        Quick search <br>
-                        <input id="cf-quick-search" name="cf-quick-search" type="text" placeholder="Class name"/>
-                    </label>
-                    <div class="horiz-rule"></div>
-                    <label for="cf-semester">
-                        Semester <br>
-                        <select id="cf-semester" name="cf-semester">
-                            <option>Current Semester (default)</option>
-                            <option>last semester</option>
-                            <option>the one before that</option>
-                            <option>etc...</option>
-                        </select>
-                    </label>
-                    <label for="cf-subject">
-                        Course subject <br>
-                        <select id="cf-subject" name="cf-subject">
-                        </select>
-                    </label>
-                    <label for="cf-attributes">
-                        Attributes <br>
-                        <select id="cf-attributes" name="cf-attributes">
-                        </select>
-                    </label>
-                    <input type="submit" value="SEARCH" />
-                </form>
-                <div id="class-finder-results">
-                    <p id="cf-num-results">Enter a search query on the left</p>
-                    <div id="cf-results-list">
+            <div id="class-finder">
+                <div id="class-finder-search-container">
+                    <form id="class-finder-search">
+                        <label for="cf-quick-search">
+                            Quick search <br>
+                            <input id="cf-quick-search" name="cf-quick-search" type="text" placeholder="Class name"/>
+                        </label>
+                        <div class="horiz-rule"></div>
+                        <label for="cf-semester">
+                            Semester <br>
+                            <select id="cf-semester" name="cf-semester">
+                                <option>Current Semester (default)</option>
+                                <option>last semester</option>
+                                <option>the one before that</option>
+                                <option>etc...</option>
+                            </select>
+                        </label>
+                        <label for="cf-subject">
+                            Course subject <br>
+                            <select id="cf-subject" name="cf-subject">
+                            </select>
+                        </label>
+                        <label for="cf-attributes">
+                            Attributes <br>
+                            <select id="cf-attributes" name="cf-attributes">
+                            </select>
+                        </label>
+                        <input type="submit" value="SEARCH" />
+                    </form>
+                    <div id="class-finder-results">
+                        <p id="cf-num-results">Enter a search query on the left</p>
+                        <div id="cf-results-list">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 `;
 
 let finderWindow;
@@ -104,6 +106,8 @@ window.onload = () => {
 //      extracts form data
 //      searches the catalog for appropriate classes
 //      populates the results div
+const SCORE_FUDGER = 10;
+
 const searchForClass = () => {
     finderWindow.on("submit", e => {
         e.preventDefault(); // no refresh
@@ -126,7 +130,7 @@ const searchForClass = () => {
 
             if (matchesFilters) {
                 total_catalog[subject].stringMatch = getStringMatchValue(total_catalog[subject].name, quickSearchQuery)
-                if (total_catalog[subject].stringMatch > 0) results.push(total_catalog[subject])
+                if (total_catalog[subject].stringMatch > SCORE_FUDGER) results.push(total_catalog[subject])
             }
         }
 
