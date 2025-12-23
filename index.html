@@ -20,6 +20,7 @@
         <script src="scripts/globals.js"></script>
 
         <script src="scripts/classFinder.js"></script>
+        <script src="scripts/degreeSheetBuilder.js"></script>
         <script src="scripts/createSchedule.js"></script>
 
     </head>
@@ -48,14 +49,63 @@
             </div>
         </header>
 
-        <button id="class-finder-button">
+        <button id="class-finder-button" class="hasshadow">
             <img src="/img/class_finder_mag.svg" />
             <p>Class Finder</p>
         </button>
 
-        <main>
+
+        <!------------------------------------------------------------------>
+
+        <main id="degree-sheet-builder">
+            <!--------------------- TABS ----------------------------------->
+            <section id="tab-bar">
+                <!-- One tab -->
+                <div class="tab tab-selected">
+                    <p class="tab-label">Major pain in the ass more like</p>
+                    <button class="close-tab-button"><span style="font-family: monospace">✖</span></button>
+                </div>
+                <!-- Another tab -->
+                <div class="tab">
+                    <p class="tab-label">Minor</p>
+                    <button class="close-tab-button"><span style="font-family: monospace">✖</span></button>
+                </div>
+                <!-- tabs end -->
+                 <div class="tab">
+                    <p class="tab-label">Minor</p>
+                    <button class="close-tab-button"><span style="font-family: monospace">✖</span></button>
+                </div>
+                <div class="tab">
+                    <p class="tab-label">Minor</p>
+                    <button class="close-tab-button"><span style="font-family: monospace">✖</span></button>
+                </div>
+                <div class="tab">
+                    <p class="tab-label">Minor</p>
+                    <button class="close-tab-button"><span style="font-family: monospace">✖</span></button>
+                </div>
+                <div class="tab">
+                    <p class="tab-label">Minor</p>
+                    <button class="close-tab-button"><span style="font-family: monospace">✖</span></button>
+                </div>
+                <div class="tab">
+                    <p class="tab-label">Minor</p>
+                    <button class="close-tab-button"><span style="font-family: monospace">✖</span></button>
+                </div>
+                <div class="tab">
+                    <p class="tab-label">Minor</p>
+                    <button class="close-tab-button"><span style="font-family: monospace">✖</span></button>
+                </div>
+                <button id="new-tab-button"> <span style="font-family: monospace">➕</span></button>
+            </section>
+
+            <section id="degree-sheet" class="hasshadow">
+                <!-- TODO -->
+            </section>
+
         </main>
 
+        <!------------------------------------------------------------------>
+        
         <p id="credits">
             Backend by <a href="https://henryty83.github.io">Henry Ty</a> <br>
             Frontend by <a href="https://joonchicken.github.io">Joon Heo</a> <br>

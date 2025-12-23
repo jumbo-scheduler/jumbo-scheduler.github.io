@@ -1,5 +1,5 @@
 const class_finder_template = `
-    <section id="class-finder-window">
+    <section id="class-finder-window" class="hasshadow">
         <div id="class-finder-topbar">
             <div id="class-finder-header">
                 <img src="/img/class_finder_mag.svg">
@@ -15,6 +15,16 @@ const class_finder_template = `
                     <label for="cf-quick-search">
                         Quick search <br>
                         <input id="cf-quick-search" name="cf-quick-search" type="text" placeholder="Class name"/>
+                    </label>
+                    <div class="horiz-rule"></div>
+                    <label for="cf-semester">
+                        Semester <br>
+                        <select id="cf-semester" name="cf-semester">
+                            <option>Current Semester (default)</option>
+                            <option>last semester</option>
+                            <option>the one before that</option>
+                            <option>etc...</option>
+                        </select>
                     </label>
                     <label for="cf-subject">
                         Course subject <br>
@@ -47,13 +57,14 @@ window.onload = () => {
     // TESTING SELECT MENU - DELETE AND POPULATE WITH REAL STUFF
     // SWITCH TO COMBOBOX LATER: https://jqueryui.com/autocomplete/#combobox
     // subjects
-    finderWindow.find("#cf-subject").append(`
-        <option selected disabled>Pick subject</option>
+    let cf_subject = finderWindow.find("#cf-subject");
+    cf_subject.append(`
+        <option selected disabled value="">Pick subject</option>
         <option>${departments.map(x => `${departmentsPlaintext[x]} (${x})`).join(`</option>\n<option>`)}</option>
     `);
     // attributes
     finderWindow.find("#cf-attributes").append(`
-        <option selected disabled>Pick attribute</option>
+        <option selected disabled value="">Pick attribute</option>
         <optgroup label="SOE">
             <option>${engineeringAttributes.join(`</option>\n<option>`)}</option>
         </optgroup>

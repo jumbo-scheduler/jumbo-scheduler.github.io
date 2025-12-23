@@ -4,11 +4,16 @@ All important HTML IDs and Classes are documented herein
 =============================================================
 =                                                           =
 =    Legend:                                                =
-=       🍬 is a wrapper component. Not too important.       =
+=       🍬 is a wrapper component. Just eye candy.          =
 =       ⚠️ is something that is functionally important      =
 =          to the site                                      =
 =                                                           =
 =============================================================
+
+=== ALL
+
+    🍬.hasshadow ................................ div (creates drop shadow for windows)
+    🍬.horiz-rule ............................... div (creates 1px horiz line, var(--light-gray))
 
 
 === Header
@@ -27,10 +32,11 @@ All important HTML IDs and Classes are documented herein
     └───⚠️#class-finder ......................... div (actual class finder)
         └───⚠️#class-finder-search .............. form
         |   └─── Has input names - cf-quick-search (string input)
+        |                        - cf-semester     (dropdown)    <---   NEW !!!!!!!!!!!!!
         |                        - cf-subject      (dropdown)
         |                        - cf-attributes   (dropdown)
         └───🍬#class-finder-results ............. div
-            └───⚠️#cf-results-list .............. div (populate here)
+            └───⚠️#cf-results-list .............. div (populate with cf-results)
                 └───⚠️.cf-result ................ div (single result)
 
 
@@ -38,9 +44,10 @@ All important HTML IDs and Classes are documented herein
 === Tabs
 
     ⚠️#tab-bar .................................. div
-    ⚠️.tab ...................................... button
-    └───⚠️.tab-close-button ..................... button
-    ⚠️#new-tab-button ........................... button
+    └───⚠️.tab .................................. button (can have attribute tab-selected) <---   NEW !!!!!!!!!!!!!
+    |   └───⚠️.tab-label ........................ p                                        <---   NEW !!!!!!!!!!!!!
+    |   └───⚠️.tab-close-button ................. button
+    └───⚠️#new-tab-button ....................... button
 
 
 === Degree General Controls
