@@ -160,6 +160,8 @@ header {
 }
 
 #class-finder-window-wrapper {
+    pointer-events: none; /* click through div */
+
     top: 0;
     left: 0;
     width: 100vw;
@@ -173,6 +175,8 @@ header {
 }
 
 #class-finder-window {
+    pointer-events: all; /* but make child clickable */
+
     position: fixed;
     z-index: 10;
     width: 100%;
@@ -302,6 +306,7 @@ header {
         }
     }
 }
+
 /* #endregion ============================================================== */
 
 
