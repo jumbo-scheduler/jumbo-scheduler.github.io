@@ -31,10 +31,10 @@ const class_finder_template = `
                         <label for="cf-semester">
                             Semester <br>
                             <select id="cf-semester" name="cf-semester">
-                                <option>Current Semester (default)</option>
-                                <option>last semester</option>
-                                <option>the one before that</option>
-                                <option>etc...</option>
+                                <option>Both</option>
+                                <option>Fall</option>
+                                <option>Spring</option>
+
                             </select>
                         </label>
                         <input type="submit" value="SEARCH" />
@@ -114,21 +114,23 @@ const searchForClass = () => {
 
         // extract form data
         const quickSearchQuery = finderWindow.find("#cf-quick-search").val()
-        const subjectQuery = finderWindow.find("#cf-subject").val() == null ? null : finderWindow.find("#cf-subject").val().split('(')[1].split(')')[0]
+        const subjectQuery = finderWindow.find("#cf-subject").val() == "All" ? null : finderWindow.find("#cf-subject").val().split('(')[1].split(')')[0]
         const attributeQuery = finderWindow.find("#cf-attributes").val()
+        const semesterQuery = finderWindow.find("#cf-semester").val()
+
+        const requestedFall = semesterQuery == "Both" || semesterQuery == "Fall"
+        const requestedSpring = semesterQuery == "Both" || semesterQuery == "Spring"
 
         // ok search time
         var results = []
         for (subject in total_catalog) {
             var department = subject.split("-")[0]
-            var matchesFilters = true
 
             // filter by department and attribute
-
-            // HENRY I BROKE THE THING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            matchesFilters = 
-                (subjectQuery == "All" || subjectQuery == department) && // matches department
-                (attributeQuery == "All" || total_catalog[subject].attributes.includes(attributeQuery)) // matches attribute
+            var matchesFilters = 
+                (subjectQuery == null || subjectQuery == department) && // matches department
+                (attributeQuery == "All" || total_catalog[subject].attributes.includes(attributeQuery)) && // matches attribute
+                ((total_catalog[subject].offeredInFall && requestedFall) || (total_catalog[subject].offeredInSpring && requestedSpring)) // matches term
 
             if (matchesFilters) {
                 total_catalog[subject].stringMatch = getStringMatchValue(total_catalog[subject].name, quickSearchQuery)
