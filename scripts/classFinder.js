@@ -1,6 +1,6 @@
 const class_finder_template = `
     <div id="class-finder-window-wrapper">
-        <section id="class-finder-window" class="hasshadow">
+        <section id="class-finder-window" class="iswindow">
             <div id="class-finder-topbar">
                 <div id="class-finder-header">
                     <img src="/img/class_finder_mag.svg">
@@ -15,18 +15,9 @@ const class_finder_template = `
                     <form id="class-finder-search">
                         <label for="cf-quick-search">
                             Quick search <br>
-                            <input id="cf-quick-search" name="cf-quick-search" type="text" placeholder="Class name"/>
+                            <input id="cf-quick-search" name="cf-quick-search" type="text" placeholder="E.g., cs11, calculus, ..."/>
                         </label>
                         <div class="horiz-rule"></div>
-                        <label for="cf-semester">
-                            Semester <br>
-                            <select id="cf-semester" name="cf-semester">
-                                <option>Current Semester (default)</option>
-                                <option>last semester</option>
-                                <option>the one before that</option>
-                                <option>etc...</option>
-                            </select>
-                        </label>
                         <label for="cf-subject">
                             Course subject <br>
                             <select id="cf-subject" name="cf-subject">
@@ -35,6 +26,15 @@ const class_finder_template = `
                         <label for="cf-attributes">
                             Attributes <br>
                             <select id="cf-attributes" name="cf-attributes">
+                            </select>
+                        </label>
+                        <label for="cf-semester">
+                            Semester <br>
+                            <select id="cf-semester" name="cf-semester">
+                                <option>Current Semester (default)</option>
+                                <option>last semester</option>
+                                <option>the one before that</option>
+                                <option>etc...</option>
                             </select>
                         </label>
                         <input type="submit" value="SEARCH" />
@@ -61,12 +61,12 @@ window.onload = () => {
     // subjects
     let cf_subject = finderWindow.find("#cf-subject");
     cf_subject.append(`
-        <option selected disabled value="">Pick subject</option>
+        <option selected>All</option>
         <option>${departments.map(x => `${departmentsPlaintext[x]} (${x})`).join(`</option>\n<option>`)}</option>
     `);
     // attributes
     finderWindow.find("#cf-attributes").append(`
-        <option selected disabled value="">Pick attribute</option>
+        <option selected>All</option>
         <optgroup label="SOE">
             <option>${engineeringAttributes.join(`</option>\n<option>`)}</option>
         </optgroup>
@@ -124,9 +124,11 @@ const searchForClass = () => {
             var matchesFilters = true
 
             // filter by department and attribute
+
+            // HENRY I BROKE THE THING !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             matchesFilters = 
-                (subjectQuery == null || subjectQuery == department) && // matches department
-                (attributeQuery == null || total_catalog[subject].attributes.includes(attributeQuery)) // matches attribute
+                (subjectQuery == "All" || subjectQuery == department) && // matches department
+                (attributeQuery == "All" || total_catalog[subject].attributes.includes(attributeQuery)) // matches attribute
 
             if (matchesFilters) {
                 total_catalog[subject].stringMatch = getStringMatchValue(total_catalog[subject].name, quickSearchQuery)
@@ -209,14 +211,21 @@ const getStringMatchValue = (string, searchQuery) => {
     return score
 }
 
-// JOON CHANGE THIS TO MAKE IT NOT UGLY
 const addResult = (result) => {
-    // this is rlly shitty code. def a first draft. pls change immediately
+    let fullGovernmentName = result.name.split(":");
+    let courseID = fullGovernmentName.shift();
     const result_template = 
         `<div class=cf-result>
-            ${result.name} <br>
-            ${result.credits} credits <br>
-            Available in ${result.offeredInSpring ? `Spring${result.offeredInFall ? ` and Fall` : ``}` : `Fall`}
+            <p><b>${courseID}:\t</b>${fullGovernmentName.join()}</p> <br>
+            <div class="class-data">
+                <div>
+                    ${result.offeredInSpring ? `<span class="hl-green">Spring</span>` : ""}
+                    ${result.offeredInFall ? `<span class="hl-orange">Fall</span>`: ""}
+                </div>
+                <div>
+                    <b>${result.credits}</b> credit${result.credits == 1 ? "" : "s"}
+                </div>
+            </div>
         </div>`
     $("#cf-results-list").append(result_template)
 }
