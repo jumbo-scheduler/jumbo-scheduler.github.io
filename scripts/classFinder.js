@@ -149,6 +149,9 @@ const searchForClass = () => {
         $("#cf-results-list").empty()
 
         for (var result of sortedResults) addResult(result)
+
+        // scroll to top of results list
+        $("#cf-results-list").scrollTop(0);
     })
 }
 
