@@ -19,10 +19,6 @@
         <script src="dev/parsePrereqs.js"></script>
         <script src="scripts/globals.js"></script>
 
-        <script src="scripts/classFinder.js"></script>
-        <script src="scripts/degreeSheetBuilder.js"></script>
-        <script src="scripts/createSchedule.js"></script>
-
     </head>
     <body>
         <header>
@@ -53,6 +49,7 @@
             <img src="/img/class_finder_mag.svg" />
             <p>Class Finder</p>
         </button>
+        <script src="scripts/classFinder.js"></script>
 
 
         <!------------------------------------------------------------------>
@@ -61,15 +58,15 @@
             <!--------------------- TABS ----------------------------------->
             <section id="tab-bar">
                 <!-- One tab -->
-                <div class="tab tab-selected">
-                    <p class="tab-label">Major? More like major pain in the ass >:(</p>
+                <!-- <div class="tab tab-selected">
+                    <p class="tab-label">Major</p>
                     <button class="close-tab-button"><span style="font-family: monospace">✖</span></button>
-                </div>
+                </div> -->
                 <!-- More tabs -->
-                <div class="tab">
+                <!-- <div class="tab">
                     <p class="tab-label">Minor</p>
                     <button class="close-tab-button"><span style="font-family: monospace">✖</span></button>
-                </div>
+                </div> -->
                 <button id="new-tab-button"> <span style="font-family: monospace">➕</span></button>
                 
             </section>
@@ -79,14 +76,17 @@
                 <!-- TODO -->
             </section>
 
+            <script src="scripts/degreeSheetBuilder.js"></script>
         </main>
 
         <!------------------------------------------------------------------>
         
+        <script src="scripts/createSchedule.js"></script>
+
         <p id="credits">
             Backend by <a href="https://henryty83.github.io">Henry Ty</a> <br>
             Frontend by <a href="https://joonchicken.github.io">Joon Heo</a> <br>
-            Idea by <a href="https://blusquare.github.io">Dhyey Maharaja</a>
+            Idea by Dhyey Maharaja
         </p>
         <p id="contact">
             v0: Last updated December 2025 <br>
