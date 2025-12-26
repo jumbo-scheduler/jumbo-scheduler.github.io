@@ -55,6 +55,7 @@ const substitutions = {
     "OR CONCURRENT": "CONCURRENT ENROLLMENT",
     "PRIOR COMPLETION OR CONCURRENT ENROLLMENT IN": "CONCURRENT ENROLLMENT IN",
 
+    "BIOLOGY": "BIO",
     "ARCHEOLOGY": "ARCH",
     "ECONOMICS": "EC",
     "PHYSICS": "PHY",
@@ -83,7 +84,11 @@ const substitutions = {
     "BIOLOGY GROUP B": "(BIO 75, 108, 110, 112, 115, 116, 117, 118, 134, 186 or 246)"
 }
 
-
+// substitute entire lines
+const entireLineSubstitutions = {
+    "OPEN TO EDUCATION AND SCI, TECH, AND SOCIETY MAJOR ONLY OR CONSENT": "NONE",
+    "BFA SENIORS ONLY": "NONE",
+}
 
 
 
@@ -140,10 +145,9 @@ const initialSanitize = (line) => {
     // same thing but with the pattern "DEPT1/DEPT2 1234"
     line = line.replace(/([A-Z]{2,4})\/([A-Z]{2,4}) (\d{1,4}[A-Z]?)/g, "$1 / $2 $3");
 
-    // substitute entire lines
-    const entireLineSubstitutions = {
-        "OPEN TO EDUCATION AND SCI, TECH, AND SOCIETY MAJOR ONLY OR CONSENT": "NONE",
-    }
+    // add a space between a class name and numbers "CLASS1234"
+    line = line.replace(/([A-Z]{2,4})(\d{1,4}[A-Z]?)/g, "$1 $2");
+
     if (line in entireLineSubstitutions) {
         return entireLineSubstitutions[line];
     }
@@ -505,7 +509,7 @@ const parseLine = (tokens) => {
                 // if the phrase is a class year, e.g. freshman, sophomore, junior, senior, return type "YEAR"
                 // maps freshman -> 0, sophomore -> 1, junior -> 2, senior -> 3
                 // includes plurals and shorthand like "1st year"
-                if (/^(FRESHMAN|FRESHMEN|FIRST YEARS|FIRST YEAR STUDENTS ONLY|FIRST-YEARS)$/i.test(phrase)) {
+                if (/^(FRESHMAN|FRESHMEN|FIRST YEARS|FIRST YEAR STUDENTS ONLY|FIRST-YEARS|FIRST-YEAR)$/i.test(phrase)) {
                     token.type = "YEAR"
                     token.value = 0;
                     continue; // move to next token

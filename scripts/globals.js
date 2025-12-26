@@ -25,7 +25,12 @@ function loadFile(filePath) {
 }
 
 function parseCatalog(name) {
-    return JSON.parse(loadFile(`/course-catalog/${name}`))
+    try {
+        return JSON.parse(loadFile(`course-catalog/${name}`))
+    }
+    catch (e) {
+        return null
+    }
 }
 
 function mergeCatalogs(main, toMerge) {
@@ -42,6 +47,9 @@ function mergeCatalogs(main, toMerge) {
 //#endregion =====================================================
 
 const total_catalog = parseCatalog("catalog.json");
+if (parseCatalog("temp.json") != null) {
+    console.log(JSON.stringify(mergeCatalogs(total_catalog, parseCatalog("temp.json")), 4, ' '))
+}
 
 /**
  * gets data of a specific class
