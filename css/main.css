@@ -4,7 +4,7 @@
     --cornflower-light: #a0c1fb;
     --deep-blue: #2b4796;
     --deeper-blue: #1b347a;
-    --ds-text: #46484b;
+    --ds-text: #515357;
     --light-gray: #e3e7eb;
     --gray-text: #70767a;
     --gray-tint: #afafaf89;
@@ -38,6 +38,43 @@ body {
 b {
     font-weight: 550;
 }
+
+.ui-tooltip {
+    border: 0;
+    margin-top: -10px;
+}
+
+.hasshadow, .ui-tooltip {
+    box-shadow: var(--shadow-blue) 2px 2px 4px, var(--shadow-blue) 0px 0px 3px !important;
+}
+
+.iswindow {
+    box-shadow: var(--shadow-blue) 0px 0px 2px, var(--shadow-blue) 0px 0px 5px, var(--shadow-blue) 5px 5px 15px !important;
+}
+
+.horiz-rule {
+    background-color: var(--light-gray);
+    width: 100%;
+    height: 1px;
+    margin: 10px 0px;
+}
+
+.hl-green {
+    padding: 0px 5px;
+    border-radius: 5px;
+    background-color: #09ff002a;
+}
+
+.hl-orange {
+    padding: 0px 5px;
+    border-radius: 5px;
+    background-color: #ff6a002a;
+}
+
+
+/* #region =================================================================
+                HEADER
+   ========================================================================= */
 
 header {
     padding: 5px;
@@ -82,7 +119,7 @@ header {
     }
 
     #import-req-label, #export-req-label {
-        border: 1px solid #ccc;
+        border: 1px solid var(--shadow-blue-opaque);
         border-radius: var(--roundness);
         font-weight: 500;
 
@@ -93,7 +130,7 @@ header {
     }
 
     #import-req-label:hover, #export-req-label:hover {
-        background-color: #ccc;
+        background-color: var(--light-gray);
     }
 
     input[type="file"], input[type="button"] {
@@ -101,37 +138,8 @@ header {
     }
 }
 
-.ui-tooltip {
-    border: 0;
-    margin-top: -10px;
-}
+/* #endregion ============================================================== */
 
-.hasshadow, .ui-tooltip {
-    box-shadow: var(--shadow-blue) 2px 2px 4px, var(--shadow-blue) 0px 0px 3px !important;
-}
-
-.iswindow {
-    box-shadow: var(--shadow-blue) 0px 0px 2px, var(--shadow-blue) 0px 0px 5px, var(--shadow-blue) 5px 5px 15px !important;
-}
-
-.horiz-rule {
-    background-color: var(--light-gray);
-    width: 100%;
-    height: 1px;
-    margin: 10px 0px;
-}
-
-.hl-green {
-    padding: 0px 5px;
-    border-radius: 5px;
-    background-color: #09ff002a;
-}
-
-.hl-orange {
-    padding: 0px 5px;
-    border-radius: 5px;
-    background-color: #ff6a002a;
-}
 
 
 
@@ -521,13 +529,21 @@ main {
         }
     }
 
-    .ds-rename-button {
+    .ds-collapse-btn, .ds-rename-btn {
+        border-radius: 16px;
+    }
+
+    .ds-collapse-btn:hover, .ds-rename-btn:hover {
+        background-color: var(--light-gray);
+    }
+
+    .ds-rename-btn {
         margin-left: 5px;
     }
 
     #ds-items-container {
         margin-top: 15px;
-        padding: 0px 25px;
+        padding: 0px 50px 0px 25px;
 
         .ds-item {
             height: 30px;
@@ -584,10 +600,17 @@ main {
             border-radius: 8px;
             padding: 0px 8px;
 
+            cursor: default;
+
             span {
                 font-size: smaller;
                 margin-right: 2px;
+                user-select: none;
             }
+        }
+
+        button:hover {
+            background-color: var(--light-gray);
         }
     }
 

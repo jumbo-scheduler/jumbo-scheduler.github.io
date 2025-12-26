@@ -66,17 +66,29 @@
             <!------------------ DEGREE SHEET ------------------------------>
             <section id="degree-sheet" class="hasshadow">
                 <div id="ds-major-header">
-                    <button class="ds-collapse-button">
+                    <button class="ds-collapse-btn">
                         <img src="img/dropdown.svg" />
                     </button>
                     <h2>Major 1</h2>
-                    <button class="ds-rename-button">
+                    <button class="ds-rename-btn">
                         <img src="img/edit.svg" />
                     </button>
                 </div>
                 <div id="ds-items-container">
-                    <div class="ds-item">
+                    <div class="ds-item ds-item-CLASS">
                         <input placeholder="Search or select class name" />
+                        <button class="ds-item-dup"></button>
+                        <button class="ds-item-move"></button>
+                        <button class="ds-item-delete"></button>
+                    </div>
+                    <div class="ds-item ds-item-DEPT">
+                        <input placeholder="Search or select department" />
+                        <button class="ds-item-dup"></button>
+                        <button class="ds-item-move"></button>
+                        <button class="ds-item-delete"></button>
+                    </div>
+                    <div class="ds-item ds-item-ATTR">
+                        <input placeholder="Search or select attribute" />
                         <button class="ds-item-dup"></button>
                         <button class="ds-item-move"></button>
                         <button class="ds-item-delete"></button>
