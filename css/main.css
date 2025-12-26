@@ -4,10 +4,12 @@
     --cornflower-light: #a0c1fb;
     --deep-blue: #2b4796;
     --deeper-blue: #1b347a;
+    --ds-text: #46484b;
     --light-gray: #e3e7eb;
     --gray-text: #70767a;
     --gray-tint: #afafaf89;
     --shadow-blue: #13276966;
+    --shadow-blue-opaque: #a1a9c3;
 }
 
 @font-face {
@@ -99,7 +101,12 @@ header {
     }
 }
 
-.hasshadow {
+.ui-tooltip {
+    border: 0;
+    margin-top: -10px;
+}
+
+.hasshadow, .ui-tooltip {
     box-shadow: var(--shadow-blue) 2px 2px 4px, var(--shadow-blue) 0px 0px 3px !important;
 }
 
@@ -480,12 +487,108 @@ main {
    ========================================================================= */
 
     #degree-sheet {
+        color: var(--ds-text);
+
         min-height: 100px;
         width: 100%;
         background-color: white;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
         border-top-right-radius: 10px;
+
+        padding: 20px 15px 25px;
+
+        #ds-major-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+
+            h2 {
+                flex-shrink: 0;
+                color: var(--text);
+                font-weight: 700;
+                font-size: x-large;
+            }
+
+            button {
+                height: 25px;
+
+                img {
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    .ds-rename-button {
+        margin-left: 5px;
+    }
+
+    #ds-items-container {
+        margin-top: 15px;
+        padding: 0px 25px;
+
+        .ds-item {
+            height: 30px;
+            margin-top: 5px;
+            border: solid 1px var(--shadow-blue-opaque);
+            border-radius: 8px;
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: row;
+
+            input {
+                all: unset;
+                flex-grow: 1;
+                padding: 5px;
+                display: flex;
+                border: solid 1px #0000;
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+            
+            input:focus {
+                border-color: var(--cornflower-blue);
+            }
+
+            .ds-item-dup {
+                height: 100%;
+                width: 50px;
+                border: solid 0px var(--shadow-blue-opaque);
+                border-left-width: 1px;
+                flex-shrink: 0;
+            }
+
+            .ds-item-move {
+                height: 100%;
+                width: 60px;
+                background-color: var(--shadow-blue-opaque);
+                flex-shrink: 0;
+            }
+
+            .ds-item-delete {
+                flex-shrink: 0;
+            }
+        }
+    }
+
+    #ds-new-btns-container {
+        padding: 0px 25px;
+        margin-top: 20px;
+
+        button {
+            font-weight: 600;
+            border: solid 1px var(--ds-text);
+            border-radius: 8px;
+            padding: 0px 8px;
+
+            span {
+                font-size: smaller;
+                margin-right: 2px;
+            }
+        }
     }
 
 /* #endregion ============================================================== */

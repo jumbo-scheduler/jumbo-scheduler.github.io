@@ -22,11 +22,12 @@
     </head>
     <body>
         <header>
+            <h1 style="position: absolute; left: -1000px;">P-NUTS</h1>
             <a id="logo" href="/">
                 <img src="/img/pnuts_logo.svg" />
             </a>
             <div id="global-settings">
-                <label id="allow-smfa-label" for="allow-smfa" title="Include courses at the SMFA Fenway campus in suggested courses">
+                <label id="allow-smfa-label" for="allow-smfa" title="Include courses at the SMFA Fenway campus in course suggestions">
                     Allow classes in 
                     <img src="/img/SMFA_logo.svg" />
                     <input id="allow-smfa" type="checkbox">
@@ -64,7 +65,29 @@
 
             <!------------------ DEGREE SHEET ------------------------------>
             <section id="degree-sheet" class="hasshadow">
-                <!-- TODO -->
+                <div id="ds-major-header">
+                    <button class="ds-collapse-button">
+                        <img src="img/dropdown.svg" />
+                    </button>
+                    <h2>Major 1</h2>
+                    <button class="ds-rename-button">
+                        <img src="img/edit.svg" />
+                    </button>
+                </div>
+                <div id="ds-items-container">
+                    <div class="ds-item">
+                        <input placeholder="Search or select class name" />
+                        <button class="ds-item-dup"></button>
+                        <button class="ds-item-move"></button>
+                        <button class="ds-item-delete"></button>
+                    </div>
+                </div>
+                <div id="ds-new-btns-container">
+                    <button id="ds-new-class"> <span style="font-family: monospace">➕</span>CLASS</button>
+                    <button id="ds-new-dept"> <span style="font-family: monospace">➕</span>DEPT</button>
+                    <button id="ds-new-attr"> <span style="font-family: monospace">➕</span>ATTR</button>
+                    <button id="ds-new-group"> <span style="font-family: monospace">➕</span>GROUP</button>
+                </div>
             </section>
             <!-------------------------------------------------------------->
 
