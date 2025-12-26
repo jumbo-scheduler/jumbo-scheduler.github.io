@@ -65,3 +65,18 @@ const createTab = () => {
 createTab()
 
 $("#new-tab-button").on("click", createTab)
+
+$(function() {
+    let classesArr = Object.keys(total_catalog).map(key => total_catalog[key].name);
+    let deptsArr = Object.keys(departmentsPlaintext).map(key => `${key}: ${departmentsPlaintext[key]}`);
+
+    $(".ds-item-CLASS").find("input").autocomplete({
+        source: classesArr
+    });
+    $(".ds-item-DEPT").find("input").autocomplete({
+        source: deptsArr
+    });
+    $(".ds-item-ATTR").find("input").autocomplete({
+        source: attributes
+    });
+});

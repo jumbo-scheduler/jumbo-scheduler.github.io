@@ -5,7 +5,7 @@
     --deep-blue: #2b4796;
     --deeper-blue: #1b347a;
     --ds-text: #515357;
-    --light-gray: #e3e7eb;
+    --light-gray: #e6eaee;
     --gray-text: #70767a;
     --gray-tint: #afafaf89;
     --shadow-blue: #13276966;
@@ -531,14 +531,11 @@ main {
 
     .ds-collapse-btn, .ds-rename-btn {
         border-radius: 16px;
+        margin-right: -5px;
     }
 
     .ds-collapse-btn:hover, .ds-rename-btn:hover {
         background-color: var(--light-gray);
-    }
-
-    .ds-rename-btn {
-        margin-left: 5px;
     }
 
     #ds-items-container {
