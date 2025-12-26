@@ -53,6 +53,12 @@ const class_finder_template = `
 let finderWindow;
 
 window.onload = () => {
+    // generate tooltips out of title attributes
+    $(document).tooltip({
+        show: {
+            delay: 500
+      }});
+
     $(document.body).append(class_finder_template);
     finderWindow = $(document.body).find("#class-finder-window");
     
@@ -221,7 +227,7 @@ const addResult = (result) => {
     let courseID = fullGovernmentName.shift();
     const result_template = 
         `<div class=cf-result>
-            <p><b>${courseID}:\t</b>${fullGovernmentName.join()}</p> <br>
+            <p><b>${courseID}:</b>${fullGovernmentName.join()}</p> <br>
             <div class="class-data">
                 <div>
                     ${result.offeredInSpring ? `<span class="hl-green">Spring</span>` : ""}

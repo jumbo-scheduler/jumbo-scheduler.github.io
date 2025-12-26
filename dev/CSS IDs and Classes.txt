@@ -34,21 +34,21 @@ All important HTML IDs and Classes are documented herein
         |   └─── Has input names - cf-quick-search (string input)
         |                        - cf-subject      (dropdown)
         |                        - cf-attributes   (dropdown)
-        |                        - cf-semester     (dropdown)    <---   NEW !!!!!!!!!!!!!
+        |                        - cf-semester     (dropdown)
         |                        - cf-credits      (integer input) <---  NOT CREATED YET !!!!!!!!!!
         └───🍬#class-finder-results ............. div
             └───⚠️#cf-results-list .............. div (populate with cf-results)
                 └───⚠️.cf-result ................ div (single result)
-                    └───🍬p ..................... p   (class name goes here)      <---   NEW !!!!!!!!!!!!!
-                    └───🍬.class-data ........... div (semesters/credits go here) <---   NEW !!!!!!!!!!!!!
+                    └───🍬p ..................... p   (class name goes here)
+                    └───🍬.class-data ........... div (semesters/credits go here)
 
 
 
 === Tabs
 
     ⚠️#tab-bar .................................. div
-    └───⚠️.tab .................................. button (can have attribute tab-selected) <---   NEW !!!!!!!!!!!!!
-    |   └───⚠️.tab-label ........................ p                                        <---   NEW !!!!!!!!!!!!!
+    └───⚠️.tab .................................. button (can have attribute tab-selected)
+    |   └───⚠️.tab-label ........................ p
     |   └───⚠️.tab-close-button ................. button
     └───⚠️#new-tab-button ....................... button
 

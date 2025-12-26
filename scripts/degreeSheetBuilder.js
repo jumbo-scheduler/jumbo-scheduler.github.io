@@ -2,8 +2,23 @@
  *                  TABS
  *************************************/
 
+let numTabs = 0;
+let numAlerts = 0;
+
 const createTab = () => {
     // make a new tab, append to div and make it selected
+
+    // if too many say fuck you
+    if (numTabs > 9) {
+        if (numAlerts > 0 && Math.random() * 5 < 1) {
+            alert("Why does blud need so many minors 🤨📸");
+        } else {
+            alert("Blud thinks they're einstein taking more than 10 majors and minors");
+        }
+        numAlerts++;
+        return;
+    }
+    numTabs++;
 
     // find the lowest index that doesn't cause a collision
     const tabNames = $(".tab-label").get().map(x => $(x).text())
@@ -40,6 +55,7 @@ const createTab = () => {
                 nextOfKin.click() // we are so sorry for your loss
             }
             else newTab.remove()
+            numTabs--;
         }
     })
 
