@@ -113,6 +113,7 @@ window.onload = () => {
 //      searches the catalog for appropriate classes
 //      populates the results div
 const SCORE_FUDGER = 10;
+const SCORE_DEVIATION_CUTOFF = 500;
 
 const searchForClass = () => {
     finderWindow.on("submit", e => {
@@ -129,6 +130,7 @@ const searchForClass = () => {
 
         // ok search time
         var results = []
+        var bestScore = -1;
         for (subject in total_catalog) {
             var department = subject.split("-")[0]
 
@@ -140,10 +142,14 @@ const searchForClass = () => {
 
             if (matchesFilters) {
                 total_catalog[subject].stringMatch = getStringMatchValue(total_catalog[subject].name, quickSearchQuery)
+                bestScore = Math.max(bestScore, total_catalog[subject].stringMatch)
                 if (total_catalog[subject].stringMatch > SCORE_FUDGER) results.push(total_catalog[subject])
             }
         }
 
+        // filter out results that are significantly worse
+        results = results.filter(x => (bestScore - x.stringMatch) < SCORE_DEVIATION_CUTOFF)
+    
         // now we sort based on string matching
         // quick sort my beloved
         // also extract the subject
@@ -174,6 +180,21 @@ const quicksort = (array) => {
 const getStringMatchValue = (string, searchQuery) => {
     string = string.toUpperCase()
     searchQuery = searchQuery.toUpperCase()
+
+    // change any roman numerals in string to numbers
+    string = string.split(' ').map(x => {
+        if ((/^(I|II|III|IV|V)$/).test(x)) {
+            const romanToNum = {
+                "I": "0001",
+                "II": "0002",
+                "III": "0003",
+                "IV": "0004",
+                "V": "0005",
+            }
+            return romanToNum[x]
+        }
+        return x
+    }).join(' ')
 
     // if no query, show in alphabetical order with ascending class number
     if (searchQuery == "") {
@@ -209,7 +230,7 @@ const getStringMatchValue = (string, searchQuery) => {
         // a match is a plus, 
         if (string.includes(query)) {
             // bias matches that occur earlier in the string
-            score += 100 - string.indexOf(query)
+            score += 999 - string.indexOf(query)
 
             // also, matches should only be valid if they are in the same pattern
             // that is, if query is A B C
