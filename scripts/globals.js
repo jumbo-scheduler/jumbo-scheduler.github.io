@@ -61,7 +61,7 @@ function getClass(className) {
 
 const class_names = Object.keys(total_catalog);
 // tags
-const attributes = [
+const allAttributes = [
     "African Cult/Lang - Diasporas",
     "African Cult/Lang-Reg Origin",
     "BFA Advanced Studio",
@@ -119,8 +119,8 @@ const attributes = [
     "World Civilization Requirement"
   ]
 
-const engineeringAttributes = attributes.filter(name => name.toUpperCase().slice(0, 3) == "SOE")
-const artsScienceAttributes = attributes.filter(name => name.toUpperCase().slice(0, 3) != "SOE")
+const engineeringAttributes = allAttributes.filter(name => name.toUpperCase().slice(0, 3) == "SOE")
+const artsScienceAttributes = allAttributes.filter(name => name.toUpperCase().slice(0, 3) != "SOE")
 
 const departments = [
     "AAST",

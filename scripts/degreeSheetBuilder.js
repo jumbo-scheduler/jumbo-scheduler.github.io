@@ -84,6 +84,6 @@ $(function() {
         source: deptsArr
     });
     $(".ds-item-ATTR").find("input").autocomplete({
-        source: attributes
+        source: allAttributes
     });
 });
