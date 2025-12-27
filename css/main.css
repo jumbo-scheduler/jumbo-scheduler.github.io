@@ -529,6 +529,10 @@ main {
         }
     }
 
+    .ds-collapse-btn img {
+        transition: transform 0.2s ease;
+    }
+
     .ds-collapse-btn, .ds-rename-btn {
         border-radius: 16px;
         margin-right: -5px;
@@ -541,6 +545,8 @@ main {
     #ds-items-container {
         margin-top: 15px;
         padding: 0px 45px 0px 5px;
+        overflow: hidden;
+        transition: max-height 0.2s ease;
 
         .ds-item {
             display: flex;
