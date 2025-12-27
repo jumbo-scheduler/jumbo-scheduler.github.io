@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="2.0881594"
-     inkscape:cx="243.037"
-     inkscape:cy="118.76488"
+     inkscape:zoom="0.5"
+     inkscape:cx="663"
+     inkscape:cy="482"
      inkscape:window-width="1440"
      inkscape:window-height="830"
      inkscape:window-x="-6"
@@ -34,50 +34,97 @@
      inkscape:current-layer="layer1"
      showgrid="false" />
   <defs
-     id="defs1" />
+     id="defs1">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter17"
+       x="-0.2807059"
+       y="-0.2807059"
+       width="1.5614118"
+       height="1.5614118">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.0867386"
+         id="feGaussianBlur17" />
+    </filter>
+  </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
     <rect
+       style="opacity:0.220974;mix-blend-mode:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:12.5363;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter17)"
+       id="rect19"
+       width="31.621431"
+       height="31.621431"
+       x="135.95642"
+       y="87.82061"
+       ry="0"
+       inkscape:export-filename="edit.svg"
+       inkscape:export-xdpi="19.866842"
+       inkscape:export-ydpi="19.866842" />
+    <rect
+       style="opacity:0.220974;mix-blend-mode:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:12.5363;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter17)"
+       id="rect18"
+       width="31.621431"
+       height="31.621431"
+       x="77.086624"
+       y="87.82061"
+       ry="0"
+       inkscape:export-filename="edit.svg"
+       inkscape:export-xdpi="19.866842"
+       inkscape:export-ydpi="19.866842" />
+    <rect
+       style="opacity:0.22097378;mix-blend-mode:normal;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:12.5363;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter17)"
+       id="rect17"
+       width="31.621431"
+       height="31.621431"
+       x="17.81996"
+       y="87.82061"
+       ry="0"
+       inkscape:export-filename="edit.svg"
+       inkscape:export-xdpi="19.866842"
+       inkscape:export-ydpi="19.866842" />
+    <rect
+       style="opacity:0;fill:#8ddd27;fill-opacity:1;stroke:none;stroke-width:1.55732;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.252137"
+       id="rect7"
+       width="40.911999"
+       height="40.911999"
+       x="104.60329"
+       y="17.992344"
+       ry="0"
+       inkscape:export-filename="edit.svg"
+       inkscape:export-xdpi="19.866842"
+       inkscape:export-ydpi="19.866842" />
+    <rect
        style="fill:#588ae1;fill-opacity:1;stroke:none;stroke-width:4.61781;stroke-linecap:round;stroke-linejoin:round"
        id="rect2"
        width="502.63809"
        height="254.57613"
-       x="-5.9764175"
-       y="78.618759"
+       x="0.10549363"
+       y="169.71194"
        ry="1.7360256" />
     <rect
-       style="fill:#8ddd27;fill-opacity:0.337607;stroke:none;stroke-width:1.32292;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.252137;opacity:0"
+       style="opacity:0;fill:#8ddd27;fill-opacity:0.337607;stroke:none;stroke-width:1.55732;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.252137"
        id="rect6"
-       width="29.522608"
-       height="40.912388"
-       x="41.876499"
+       width="40.911999"
+       height="40.911999"
+       x="37.116898"
        y="17.992321"
        ry="0"
        inkscape:export-filename="dropdown.svg"
        inkscape:export-xdpi="19.866842"
        inkscape:export-ydpi="19.866842" />
-    <rect
-       style="fill:#e3e7eb;fill-opacity:0.67058825;stroke:none;stroke-width:1.32292;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.252137;opacity:0"
-       id="rect5"
-       width="29.522608"
-       height="40.912388"
-       x="77.797775"
-       y="18.120371"
-       ry="0"
-       inkscape:export-filename="edit.svg"
-       inkscape:export-xdpi="19.866844"
-       inkscape:export-ydpi="19.866844" />
     <path
        id="rect1"
        style="fill:#ffffff;stroke:#ffffff;stroke-width:3.55713;stroke-linecap:round;stroke-linejoin:round"
-       d="m 49.990246,115.69593 a 10.37155,10.37155 0 0 1 -1.216613,0.82385 10.37155,10.37155 0 0 1 -1.322345,0.64181 l 8.395572,14.54007 c 0.405956,0.70313 1.298732,0.94207 2.001868,0.53611 0.703136,-0.40596 0.942059,-1.29875 0.536103,-2.00188 z" />
+       d="m 56.072157,206.78911 a 10.37155,10.37155 0 0 1 -1.216613,0.82385 10.37155,10.37155 0 0 1 -1.322345,0.64181 l 8.395572,14.54007 c 0.405956,0.70313 1.298732,0.94207 2.001868,0.53611 0.703136,-0.40596 0.942059,-1.29875 0.536103,-2.00188 z" />
     <circle
        style="fill:#ffffff;fill-opacity:0;stroke:#ffffff;stroke-width:4.6248;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
        id="path1"
-       cx="-16.02066"
-       cy="114.92438"
+       cx="-56.300159"
+       cy="196.85434"
        r="10.37155"
        transform="rotate(-29.999999)" />
     <text
@@ -96,24 +143,24 @@
        id="rect3"
        width="5.9461694"
        height="39.993584"
-       x="19.301785"
-       y="93.625534"
+       x="25.383696"
+       y="184.71872"
        ry="3.4319317" />
     <rect
        style="fill:#f00000;fill-opacity:1;stroke:none;stroke-width:3.41344;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
        id="rect8"
        width="4.1722784"
        height="39.486759"
-       x="21.329084"
-       y="141.26717"
+       x="27.410995"
+       y="232.36035"
        ry="2.0861392" />
     <rect
        style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:3.41344;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
        id="rect9"
        width="4.1722789"
        height="39.486759"
-       x="173.83685"
-       y="29.70746"
+       x="242.55002"
+       y="89.819504"
        ry="2.0861394"
        transform="rotate(45)" />
     <rect
@@ -121,8 +168,8 @@
        id="rect10"
        width="4.1722789"
        height="39.486759"
-       x="-51.53698"
-       y="156.17963"
+       x="-111.64902"
+       y="224.89279"
        ry="2.0861394"
        transform="rotate(-45)" />
     <rect
@@ -130,7 +177,7 @@
        id="rect4"
        width="4.1722784"
        height="39.486759"
-       x="35.664291"
+       x="24.007296"
        y="19.41795"
        ry="2.0861392" />
     <path
@@ -148,24 +195,170 @@
        inkscape:rounded="0"
        inkscape:randomized="0"
        d="m 172.44313,34.218497 -4.32758,-7.495598 8.65517,0 z"
-       inkscape:transform-center-y="2.7123345"
-       transform="matrix(1.8146822,0,0,2.1711446,-256.29168,-27.707689)"
-       inkscape:transform-center-x="2.0592802e-06" />
+       inkscape:transform-center-y="2.3432557"
+       transform="matrix(1.5677502,0,0,1.8757072,-212.77486,-18.705712)"
+       inkscape:transform-center-x="9.1416866e-06" />
     <path
        id="path5"
        style="fill:#afafaf;fill-opacity:1;stroke:#afafaf;stroke-width:2.64583;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       d="M 102.44972,28.114303 90.290047,49.175495 82.747363,53.439184 82.668481,44.775186 94.828169,23.713993 Z"
+       d="m 134.94992,27.986057 -12.15968,21.061192 -7.54268,4.263689 -0.0789,-8.663998 12.15969,-21.061193 z"
        sodipodi:nodetypes="cccccc" />
     <text
        xml:space="preserve"
        style="font-size:28.8802px;line-height:0;font-family:Heavitas;-inkscape-font-specification:Heavitas;text-align:start;letter-spacing:1.06032px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.931515;stroke-linecap:round;stroke-linejoin:round"
-       x="65.887901"
-       y="124.94297"
+       x="71.96981"
+       y="216.03615"
        id="text1"><tspan
          sodipodi:role="line"
          id="tspan1"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Noto Sans KR';-inkscape-font-specification:'Noto Sans KR Bold';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.931515"
-         x="65.887901"
-         y="124.94297">Find a course</tspan></text>
+         x="71.96981"
+         y="216.03615">Find a course</tspan></text>
+    <rect
+       style="opacity:1;fill:#f00000;fill-opacity:1;stroke:#f00000;stroke-width:12.5363;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect11"
+       width="31.621431"
+       height="31.621431"
+       x="16.893919"
+       y="86.497696"
+       ry="0"
+       inkscape:export-filename="class_marker_color.svg"
+       inkscape:export-xdpi="18.40674"
+       inkscape:export-ydpi="18.40674" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:34.934px;line-height:0;font-family:'Noto Sans KR';-inkscape-font-specification:'Noto Sans KR Heavy';text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:9.70387;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="12.094161"
+       y="115.30388"
+       id="text15"
+       inkscape:export-filename="class_marker.svg"
+       inkscape:export-xdpi="18.40674"
+       inkscape:export-ydpi="18.40674"><tspan
+         sodipodi:role="line"
+         id="tspan15"
+         style="stroke-width:9.70387;fill:#ffffff;fill-opacity:1"
+         x="12.094161"
+         y="115.30388">CL</tspan></text>
+    <rect
+       style="opacity:1;fill:#ffcc00;fill-opacity:1;stroke:#ffcc00;stroke-width:12.5363;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect15"
+       width="31.621431"
+       height="31.621431"
+       x="75.956161"
+       y="86.497696"
+       ry="0"
+       inkscape:export-filename="dept_marker_color.svg"
+       inkscape:export-xdpi="18.40674"
+       inkscape:export-ydpi="18.40674" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:34.3895px;line-height:0;font-family:'Noto Sans KR';-inkscape-font-specification:'Noto Sans KR Heavy';text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;fill:#28170b;fill-opacity:1;stroke:none;stroke-width:9.55262;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="71.481155"
+       y="113.50664"
+       id="text16"
+       transform="scale(0.984413,1.0158338)"><tspan
+         sodipodi:role="line"
+         id="tspan16"
+         style="fill:#28170b;fill-opacity:1;stroke-width:9.55262"
+         x="71.481155"
+         y="113.50664">DE</tspan></text>
+    <rect
+       style="opacity:1;fill:#0049bb;fill-opacity:1;stroke:#0049bb;stroke-width:12.5363;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect16"
+       width="31.621431"
+       height="31.621431"
+       x="134.61757"
+       y="86.497696"
+       ry="0"
+       inkscape:export-filename="edit.svg"
+       inkscape:export-xdpi="19.866842"
+       inkscape:export-ydpi="19.866842" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:34.934px;line-height:0;font-family:'Noto Sans KR';-inkscape-font-specification:'Noto Sans KR Heavy';text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:9.70387;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="131.5376"
+       y="115.30388"
+       id="text17"
+       inkscape:export-filename="attr_marker_color.svg"
+       inkscape:export-xdpi="18.40674"
+       inkscape:export-ydpi="18.40674"><tspan
+         sodipodi:role="line"
+         id="tspan17"
+         style="fill:#ffffff;fill-opacity:1;stroke-width:9.70387"
+         x="131.5376"
+         y="115.30388">AT</tspan></text>
+    <rect
+       style="opacity:0;fill:#f00000;fill-opacity:1;stroke:#f00000;stroke-width:12.5363;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect20"
+       width="31.621431"
+       height="31.621431"
+       x="226.43323"
+       y="86.497696"
+       ry="0"
+       inkscape:export-filename="class_marker.svg"
+       inkscape:export-xdpi="18.40674"
+       inkscape:export-ydpi="18.40674" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:34.934px;line-height:0;font-family:'Noto Sans KR';-inkscape-font-specification:'Noto Sans KR Heavy';text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;fill:#70767a;fill-opacity:1;stroke:none;stroke-width:9.70387;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="221.63347"
+       y="115.30388"
+       id="text20"
+       inkscape:export-filename="class_marker.svg"
+       inkscape:export-xdpi="18.40674"
+       inkscape:export-ydpi="18.40674"><tspan
+         sodipodi:role="line"
+         id="tspan20"
+         style="fill:#70767a;fill-opacity:1;stroke-width:9.70387;stroke:none;stroke-opacity:1"
+         x="221.63347"
+         y="115.30388">CL</tspan></text>
+    <rect
+       style="opacity:0;fill:#ffcc00;fill-opacity:1;stroke:#ffcc00;stroke-width:12.5363;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect21"
+       width="31.621431"
+       height="31.621431"
+       x="285.49548"
+       y="86.497696"
+       ry="0"
+       inkscape:export-filename="dept_marker.svg"
+       inkscape:export-xdpi="18.40674"
+       inkscape:export-ydpi="18.40674" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:34.3895px;line-height:0;font-family:'Noto Sans KR';-inkscape-font-specification:'Noto Sans KR Heavy';text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;fill:#70767a;fill-opacity:1;stroke:none;stroke-width:9.55262;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="284.33826"
+       y="113.50664"
+       id="text21"
+       transform="scale(0.984413,1.0158338)"><tspan
+         sodipodi:role="line"
+         id="tspan21"
+         style="fill:#70767a;fill-opacity:1;stroke-width:9.55262"
+         x="284.33826"
+         y="113.50664">DE</tspan></text>
+    <rect
+       style="opacity:0;fill:#0049bb;fill-opacity:1;stroke:#0049bb;stroke-width:12.5363;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect22"
+       width="31.621431"
+       height="31.621431"
+       x="344.15689"
+       y="86.497696"
+       ry="0"
+       inkscape:export-filename="attr_marker.svg"
+       inkscape:export-xdpi="18.316498"
+       inkscape:export-ydpi="18.316498" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:34.934px;line-height:0;font-family:'Noto Sans KR';-inkscape-font-specification:'Noto Sans KR Heavy';text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;fill:#70767a;fill-opacity:1;stroke:none;stroke-width:9.70387;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       x="341.0769"
+       y="115.30388"
+       id="text22"
+       inkscape:export-filename="attr_marker.svg"
+       inkscape:export-xdpi="18.40674"
+       inkscape:export-ydpi="18.40674"><tspan
+         sodipodi:role="line"
+         id="tspan22"
+         style="fill:#70767a;fill-opacity:1;stroke-width:9.70387"
+         x="341.0769"
+         y="115.30388">AT</tspan></text>
   </g>
 </svg>

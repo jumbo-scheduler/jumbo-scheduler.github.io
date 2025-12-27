@@ -540,49 +540,68 @@ main {
 
     #ds-items-container {
         margin-top: 15px;
-        padding: 0px 50px 0px 25px;
+        padding: 0px 45px 0px 5px;
 
         .ds-item {
-            height: 30px;
-            margin-top: 5px;
-            border: solid 1px var(--shadow-blue-opaque);
-            border-radius: 8px;
-            overflow: hidden;
-
             display: flex;
             flex-direction: row;
+            align-items: center;
 
-            input {
-                all: unset;
-                flex-grow: 1;
-                padding: 5px;
+            .ds-item-marker {
+                user-select: none;
+                height: 22px;
+                width: auto;
+                margin-right: 5px;
+                padding-top: 5px;
+            }
+
+            .ds-item-box {
+                height: 30px;
+                margin-top: 5px;
+                border: solid 1px var(--shadow-blue-opaque);
+                border-radius: 8px;
+                overflow: hidden;
+
                 display: flex;
-                border: solid 1px #0000;
-                border-top-left-radius: 7px;
-                border-bottom-left-radius: 7px;
-            }
-            
-            input:focus {
-                border-color: var(--cornflower-blue);
-            }
+                flex-direction: row;
+                flex-grow: 1;
 
-            .ds-item-dup {
-                height: 100%;
-                width: 50px;
-                border: solid 0px var(--shadow-blue-opaque);
-                border-left-width: 1px;
-                flex-shrink: 0;
-            }
+                input {
+                    all: unset;
+                    flex-grow: 1;
+                    padding: 5px;
+                    display: flex;
+                    border: solid 1px #0000;
+                    border-top-left-radius: 7px;
+                    border-bottom-left-radius: 7px;
+                }
+                
+                input:focus {
+                    border-color: var(--cornflower-blue);
+                }
 
-            .ds-item-move {
-                height: 100%;
-                width: 60px;
-                background-color: var(--shadow-blue-opaque);
-                flex-shrink: 0;
-            }
+                .ds-item-dup {
+                    height: 100%;
+                    width: 50px;
+                    border: solid 0px var(--shadow-blue-opaque);
+                    border-left-width: 1px;
+                    flex-shrink: 0;
+                }
 
-            .ds-item-delete {
-                flex-shrink: 0;
+                .ds-item-dup:hover {
+                    background-color: var(--light-gray);
+                }
+
+                .ds-item-move {
+                    height: 100%;
+                    width: 60px;
+                    background-color: var(--shadow-blue-opaque);
+                    flex-shrink: 0;
+                }
+
+                .ds-item-delete {
+                    flex-shrink: 0;
+                }
             }
         }
     }

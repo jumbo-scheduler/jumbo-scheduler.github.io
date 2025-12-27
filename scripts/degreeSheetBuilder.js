@@ -66,6 +66,13 @@ createTab()
 
 $("#new-tab-button").on("click", createTab)
 
+
+
+/*************************************
+ *           DEGREE SHEET
+ *************************************/
+
+// JQUERY UI AUTOCOMPLETE
 $(function() {
     let classesArr = Object.keys(total_catalog).map(key => total_catalog[key].name);
     let deptsArr = Object.keys(departmentsPlaintext).map(key => `${key}: ${departmentsPlaintext[key]}`);
