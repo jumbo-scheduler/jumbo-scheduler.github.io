@@ -25,7 +25,7 @@ All important HTML IDs and Classes are documented herein
 
 === Class Finder
     
-    ⚠️#class-finder-button ...................... button (spawns class finder)
+    ⚠️#class-finder-btn ......................... button (spawns class finder)
 
     🍬#class-finder-window
     └───⚠️#class-finder-close ................... button
@@ -49,16 +49,16 @@ All important HTML IDs and Classes are documented herein
     ⚠️#tab-bar .................................. div
     └───⚠️.tab .................................. button (can have attribute tab-selected)
     |   └───⚠️.tab-label ........................ p
-    |   └───⚠️.tab-close-button ................. button
-    └───⚠️#new-tab-button ....................... button
+    |   └───⚠️.tab-close-btn .................... button
+    └───⚠️#new-tab-btn .......................... button
 
 
 === Degree General Controls
 
-    ⚠️.collapse-button .......................... button
-    ⚠️.rename-button ............................ button
-    ⚠️.color-button ............................. button
-    ⚠️.settings-button .......................... button
+    ⚠️.collapse-btn ............................. button
+    ⚠️.rename-btn ............................... button
+    ⚠️.color-btn ................................ button
+    ⚠️.settings-btn ............................. button
 
     ⚠️
 

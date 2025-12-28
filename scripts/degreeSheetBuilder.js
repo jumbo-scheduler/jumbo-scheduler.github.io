@@ -30,7 +30,7 @@ const createTab = () => {
     const tabTemplate = 
     `<div class="tab">
         <p class="tab-label">Major ${newTabIndex}</p>
-        <button class="close-tab-button">
+        <button class="close-tab-btn">
             <span style="font-family: monospace">✖</span>
         </button>
     </div>`
@@ -43,7 +43,7 @@ const createTab = () => {
         // insert code for showing the current tab here
     })
 
-    newTab.children(".close-tab-button").on("click", () => {
+    newTab.children(".close-tab-btn").on("click", () => {
         if ($(".tab").length > 1) {
             if (newTab.hasClass("tab-selected")) {
                 var nextOfKin // will select after this tab dies
@@ -59,12 +59,12 @@ const createTab = () => {
         }
     })
 
-    newTab.insertBefore($("#new-tab-button"))
+    newTab.insertBefore($("#new-tab-btn"))
     newTab.click()
 }
 createTab()
 
-$("#new-tab-button").on("click", createTab)
+$("#new-tab-btn").on("click", createTab)
 
 
 
@@ -73,6 +73,7 @@ $("#new-tab-button").on("click", createTab)
  *************************************/
 
 // JQUERY UI AUTOCOMPLETE
+// JOON CHANGE ME PLS
 $(function() {
     let classesArr = Object.keys(total_catalog).map(key => total_catalog[key].name);
     let deptsArr = Object.keys(departmentsPlaintext).map(key => `${key}: ${departmentsPlaintext[key]}`);
@@ -87,3 +88,60 @@ $(function() {
         source: allAttributes
     });
 });
+
+// new requirement buttons
+$("#ds-new-class").on("click", () => { 
+    const newRequirement = 
+        $(`<div class="ds-item ds-item-class">
+                <img class="ds-item-marker" src="img/class_marker.svg" />
+                <div class="ds-item-box">
+                    <input placeholder="Search or select class name" />
+                    <button class="ds-item-dup"></button>
+                    <button class="ds-item-move"></button>
+                    <button class="ds-item-delete"></button>
+                </div>
+            </div>`)
+
+    newRequirement.appendTo($("#ds-items-container"))                
+    currentTab.addRequirement(newRequirement);
+})
+
+$("#ds-new-dept").on("click", () => { 
+    const newRequirement = 
+        $(`<div class="ds-item ds-item-dept">
+                <img class="ds-item-marker" src="img/dept_marker.svg" />
+                <div class="ds-item-box">
+                    <input placeholder="Search or select department name" />
+                    <button class="ds-item-dup"></button>
+                    <button class="ds-item-move"></button>
+                    <button class="ds-item-delete"></button>
+                </div>
+            </div>`)
+
+    newRequirement.appendTo($("#ds-items-container"))                
+    currentTab.addRequirement(newRequirement);
+})
+
+$("#ds-new-attr").on("click", () => { 
+    const newRequirement = 
+        $(`<div class="ds-item ds-item-attr">
+                <img class="ds-item-marker" src="img/attr_marker.svg" />
+                <div class="ds-item-box">
+                    <input placeholder="Search or select attribute name" />
+                    <button class="ds-item-dup"></button>
+                    <button class="ds-item-move"></button>
+                    <button class="ds-item-delete"></button>
+                </div>
+            </div>`)
+
+    newRequirement.appendTo($("#ds-items-container"))                
+    currentTab.addRequirement(newRequirement);
+})
+
+$("#ds-new-group").on("click", () => { 
+    const newRequirement = 
+        $(`<p> JOON CHANGE ME </p>`)
+
+    newRequirement.appendTo($("#ds-items-container"))                
+    currentTab.addRequirement(newRequirement);
+})

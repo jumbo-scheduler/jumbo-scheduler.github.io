@@ -92,7 +92,7 @@ window.onload = () => {
 
     finderWindow.hide();
 
-    $("#class-finder-button").on("click", function (e) { 
+    $("#class-finder-btn").on("click", function (e) { 
         e.preventDefault();
         if (finderWindow.is(":visible")) {
             // clear the search

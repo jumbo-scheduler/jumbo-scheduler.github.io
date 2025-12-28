@@ -46,20 +46,33 @@
             </div>
         </header>
 
-        <!-------------------- CLASS FINDER -------------------------------->
-        <button id="class-finder-button" class="hasshadow">
-            <img src="/img/class_finder_mag.svg" />
-            <p>Class Finder</p>
-        </button>
-        <script src="scripts/classFinder.js"></script>
-        <!------------------------------------------------------------------>
+        <aside id="side-btns-container">
+            <!-------------------- CLASS FINDER ---------------------------->
+            <button id="class-finder-btn" class="side-btn hasshadow">
+                <img src="/img/class_finder_mag.svg" />
+                <p>Class Finder</p>
+            </button>
+            <script src="scripts/classFinder.js"></script>
+            <!-------------------------------------------------------------->
+
+            <!------------------- Help & Settings -------------------------->
+            <button id="help-btn" class="side-btn hasshadow">
+                <img src="" />
+                <p>Help</p>
+            </button>
+            <button id="settings-btn" class="side-btn hasshadow">
+                <img src="" />
+                <p>Settings</p>
+            </button>
+            <!-------------------------------------------------------------->
+        </aside>
 
 
         <main>
             <!--------------------- TABS ----------------------------------->
             <section id="tab-bar">
                 <!-- tabs are populated here -->
-                <button id="new-tab-button"> <span style="font-family: monospace">➕</span></button>
+                <button id="new-tab-btn"> <span style="font-family: monospace">➕</span></button>
             </section>
             <!-------------------------------------------------------------->
 
@@ -69,39 +82,13 @@
                     <button class="ds-collapse-btn">
                         <img src="img/dropdown.svg" />
                     </button>
-                    <h2>Major 1</h2>
+                    <h2>REPLACE ME (if you are reading this it's a bug)</h2>
                     <button class="ds-rename-btn">
                         <img src="img/edit.svg" />
                     </button>
                 </div>
                 <div id="ds-items-container">
-                    <div class="ds-item ds-item-CLASS">
-                        <img class="ds-item-marker" src="img/class_marker.svg" />
-                        <div class="ds-item-box">
-                            <input placeholder="Search or select class name" />
-                            <button class="ds-item-dup"></button>
-                            <button class="ds-item-move"></button>
-                            <button class="ds-item-delete"></button>
-                        </div>
-                    </div>
-                    <div class="ds-item ds-item-DEPT">
-                        <img class="ds-item-marker" src="img/dept_marker.svg" />
-                        <div class="ds-item-box">
-                            <input placeholder="Search or select department" />
-                            <button class="ds-item-dup"></button>
-                            <button class="ds-item-move"></button>
-                            <button class="ds-item-delete"></button>
-                        </div>
-                    </div>
-                    <div class="ds-item ds-item-ATTR">
-                        <img class="ds-item-marker" src="img/attr_marker.svg" />
-                        <div class="ds-item-box">
-                            <input placeholder="Search or select attribute" />
-                            <button class="ds-item-dup"></button>
-                            <button class="ds-item-move"></button>
-                            <button class="ds-item-delete"></button>
-                        </div>
-                    </div>
+                    <!-- degree sheet items are populated here -->
                 </div>
                 <div id="ds-new-btns-container">
                     <button id="ds-new-class"> <span style="font-family: monospace">➕</span>CLASS</button>
@@ -110,8 +97,10 @@
                     <button id="ds-new-group"> <span style="font-family: monospace">➕</span>GROUP</button>
                 </div>
             </section>
+            
             <!-------------------------------------------------------------->
 
+            <script src="scripts/tab.js"></script>
             <script src="scripts/degreeSheetBuilder.js"></script>
         </main>
 

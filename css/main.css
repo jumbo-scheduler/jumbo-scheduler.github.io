@@ -1,5 +1,5 @@
 :root {
-    --roundness: 7px;
+    --roundness: 8px;
     --cornflower-blue: #588ae1;
     --cornflower-light: #a0c1fb;
     --deep-blue: #2b4796;
@@ -141,231 +141,278 @@ header {
 /* #endregion ============================================================== */
 
 
-
-
 /* #region =================================================================
-                CLASS FINDER
+                SIDEBAR BUTTONS (INCLUDES CLASS FINDER)
    ========================================================================= */
 
-#class-finder-button {
-    all: unset;
-    position: fixed;
-    z-index: 10;
-    right: 0;
-    top: 200px;
+    #side-btns-container {
+        width: 80px;
 
-    overflow: hidden;
-
-    width: 80px;
-    height: 100px;
-
-    color: white;
-    user-select: none;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--cornflower-blue);
-    border-top-left-radius: var(--roundness);
-    border-bottom-left-radius: var(--roundness);
-
-    img {
-        position: absolute;
-        bottom: 8px;
-        left: -1px;
-        height: 120px;
-    }
-    p {
-        font-weight: 600;
-        position: absolute;
-        left: 5px;
-        bottom: 5px;
-    }
-}
-
-#class-finder-button:hover {
-    cursor: pointer;
-    background-color: var(--deep-blue);
-}
-
-#cf-subject-menu, #cf-attributes-menu {
-    height: 300px !important;
-    overflow-y: scroll !important;
-}
-
-#class-finder-window-wrapper {
-    pointer-events: none; /* click through div */
-
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#class-finder-window {
-    pointer-events: all; /* but make child clickable */
-
-    position: fixed;
-    z-index: 10;
-    width: 100%;
-    max-width: 700px;
-    height: 100%;
-    max-height: 450px;
-    background-color: var(--cornflower-blue);
-    border-radius: var(--roundness);
-    color: white;
-
-    display: flex;
-    flex-direction: column;
-
-    #class-finder-topbar {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        gap: 8px;
+
+        position: fixed;
+        z-index: 10;
+        right: 0;
+        top: 200px;
+    }
+
+    /* General buttons ----------------------------------------------------- */
+
+    .side-btn {
+        overflow: hidden;
+        position: relative;
+        border-top-left-radius: var(--roundness);
+        border-bottom-left-radius: var(--roundness);
+    }
+
+    #class-finder-btn {
+        width: 80px;
+        height: 100px;
+
+        color: white;
+        user-select: none;
+
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        padding: 30px 30px 12px;
+        justify-content: center;
+        background-color: var(--cornflower-blue);
 
-        #class-finder-header {
-            display: flex;
-            gap: 20px;
-            
-            img {
-                height: 40px;
-            }
-            h2 {
-                font-size: 30px;
-            }
+        img {
+            position: absolute;
+            bottom: 8px;
+            left: -1px;
+            height: 120px;
         }
-
-        #class-finder-close {
-            height: 22px;
-            margin-right: 10px;
-            img {
-                height: 100%;
-            }
-        }
-
-        #class-finder-close:hover > img {
-            cursor: pointer;
-            filter: brightness(75%);
+        p {
+            position: absolute;
+            left: 5px;
+            bottom: 5px;
+            font-weight: 600;
         }
     }
 
-    #class-finder {
-        overflow: hidden;
-        width: 100%;
-        height: 100%;
-        padding: 10px 30px 30px;
+    #class-finder-btn:hover {
+        cursor: pointer;
+        background-color: var(--deep-blue);
+    }
 
-        #class-finder-search-container {
-            background-color: var(--light-gray);
+    #help-btn {
+        height: 35px;
+        color: var(--gray-text);
+        background-color: white;
+
+        img {
+
+        }
+        p {
+            font-weight: 600;
+        }
+    }
+
+    #help-btn:hover {
+
+    }
+
+    #settings-btn {
+        height: 35px;
+        color: white;
+        background-color: var(--gray-text);
+
+        img {
+
+        }
+        p {
+            font-weight: 600;
+        }
+    }
+
+    #settings-btn:hover {
+
+    }
+
+
+    /* Class finder window ------------------------------------------------- */
+
+    #cf-subject-menu, #cf-attributes-menu {
+        height: 300px !important;
+        overflow-y: scroll !important;
+    }
+
+    #class-finder-window-wrapper {
+        pointer-events: none; /* click through div */
+
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #class-finder-window {
+        pointer-events: all; /* but make child clickable */
+
+        position: fixed;
+        z-index: 10;
+        width: 100%;
+        max-width: 700px;
+        height: 100%;
+        max-height: 450px;
+        background-color: var(--cornflower-blue);
+        border-radius: var(--roundness);
+        color: white;
+
+        display: flex;
+        flex-direction: column;
+
+        #class-finder-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 30px 12px;
+
+            #class-finder-header {
+                display: flex;
+                gap: 20px;
+                
+                img {
+                    height: 40px;
+                }
+                h2 {
+                    font-size: 30px;
+                }
+            }
+
+            #class-finder-close {
+                height: 22px;
+                margin-right: 10px;
+                img {
+                    height: 100%;
+                }
+            }
+
+            #class-finder-close:hover > img {
+                cursor: pointer;
+                filter: brightness(75%);
+            }
+        }
+
+        #class-finder {
+            overflow: hidden;
             width: 100%;
             height: 100%;
-            display: grid;
-            grid-template-columns: 40% 60%;
-            gap: 1px;
+            padding: 10px 30px 30px;
 
-            #class-finder-search {
-                background-color: var(--cornflower-blue);
-                padding: 0px 20px 0px 2px;
-                display: flex;
-                flex-direction: column;
+            #class-finder-search-container {
+                background-color: var(--light-gray);
+                width: 100%;
+                height: 100%;
+                display: grid;
+                grid-template-columns: 40% 60%;
+                gap: 1px;
 
-                label {
-                    font-weight: 500;
-                }
+                #class-finder-search {
+                    background-color: var(--cornflower-blue);
+                    padding: 0px 20px 0px 2px;
+                    display: flex;
+                    flex-direction: column;
 
-                input, .ui-selectmenu-button {
-                    font-size: unset;
-                    background-color: white;
-                    width: 100%;
-                    height: 28px;
-                    border: solid 1px var(--deep-blue);
-                    border-radius: var(--roundness);
-                    margin: 5px 0px 5px;
-                    padding: 1px 5px;
-                }
+                    label {
+                        font-weight: 500;
+                    }
 
-                input[type="submit"] {
-                    height: 35px;
-                    margin-top: 30px;
-                    font-weight: 500;
-                    background-color: var(--deep-blue);
-                    color: white;
-                }
-
-                input[type="submit"]:hover {
-                    cursor: pointer;
-                    background-color: var(--deeper-blue);
-                }
-
-                input::placeholder { /* This is for text input with placholders */
-                    color: var(--shadow-blue);
-                }
-
-                input.placeholder {  /* This is for dropdowns with "placeholders"; class assigned in js */
-                    color: var(--shadow-blue);
-                }
-            }
-
-            #class-finder-results {
-                background-color: var(--cornflower-blue);
-                padding: 0px 2px 0px 20px;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-
-                #cf-results-list {
-                    height: 290px;
-                    overflow-x: hidden;
-                    overflow-y: scroll;
-                    border-radius: var(--roundness);
-
-                    .cf-result {
-                        height: 85px;
-                        padding: 5px 10px 8px;
-                        margin-bottom: 5px;
-                        white-space: nowrap;
+                    input, .ui-selectmenu-button {
+                        font-size: unset;
+                        background-color: white;
+                        width: 100%;
+                        height: 28px;
                         border: solid 1px var(--deep-blue);
                         border-radius: var(--roundness);
-                        background-color: white;
-                        color: black;
+                        margin: 5px 0px 5px;
+                        padding: 1px 5px;
+                    }
 
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;
-                        overflow: hidden;
+                    input[type="submit"] {
+                        height: 35px;
+                        margin-top: 30px;
+                        font-weight: 500;
+                        background-color: var(--deep-blue);
+                        color: white;
+                    }
 
-                        p {
-                            height: 43px;
-                            width: 100%;
-                            text-wrap: wrap;
-                            word-break: break-word;
-                            display: -webkit-box;
-                            line-clamp: 2;
-                            -webkit-line-clamp: 2;
-                            box-orient: vertical;
-                            -webkit-box-orient: vertical;
-                            overflow: hidden;
-                        }
+                    input[type="submit"]:hover {
+                        cursor: pointer;
+                        background-color: var(--deeper-blue);
+                    }
 
-                        .class-data {
+                    input::placeholder { /* This is for text input with placholders */
+                        color: var(--shadow-blue);
+                    }
+
+                    input.placeholder {  /* This is for dropdowns with "placeholders"; class assigned in js */
+                        color: var(--shadow-blue);
+                    }
+                }
+
+                #class-finder-results {
+                    background-color: var(--cornflower-blue);
+                    padding: 0px 2px 0px 20px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                    #cf-results-list {
+                        height: 290px;
+                        overflow-x: hidden;
+                        overflow-y: scroll;
+                        border-radius: var(--roundness);
+
+                        .cf-result {
+                            height: 85px;
+                            padding: 5px 10px 8px;
+                            margin-bottom: 5px;
+                            white-space: nowrap;
+                            border: solid 1px var(--deep-blue);
+                            border-radius: var(--roundness);
+                            background-color: white;
+                            color: black;
+
                             display: flex;
-                            flex-direction: row;
+                            flex-direction: column;
                             justify-content: space-between;
+                            overflow: hidden;
+
+                            p {
+                                height: 43px;
+                                width: 100%;
+                                text-wrap: wrap;
+                                word-break: break-word;
+                                display: -webkit-box;
+                                line-clamp: 2;
+                                -webkit-line-clamp: 2;
+                                box-orient: vertical;
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;
+                            }
+
+                            .class-data {
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: space-between;
+                            }
                         }
                     }
                 }
             }
         }
     }
-}
 
 /* #endregion ============================================================== */
 
@@ -424,7 +471,7 @@ main {
                 overflow: hidden;
             }
 
-            .close-tab-button {
+            .close-tab-btn {
                 user-select: none;
                 display: flex;
                 flex-direction: column;
@@ -435,7 +482,7 @@ main {
                 margin-left: 5px;
             }
 
-            .close-tab-button:hover {
+            .close-tab-btn:hover {
                 background-color: var(--gray-tint);
             }
         }
@@ -444,12 +491,12 @@ main {
             background-color: var(--cornflower-blue);
             color: white;
 
-            .close-tab-button:hover {
+            .close-tab-btn:hover {
                 background-color: var(--shadow-blue);
             }
         }
 
-        #new-tab-button {
+        #new-tab-btn {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -478,7 +525,7 @@ main {
             }
         }
 
-        #new-tab-button:hover {
+        #new-tab-btn:hover {
             span {
                 background-color: var(--gray-tint);
             }
@@ -529,6 +576,10 @@ main {
         }
     }
 
+    .ds-collapse-btn img {
+        transition: transform 0.2s ease;
+    }
+
     .ds-collapse-btn, .ds-rename-btn {
         border-radius: 16px;
         margin-right: -5px;
@@ -541,6 +592,8 @@ main {
     #ds-items-container {
         margin-top: 15px;
         padding: 0px 45px 0px 5px;
+        overflow: hidden;
+        transition: max-height 0.2s ease;
 
         .ds-item {
             display: flex;
