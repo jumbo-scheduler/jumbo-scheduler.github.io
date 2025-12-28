@@ -64,7 +64,7 @@ const createTab = () => {
     const tabTemplate = 
     `<div class="tab">
         <p class="tab-label">Major ${newTabIndex}</p>
-        <button class="close-tab-button">
+        <button class="close-tab-btn">
             <span style="font-family: monospace">✖</span>
         </button>
     </div>`
@@ -77,7 +77,7 @@ const createTab = () => {
         onTabChange(tabs[$(".tab").get().indexOf(newTab.get(0))])
     })
 
-    newTab.children(".close-tab-button").on("click", () => {
+    newTab.children(".close-tab-btn").on("click", () => {
         if ($(".tab").length > 1) {
             // remove from tabs array
             const tabIndex = $(".tab").get().indexOf(newTab.get(0))
@@ -101,12 +101,12 @@ const createTab = () => {
     currentTab = new Tab(`Major ${newTabIndex}`)
     tabs.push(currentTab)
 
-    newTab.insertBefore($("#new-tab-button"))
+    newTab.insertBefore($("#new-tab-btn"))
     newTab.click()
 }
 createTab()
 
-$("#new-tab-button").on("click", createTab)
+$("#new-tab-btn").on("click", createTab)
 
 // rename tab
 $(".ds-rename-btn").on("click", () => {
