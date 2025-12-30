@@ -593,6 +593,7 @@ main {
         margin-top: 15px;
         padding: 0px 45px 0px 5px;
         overflow: hidden;
+        max-height: 1000px;
         transition: max-height 0.2s ease;
 
         .ds-item {
