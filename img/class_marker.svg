@@ -7,30 +7,55 @@
    viewBox="0 0 44.157719 44.157738"
    version="1.1"
    id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="CLASS_FINDER_ICONS.svg"
+   xml:space="preserve"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs1" />
-  <g
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="394.56558"
+     inkscape:cy="735.39105"
+     inkscape:window-width="1440"
+     inkscape:window-height="830"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showgrid="false"><inkscape:page
+       x="0"
+       y="0"
+       width="44.157719"
+       height="44.157738"
+       id="page2"
+       margin="0"
+       bleed="0" /></sodipodi:namedview><defs
+     id="defs1" /><g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-220.16508,-80.229544)">
-    <rect
+     transform="translate(-220.16508,-80.229544)"><rect
        style="opacity:0;fill:#f00000;fill-opacity:1;stroke:#f00000;stroke-width:12.5363;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
        id="rect20"
        width="31.621431"
        height="31.621431"
        x="226.43323"
        y="86.497696"
-       ry="0" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:34.934px;line-height:0;font-family:'Noto Sans KR';-inkscape-font-specification:'Noto Sans KR Heavy';text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;fill:#70767a;fill-opacity:1;stroke:none;stroke-width:9.70387;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       x="221.63347"
-       y="115.30388"
-       id="text20"><tspan
-         id="tspan20"
-         style="fill:#70767a;fill-opacity:1;stroke:none;stroke-width:9.70387;stroke-opacity:1"
-         x="221.63347"
-         y="115.30388">CL</tspan></text>
-  </g>
-</svg>
+       ry="0"
+       inkscape:export-filename="class_marker.svg"
+       inkscape:export-xdpi="18.40674"
+       inkscape:export-ydpi="18.40674" /><path
+       d="m 235.642,115.79295 q -2.48031,0 -4.68115,-0.83841 -2.20085,-0.83842 -3.91261,-2.51525 -1.67683,-1.71176 -2.65499,-4.19208 -0.94321,-2.51525 -0.94321,-5.79904 0,-3.248864 0.97815,-5.764112 1.01308,-2.550182 2.72485,-4.296882 1.7467,-1.7467 3.98248,-2.654984 2.23577,-0.908284 4.71609,-0.908284 2.55018,0 4.54142,1.013086 2.02617,1.013086 3.35366,2.375512 l -3.24886,3.982476 q -0.97815,-0.908284 -2.06111,-1.467228 -1.08295,-0.558944 -2.48031,-0.558944 -1.67683,0 -3.07419,0.978152 -1.39736,0.943218 -2.23578,2.759786 -0.80348,1.781634 -0.80348,4.331812 0,2.58512 0.73361,4.43662 0.76855,1.81657 2.13098,2.79472 1.36242,0.94322 3.17899,0.94322 1.57203,0 2.79472,-0.69868 1.25762,-0.69868 2.16591,-1.67683 l 3.28379,3.9126 q -1.64189,1.92137 -3.8078,2.89953 -2.13098,0.94321 -4.68116,0.94321 z m 12.29676,-0.48907 V 89.27805 h 6.25319 v 20.78573 h 10.13086 v 5.2401 z"
+       id="text20"
+       style="font-weight:900;font-size:34.934px;line-height:0;font-family:'Noto Sans KR';-inkscape-font-specification:'Noto Sans KR Heavy';letter-spacing:0px;fill:#70767a;stroke-width:9.70387;stroke-linecap:round;stroke-linejoin:round"
+       aria-label="CL" /></g></svg>

@@ -9,11 +9,11 @@
    id="svg1"
    inkscape:version="1.4 (86a8ad7, 2024-10-11)"
    sodipodi:docname="CLASS_FINDER_ICONS.svg"
+   xml:space="preserve"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
      id="namedview1"
      pagecolor="#ffffff"
      bordercolor="#000000"
@@ -23,33 +23,28 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="960.95812"
-     inkscape:cy="373.35238"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="394.56558"
+     inkscape:cy="735.39105"
      inkscape:window-width="1440"
      inkscape:window-height="830"
      inkscape:window-x="-6"
      inkscape:window-y="-6"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
-     showgrid="false">
-    <inkscape:page
+     showgrid="false"><inkscape:page
        x="0"
        y="0"
        width="44.620773"
        height="44.157738"
        id="page2"
        margin="0"
-       bleed="0" />
-  </sodipodi:namedview>
-  <defs
-     id="defs1" />
-  <g
+       bleed="0" /></sodipodi:namedview><defs
+     id="defs1" /><g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-69.688014,-80.229544)">
-    <rect
+     transform="translate(-69.688014,-80.229544)"><rect
        style="opacity:1;fill:#ffcc00;fill-opacity:1;stroke:#ffcc00;stroke-width:12.5363;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
        id="rect15"
        width="31.621431"
@@ -57,20 +52,11 @@
        x="75.956161"
        y="86.497696"
        ry="0"
-       inkscape:export-filename="dept_marker.svg"
+       inkscape:export-filename="dept_marker_color.svg"
        inkscape:export-xdpi="18.40674"
-       inkscape:export-ydpi="18.40674" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:34.3895px;line-height:0;font-family:'Noto Sans KR';-inkscape-font-specification:'Noto Sans KR Heavy';text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;fill:#28170b;fill-opacity:1;stroke:none;stroke-width:9.55262;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       x="71.481155"
-       y="113.50664"
+       inkscape:export-ydpi="18.40674" /><path
+       d="M 74.438652,113.50664 V 87.88646 h 7.359353 q 3.920403,0 6.809121,1.341191 2.923108,1.306801 4.539414,4.09235 1.616307,2.78555 1.616307,7.256189 0,4.43624 -1.616307,7.32496 -1.581917,2.85433 -4.436245,4.22991 -2.819939,1.37558 -6.568395,1.37558 z m 6.155721,-4.95209 h 0.825348 q 2.06337,0 3.645287,-0.72218 1.616306,-0.72218 2.510433,-2.47604 0.894127,-1.75387 0.894127,-4.78014 0,-3.06067 -0.894127,-4.745755 -0.894127,-1.685086 -2.510433,-2.338486 -1.581917,-0.68779 -3.645287,-0.68779 h -0.825348 z m 18.914228,4.95209 V 87.88646 h 16.231839 v 5.124036 h -10.07612 v 4.745751 h 8.56299 v 5.158423 h -8.56299 v 5.43354 h 10.45441 v 5.15843 z"
        id="text16"
-       transform="scale(0.984413,1.0158338)"><tspan
-         sodipodi:role="line"
-         id="tspan16"
-         style="fill:#28170b;fill-opacity:1;stroke-width:9.55262"
-         x="71.481155"
-         y="113.50664">DE</tspan></text>
-  </g>
-</svg>
+       style="font-weight:900;font-size:34.3895px;line-height:0;font-family:'Noto Sans KR';-inkscape-font-specification:'Noto Sans KR Heavy';letter-spacing:0px;fill:#28170b;stroke-width:9.55262;stroke-linecap:round;stroke-linejoin:round"
+       transform="scale(0.984413,1.0158338)"
+       aria-label="DE" /></g></svg>

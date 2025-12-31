@@ -9,11 +9,11 @@
    id="svg1"
    inkscape:version="1.4 (86a8ad7, 2024-10-11)"
    sodipodi:docname="CLASS_FINDER_ICONS.svg"
+   xml:space="preserve"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
      id="namedview1"
      pagecolor="#ffffff"
      bordercolor="#000000"
@@ -23,33 +23,28 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="960.95812"
-     inkscape:cy="373.35238"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="394.56558"
+     inkscape:cy="735.39105"
      inkscape:window-width="1440"
      inkscape:window-height="830"
      inkscape:window-x="-6"
      inkscape:window-y="-6"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
-     showgrid="false">
-    <inkscape:page
+     showgrid="false"><inkscape:page
        x="0"
        y="0"
        width="44.15773"
        height="44.157738"
        id="page2"
        margin="0"
-       bleed="0" />
-  </sodipodi:namedview>
-  <defs
-     id="defs1" />
-  <g
+       bleed="0" /></sodipodi:namedview><defs
+     id="defs1" /><g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-10.625769,-80.229544)">
-    <rect
+     transform="translate(-10.625769,-80.229544)"><rect
        style="opacity:1;fill:#f00000;fill-opacity:1;stroke:#f00000;stroke-width:12.5363;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
        id="rect11"
        width="31.621431"
@@ -57,22 +52,13 @@
        x="16.893919"
        y="86.497696"
        ry="0"
-       inkscape:export-filename="edit.svg"
-       inkscape:export-xdpi="19.866842"
-       inkscape:export-ydpi="19.866842" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:34.934px;line-height:0;font-family:'Noto Sans KR';-inkscape-font-specification:'Noto Sans KR Heavy';text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:9.70387;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       x="12.094161"
-       y="115.30388"
-       id="text15"
-       inkscape:export-filename="class_marker.svg"
+       inkscape:export-filename="class_marker_color.svg"
        inkscape:export-xdpi="18.40674"
-       inkscape:export-ydpi="18.40674"><tspan
-         sodipodi:role="line"
-         id="tspan15"
-         style="fill:#ffffff;fill-opacity:1;stroke-width:9.70387"
-         x="12.094161"
-         y="115.30388">CL</tspan></text>
-  </g>
-</svg>
+       inkscape:export-ydpi="18.40674" /><path
+       d="m 26.102694,115.79295 q -2.480314,0 -4.681155,-0.83841 -2.200842,-0.83842 -3.912608,-2.51525 -1.676832,-1.71176 -2.654984,-4.19208 -0.943218,-2.51525 -0.943218,-5.79904 0,-3.248864 0.978152,-5.764112 1.013086,-2.550182 2.724852,-4.296882 1.7467,-1.7467 3.982476,-2.654984 2.235775,-0.908284 4.716089,-0.908284 2.550182,0 4.54142,1.013086 2.026172,1.013086 3.353664,2.375512 L 30.95852,96.194982 Q 29.980368,95.286698 28.897414,94.727754 27.81446,94.16881 26.4171,94.16881 q -1.676832,0 -3.074192,0.978152 -1.397359,0.943218 -2.235775,2.759786 -0.803482,1.781634 -0.803482,4.331812 0,2.58512 0.733614,4.43662 0.768548,1.81657 2.130973,2.79472 1.362426,0.94322 3.178994,0.94322 1.57203,0 2.79472,-0.69868 1.257624,-0.69868 2.165908,-1.67683 l 3.283796,3.9126 q -1.641898,1.92137 -3.807806,2.89953 -2.130974,0.94321 -4.681156,0.94321 z m 12.296761,-0.48907 V 89.27805 h 6.253186 v 20.78573 H 54.7835 v 5.2401 z"
+       id="text15"
+       style="font-weight:900;font-size:34.934px;line-height:0;font-family:'Noto Sans KR';-inkscape-font-specification:'Noto Sans KR Heavy';letter-spacing:0px;fill:#ffffff;stroke-width:9.70387;stroke-linecap:round;stroke-linejoin:round"
+       aria-label="CL"
+       inkscape:export-filename="class_marker_color.svg"
+       inkscape:export-xdpi="18.40674"
+       inkscape:export-ydpi="18.40674" /></g></svg>
