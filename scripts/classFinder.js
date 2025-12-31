@@ -113,7 +113,6 @@ window.onload = () => {
 //      searches the catalog for appropriate classes
 //      populates the results div
 const SCORE_FUDGER = 10;
-const SCORE_DEVIATION_CUTOFF = 500;
 
 const searchForClass = () => {
     finderWindow.on("submit", e => {
@@ -130,7 +129,6 @@ const searchForClass = () => {
 
         // ok search time
         var results = []
-        var bestScore = -1;
         for (subject in total_catalog) {
             var department = subject.split("-")[0]
 
@@ -142,13 +140,9 @@ const searchForClass = () => {
 
             if (matchesFilters) {
                 total_catalog[subject].stringMatch = getStringMatchValue(total_catalog[subject].name, quickSearchQuery)
-                bestScore = Math.max(bestScore, total_catalog[subject].stringMatch)
-                if (total_catalog[subject].stringMatch > SCORE_FUDGER) results.push(total_catalog[subject])
+                if (total_catalog[subject].stringMatch > 0) results.push(total_catalog[subject])
             }
         }
-
-        // filter out results that are significantly worse
-        results = results.filter(x => (bestScore - x.stringMatch) < SCORE_DEVIATION_CUTOFF)
     
         // now we sort based on string matching
         // quick sort my beloved
