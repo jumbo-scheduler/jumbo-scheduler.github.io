@@ -78,7 +78,7 @@ const createTab = () => {
     })
 
     newTab.children(".close-tab-btn").on("click", () => {
-        if ($(".tab").length > 1) {
+        if ($(".tab").length > 1 && confirm("Are you sure you want to delete this tab?")) {
             // remove from tabs array
             const tabIndex = $(".tab").get().indexOf(newTab.get(0))
             tabs.splice(tabIndex, 1)

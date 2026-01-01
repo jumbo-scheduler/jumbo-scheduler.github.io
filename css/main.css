@@ -162,7 +162,7 @@ b {
     /* General buttons ----------------------------------------------------- */
 
     .side-btn {
-        cursor: default;
+        cursor: pointer;
         overflow: hidden;
         position: relative;
         border-top-left-radius: var(--roundness);
@@ -476,7 +476,7 @@ main {
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
 
-            cursor: default;
+            cursor: pointer;
 
             p {
                 width: 100%;
@@ -499,6 +499,8 @@ main {
                 width: 24px;
                 border-radius: 12px;
                 margin-left: 5px;
+
+                cursor: pointer;
             }
 
             .close-tab-btn:hover {
@@ -509,6 +511,7 @@ main {
         .tab-selected {
             background-color: var(--cornflower-blue);
             color: white;
+            cursor: default;
 
             .close-tab-btn:hover {
                 background-color: var(--shadow-blue);
@@ -533,7 +536,7 @@ main {
             color: var(--gray-text);
 
             user-select: none;
-            cursor: default;
+            cursor: pointer;
 
             span {
                 display: flex;
@@ -603,6 +606,7 @@ main {
     .ds-collapse-btn, .ds-rename-btn {
         border-radius: 16px;
         margin-right: -5px;
+        cursor: pointer;
     }
 
     .ds-collapse-btn:hover, .ds-rename-btn:hover {
@@ -644,7 +648,7 @@ main {
                 input {
                     all: unset;
                     flex-grow: 1;
-                    padding: 5px;
+                    padding: 5px 0px 5px 5px;
                     display: flex;
                     border: solid 1px #0000;
                     border-top-left-radius: 7px;
@@ -659,7 +663,7 @@ main {
                     height: 100%;
                     width: 40px;
                     flex-shrink: 0;
-                    cursor: default;
+                    cursor: pointer;
 
                     display: flex;
                     flex-direction: column;
@@ -698,7 +702,7 @@ main {
                     border-bottom-right-radius: 7px;
 
                     img {
-                        height: 45%;
+                        height: 42%;
                     }
                 }
             }
@@ -715,7 +719,7 @@ main {
             border-radius: 8px;
             padding: 0px 8px;
 
-            cursor: default;
+            cursor: pointer;
 
             span {
                 font-size: smaller;

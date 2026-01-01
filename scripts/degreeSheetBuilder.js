@@ -18,11 +18,6 @@ $(function() {
     $(".ds-item-ATTR").find("input").autocomplete({
         source: allAttributes
     });
-
-    // JQUERY UI RESIZABLE ------------------------------------
-    $("#degree-sheet").resizable({
-        containment: "body"
-    });
 });
 
 
