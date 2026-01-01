@@ -23,9 +23,15 @@ All important HTML IDs and Classes are documented herein
     ⚠️#export-req ............................... input->button
 
 
-=== Class Finder
+=== Side buttons
     
-    ⚠️#class-finder-btn ......................... button (spawns class finder)
+    🍬#side-buttons-container ................... aside
+    └───⚠️#class-finder-btn ..................... button (spawns class finder window)
+    └───⚠️#help-btn ............................. button (spawns info panel)
+    └───⚠️#settings-btn ......................... button (spawns settings panel)
+
+
+=== Class Finder Window
 
     🍬#class-finder-window
     └───⚠️#class-finder-close ................... button
@@ -39,28 +45,38 @@ All important HTML IDs and Classes are documented herein
         └───🍬#class-finder-results ............. div
             └───⚠️#cf-results-list .............. div (populate with cf-results)
                 └───⚠️.cf-result ................ div (single result)
-                    └───🍬p ..................... p   (class name goes here)
-                    └───🍬.class-data ........... div (semesters/credits go here)
+                    └───⚠️.class-about .......... div (class name & SIS link go here)
+                    └───⚠️.class-data ........... div (semesters & credits go here)
 
 
 
 === Tabs
 
-    ⚠️#tab-bar .................................. div
+    ⚠️#tab-bar .................................. section
     └───⚠️.tab .................................. button (can have attribute tab-selected)
     |   └───⚠️.tab-label ........................ p
     |   └───⚠️.tab-close-btn .................... button
     └───⚠️#new-tab-btn .......................... button
 
 
-=== Degree General Controls
+=== Degree Sheet
 
-    ⚠️.collapse-btn ............................. button
-    ⚠️.rename-btn ............................... button
-    ⚠️.color-btn ................................ button
-    ⚠️.settings-btn ............................. button
+    🍬#degree-sheet ............................. section
+    └───🍬#ds-major-header ...................... button
+    |   └───⚠️.ds-collapse-btn .................. button (collapse entire major)
+    |   └───⚠️.ds-rename-btn .................... button (renames major)
+    └───⚠️#ds-items-container ................... div (degree sheet items go in here && STARTS EMPTY)
+    |   └───⚠️.ds-item .......................... SEE BELOW
+    └───🍬#ds-new-btns-container ................ div
+        └───⚠️#ds-new-class...................... button
+        └───⚠️#ds-new-dept ...................... button
+        └───⚠️#ds-new-attr ...................... button
+        └───⚠️#ds-new-group ..................... button
 
-    ⚠️
-
-
-=== Classes
+    ⚠️.ds-item .................................. div (also has class "ds-item-{class|dept|attr}")
+    └───⚠️.ds-item-marker ....................... img
+    └───🍬.ds-item-box .......................... div
+        └───⚠️input ............................. input (name of class/dept/attr as dropdown)
+        └───⚠️.ds-item-dup ...................... button
+        └───⚠️.ds-item-delete ................... button
+        └───⚠️.ds-item-move ..................... button
