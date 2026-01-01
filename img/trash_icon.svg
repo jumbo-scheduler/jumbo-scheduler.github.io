@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="31.575024mm"
+   height="42.64875mm"
+   viewBox="0 0 31.575024 42.64875"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs1" /><g
+     id="layer1"
+     transform="translate(-67.699895,71.483848)"><g
+       id="path40"
+       transform="matrix(1,0,0,0.89861815,0,-3.2350986)"
+       style="fill:#e6eaee;fill-opacity:1"><path
+         id="path45"
+         style="fill:#e6eaee;fill-opacity:1;stroke-linecap:round;stroke-linejoin:round"
+         d="m 70.093913,-63.48243 a 1.069982,1.069982 0 0 0 -1.064535,1.191659 l 3.786849,32.855358 a 1.069982,1.069982 0 0 0 1.062468,0.947229 H 93.09561 a 1.069982,1.069982 0 0 0 1.062467,-0.947229 l 3.787366,-32.855358 a 1.069982,1.069982 0 0 0 -1.062468,-1.191659 z m 13.394531,3.49281 a 1.0483299,0.97341358 0 0 1 1.046965,0.972551 v 25.793774 a 1.0483299,0.97341358 0 0 1 -1.046965,0.974101 1.0483299,0.97341358 0 0 1 -1.049032,-0.974101 v -25.793774 a 1.0483299,0.97341358 0 0 1 1.049032,-0.972551 z m -7.193359,0.0021 a 1.0583349,0.9827036 0 0 1 1.132747,0.910539 l 1.999878,25.973608 a 1.0583349,0.9827036 0 0 1 -0.980302,1.050065 1.0583349,0.9827036 0 0 1 -1.131197,-0.910538 l -1.999878,-25.973609 a 1.0583349,0.9827036 0 0 1 0.978752,-1.050065 z m 14.384651,0 a 1.0583349,0.9827036 0 0 1 0.980302,1.050065 l -1.999878,25.973609 a 1.0583349,0.9827036 0 0 1 -1.132747,0.910538 1.0583349,0.9827036 0 0 1 -0.978752,-1.050065 l 2.000395,-25.973608 a 1.0583349,0.9827036 0 0 1 1.13068,-0.910539 z" /></g><rect
+       style="fill:#e6eaee;fill-opacity:1;stroke:#e6eaee;stroke-width:2.64583;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect40"
+       width="28.929199"
+       height="2.5974827"
+       x="69.022812"
+       y="-65.725594" /><rect
+       style="fill:none;fill-opacity:1;stroke:#e6eaee;stroke-width:2.64583;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect41"
+       width="9.5866661"
+       height="5.7340808"
+       x="78.694077"
+       y="-70.160934" /></g></svg>

@@ -2,9 +2,10 @@
  *           DEGREE SHEET
  *************************************/
 
-// JQUERY UI AUTOCOMPLETE
-// JOON CHANGE ME PLS
+// JQUERY UI INITIALIZATIONS
 $(function() {
+    // JQUERY UI AUTOCOMPLETE -------------------------------
+    // JOON CHANGE ME PLS
     let classesArr = Object.keys(total_catalog).map(key => total_catalog[key].name);
     let deptsArr = Object.keys(departmentsPlaintext).map(key => `${key}: ${departmentsPlaintext[key]}`);
 
@@ -17,7 +18,13 @@ $(function() {
     $(".ds-item-ATTR").find("input").autocomplete({
         source: allAttributes
     });
+
+    // JQUERY UI RESIZABLE ------------------------------------
+    $("#degree-sheet").resizable({
+        containment: "body"
+    });
 });
+
 
 // new requirement buttons
 $("#ds-new-class").on("click", () => { 
@@ -26,9 +33,9 @@ $("#ds-new-class").on("click", () => {
                 <img class="ds-item-marker" src="img/class_marker.svg" />
                 <div class="ds-item-box">
                     <input placeholder="Search or select class name" />
-                    <button class="ds-item-dup"></button>
-                    <button class="ds-item-move"></button>
-                    <button class="ds-item-delete"></button>
+                    <button class="ds-item-btn ds-item-dup"><img src="img/dup_icon.svg" /></button>
+                    <button class="ds-item-btn ds-item-delete"><img src="img/trash_icon.svg" /></button>
+                    <button class="ds-item-btn ds-item-move"><img src="img/drag_icon.svg" /></button>
                 </div>
             </div>`)
 
@@ -42,9 +49,9 @@ $("#ds-new-dept").on("click", () => {
                 <img class="ds-item-marker" src="img/dept_marker.svg" />
                 <div class="ds-item-box">
                     <input placeholder="Search or select department name" />
-                    <button class="ds-item-dup"></button>
-                    <button class="ds-item-move"></button>
-                    <button class="ds-item-delete"></button>
+                    <button class="ds-item-btn ds-item-dup"><img src="img/dup_icon.svg" /></button>
+                    <button class="ds-item-btn ds-item-delete"><img src="img/trash_icon.svg" /></button>
+                    <button class="ds-item-btn ds-item-move"><img src="img/drag_icon.svg" /></button>
                 </div>
             </div>`)
 
@@ -58,9 +65,9 @@ $("#ds-new-attr").on("click", () => {
                 <img class="ds-item-marker" src="img/attr_marker.svg" />
                 <div class="ds-item-box">
                     <input placeholder="Search or select attribute name" />
-                    <button class="ds-item-dup"></button>
-                    <button class="ds-item-move"></button>
-                    <button class="ds-item-delete"></button>
+                    <button class="ds-item-btn ds-item-dup"><img src="img/dup_icon.svg" /></button>
+                    <button class="ds-item-btn ds-item-delete"><img src="img/trash_icon.svg" /></button>
+                    <button class="ds-item-btn ds-item-move"><img src="img/drag_icon.svg" /></button>
                 </div>
             </div>`)
 

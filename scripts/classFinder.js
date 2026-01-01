@@ -248,7 +248,10 @@ const addResult = (result) => {
     let courseID = fullGovernmentName.shift();
     const result_template = 
         `<div class=cf-result>
-            <p><b>${courseID}:</b>${fullGovernmentName.join()}</p> <br>
+            <div class="class-about">
+                <p><b>${courseID}:</b>${fullGovernmentName.join()}</p>
+                <a class="sis-link" href="https://sis.it.tufts.edu/psp/paprd/EMPLOYEE/EMPL/h/?tab=TFP_CLASS_SEARCH#class_search" target="_blank" rel="noopener noreferrer">SIS</a>
+            </div>
             <div class="class-data">
                 <div>
                     ${result.offeredInSpring ? `<span class="hl-green">Spring</span>` : ""}
@@ -260,4 +263,5 @@ const addResult = (result) => {
             </div>
         </div>`
     $("#cf-results-list").append(result_template)
+    $(".sis-link")
 }

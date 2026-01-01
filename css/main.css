@@ -10,6 +10,8 @@
     --gray-tint: #afafaf89;
     --shadow-blue: #13276966;
     --shadow-blue-opaque: #a1a9c3;
+    --x-red: #c66363;
+    --x-red-dark: #ac5252;
 }
 
 @font-face {
@@ -400,17 +402,23 @@ b {
                             justify-content: space-between;
                             overflow: hidden;
 
-                            p {
-                                height: 43px;
-                                width: 100%;
-                                text-wrap: wrap;
-                                word-break: break-word;
-                                display: -webkit-box;
-                                line-clamp: 2;
-                                -webkit-line-clamp: 2;
-                                box-orient: vertical;
-                                -webkit-box-orient: vertical;
-                                overflow: hidden;
+                            .class-about {
+                                display: flex;
+                                flex-direction: row;
+                                gap: 5px;
+
+                                p {
+                                    height: 43px;
+                                    width: 100%;
+                                    text-wrap: wrap;
+                                    word-break: break-word;
+                                    display: -webkit-box;
+                                    line-clamp: 2;
+                                    -webkit-line-clamp: 2;
+                                    box-orient: vertical;
+                                    -webkit-box-orient: vertical;
+                                    overflow: hidden;
+                                }
                             }
 
                             .class-data {
@@ -554,6 +562,7 @@ main {
 
     #degree-sheet {
         color: var(--ds-text);
+        position: relative;
 
         min-height: 100px;
         width: 100%;
@@ -605,6 +614,7 @@ main {
         padding: 0px 45px 0px 5px;
         max-height: 1000px;
         transition: max-height 0.2s ease;
+        overflow: hidden;
 
         .ds-item {
             display: flex;
@@ -624,8 +634,9 @@ main {
                 margin-top: 5px;
                 border: solid 1px var(--shadow-blue-opaque);
                 border-radius: 8px;
-                overflow: hidden;
+                /* overflow: hidden; */
 
+                position: relative;
                 display: flex;
                 flex-direction: row;
                 flex-grow: 1;
@@ -644,16 +655,38 @@ main {
                     border-color: var(--cornflower-blue);
                 }
 
-                .ds-item-dup {
+                .ds-item-btn {
                     height: 100%;
-                    width: 50px;
+                    width: 40px;
+                    flex-shrink: 0;
+                    cursor: default;
+
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+
+                    img {
+                        height: 80%;
+                    }
+                }
+
+                .ds-item-dup {
                     border: solid 0px var(--shadow-blue-opaque);
                     border-left-width: 1px;
-                    flex-shrink: 0;
                 }
 
                 .ds-item-dup:hover {
                     background-color: var(--light-gray);
+                }
+
+                .ds-item-delete {
+                    background-color: var(--x-red);
+                }
+
+                .ds-item-delete:hover {
+                    background-color: var(--x-red-dark);
                 }
 
                 .ds-item-move {
@@ -661,10 +694,12 @@ main {
                     width: 60px;
                     background-color: var(--shadow-blue-opaque);
                     flex-shrink: 0;
-                }
+                    border-top-right-radius: 7px;
+                    border-bottom-right-radius: 7px;
 
-                .ds-item-delete {
-                    flex-shrink: 0;
+                    img {
+                        height: 45%;
+                    }
                 }
             }
         }
@@ -692,6 +727,13 @@ main {
         button:hover {
             background-color: var(--light-gray);
         }
+    }
+
+    #ds-resize-dragger {
+        height: 16px;
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
     }
 
 /* #endregion ============================================================== */
