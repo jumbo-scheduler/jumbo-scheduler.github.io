@@ -574,27 +574,29 @@ main {
         border-bottom-right-radius: 10px;
         border-top-right-radius: 10px;
 
-        padding: 20px 15px 25px;
+        padding: 20px 45px 25px 15px;
 
         #ds-major-header {
             display: flex;
             flex-direction: row;
             align-items: center;
             gap: 10px;
+            width: 100%;
 
             h2 {
-                flex-shrink: 0;
+                flex-shrink: 1;
                 color: var(--text);
                 font-weight: 700;
                 font-size: x-large;
-            }
 
-            button {
-                height: 25px;
-
-                img {
-                    height: 100%;
-                }
+                text-wrap: wrap;
+                word-break: break-word;
+                display: -webkit-box;
+                line-clamp: 1;
+                -webkit-line-clamp: 1;
+                box-orient: vertical;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
             }
         }
     }
@@ -607,6 +609,11 @@ main {
         border-radius: 16px;
         margin-right: -5px;
         cursor: pointer;
+        height: 25px;
+
+        img {
+            height: 100%;
+        }
     }
 
     .ds-collapse-btn:hover, .ds-rename-btn:hover {
@@ -615,96 +622,111 @@ main {
 
     #ds-items-container {
         margin-top: 15px;
-        padding: 0px 45px 0px 5px;
+        padding: 0px 0px 0px 5px;
         max-height: 1000px;
         transition: max-height 0.2s ease;
         overflow: hidden;
+    }
 
-        .ds-item {
+    .ds-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .ds-item-marker {
+            user-select: none;
+            height: 22px;
+            width: auto;
+            margin-right: 5px;
+            padding-top: 5px;
+        }
+
+        .ds-item-box {
+            height: 30px;
+            margin-top: 5px;
+            border: solid 1px var(--shadow-blue-opaque);
+            border-radius: 8px;
+            /* overflow: hidden; */
+
+            position: relative;
             display: flex;
             flex-direction: row;
-            align-items: center;
+            flex-grow: 1;
 
-            .ds-item-marker {
-                user-select: none;
-                height: 22px;
-                width: auto;
-                margin-right: 5px;
-                padding-top: 5px;
+            input {
+                all: unset;
+                flex-grow: 1;
+                padding: 5px 0px 5px 5px;
+                display: flex;
+                border: solid 1px #0000;
+                border-top-left-radius: 7px;
+                border-bottom-left-radius: 7px;
+            }
+            
+            input:focus {
+                border-color: var(--cornflower-blue);
             }
 
-            .ds-item-box {
-                height: 30px;
-                margin-top: 5px;
-                border: solid 1px var(--shadow-blue-opaque);
-                border-radius: 8px;
-                /* overflow: hidden; */
+            .ds-item-btn {
+                height: 100%;
+                width: 40px;
+                flex-shrink: 0;
+                cursor: pointer;
 
-                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                img {
+                    height: 75%;
+                }
+            }
+
+            .ds-item-dup {
+                border: solid 0px var(--shadow-blue-opaque);
+                border-left-width: 1px;
+            }
+
+            .ds-item-dup:hover {
+                background-color: var(--light-gray);
+            }
+
+            .ds-item-delete {
+                background-color: var(--x-red);
+            }
+
+            .ds-item-delete:hover {
+                background-color: var(--x-red-dark);
+            }
+
+            .ds-item-move {
+                height: 100%;
+                width: 60px;
+                background-color: var(--shadow-blue-opaque);
+                flex-shrink: 0;
+                border-top-right-radius: 7px;
+                border-bottom-right-radius: 7px;
+
+                img {
+                    height: 42%;
+                }
+            }
+        }
+    }
+
+    .ds-item-group {
+        padding-left: 22px;
+
+        .ds-group-box {
+            display: flex;
+            flex-direction: column;
+
+            .ds-group-header {
+                height: 32px;
                 display: flex;
                 flex-direction: row;
-                flex-grow: 1;
-
-                input {
-                    all: unset;
-                    flex-grow: 1;
-                    padding: 5px 0px 5px 5px;
-                    display: flex;
-                    border: solid 1px #0000;
-                    border-top-left-radius: 7px;
-                    border-bottom-left-radius: 7px;
-                }
-                
-                input:focus {
-                    border-color: var(--cornflower-blue);
-                }
-
-                .ds-item-btn {
-                    height: 100%;
-                    width: 40px;
-                    flex-shrink: 0;
-                    cursor: pointer;
-
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-
-
-                    img {
-                        height: 80%;
-                    }
-                }
-
-                .ds-item-dup {
-                    border: solid 0px var(--shadow-blue-opaque);
-                    border-left-width: 1px;
-                }
-
-                .ds-item-dup:hover {
-                    background-color: var(--light-gray);
-                }
-
-                .ds-item-delete {
-                    background-color: var(--x-red);
-                }
-
-                .ds-item-delete:hover {
-                    background-color: var(--x-red-dark);
-                }
-
-                .ds-item-move {
-                    height: 100%;
-                    width: 60px;
-                    background-color: var(--shadow-blue-opaque);
-                    flex-shrink: 0;
-                    border-top-right-radius: 7px;
-                    border-bottom-right-radius: 7px;
-
-                    img {
-                        height: 42%;
-                    }
-                }
+                align-items: center;
             }
         }
     }
