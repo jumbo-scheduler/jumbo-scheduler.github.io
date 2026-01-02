@@ -123,13 +123,13 @@ $(".ds-rename-btn").on("click", () => {
 })
 
 // collapse/expand degree sheet
-$(".ds-collapse-btn").on("click", () => {
+$("#major-collapse-btn").on("click", () => {
     if ($("#ds-items-container").css("max-height") != "0px") {
         // shrink ds items container height with animation
         $("#ds-items-container")
             .css("max-height", "0vh")
         // rotate arrow with animation
-        $(".ds-collapse-btn img")
+        $("#major-collapse-btn img")
             .css("transform", "rotate(-90deg)")
     }
     else {
@@ -137,7 +137,7 @@ $(".ds-collapse-btn").on("click", () => {
         $("#ds-items-container")
             .css("max-height", "100vh")
         // rotate arrow with animation
-        $(".ds-collapse-btn img")
+        $("#major-collapse-btn img")
             .css("transform", "rotate(0deg)")
     }
 })

@@ -63,8 +63,8 @@ All important HTML IDs and Classes are documented herein
 
     🍬#degree-sheet ............................. section
     └───🍬#ds-major-header ...................... button
-    |   └───⚠️.ds-collapse-btn .................. button (collapse entire major)
-    |   └───⚠️.ds-rename-btn .................... button (renames major)
+    |   └───⚠️#major-collapse-btn ............... button (collapse entire major) [has class .ds-collapse-btn for styling]
+    |   └───⚠️#major-rename-btn ................. button (renames major)         [has class .ds-rename-btn for styling]
     └───⚠️#ds-items-container ................... div (degree sheet items go in here && STARTS EMPTY)
     |   └───⚠️.ds-item .......................... SEE BELOW
     └───🍬#ds-new-btns-container ................ div
@@ -76,6 +76,15 @@ All important HTML IDs and Classes are documented herein
     ⚠️.ds-item .................................. div (also has class "ds-item-{class|dept|attr}")
     └───⚠️.ds-item-marker ....................... img
     └───🍬.ds-item-box .......................... div
+        └───⚠️input ............................. input (name of class/dept/attr as dropdown)
+        └───⚠️.ds-item-dup ...................... button
+        └───⚠️.ds-item-delete ................... button
+        └───⚠️.ds-item-move ..................... button
+
+    
+    UNFINISHED!!!!!!!!!!!!!!!!!!!:
+    ⚠️.ds-group ................................. div
+    └───🍬.ds-group-box .................................. div
         └───⚠️input ............................. input (name of class/dept/attr as dropdown)
         └───⚠️.ds-item-dup ...................... button
         └───⚠️.ds-item-delete ................... button
