@@ -91,7 +91,6 @@ const settings_window_template = `
 let windows = [];
 
 function layer_windows() {
-    console.log(windows);
     for (let i = 0; i < windows.length; i++) {
         windows[i].style.zIndex = i + 10;
     }
@@ -210,7 +209,6 @@ window.onload = () => {
     });
 
     $(".generic-window").on("mousedown", function() {
-        console.log(this);
         windows = windows.filter(element => element != this);
         windows.push(this);
         layer_windows();
