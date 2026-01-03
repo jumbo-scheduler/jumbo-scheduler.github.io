@@ -105,6 +105,11 @@ $("#ds-new-group").on("click", () => {
                             </div>
                         </div>
                     </div>
+                    <div class="ds-group-new-btns-container">
+                        <button id="ds-new-class"> <span style="font-family: monospace">➕</span>CLASS</button>
+                        <button id="ds-new-dept"> <span style="font-family: monospace">➕</span>DEPT</button>
+                        <button id="ds-new-attr"> <span style="font-family: monospace">➕</span>ATTR</button>
+                    </div>
                 </div>
             </div>`)
 
