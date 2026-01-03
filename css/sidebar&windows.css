@@ -1,0 +1,343 @@
+:root {
+    --roundness: 8px;
+    --cornflower-blue: #588ae1;
+    --cornflower-light: #a0c1fb;
+    --deep-blue: #375ba4;
+    --deeper-blue: #2d4f93;
+    --ds-text: #515357;
+    --light-gray: #e6eaee;
+    --gray-text: #70767a;
+    --gray-tint: #afafaf89;
+    --shadow-blue: #13276966;
+    --shadow-blue-opaque: #a1a9c3;
+    --x-red: #c66363;
+    --x-red-dark: #ac5252;
+}
+
+/* #region =================================================================
+                SIDEBAR BUTTONS (INCLUDES CLASS FINDER)
+   ========================================================================= */
+
+    #side-btns-container {
+        width: 80px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        position: fixed;
+        z-index: 10;
+        right: 0;
+        top: 200px;
+    }
+
+    /* General buttons ----------------------------------------------------- */
+
+    .side-btn {
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        border-top-left-radius: var(--roundness);
+        border-bottom-left-radius: var(--roundness);
+    }
+
+    #class-finder-btn {
+        width: 80px;
+        height: 100px;
+
+        color: white;
+        user-select: none;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--cornflower-blue);
+
+        img {
+            position: absolute;
+            bottom: 8px;
+            left: -1px;
+            height: 120px;
+        }
+        p {
+            position: absolute;
+            left: 5px;
+            bottom: 5px;
+            font-weight: 600;
+        }
+    }
+
+    #class-finder-btn:hover {
+        filter: brightness(0.9);
+    }
+
+    #help-btn {
+        height: 35px;
+        color: var(--gray-text);
+        background-color: white;
+
+        img {
+            position: absolute;
+            height: 55px;
+            top: 0px;
+            left: 5px;
+        }
+        p {
+            position: absolute;
+            top: 7px;
+            right: 9px;
+            font-weight: 600;
+        }
+    }
+
+    #help-btn:hover {
+        filter: brightness(0.9);
+    }
+
+    #settings-btn {
+        height: 35px;
+        color: white;
+        background-color: var(--gray-text);
+
+        img {
+            position: absolute;
+            top: 0px;
+            left: -5px;
+            height: 65px;
+        }
+        p {
+            position: absolute;
+            top: 7px;
+            right: 9px;
+            font-weight: 600;
+        }
+    }
+
+    #settings-btn:hover {
+        filter: brightness(0.9);
+    }
+
+    /* generic window */
+    .generic-window-wrapper {
+        pointer-events: none; /* click through div */
+
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .generic-window {
+            pointer-events: all; /* but make child clickable */
+
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            border-radius: var(--roundness);
+            overflow: hidden;
+            z-index: 10;
+
+            .generic-window-topbar {
+                width: 100%;
+
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: white;
+                padding: 15px 30px 12px;
+                background-color: var(--cornflower-blue);
+
+                .generic-window-header {
+                    display: flex;
+                    gap: 20px;
+                    
+                    img {
+                        height: 40px;
+                        filter: brightness(150%) contrast(150%);
+                    }
+                    h2 {
+                        font-size: 30px;
+                    }
+                }
+
+                .generic-window-close {
+                    height: 22px;
+                    margin-right: 10px;
+
+                    img {
+                        height: 100%;
+                    }
+                }
+
+                .generic-window-close:hover > img {
+                    cursor: pointer;
+                    filter: brightness(75%);
+                }
+            }
+
+            .generic-window-contents {
+                background-color: white;
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                padding: 10px 30px 30px;
+            }
+        }
+    }
+
+
+    /* Class finder window ------------------------------------------------- */
+
+    #cf-subject-menu, #cf-attributes-menu {
+        height: 300px !important;
+        overflow-y: scroll !important;
+    }
+
+    #class-finder-window {
+        width: 100%;
+        max-width: 700px;
+        height: 100%;
+        max-height: 450px;
+        background-color: var(--cornflower-blue);
+        color: white;
+
+        #class-finder-topbar {
+            padding: 30px 30px 12px;
+        }
+
+        #class-finder {
+            background-color: var(--cornflower-blue);
+            padding: 10px 30px 30px;
+
+            #class-finder-search-container {
+                background-color: var(--light-gray);
+                width: 100%;
+                height: 100%;
+                display: grid;
+                grid-template-columns: 40% 60%;
+                gap: 1px;
+
+                #class-finder-search {
+                    background-color: var(--cornflower-blue);
+                    padding: 0px 20px 0px 2px;
+                    display: flex;
+                    flex-direction: column;
+
+                    label {
+                        font-weight: 500;
+                    }
+
+                    input, .ui-selectmenu-button {
+                        font-size: unset;
+                        background-color: white;
+                        width: 100%;
+                        height: 28px;
+                        border: solid 1px var(--deep-blue);
+                        border-radius: var(--roundness);
+                        margin: 5px 0px 5px;
+                        padding: 1px 5px;
+                    }
+
+                    input[type="submit"] {
+                        height: 35px;
+                        margin-top: 30px;
+                        font-weight: 500;
+                        background-color: var(--deep-blue);
+                        color: white;
+                    }
+
+                    input[type="submit"]:hover {
+                        cursor: pointer;
+                        background-color: var(--deeper-blue);
+                    }
+
+                    input::placeholder { /* This is for text input with placholders */
+                        color: var(--shadow-blue);
+                    }
+
+                    input.placeholder {  /* This is for dropdowns with "placeholders"; class assigned in js */
+                        color: var(--shadow-blue);
+                    }
+                }
+
+                #class-finder-results {
+                    background-color: var(--cornflower-blue);
+                    padding: 0px 2px 0px 20px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+
+                    #cf-results-list {
+                        height: 290px;
+                        overflow-x: hidden;
+                        overflow-y: scroll;
+                        border-radius: var(--roundness);
+
+                        .cf-result {
+                            height: 85px;
+                            padding: 5px 10px 8px;
+                            margin-bottom: 5px;
+                            white-space: nowrap;
+                            border: solid 1px var(--deep-blue);
+                            border-radius: var(--roundness);
+                            background-color: white;
+                            color: black;
+
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            overflow: hidden;
+
+                            .class-about {
+                                display: flex;
+                                flex-direction: row;
+                                gap: 5px;
+
+                                p {
+                                    height: 43px;
+                                    width: 100%;
+                                    text-wrap: wrap;
+                                    word-break: break-word;
+                                    display: -webkit-box;
+                                    line-clamp: 2;
+                                    -webkit-line-clamp: 2;
+                                    box-orient: vertical;
+                                    -webkit-box-orient: vertical;
+                                    overflow: hidden;
+                                }
+                            }
+
+                            .class-data {
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: space-between;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    /* Help window --------------------------------------------------------- */
+
+    #help-window {
+        width: 500px;
+    }
+
+
+    /* Settings window --------------------------------------------------------- */
+
+    #settings-window {
+        width: 500px;
+    }
+    
+
+/* #endregion ============================================================== */

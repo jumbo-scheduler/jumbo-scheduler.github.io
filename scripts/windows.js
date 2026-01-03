@@ -1,16 +1,16 @@
 const class_finder_template = `
-    <div id="class-finder-window-wrapper">
-        <section id="class-finder-window" class="iswindow">
-            <div id="class-finder-topbar">
-                <div id="class-finder-header">
+    <div class="generic-window-wrapper">
+        <section id="class-finder-window" class="generic-window iswindow">
+            <div id="class-finder-topbar" class="generic-window-topbar">
+                <div id="class-finder-header" class="generic-window-header">
                     <img src="/img/class_finder_mag.svg">
                     <h2>Find a course</h2>
                 </div>
-                <button id="class-finder-close">
-                    <img src="/img/class_finder_x.svg">
+                <button id="class-finder-close" class="generic-window-close">
+                    <img src="/img/generic_window_x.svg">
                 </button>
             </div>
-            <div id="class-finder">
+            <div id="class-finder" class="generic-window-contents">
                 <div id="class-finder-search-container">
                     <form id="class-finder-search">
                         <label for="cf-quick-search">
@@ -50,6 +50,38 @@ const class_finder_template = `
     </div>
 `;
 
+const help_window_template = `
+    <div class="generic-window-wrapper">
+        <div id="help-window" class="generic-window iswindow">
+            <div class="generic-window-topbar">
+                <div class="generic-window-header">
+                    <img src="/img/help.svg">
+                    <h2>Help</h2>
+                </div>
+                <button class="generic-window-close">
+                    <img src="/img/generic_window_x.svg">
+                </button>
+            </div>
+        </div>
+    </div>
+`;
+
+const settings_window_template = `
+    <div class="generic-window-wrapper">
+        <div id="settings-window" class="generic-window iswindow">
+            <div class="generic-window-topbar">
+                <div class="generic-window-header">
+                    <img src="/img/settings.svg">
+                    <h2>Settings</h2>
+                </div>
+                <button class="generic-window-close">
+                    <img src="/img/generic_window_x.svg">
+                </button>
+            </div>
+        </div>
+    </div>
+`;
+
 let finderWindow;
 
 window.onload = () => {
@@ -57,13 +89,14 @@ window.onload = () => {
     $(document).tooltip({
         show: {
             delay: 500
-      }});
+        }
+    });
 
+
+    // CLASS FINDER -----------------------------------------------------------
     $(document.body).append(class_finder_template);
     finderWindow = $(document.body).find("#class-finder-window");
     
-    // TESTING SELECT MENU - DELETE AND POPULATE WITH REAL STUFF
-    // SWITCH TO COMBOBOX LATER: https://jqueryui.com/autocomplete/#combobox
     // subjects
     let cf_subject = finderWindow.find("#cf-subject");
     cf_subject.append(`
@@ -81,7 +114,6 @@ window.onload = () => {
         </optgroup>
     `);
 
-    finderWindow.draggable({handle: "#class-finder-topbar", cancel: "img"});
     finderWindow.find("select").selectmenu();
     finderWindow.find("#class-finder-close").on("click", () => {
         finderWindow.find("#class-finder-search").trigger("reset"); // clear the search
@@ -89,8 +121,6 @@ window.onload = () => {
         $("#cf-results-list").empty()
         finderWindow.hide();
     })
-
-    finderWindow.hide();
 
     $("#class-finder-btn").on("click", function (e) { 
         e.preventDefault();
@@ -106,7 +136,58 @@ window.onload = () => {
     });
 
     searchForClass()
+    // ------------------------------------------------------------------------
+
+
+
+    // HELP WINDOW ------------------------------------------------------------
+    $(document.body).append(help_window_template);
+    let helpWindow = $("#help-window");
+
+    helpWindow.find(".generic-window-close").on("click", () => {
+        helpWindow.hide();
+    })
+
+    $("#help-btn").on("click", function (e) { 
+        e.preventDefault();
+        if (helpWindow.is(":visible")) {
+            helpWindow.hide();
+        } else {
+            helpWindow.show();
+        }
+    });
+    // ------------------------------------------------------------------------
+
+
+
+    // SETTINGS WINDOW --------------------------------------------------------
+    $(document.body).append(settings_window_template);
+    let settingsWindow = $("#settings-window");
+
+    settingsWindow.find(".generic-window-close").on("click", () => {
+        settingsWindow.hide();
+    })
+
+    $("#settings-btn").on("click", function (e) { 
+        e.preventDefault();
+        if (settingsWindow.is(":visible")) {
+            settingsWindow.hide();
+        } else {
+            settingsWindow.show();
+        }
+    });
+    // ------------------------------------------------------------------------
+
+
+
+    // make all windows draggable & exitable at end
+    let allWindows = $(".generic-window");
+    allWindows.draggable({handle: ".generic-window-topbar", cancel: "img"});
+    allWindows.hide();
 }
+
+
+
 
 // handle submission:
 //      extracts form data

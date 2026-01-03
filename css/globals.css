@@ -1,0 +1,73 @@
+:root {
+    --roundness: 8px;
+    --cornflower-blue: #588ae1;
+    --cornflower-light: #a0c1fb;
+    --deep-blue: #375ba4;
+    --deeper-blue: #2d4f93;
+    --ds-text: #515357;
+    --light-gray: #e6eaee;
+    --gray-text: #70767a;
+    --gray-tint: #afafaf89;
+    --shadow-blue: #13276966;
+    --shadow-blue-opaque: #a1a9c3;
+    --x-red: #c66363;
+    --x-red-dark: #ac5252;
+}
+
+@font-face {
+    font-family: "noto-sans";
+    src: url("/fonts/NotoSans-VariableFont_wdth\,wght.ttf");
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: "noto-sans", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+button {
+    all: unset;
+}
+
+body {
+    padding: 10px 15px;
+}
+
+b {
+    font-weight: 550;
+}
+
+.ui-tooltip {
+    border: 0;
+    margin-top: -10px;
+}
+
+.hasshadow, .ui-tooltip {
+    box-shadow: var(--shadow-blue) 2px 2px 4px, var(--shadow-blue) 0px 0px 3px !important;
+}
+
+.iswindow {
+    box-shadow: var(--shadow-blue) 0px 0px 2px, var(--shadow-blue) 0px 0px 5px, var(--shadow-blue) 5px 5px 15px !important;
+}
+
+.horiz-rule {
+    background-color: var(--light-gray);
+    width: 100%;
+    height: 1px;
+    margin: 10px 0px;
+}
+
+.hl-green {
+    padding: 0px 5px;
+    border-radius: 5px;
+    background-color: #09ff002a;
+}
+
+.hl-orange {
+    padding: 0px 5px;
+    border-radius: 5px;
+    background-color: #ff6a002a;
+}
