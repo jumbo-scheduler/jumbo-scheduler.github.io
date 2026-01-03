@@ -783,6 +783,7 @@ main {
 
             .ds-group-content {
                 padding: 5px 35px 10px 5px;
+                transition: transform 0.2s ease;
             }
         }
     }
@@ -809,13 +810,6 @@ main {
         button:hover {
             background-color: var(--light-gray);
         }
-    }
-
-    #ds-resize-dragger {
-        height: 16px;
-        position: absolute;
-        right: 5px;
-        bottom: 5px;
     }
 
 /* #endregion ============================================================== */

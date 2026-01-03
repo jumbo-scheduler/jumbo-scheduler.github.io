@@ -75,7 +75,7 @@ $("#ds-new-attr").on("click", () => {
 
 $("#ds-new-group").on("click", () => { 
     const newRequirement = 
-        $(`<div class="ds-item ds-item-group">
+        $(`<div class="ds-item ds-item-group" id="ds-item-just-created">
                 <div class="ds-group-box">
                     <div class="ds-group-header">
                         <div class="ds-group-header-left">
@@ -110,4 +110,41 @@ $("#ds-new-group").on("click", () => {
 
     newRequirement.appendTo($("#ds-items-container"))                
     currentTab.addRequirement(newRequirement);
+
+    let justCreated = $("#ds-item-just-created");
+    console.log(justCreated);
+    justCreated.find(".ds-collapse-btn").on("click", (e) => {
+        let button = $(e.target);
+        let groupContents = button.closest(".ds-group-content");
+        if (groupContents.css("max-height") !== "0px") {
+            // shrink ds items container height with animation
+            groupContents.css("max-height", "0px")
+            // rotate arrow with animation
+            button.css("transform", "rotate(-90deg)")
+        }
+        else {
+            // expand ds items container height with animation
+            groupContents.css("max-height", "100vh")
+            // rotate arrow with animation
+            button.css("transform", "rotate(0deg)")
+            groupContents.css("max-height", "none")
+        }
+    });
+})
+
+// collapse/expand degree sheet
+$("#major-collapse-btn").on("click", () => {
+    if ($("#ds-items-container").css("max-height") !== "0px") {
+        // shrink ds items container height with animation
+        $("#ds-items-container").css("max-height", "0px")
+        // rotate arrow with animation
+        $("#major-collapse-btn img").css("transform", "rotate(-90deg)")
+    }
+    else {
+        // expand ds items container height with animation
+        $("#ds-items-container").css("max-height", "100vh")
+        // rotate arrow with animation
+        $("#major-collapse-btn img").css("transform", "rotate(0deg)")
+        $("#ds-items-container").css("max-height", "none")
+    }
 })
