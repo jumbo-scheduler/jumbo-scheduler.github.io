@@ -52,7 +52,7 @@ const class_finder_template = `
 
 const help_window_template = `
     <div class="generic-window-wrapper">
-        <div id="help-window" class="generic-window iswindow">
+        <section id="help-window" class="generic-window iswindow">
             <div class="generic-window-topbar">
                 <div class="generic-window-header">
                     <img src="/img/help.svg">
@@ -62,13 +62,16 @@ const help_window_template = `
                     <img src="/img/generic_window_x.svg">
                 </button>
             </div>
-        </div>
+            <div class="generic-window-contents">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </div>
+        </section>
     </div>
 `;
 
 const settings_window_template = `
     <div class="generic-window-wrapper">
-        <div id="settings-window" class="generic-window iswindow">
+        <section id="settings-window" class="generic-window iswindow">
             <div class="generic-window-topbar">
                 <div class="generic-window-header">
                     <img src="/img/settings.svg">
@@ -78,9 +81,22 @@ const settings_window_template = `
                     <img src="/img/generic_window_x.svg">
                 </button>
             </div>
-        </div>
+            <div class="generic-window-contents">
+
+            </div>
+        </section>
     </div>
 `;
+
+let windows = [];
+
+function layer_windows() {
+    console.log(windows);
+    for (let i = 0; i < windows.length; i++) {
+        windows[i].style.zIndex = i + 10;
+    }
+}
+
 
 let finderWindow;
 
@@ -131,6 +147,9 @@ window.onload = () => {
             $("#cf-results-list").empty()
             finderWindow.hide();
         } else {
+            windows = windows.filter(element => element != finderWindow[0]);
+            windows.push(finderWindow[0]);
+            layer_windows();
             finderWindow.show();
         }
     });
@@ -153,6 +172,9 @@ window.onload = () => {
         if (helpWindow.is(":visible")) {
             helpWindow.hide();
         } else {
+            windows = windows.filter(element => element != helpWindow[0]);
+            windows.push(helpWindow[0]);
+            layer_windows();
             helpWindow.show();
         }
     });
@@ -173,6 +195,9 @@ window.onload = () => {
         if (settingsWindow.is(":visible")) {
             settingsWindow.hide();
         } else {
+            windows = windows.filter(element => element != settingsWindow[0]);
+            windows.push(settingsWindow[0]);
+            layer_windows();
             settingsWindow.show();
         }
     });
@@ -180,10 +205,21 @@ window.onload = () => {
 
 
 
+    $(".generic-window").map(function() {
+        windows.push(this);
+    });
+
+    $(".generic-window").on("mousedown", function() {
+        console.log(this);
+        windows = windows.filter(element => element != this);
+        windows.push(this);
+        layer_windows();
+    });
+
     // make all windows draggable & exitable at end
-    let allWindows = $(".generic-window");
-    allWindows.draggable({handle: ".generic-window-topbar", cancel: "img"});
-    allWindows.hide();
+    let allWindowsJQ = $(".generic-window");
+    allWindowsJQ.draggable({handle: ".generic-window-topbar", cancel: "img"});
+    allWindowsJQ.hide();
 }
 
 
@@ -329,8 +365,8 @@ const addResult = (result) => {
             </div>
             <div class="class-data">
                 <div>
-                    ${result.offeredInSpring ? `<span class="hl-green">Spring</span>` : ""}
                     ${result.offeredInFall ? `<span class="hl-orange">Fall</span>`: ""}
+                    ${result.offeredInSpring ? `<span class="hl-green">Spring</span>` : ""}
                 </div>
                 <div>
                     <b>${result.credits}</b> credit${result.credits == 1 ? "" : "s"}

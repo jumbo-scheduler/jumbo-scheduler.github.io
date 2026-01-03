@@ -49,10 +49,6 @@ b {
     box-shadow: var(--shadow-blue) 2px 2px 4px, var(--shadow-blue) 0px 0px 3px !important;
 }
 
-.iswindow {
-    box-shadow: var(--shadow-blue) 0px 0px 2px, var(--shadow-blue) 0px 0px 5px, var(--shadow-blue) 5px 5px 15px !important;
-}
-
 .horiz-rule {
     background-color: var(--light-gray);
     width: 100%;
