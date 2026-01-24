@@ -27,15 +27,18 @@ $(function() {
 // new requirement buttons
 $("#ds-new-class").on("click", () => { 
     const newRequirement = 
-        $(`<div class="ds-item ds-item-class">
+        $(`<div id="new-ds-item-class" class="ds-item ds-item-class">
                 <img class="ds-item-marker" src="${showColorMarkers ? "img/class_marker_color.svg" : "img/class_marker.svg"}" />
                 <div class="ds-item-box">
-                    <input placeholder="Search or select class name" />
+                    <div class="ds-autocomplete">
+                        <input placeholder="Search or select class name" />
+                        <div class="ds-autocomplete-options hasshadow"></div>
+                    </div>
                     <button class="ds-item-btn ds-item-dup"><img src="img/dup_icon.svg" /></button>
                     <button class="ds-item-btn ds-item-delete"><img src="img/trash_icon.svg" /></button>
                     <button class="ds-item-btn ds-item-move"><img src="img/drag_icon.svg" /></button>
                 </div>
-            </div>`)
+            </div>`);
 
     newRequirement.appendTo($("#ds-items-container"))                
     currentTab.addRequirement(newRequirement);
@@ -46,7 +49,10 @@ $("#ds-new-dept").on("click", () => {
         $(`<div class="ds-item ds-item-dept">
                 <img class="ds-item-marker" src="${showColorMarkers ? "img/dept_marker_color.svg" : "img/dept_marker.svg"}" />
                 <div class="ds-item-box">
-                    <input placeholder="Search or select department name" />
+                    <div class="ds-autocomplete">
+                        <input placeholder="Search or select department name" />
+                        <div class="ds-autocomplete-options hasshadow"></div>
+                    </div>
                     <button class="ds-item-btn ds-item-dup"><img src="img/dup_icon.svg" /></button>
                     <button class="ds-item-btn ds-item-delete"><img src="img/trash_icon.svg" /></button>
                     <button class="ds-item-btn ds-item-move"><img src="img/drag_icon.svg" /></button>
@@ -62,7 +68,10 @@ $("#ds-new-attr").on("click", () => {
         $(`<div class="ds-item ds-item-attr">
                 <img class="ds-item-marker" src="${showColorMarkers ? "img/attr_marker_color.svg" : "img/attr_marker.svg"}" />
                 <div class="ds-item-box">
-                    <input placeholder="Search or select attribute name" />
+                    <div class="ds-autocomplete">
+                        <input placeholder="Search or select attribute name" />
+                        <div class="ds-autocomplete-options hasshadow"></div>
+                    </div>
                     <button class="ds-item-btn ds-item-dup"><img src="img/dup_icon.svg" /></button>
                     <button class="ds-item-btn ds-item-delete"><img src="img/trash_icon.svg" /></button>
                     <button class="ds-item-btn ds-item-move"><img src="img/drag_icon.svg" /></button>

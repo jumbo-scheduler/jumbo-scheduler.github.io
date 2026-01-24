@@ -76,7 +76,10 @@ All important HTML IDs and Classes are documented herein
     ⚠️.ds-item .................................. div (also has class "ds-item-{class|dept|attr}")
     └───⚠️.ds-item-marker ....................... img
     └───🍬.ds-item-box .......................... div
-        └───⚠️input ............................. input (name of class/dept/attr as dropdown)
+        └───⚠️.ds-autocomplete .................. div
+            └───⚠️input ......................... input (name of class/dept/attr as dropdown)
+            └───⚠️.ds-autocomplete-list ......... div
+                └───⚠️.ds-autocomplete-option ... button??????
         └───⚠️.ds-item-dup ...................... button
         └───⚠️.ds-item-delete ................... button
         └───⚠️.ds-item-move ..................... button

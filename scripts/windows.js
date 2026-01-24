@@ -82,7 +82,14 @@ const settings_window_template = `
                 </button>
             </div>
             <div class="generic-window-contents">
-
+                <div class="center">
+                    <form id="settings">
+                        <label for="darkmode">
+                            Dark mode: 
+                            <input id="darkmode" name="darkmode" type="checkbox" />
+                        </label>
+                    </form>
+                </div
             </div>
         </section>
     </div>
@@ -98,6 +105,8 @@ function layer_windows() {
 
 
 let finderWindow;
+let helpWindow;
+let settingsWindow;
 
 window.onload = () => {
     // generate tooltips out of title attributes
@@ -160,7 +169,7 @@ window.onload = () => {
 
     // HELP WINDOW ------------------------------------------------------------
     $(document.body).append(help_window_template);
-    let helpWindow = $("#help-window");
+    helpWindow = $("#help-window");
 
     helpWindow.find(".generic-window-close").on("click", () => {
         helpWindow.hide();
@@ -183,7 +192,7 @@ window.onload = () => {
 
     // SETTINGS WINDOW --------------------------------------------------------
     $(document.body).append(settings_window_template);
-    let settingsWindow = $("#settings-window");
+    settingsWindow = $("#settings-window");
 
     settingsWindow.find(".generic-window-close").on("click", () => {
         settingsWindow.hide();
@@ -198,6 +207,21 @@ window.onload = () => {
             windows.push(settingsWindow[0]);
             layer_windows();
             settingsWindow.show();
+        }
+    });
+
+    settingsWindow.find("form").on("change", function (e) {
+        let fdata = new FormData(this);
+        let cssroot = document.querySelector(":root");
+        let darkmode = fdata.get("darkmode");
+        if (darkmode) { // eventually use cookies
+            console.log(darkmode);
+            document.documentElement.style.setProperty('--bgcolor', '#1d1c44');
+            document.documentElement.style.setProperty('--textcolor', '#e6eaee');
+        } else {
+            console.log(darkmode);
+            document.documentElement.style.setProperty('--bgcolor', 'white');
+            document.documentElement.style.setProperty('--textcolor', 'black');
         }
     });
     // ------------------------------------------------------------------------
@@ -223,6 +247,8 @@ window.onload = () => {
 
 
 
+
+// #region CLASS FINDER STUFF ===============================================
 // handle submission:
 //      extracts form data
 //      searches the catalog for appropriate classes
@@ -374,3 +400,7 @@ const addResult = (result) => {
     $("#cf-results-list").append(result_template)
     $(".sis-link")
 }
+
+//#endregion =================================================================
+
+
