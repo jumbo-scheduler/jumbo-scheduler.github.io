@@ -33,7 +33,8 @@ const read_classes = (term) => {
         let attributes =  row.children[2].children[1].children[0].children[0].children[3].children[1].children[0].children[0].children[0].children[0].children[0].children.length > 1 ? class_table[i].children[2].children[1].children[0].children[0].children[3].children[1].children[0].children[0].children[0].children[0].children[0].children[1].innerText.slice(17).split(', ').map(x => x.split('\n').join().split(',').join('')) : []
         let prereqs = row.children[2].children[1].children[0].children[0].children[3].children[1].children[0].children[0].children[0].children[0].children[2].children[1].innerText
         let credits = row.children[2].children[1].children[0].children[0].children[3].children[0].children[4].innerText
-             
+        let year = document.getElementsByClassName("tfp-count-head")[0].innerText.split(',').slice(-1)[0].split(' ').slice(-1)[0]
+        
         let class_number = class_name.split('-')[1]
         if (class_number < 200 && !prereqs.includes("SMFA students only")) { // only allow classes under 200 (most undergrad classes)
             class_directory[class_name] = {
@@ -42,7 +43,8 @@ const read_classes = (term) => {
                 prereqs: prereqs,
                 credits: parseInt(credits),
                 offeredInFall: term == "fall",
-                offeredInSpring: term == "spring"
+                offeredInSpring: term == "spring",
+                yearOffered: year 
             }
         }
     }

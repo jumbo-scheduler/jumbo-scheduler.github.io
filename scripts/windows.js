@@ -381,11 +381,14 @@ const getStringMatchValue = (string, searchQuery) => {
 const addResult = (result) => {
     let fullGovernmentName = result.name.split(":");
     let courseID = fullGovernmentName.shift();
+
+    const yearID = `2${total_catalog[courseID].yearOffered.slice(-2)}${result.offeredInSpring ? "2" : "8"}`
+
     const result_template = 
         `<div class=cf-result>
             <div class="class-about">
                 <p><b>${courseID}:</b>${fullGovernmentName.join()}</p>
-                <a class="sis-link" href="https://sis.it.tufts.edu/psp/paprd/EMPLOYEE/EMPL/h/?tab=TFP_CLASS_SEARCH#class_search" target="_blank" rel="noopener noreferrer">SIS</a>
+                <a class="sis-link" href="https://sis.it.tufts.edu/psp/paprd/EMPLOYEE/EMPL/h/?tab=TFP_CLASS_SEARCH&pt_fname=TFP_SEARCH_FOR_CLASSES_FLDR&FolderPath=PORTAL_ROOT_OBJECT.TFP_CLASSES_FLDR.TFP_SEARCH_FOR_CLASSES_FLDR&IsFolder=true#search_results/term/${yearID}/career/ASE/subject/${courseID.split('-')[0]}/course/${courseID.split('-')[1]}/attr/keyword/instructor" target="_blank" rel="noopener noreferrer">SIS</a>
             </div>
             <div class="class-data">
                 <div>
