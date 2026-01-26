@@ -388,7 +388,10 @@ const addResult = (result) => {
         `<div class=cf-result>
             <div class="class-about">
                 <p><b>${courseID}:</b>${fullGovernmentName.join()}</p>
-                <a class="sis-link" href="https://sis.it.tufts.edu/psp/paprd/EMPLOYEE/EMPL/h/?tab=TFP_CLASS_SEARCH&pt_fname=TFP_SEARCH_FOR_CLASSES_FLDR&FolderPath=PORTAL_ROOT_OBJECT.TFP_CLASSES_FLDR.TFP_SEARCH_FOR_CLASSES_FLDR&IsFolder=true#search_results/term/${yearID}/career/ASE/subject/${courseID.split('-')[0]}/course/${courseID.split('-')[1]}/attr/keyword/instructor" target="_blank" rel="noopener noreferrer">SIS</a>
+                <div class="class-links">
+                    <a class="sis-link" href="https://sis.it.tufts.edu/psp/paprd/EMPLOYEE/EMPL/h/?tab=TFP_CLASS_SEARCH&pt_fname=TFP_SEARCH_FOR_CLASSES_FLDR&FolderPath=PORTAL_ROOT_OBJECT.TFP_CLASSES_FLDR.TFP_SEARCH_FOR_CLASSES_FLDR&IsFolder=true#search_results/term/${yearID}/career/ASE/subject/${courseID.split('-')[0]}/course/${courseID.split('-')[1]}/attr/keyword/instructor" target="_blank" rel="noopener noreferrer">SIS</a>
+                    <br> <a class="prereq-btn" href="#">Prereqs</a>
+                </div>
             </div>
             <div class="class-data">
                 <div>
@@ -401,7 +404,9 @@ const addResult = (result) => {
             </div>
         </div>`
     $("#cf-results-list").append(result_template)
-    $(".sis-link")
+    $(".prereq-btn").last().on("click", () => {
+        alert(`Prerequisites for ${courseID}:\n\n${result.prereqs.length > 0 ? result.prereqs : "None"}`)
+    })
 }
 
 //#endregion =================================================================
