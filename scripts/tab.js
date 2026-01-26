@@ -93,7 +93,7 @@ const createTab = () => {
     })
 
     // create the corresponding Tab object
-    currentTab = new Tab(`Tab ${newTabIndex}`)
+    currentTab = new Tab(`Term ${newTabIndex}`)
     tabs.push(currentTab)
 
     newTab.insertBefore($("#new-tab-btn"))
