@@ -44,12 +44,7 @@ const createTab = () => {
 
     // if too many say fuck you
     if (numTabs > 9) {
-        if (numAlerts > 0 && Math.random() * 5 < 1) {
-            alert("Why does blud need so many minors 🤨📸");
-        } else {
-            alert("Blud thinks they're einstein taking more than 10 majors and minors");
-        }
-        numAlerts++;
+        alert("Bro is NOT graduating")
         return;
     }
     numTabs++;
@@ -58,12 +53,12 @@ const createTab = () => {
     const tabNames = $(".tab-label").get().map(x => $(x).text())
     var newTabIndex = 1
     if (tabNames.length > 0) {
-        while (tabNames.includes(`Major ${newTabIndex}`)) newTabIndex++
+        while (tabNames.includes(`Term ${newTabIndex}`)) newTabIndex++
     }
 
     const tabTemplate = 
     `<div class="tab">
-        <p class="tab-label">Major ${newTabIndex}</p>
+        <p class="tab-label">Term ${newTabIndex}</p>
         <button class="close-tab-btn">
             <span style="font-family: monospace">✖</span>
         </button>
