@@ -590,7 +590,7 @@ const addResult = (result) => {
                         data-course-id="${courseID}"
                         data-course-name="${fullGovernmentName.join()}"
                         data-credits="${result.credits}">
-                    <span>➕</span> Add
+                    <span>➕</span> Add to current term
                     </button>
                     ${result.offeredInFall ? `<span class="hl-orange">Fall</span>` : ""}
                     ${result.offeredInSpring ? `<span class="hl-green">Spring</span>` : ""}

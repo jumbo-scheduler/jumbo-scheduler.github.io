@@ -195,32 +195,46 @@ $(document).ready(function () {
         $('#total-credits').text(`${totalCredits} credits`);
     }
 
-    // Public method to add a class to a specific term (to be called from class finder)
+    
+    // Update the add class method with animation
     window.addClassToTerm = function (termId, classCode, className, credits) {
         const contentDiv = $(`#${termId}-content`);
         const emptyState = contentDiv.find('.term-empty');
 
-        // Remove empty state if it exists
+        // Remove empty state with animation if it exists
         if (emptyState.length) {
-            emptyState.remove();
+            emptyState.addClass('removing');
+            setTimeout(() => {
+                emptyState.remove();
+            }, 200);
         }
 
         const classItem = `
-            <div class="term-class-item" draggable="true">
-                <img class="class-marker" src="img/class_marker.svg" alt="class" />
-                <span class="class-code">${classCode}</span>
-                <span class="class-name">${className}</span>
-                <span class="class-credits">${credits} credits</span>
-                <img class="remove-class" src="img/trash_icon.svg" alt="remove" />
-            </div>
-        `;
+        <div class="term-class-item" draggable="true" style="opacity: 0; transform: translateY(-10px);">
+            <img class="class-marker" src="img/class_marker.svg" alt="class" />
+            <span class="class-code">${classCode}</span>
+            <span class="class-name">${className}</span>
+            <span class="class-credits">${credits} credits</span>
+            <img class="remove-class" src="img/trash_icon.svg" alt="remove" />
+        </div>
+    `;
 
-        // Append to content
+        // Append the item
         contentDiv.append(classItem);
+        const newItem = contentDiv.find('.term-class-item').last();
+
+        // Trigger animation after a tiny delay
+        setTimeout(() => {
+            newItem.css({
+                'opacity': '1',
+                'transform': 'translateY(0)'
+            });
+        }, 10);
+
         updateCreditTotals();
 
         // Setup drag and drop for the new item
-        setupDragDrop(contentDiv.find('.term-class-item').last());
+        setupDragDrop(newItem);
     };
 
     // Setup drag and drop functionality
@@ -320,47 +334,6 @@ $(document).ready(function () {
 
     // Setup remove listeners globally
     setupRemoveListeners();
-
-    // Update the add class method with animation
-    window.addClassToTerm = function (termId, classCode, className, credits) {
-        const contentDiv = $(`#${termId}-content`);
-        const emptyState = contentDiv.find('.term-empty');
-
-        // Remove empty state with animation if it exists
-        if (emptyState.length) {
-            emptyState.addClass('removing');
-            setTimeout(() => {
-                emptyState.remove();
-            }, 200);
-        }
-
-        const classItem = `
-        <div class="term-class-item" draggable="true" style="opacity: 0; transform: translateY(-10px);">
-            <img class="class-marker" src="img/class_marker.svg" alt="class" />
-            <span class="class-code">${classCode}</span>
-            <span class="class-name">${className}</span>
-            <span class="class-credits">${credits} cr</span>
-            <img class="remove-class" src="img/trash_icon.svg" alt="remove" />
-        </div>
-    `;
-
-        // Append the item
-        contentDiv.append(classItem);
-        const newItem = contentDiv.find('.term-class-item').last();
-
-        // Trigger animation after a tiny delay
-        setTimeout(() => {
-            newItem.css({
-                'opacity': '1',
-                'transform': 'translateY(0)'
-            });
-        }, 10);
-
-        updateCreditTotals();
-
-        // Setup drag and drop for the new item
-        setupDragDrop(newItem);
-    };
 
     function expandAllTerms() {
         $('.term-header').each(function (index) {
