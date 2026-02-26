@@ -1,0 +1,180 @@
+
+
+
+/* Prereq button with tooltip - MAXIMUM Z-LAYER */
+.prereq-btn {
+    position: relative;
+    cursor: help !important;
+    z-index: 1; /* Base z-index for button */
+}
+
+.prereq-btn:hover::after {
+    content: attr(data-tooltip);
+    position: fixed; /* Changed from absolute to fixed to escape any container constraints */
+    bottom: auto;
+    top: 50%; /* Will be dynamically adjusted with JavaScript, but CSS provides fallback */
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background: var(--deep-blue);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 24px;
+    font-size: 0.9em;
+    font-weight: 400;
+    white-space: pre-wrap;
+    min-width: 220px;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    z-index: 100; /* Extremely high z-index */
+    pointer-events: none;
+    animation: tooltipFade 0.2s ease;
+    line-height: 1.5;
+    border: 1px solid var(--cornflower-light);
+    letter-spacing: 0.3px;
+    word-break: break-word;
+}
+
+.prereq-btn:hover::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(-50% + 20px));
+    border-width: 8px;
+    border-style: solid;
+    border-color: var(--deep-blue) transparent transparent transparent;
+    z-index: 999999; /* Match the tooltip's z-index */
+    pointer-events: none;
+}
+
+@keyframes tooltipFade {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(calc(-50% + 10px));
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-50%);
+    }
+}
+
+/* If prerequisites are long, handle them nicely */
+.prereq-btn[data-tooltip*="\n"]:hover::after {
+    text-align: left;
+    white-space: pre-line;
+}
+
+
+
+
+/* Dual Range Slider - Fixed Handle Boundaries */
+.credit-range-container {
+    margin: 15px 0 10px 0;
+    padding: 5px 0;
+    width: 100%;
+}
+
+.credit-range-container label {
+    font-weight: 500;
+    font-size: 1.05em;
+    margin-bottom: 12px;
+    display: block;
+    color: white;
+}
+
+.dual-range-slider {
+    position: relative;
+    height: 40px;
+    width: 100%;
+    margin: 10px 0 5px;
+    cursor: pointer;
+}
+
+.slider-track {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 4px;
+    background: var(--shadow-blue);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.slider-range {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    background: var(--cornflower-light);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.slider-handle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%); /* Center the handle on the position */
+    width: 24px;
+    height: 24px;
+    background: white;
+    border: 2px solid var(--cornflower-light);
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    cursor: grab;
+    transition: all 0.2s ease;
+    z-index: 10;
+    margin-left: 0; /* Remove any default margins */
+}
+
+.slider-handle:hover {
+    transform: translateY(-50%) translateX(-50%) scale(1.15);
+    background: var(--cornflower-light);
+    box-shadow: 0 4px 12px rgba(88, 138, 225, 0.4);
+}
+
+.slider-handle:active {
+    cursor: grabbing;
+    transform: translateY(-50%) translateX(-50%) scale(0.95);
+}
+
+.slider-handle:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+.slider-handle-min {
+    left: 0%;
+}
+
+.slider-handle-max {
+    left: 100%;
+}
+
+.credit-range-values {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 15px;
+    color: white;
+    font-size: 0.95em;
+    background: rgba(255,255,255,0.1);
+    padding: 6px 16px;
+    border-radius: 24px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    backdrop-filter: blur(2px);
+}
+
+.credit-range-values span {
+    font-weight: 600;
+    background: white;
+    color: var(--deep-blue);
+    padding: 2px 12px;
+    border-radius: 20px;
+    min-width: 30px;
+    text-align: center;
+}

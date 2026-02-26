@@ -37,6 +37,18 @@ const class_finder_template = `
 
                             </select>
                         </label>
+                        <div class="credit-range-container">
+                            <label>Credit Range:</label>
+                            <div class="dual-range-slider">
+                                <div class="slider-track"></div>
+                                <div class="slider-range" id="slider-range"></div>
+                                <div class="slider-handle slider-handle-min" id="slider-handle-min" role="slider" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" tabindex="0"></div>
+                                <div class="slider-handle slider-handle-max" id="slider-handle-max" role="slider" aria-valuemin="0" aria-valuemax="10" aria-valuenow="10" tabindex="0"></div>
+                            </div>
+                            <div class="credit-range-values">
+                                <span class="credit-min-value">0</span> – <span class="credit-max-value">10</span> credits
+                            </div>
+                        </div>
                         <input type="submit" value="SEARCH" />
                     </form>
                     <div id="class-finder-results">
@@ -120,7 +132,7 @@ window.onload = () => {
     // CLASS FINDER -----------------------------------------------------------
     $(document.body).append(class_finder_template);
     finderWindow = $(document.body).find("#class-finder-window");
-    
+
     // subjects
     let cf_subject = finderWindow.find("#cf-subject");
     cf_subject.append(`
@@ -146,7 +158,7 @@ window.onload = () => {
         finderWindow.hide();
     })
 
-    $("#class-finder-btn").on("click", function (e) { 
+    $("#class-finder-btn").on("click", function (e) {
         e.preventDefault();
         if (finderWindow.is(":visible")) {
             // clear the search
@@ -162,6 +174,180 @@ window.onload = () => {
         }
     });
 
+
+    function setupCreditRangeSlider() {
+        const slider = $('.dual-range-slider');
+        const handleMin = $('#slider-handle-min');
+        const handleMax = $('#slider-handle-max');
+        const range = $('#slider-range');
+        const minValue = $('.credit-min-value');
+        const maxValue = $('.credit-max-value');
+
+        const minCredit = 0;
+        const maxCredit = 10;
+        let activeHandle = null;
+
+        // Function to convert pixel position to credit value
+        function posToCredit(pos) {
+            const sliderWidth = slider.width();
+            const percentage = Math.max(0, Math.min(100, (pos / sliderWidth) * 100));
+            return Math.round((percentage / 100) * (maxCredit - minCredit) + minCredit);
+        }
+
+        // Function to convert credit value to percentage
+        function creditToPercent(credit) {
+            return ((credit - minCredit) / (maxCredit - minCredit)) * 100;
+        }
+
+        // Function to update handle positions and range
+        function updateSlider() {
+            const min = parseInt(minValue.text());
+            const max = parseInt(maxValue.text());
+
+            const minPercent = creditToPercent(min);
+            const maxPercent = creditToPercent(max);
+
+            handleMin.css('left', minPercent + '%');
+            handleMax.css('left', maxPercent + '%');
+            range.css({
+                'left': minPercent + '%',
+                'width': (maxPercent - minPercent) + '%'
+            });
+        }
+
+        // Function to get current credit range
+        window.getCreditRange = function () {
+            return {
+                min: parseInt(minValue.text()),
+                max: parseInt(maxValue.text())
+            };
+        };
+
+        // Function to set credit range programmatically
+        window.setCreditRange = function (min, max) {
+            // Ensure integers and bounds
+            min = Math.max(minCredit, Math.min(maxCredit, Math.round(min)));
+            max = Math.max(minCredit, Math.min(maxCredit, Math.round(max)));
+
+            // Ensure min <= max
+            if (min > max) {
+                min = max;
+            }
+
+            minValue.text(min);
+            maxValue.text(max);
+            updateSlider();
+        };
+
+        // Mouse/touch event handlers
+        function startDrag(handle, e) {
+            e.preventDefault();
+            activeHandle = handle;
+            handle.addClass('dragging');
+        }
+
+        function onDrag(e) {
+            if (!activeHandle) return;
+
+            e.preventDefault();
+
+            // Get mouse position relative to slider
+            const sliderRect = slider[0].getBoundingClientRect();
+            const clientX = e.clientX || (e.originalEvent?.touches?.[0]?.clientX);
+
+            if (!clientX) return;
+
+            let pos = clientX - sliderRect.left;
+            pos = Math.max(0, Math.min(sliderRect.width, pos));
+
+            const newCredit = posToCredit(pos);
+
+            if (activeHandle.is(handleMin)) {
+                const max = parseInt(maxValue.text());
+                const newMin = Math.min(newCredit, max);
+                minValue.text(newMin);
+            } else {
+                const min = parseInt(minValue.text());
+                const newMax = Math.max(newCredit, min);
+                maxValue.text(newMax);
+            }
+
+            updateSlider();
+        }
+
+        function stopDrag() {
+            if (activeHandle) {
+                activeHandle.removeClass('dragging');
+                activeHandle = null;
+            }
+        }
+
+        // Event listeners
+        handleMin.on('mousedown touchstart', function (e) {
+            startDrag(handleMin, e);
+        });
+
+        handleMax.on('mousedown touchstart', function (e) {
+            startDrag(handleMax, e);
+        });
+
+        $(document).on('mousemove touchmove', onDrag);
+        $(document).on('mouseup touchend', stopDrag);
+
+        // Click on track to jump
+        slider.on('click', function (e) {
+            const sliderRect = slider[0].getBoundingClientRect();
+            const pos = e.clientX - sliderRect.left;
+            const credit = posToCredit(pos);
+
+            const min = parseInt(minValue.text());
+            const max = parseInt(maxValue.text());
+
+            // Determine which handle to move based on which is closer
+            const distToMin = Math.abs(credit - min);
+            const distToMax = Math.abs(credit - max);
+
+            if (distToMin < distToMax) {
+                setCreditRange(credit, max);
+            } else {
+                setCreditRange(min, credit);
+            }
+        });
+
+        // Keyboard support for accessibility
+        handleMin.on('keydown', function (e) {
+            const min = parseInt(minValue.text());
+            const max = parseInt(maxValue.text());
+
+            if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                setCreditRange(min + 1, max);
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                setCreditRange(min - 1, max);
+            }
+        });
+
+        handleMax.on('keydown', function (e) {
+            const min = parseInt(minValue.text());
+            const max = parseInt(maxValue.text());
+
+            if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                setCreditRange(min, max + 1);
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                setCreditRange(min, max - 1);
+            }
+        });
+
+        // Initialize
+        setCreditRange(0, 10);
+    }
+
+    // Call it
+    setupCreditRangeSlider();
+
     searchForClass()
     // ------------------------------------------------------------------------
 
@@ -175,7 +361,7 @@ window.onload = () => {
         helpWindow.hide();
     })
 
-    $("#help-btn").on("click", function (e) { 
+    $("#help-btn").on("click", function (e) {
         e.preventDefault();
         if (helpWindow.is(":visible")) {
             helpWindow.hide();
@@ -198,7 +384,7 @@ window.onload = () => {
         settingsWindow.hide();
     })
 
-    $("#settings-btn").on("click", function (e) { 
+    $("#settings-btn").on("click", function (e) {
         e.preventDefault();
         if (settingsWindow.is(":visible")) {
             settingsWindow.hide();
@@ -228,11 +414,11 @@ window.onload = () => {
 
 
 
-    $(".generic-window").map(function() {
+    $(".generic-window").map(function () {
         windows.push(this);
     });
 
-    $(".generic-window").on("mousedown", function() {
+    $(".generic-window").on("mousedown", function () {
         windows = windows.filter(element => element != this);
         windows.push(this);
         layer_windows();
@@ -240,7 +426,7 @@ window.onload = () => {
 
     // make all windows draggable & exitable at end
     let allWindowsJQ = $(".generic-window");
-    allWindowsJQ.draggable({handle: ".generic-window-topbar", cancel: "img"});
+    allWindowsJQ.draggable({ handle: ".generic-window-topbar", cancel: "img" });
     allWindowsJQ.hide();
 }
 
@@ -273,18 +459,23 @@ const searchForClass = () => {
         for (subject in total_catalog) {
             var department = subject.split("-")[0]
 
-            // filter by department and attribute
-            var matchesFilters = 
-                (subjectQuery == null || subjectQuery == department) && // matches department
-                (attributeQuery == "All" || total_catalog[subject].attributes.includes(attributeQuery)) && // matches attribute
-                ((total_catalog[subject].offeredInFall && requestedFall) || (total_catalog[subject].offeredInSpring && requestedSpring)) // matches term
+            // check if credits are within range
+            const creditRange = window.getCreditRange();
+            if (total_catalog[subject].credits >= creditRange.min && total_catalog[subject].credits <= creditRange.max) {
 
-            if (matchesFilters) {
-                total_catalog[subject].stringMatch = getStringMatchValue(total_catalog[subject].name, quickSearchQuery)
-                if (total_catalog[subject].stringMatch > 0) results.push(total_catalog[subject])
+                // filter by department and attribute
+                var matchesFilters =
+                    (subjectQuery == null || subjectQuery == department) && // matches department
+                    (attributeQuery == "All" || total_catalog[subject].attributes.includes(attributeQuery)) && // matches attribute
+                    ((total_catalog[subject].offeredInFall && requestedFall) || (total_catalog[subject].offeredInSpring && requestedSpring)) // matches term
+
+                if (matchesFilters) {
+                    total_catalog[subject].stringMatch = getStringMatchValue(total_catalog[subject].name, quickSearchQuery)
+                    if (total_catalog[subject].stringMatch > 0) results.push(total_catalog[subject])
+                }
             }
         }
-    
+
         // now we sort based on string matching
         // quick sort my beloved
         // also extract the subject
@@ -340,10 +531,10 @@ const getStringMatchValue = (string, searchQuery) => {
 
         return (
             27 * 27 * 27 * alphabet.indexOf(className[0]) +
-                 27 * 27 * alphabet.indexOf(className[1]) + 
-                      27 * alphabet.indexOf(className[2])
-                                                        +
-            9999 - parseInt(number)    
+            27 * 27 * alphabet.indexOf(className[1]) +
+            27 * alphabet.indexOf(className[2])
+            +
+            9999 - parseInt(number)
         )
     }
 
@@ -382,31 +573,66 @@ const addResult = (result) => {
     let fullGovernmentName = result.name.split(":");
     let courseID = fullGovernmentName.shift();
 
-    const yearID = `2${total_catalog[courseID].yearOffered.slice(-2)}${result.offeredInSpring ? "2" : "8"}`
+    const yearID = `2${total_catalog[courseID].yearOffered.slice(-2)}${result.offeredInSpring ? "2" : "8"}`;
 
-    const result_template = 
+    const result_template =
         `<div class=cf-result>
             <div class="class-about">
                 <p><b>${courseID}:</b>${fullGovernmentName.join()}</p>
                 <div class="class-links">
                     <a class="sis-link" href="https://sis.it.tufts.edu/psp/paprd/EMPLOYEE/EMPL/h/?tab=TFP_CLASS_SEARCH&pt_fname=TFP_SEARCH_FOR_CLASSES_FLDR&FolderPath=PORTAL_ROOT_OBJECT.TFP_CLASSES_FLDR.TFP_SEARCH_FOR_CLASSES_FLDR&IsFolder=true#search_results/term/${yearID}/career/ASE/subject/${courseID.split('-')[0]}/course/${courseID.split('-')[1]}/attr/keyword/instructor" target="_blank" rel="noopener noreferrer">SIS</a>
-                    <br> <a class="prereq-btn" href="#">Prereqs</a>
+                    <br> <a class="prereq-btn" href="#" data-tooltip="${result.prereqs.replace(/"/g, '&quot;')}">Prereqs</a>
                 </div>
             </div>
             <div class="class-data">
                 <div>
-                    ${result.offeredInFall ? `<span class="hl-orange">Fall</span>`: ""}
+                    <button class="add-class-from-finder-btn" 
+                        data-course-id="${courseID}"
+                        data-course-name="${fullGovernmentName.join()}"
+                        data-credits="${result.credits}">
+                    <span>➕</span> Add
+                    </button>
+                    ${result.offeredInFall ? `<span class="hl-orange">Fall</span>` : ""}
                     ${result.offeredInSpring ? `<span class="hl-green">Spring</span>` : ""}
                 </div>
                 <div>
-                    <b>${result.credits}</b> credit${result.credits == 1 ? "" : "s"}
+                    <span class="class-credits-wrapper"><b>${result.credits}</b> credit${result.credits == 1 ? "" : "s"}</span>
                 </div>
             </div>
-        </div>`
-    $("#cf-results-list").append(result_template)
-    $(".prereq-btn").last().on("click", () => {
-        alert(`Prerequisites for ${courseID}:\n\n${result.prereqs.length > 0 ? result.prereqs : "None"}`)
-    })
+        </div>`;
+
+    $("#cf-results-list").append(result_template);
+
+    // Remove the old click listener - no longer needed!
+
+    // Add class button listener
+    $(".add-class-from-finder-btn").last().on("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const btn = $(this);
+        const courseId = btn.data('course-id');
+        const courseName = btn.data('course-name');
+        const credits = btn.data('credits');
+
+        // Add class to selected tab
+        window.addClassToTerm(currentTab.id, courseId, courseName, credits);
+
+        // Subtle success feedback
+        btn.css({
+            'background': 'var(--cornflower-blue)',
+            'color': 'white',
+            'transform': 'scale(0.95)'
+        });
+
+        setTimeout(() => {
+            btn.css({
+                'background': '',
+                'color': '',
+                'transform': ''
+            });
+        }, 200);
+    });
 }
 
 //#endregion =================================================================

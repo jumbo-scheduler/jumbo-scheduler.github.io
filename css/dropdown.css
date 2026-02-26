@@ -1,0 +1,602 @@
+/* Track Styles */
+#track {
+    color: var(--ds-text);
+    position: relative;
+    min-height: 100px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px 25px 25px 25px;
+}
+
+#track-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--light-gray);
+}
+
+#track-header h2 {
+    flex-shrink: 1;
+    color: var(--text);
+    font-weight: 700;
+    font-size: x-large;
+    text-wrap: wrap;
+    word-break: break-word;
+    display: -webkit-box;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    box-orient: vertical;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.track-rename-btn {
+    border-radius: 16px;
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.track-rename-btn:hover {
+    background-color: var(--light-gray);
+}
+
+.track-rename-btn img {
+    height: 20px;
+    width: 20px;
+}
+
+/* Terms Container */
+#terms-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+/* Term Dropdown */
+.term-dropdown {
+    background: white;
+    border-radius: var(--roundness);
+    border: 1px solid var(--shadow-blue-opaque);
+    overflow: hidden;
+    box-shadow: var(--shadow-blue) 1px 1px 3px;
+    transition: all 0.2s ease;
+}
+
+.term-dropdown:hover {
+    border-color: var(--cornflower-blue);
+}
+
+/* Term Header */
+.term-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 18px;
+    background: var(--light-gray);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.term-header:hover {
+    background: #d9dee3;
+}
+
+.term-arrow {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease;
+    filter: invert(40%);
+}
+
+.term-header.collapsed .term-arrow {
+    transform: rotate(-90deg);
+}
+
+.term-title {
+    flex-grow: 1;
+    font-weight: 600;
+    color: var(--ds-text);
+    font-size: 1.1em;
+    padding: 0 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.term-title-input {
+    flex-grow: 1;
+    font-weight: 600;
+    color: var(--ds-text);
+    font-size: 1.1em;
+    padding: 4px 8px;
+    background: white;
+    border: 2px solid var(--cornflower-blue);
+    border-radius: 4px;
+    outline: none;
+}
+
+.term-rename-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+    transition: all 0.2s ease;
+}
+
+.term-rename-btn:hover {
+    opacity: 1;
+    background-color: var(--gray-tint);
+}
+
+.term-rename-btn img {
+    width: 14px;
+    height: 14px;
+}
+
+/* Term Content */
+.term-content {
+    padding: 18px;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.term-content.collapsed {
+    display: none;
+}
+
+/* Class Items */
+.term-class-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    background: #f8f9fa;
+    border: 1px solid var(--shadow-blue-opaque);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.term-class-item:hover {
+    background: var(--light-gray);
+    border-color: var(--cornflower-blue);
+    transform: translateX(2px);
+}
+
+.class-marker {
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+.class-code {
+    font-weight: 600;
+    color: var(--deep-blue);
+    min-width: 80px;
+    font-size: 0.95em;
+}
+
+.class-name {
+    flex-grow: 1;
+    color: var(--ds-text);
+    font-size: 0.95em;
+}
+
+.class-credits {
+    color: var(--gray-text);
+    font-size: 0.85em;
+    padding: 2px 8px;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid var(--shadow-blue-opaque);
+    flex-shrink: 0;
+}
+
+.remove-class {
+    width: 18px;
+    height: 18px;
+    opacity: 0.4;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    flex-shrink: 0;
+}
+
+.remove-class:hover {
+    opacity: 1;
+}
+
+/* Empty State */
+.term-empty {
+    color: var(--gray-text);
+    font-style: italic;
+    padding: 20px;
+    text-align: center;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px dashed var(--shadow-blue-opaque);
+    margin-bottom: 12px;
+}
+
+/* Term Header */
+.term-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 20px;  /* Increased padding */
+    background: var(--light-gray);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.term-header:hover {
+    background: #d9dee3;
+}
+
+.term-arrow {
+    width: 36px;
+    height: 36px;
+    transition: transform 0.2s ease;
+    filter: invert(40%);
+}
+
+.term-title {
+    flex-grow: 1;
+    font-weight: 600;
+    color: var(--ds-text);
+    font-size: 1.2em;  /* Larger font */
+    padding: 0 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.term-title-input {
+    flex-grow: 1;
+    font-weight: 600;
+    color: var(--ds-text);
+    font-size: 1.2em;
+    padding: 6px 10px;
+    background: white;
+    border: 2px solid var(--cornflower-blue);
+    border-radius: 6px;
+    outline: none;
+}
+
+/* Improved Rename Button */
+.term-rename-btn {
+    width: 32px;  /* Bigger button */
+    height: 32px;
+    border-radius: 16px;
+    background: white;  /* White background */
+    border: 1px solid var(--shadow-blue-opaque);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.term-rename-btn:hover {
+    opacity: 1;
+    background: var(--cornflower-light);  /* Light blue on hover */
+    border-color: var(--cornflower-blue);
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.term-rename-btn:active {
+    transform: scale(0.98);
+}
+
+.term-rename-btn img {
+    width: 18px;  /* Bigger icon */
+    height: 18px;
+    filter: brightness(0.3);  /* Darker icon for better contrast */
+}
+
+.term-rename-btn:hover img {
+    filter: brightness(0);  /* Even darker on hover */
+}
+
+.term-credit-count {
+    background: white;  /* White background */
+    border: 1px solid var(--shadow-blue-opaque);
+    color: var(--dropdown-text);
+    padding: 4px 12px;  /* Slightly larger */
+    border-radius: 16px;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-left: 5px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Selected Tab State */
+.term-dropdown.term-selected {
+    border: 2px solid var(--deeper-blue);
+    box-shadow: 0 0 0 2px var(--deep-blue), var(--shadow-blue) 2px 2px 4px;
+}
+
+.term-dropdown.term-selected .term-header {
+    background: var(--cornflower-blue);
+}
+
+.term-dropdown.term-selected .term-title {
+    color: var(--light-gray);
+    font-weight: 700;
+}
+
+/* Term Content with Animation */
+.term-content {
+    padding: 18px;
+    background: white;
+    max-height: 1000px; /* Large enough to fit any content */
+    opacity: 1;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth easing */
+}
+
+.term-content.collapsed {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+    visibility: hidden; /* Prevents tabbing into hidden content */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Arrow rotation animation */
+.term-arrow {
+    width: 36px;
+    height: 36px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: invert(40%);
+}
+
+.term-header.collapsed .term-arrow {
+    transform: rotate(-90deg);
+}
+
+
+/* Smooth background color transition */
+.term-dropdown {
+    background: white;
+    border-radius: var(--roundness);
+    border: 1px solid var(--shadow-blue-opaque);
+    overflow: hidden;
+    box-shadow: var(--shadow-blue) 1px 1px 3px;
+    transition: all 0.2s ease;
+}
+
+.term-dropdown:hover {
+    border-color: var(--cornflower-blue);
+    box-shadow: var(--shadow-blue) 2px 2px 6px;
+}
+
+/* Animate class items appearing/disappearing */
+.term-class-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    background: #f8f9fa;
+    border: 1px solid var(--shadow-blue-opaque);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.term-class-item:hover {
+    background: var(--light-gray);
+    border-color: var(--cornflower-blue);
+    transform: translateX(2px);
+}
+
+.term-class-item.removing {
+    animation: slideOut 0.2s ease forwards;
+}
+
+@keyframes slideOut {
+    to {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+}
+
+/* Animate empty state */
+.term-empty {
+    color: var(--gray-text);
+    font-style: italic;
+    padding: 20px;
+    text-align: center;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px dashed var(--shadow-blue-opaque);
+    margin-bottom: 12px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Add this for a more sophisticated animation */
+@keyframes expandContent {
+    0% {
+        max-height: 0;
+        opacity: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        max-height: 1000px;
+        opacity: 1;
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+}
+
+@keyframes collapseContent {
+    0% {
+        max-height: 1000px;
+        opacity: 1;
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        max-height: 0;
+        opacity: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+    }
+}
+
+
+/* Term Class Item with X Button */
+.term-class-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px 8px 10px;
+    margin-bottom: 8px;
+    background: #f8f9fa;
+    border: 1px solid var(--shadow-blue-opaque);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    animation: slideIn 0.3s ease;
+    position: relative;
+}
+
+.term-class-item:hover {
+    background: var(--light-gray);
+    border-color: var(--cornflower-blue);
+    transform: translateX(2px);
+}
+
+.class-marker {
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+.class-code {
+    font-weight: 600;
+    color: var(--deep-blue);
+    min-width: 80px;
+    font-size: 0.95em;
+}
+
+.class-name {
+    flex-grow: 1;
+    color: var(--ds-text);
+    font-size: 0.95em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.class-credits {
+    color: var(--gray-text);
+    font-size: 0.85em;
+    padding: 2px 8px;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid var(--shadow-blue-opaque);
+    flex-shrink: 0;
+    margin-right: 5px;
+}
+
+/* Sexy X Button */
+.remove-class {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background: var(--x-red);
+    border: 1px solid var(--x-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    padding: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.remove-class:hover {
+    opacity: 1;
+    background: var(--x-red);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(198, 99, 99, 0.3);
+}
+
+.remove-class:active {
+    transform: scale(0.95)
+}
+
+.remove-class::before,
+.remove-class::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    background: var(--x-red);
+    border-radius: 1px;
+    transition: all 0.2s ease;
+}
+
+/* For the SVG version if you prefer using the trash icon */
+.remove-class img {
+    width: 14px;
+    height: 14px;
+    filter: brightness(0) saturate(100%) invert(45%) sepia(36%) saturate(1047%) hue-rotate(315deg) brightness(96%) contrast(87%);
+    transition: all 0.2s ease;
+}
+
+.remove-class:hover img {
+    filter: brightness(0) invert(1);
+}

@@ -23,311 +23,444 @@
                 SIDEBAR BUTTONS (INCLUDES CLASS FINDER)
    ========================================================================= */
 
-    #side-btns-container {
-        width: 80px;
+#side-btns-container {
+    width: 80px;
 
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    top: 40px;
+}
+
+/* General buttons ----------------------------------------------------- */
+
+.side-btn {
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    border-top-left-radius: var(--roundness);
+    border-bottom-left-radius: var(--roundness);
+}
+
+#class-finder-btn {
+    width: 80px;
+    height: 100px;
+
+    color: white;
+    user-select: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cornflower-blue);
+
+    img {
+        position: absolute;
+        bottom: 8px;
+        left: -1px;
+        height: 120px;
+    }
+
+    p {
+        position: absolute;
+        left: 5px;
+        bottom: 5px;
+        font-weight: 600;
+    }
+}
+
+#class-finder-btn:hover {
+    filter: brightness(0.9);
+}
+
+#help-btn {
+    height: 35px;
+    color: var(--gray-text);
+    background-color: white;
+
+    img {
+        position: absolute;
+        height: 55px;
+        top: 0px;
+        left: 5px;
+    }
+
+    p {
+        position: absolute;
+        top: 7px;
+        right: 9px;
+        font-weight: 600;
+    }
+}
+
+#help-btn:hover {
+    filter: brightness(0.9);
+}
+
+#settings-btn {
+    height: 35px;
+    color: white;
+    background-color: var(--gray-text);
+
+    img {
+        position: absolute;
+        top: 0px;
+        left: -5px;
+        height: 65px;
+    }
+
+    p {
+        position: absolute;
+        top: 7px;
+        right: 9px;
+        font-weight: 600;
+    }
+}
+
+#settings-btn:hover {
+    filter: brightness(0.9);
+}
+
+/* generic window */
+.generic-window-wrapper {
+    pointer-events: none;
+    /* click through div */
+
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .generic-window {
+        pointer-events: all;
+        /* but make child clickable */
 
         position: fixed;
-        z-index: 10;
-        right: 0;
-        top: 200px;
-    }
-
-    /* General buttons ----------------------------------------------------- */
-
-    .side-btn {
-        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        border-radius: var(--roundness);
         overflow: hidden;
-        position: relative;
-        border-top-left-radius: var(--roundness);
-        border-bottom-left-radius: var(--roundness);
-    }
+        z-index: 10;
 
-    #class-finder-btn {
-        width: 80px;
-        height: 100px;
+        .generic-window-topbar {
+            width: 100%;
 
-        color: white;
-        user-select: none;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--cornflower-blue);
-
-        img {
-            position: absolute;
-            bottom: 8px;
-            left: -1px;
-            height: 120px;
-        }
-        p {
-            position: absolute;
-            left: 5px;
-            bottom: 5px;
-            font-weight: 600;
-        }
-    }
-
-    #class-finder-btn:hover {
-        filter: brightness(0.9);
-    }
-
-    #help-btn {
-        height: 35px;
-        color: var(--gray-text);
-        background-color: white;
-
-        img {
-            position: absolute;
-            height: 55px;
-            top: 0px;
-            left: 5px;
-        }
-        p {
-            position: absolute;
-            top: 7px;
-            right: 9px;
-            font-weight: 600;
-        }
-    }
-
-    #help-btn:hover {
-        filter: brightness(0.9);
-    }
-
-    #settings-btn {
-        height: 35px;
-        color: white;
-        background-color: var(--gray-text);
-
-        img {
-            position: absolute;
-            top: 0px;
-            left: -5px;
-            height: 65px;
-        }
-        p {
-            position: absolute;
-            top: 7px;
-            right: 9px;
-            font-weight: 600;
-        }
-    }
-
-    #settings-btn:hover {
-        filter: brightness(0.9);
-    }
-
-    /* generic window */
-    .generic-window-wrapper {
-        pointer-events: none; /* click through div */
-
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        .generic-window {
-            pointer-events: all; /* but make child clickable */
-
-            position: fixed;
             display: flex;
-            flex-direction: column;
-            border-radius: var(--roundness);
-            overflow: hidden;
-            z-index: 10;
-
-            .generic-window-topbar {
-                width: 100%;
-
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                color: white;
-                padding: 15px 30px 12px;
-                background-color: var(--cornflower-blue);
-
-                .generic-window-header {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap: 20px;
-                    
-                    img {
-                        height: 30px;
-                        filter: brightness(150%) contrast(150%);
-                    }
-                    h2 {
-                        font-size: 30px;
-                    }
-                }
-
-                .generic-window-close {
-                    height: 22px;
-                    margin-right: 10px;
-
-                    img {
-                        height: 100%;
-                    }
-                }
-
-                .generic-window-close:hover > img {
-                    cursor: pointer;
-                    filter: brightness(75%);
-                }
-            }
-
-            .generic-window-contents {
-                background-color: white;
-                overflow: scroll;
-                width: 100%;
-                height: 100%;
-                padding: 10px 30px 30px;
-            }
-        }
-    }
-
-
-    /* Class finder window ------------------------------------------------- */
-
-    #cf-subject-menu, #cf-attributes-menu {
-        height: 300px !important;
-        overflow-y: scroll !important;
-    }
-
-    #class-finder-window {
-        width: 100%;
-        max-width: 700px;
-        height: 100%;
-        max-height: 450px;
-        background-color: var(--cornflower-blue);
-        color: white;
-
-        #class-finder-topbar {
-            padding: 30px 30px 12px;
-
-            .generic-window-header > img {
-                height: 40px;
-            }
-        }
-
-        #class-finder {
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            padding: 15px 30px 12px;
             background-color: var(--cornflower-blue);
+
+            .generic-window-header {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 20px;
+
+                img {
+                    height: 30px;
+                    filter: brightness(150%) contrast(150%);
+                }
+
+                h2 {
+                    font-size: 30px;
+                }
+            }
+
+            .generic-window-close {
+                height: 22px;
+                margin-right: 10px;
+
+                img {
+                    height: 100%;
+                }
+            }
+
+            .generic-window-close:hover>img {
+                cursor: pointer;
+                filter: brightness(75%);
+            }
+        }
+
+        .generic-window-contents {
+            background-color: white;
+            overflow: auto;
+            width: 100%;
+            height: 100%;
             padding: 10px 30px 30px;
+        }
+    }
+}
 
-            #class-finder-search-container {
-                background-color: var(--light-gray);
-                width: 100%;
-                height: 100%;
-                display: grid;
-                grid-template-columns: 40% 60%;
-                gap: 1px;
 
-                #class-finder-search {
-                    background-color: var(--cornflower-blue);
-                    padding: 0px 20px 0px 2px;
-                    display: flex;
-                    flex-direction: column;
+/* Class finder window ------------------------------------------------- */
 
-                    label {
-                        font-weight: 500;
-                    }
+#cf-subject-menu, #cf-attributes-menu {
+    height: 300px !important;
+    overflow-y: scroll !important;
+}
 
-                    input, .ui-selectmenu-button {
-                        font-size: unset;
-                        background-color: white;
-                        width: 100%;
-                        height: 28px;
+#class-finder-window {
+    width: 100%;
+    max-width: 1100px;  /* Slightly wider for better proportions */
+    height: 100%;
+    max-height: 700px;  /* Increased to give results more space */
+    background-color: var(--cornflower-blue);
+    color: white;
+
+    #class-finder-topbar {
+        padding: 25px 30px 15px;  /* Adjusted padding */
+
+        .generic-window-header > img {
+            height: 40px;
+        }
+        
+        .generic-window-header h2 {
+            font-size: 32px;  /* Slightly larger title */
+        }
+    }
+
+    #class-finder {
+        background-color: var(--cornflower-blue);
+        padding: 5px 30px 25px;  /* Adjusted padding */
+
+        #class-finder-search-container {
+            background-color: var(--light-gray);
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 30% 70%;  /* More space for results */
+            gap: 2px;  /* Slightly larger gap */
+
+            #class-finder-search {
+                background-color: var(--cornflower-blue);
+                padding: 0px 20px 0px 5px;
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    font-weight: 500;
+                    font-size: 1.05em;  /* Slightly larger */
+                    margin-top: 8px;  /* Add some spacing */
+                }
+
+                label:first-of-type {
+                    margin-top: 0;
+                }
+
+                input, .ui-selectmenu-button {
+                    font-size: 1em;
+                    background-color: white;
+                    width: 100%;
+                    height: 36px;  /* Taller inputs */
+                    border: solid 1px var(--deep-blue);
+                    border-radius: var(--roundness);
+                    margin: 8px 0px 12px;  /* More vertical spacing */
+                    padding: 1px 10px;
+                }
+
+                input[type="submit"] {
+                    height: 44px;  /* Taller submit button */
+                    margin-top: 25px;
+                    margin-bottom: 5px;
+                    font-weight: 600;
+                    font-size: 1.1em;
+                    background-color: var(--deep-blue);
+                    color: white;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                }
+
+                input[type="submit"]:hover {
+                    background-color: var(--deeper-blue);
+                    transform: translateY(-1px);
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                }
+
+                input[type="submit"]:active {
+                    transform: translateY(0);
+                }
+
+                input::placeholder {
+                    color: var(--shadow-blue);
+                }
+
+                input.placeholder {
+                    color: var(--shadow-blue);
+                }
+            }
+
+            #class-finder-results {
+                background-color: var(--cornflower-blue);
+                padding: 0px 5px 0px 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                #cf-results-list {
+                    height: 500px;  /* Significantly increased for more results */
+                    overflow-x: hidden;
+                    overflow-y: scroll;
+                    border-radius: var(--roundness);
+                    padding-right: 5px;  /* Space for scrollbar */
+
+                    .cf-result {
+                        height: auto;  /* Let height be determined by content */
+                        min-height: 110px;  /* Minimum height with breathing room */
+                        padding: 15px 15px 12px;  /* Generous padding */
+                        margin-bottom: 10px;
+                        white-space: normal;
                         border: solid 1px var(--deep-blue);
                         border-radius: var(--roundness);
-                        margin: 5px 0px 5px;
-                        padding: 1px 5px;
-                    }
+                        background-color: white;
+                        color: black;
+                        transition: all 0.2s ease;
 
-                    input[type="submit"] {
-                        height: 35px;
-                        margin-top: 30px;
-                        font-weight: 500;
-                        background-color: var(--deep-blue);
-                        color: white;
-                    }
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        overflow: visible;
 
-                    input[type="submit"]:hover {
-                        cursor: pointer;
-                        background-color: var(--deeper-blue);
-                    }
+                        &:hover {
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                            transform: translateY(-2px);
+                            border-color: var(--cornflower-blue);
+                        }
 
-                    input::placeholder { /* This is for text input with placholders */
-                        color: var(--shadow-blue);
-                    }
-
-                    input.placeholder {  /* This is for dropdowns with "placeholders"; class assigned in js */
-                        color: var(--shadow-blue);
-                    }
-                }
-
-                #class-finder-results {
-                    background-color: var(--cornflower-blue);
-                    padding: 0px 2px 0px 20px;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px;
-
-                    #cf-results-list {
-                        height: 290px;
-                        overflow-x: hidden;
-                        overflow-y: scroll;
-                        border-radius: var(--roundness);
-
-                        .cf-result {
-                            height: 85px;
-                            padding: 5px 10px 8px;
-                            margin-bottom: 5px;
-                            white-space: nowrap;
-                            border: solid 1px var(--deep-blue);
-                            border-radius: var(--roundness);
-                            background-color: white;
-                            color: black;
-
+                        .class-about {
                             display: flex;
-                            flex-direction: column;
-                            justify-content: space-between;
-                            overflow: hidden;
+                            flex-direction: row;
+                            gap: 15px;
+                            margin-bottom: 12px;  /* Space between about and data */
 
-                            .class-about {
+                            p {
+                                height: auto;
+                                min-height: 50px;
+                                width: 100%;
+                                text-wrap: wrap;
+                                word-break: break-word;
+                                display: -webkit-box;
+                                line-clamp: 3;  /* Allow up to 3 lines */
+                                -webkit-line-clamp: 3;
+                                box-orient: vertical;
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;
+                                font-size: 1.1em;
+                                line-height: 1.5;  /* Better line height for readability */
+                                color: #333;
+                            }
+
+                            .class-links {
                                 display: flex;
-                                flex-direction: row;
+                                flex-direction: column;
                                 gap: 5px;
+                                min-width: 70px;
 
-                                p {
-                                    height: 43px;
-                                    width: 100%;
-                                    text-wrap: wrap;
-                                    word-break: break-word;
-                                    display: -webkit-box;
-                                    line-clamp: 2;
-                                    -webkit-line-clamp: 2;
-                                    box-orient: vertical;
-                                    -webkit-box-orient: vertical;
-                                    overflow: hidden;
+                                a {
+                                    color: var(--cornflower-blue);
+                                    text-decoration: none;
+                                    font-weight: 500;
+                                    font-size: 0.95em;
+                                    padding: 3px 8px;
+                                    background: #f0f4ff;
+                                    border-radius: 12px;
+                                    text-align: center;
+                                    transition: all 0.2s ease;
+                                }
+
+                                a:hover {
+                                    background: var(--cornflower-blue);
+                                    color: white;
+                                    text-decoration: none;
+                                }
+                            }
+                        }
+
+                        .class-data {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            align-items: center;
+                            padding-top: 8px;
+                            border-top: 1px solid var(--light-gray);  /* Subtle separator */
+
+                            /* Term offerings */
+                            & > div:first-child {
+                                display: flex;
+                                gap: 8px;
+                                
+                                .hl-orange, .hl-green {
+                                    padding: 4px 10px;
+                                    border-radius: 20px;
+                                    font-size: 0.9em;
+                                    font-weight: 500;
                                 }
                             }
 
-                            .class-data {
-                                display: flex;
-                                flex-direction: row;
-                                justify-content: space-between;
+                            /* Add Class Button - Enhanced */
+                            .add-class-from-finder-btn {
+                                display: inline-flex;
+                                align-items: center;
+                                gap: 6px;
+                                padding: 6px 16px;
+                                background: white;
+                                border: 1.5px solid var(--cornflower-blue);
+                                border-radius: 24px;
+                                color: var(--cornflower-blue);
+                                font-weight: 600;
+                                font-size: 0.9em;
+                                cursor: pointer;
+                                transition: all 0.2s ease;
+                                margin-right: 12px;
+                                line-height: 1;
+                                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                            }
+
+                            .add-class-from-finder-btn:hover {
+                                background: var(--cornflower-blue);
+                                color: white;
+                                transform: translateY(-2px);
+                                box-shadow: 0 6px 12px rgba(88, 138, 225, 0.3);
+                            }
+
+                            .add-class-from-finder-btn:active {
+                                transform: translateY(0);
+                            }
+
+                            .add-class-from-finder-btn span {
+                                font-size: 1.2em;
+                                line-height: 1;
+                            }
+
+                            /* Credits wrapper - enhanced */
+                            .class-credits-wrapper {
+                                display: inline-flex;
+                                align-items: center;
+                                background: #f5f7fa;
+                                padding: 4px 12px;
+                                border-radius: 20px;
+                                color: var(--deep-blue);
+                                font-size: 1em;
+                                font-weight: 500;
+                                border: 1px solid var(--light-gray);
+                                
+                                b {
+                                    font-weight: 700;
+                                    margin-right: 4px;
+                                    color: var(--cornflower-blue);
+                                }
                             }
                         }
                     }
@@ -335,22 +468,41 @@
             }
         }
     }
+}
+
+/* Style the scrollbar to be prettier */
+#cf-results-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+#cf-results-list::-webkit-scrollbar-track {
+    background: var(--light-gray);
+    border-radius: 4px;
+}
+
+#cf-results-list::-webkit-scrollbar-thumb {
+    background: var(--cornflower-blue);
+    border-radius: 4px;
+}
+
+#cf-results-list::-webkit-scrollbar-thumb:hover {
+    background: var(--deep-blue);
+}
+
+/* Help window --------------------------------------------------------- */
+
+#help-window {
+    width: 500px;
+    height: 400px;
+}
 
 
-    /* Help window --------------------------------------------------------- */
+/* Settings window --------------------------------------------------------- */
 
-    #help-window {
-        width: 500px;
-        height: 400px;
-    }
+#settings-window {
+    width: 600px;
+    height: 400px;
+}
 
-
-    /* Settings window --------------------------------------------------------- */
-
-    #settings-window {
-        width: 600px;
-        height: 400px;
-    }
-    
 
 /* #endregion ============================================================== */
