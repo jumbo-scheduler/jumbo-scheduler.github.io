@@ -401,56 +401,12 @@ const addResult = (result) => {
                 <div>
                     <b>${result.credits}</b> credit${result.credits == 1 ? "" : "s"}
                 </div>
-                <button class="add-to-sheet-btn" data-course-id="${courseID}">
-                    <span class="plus-icon">+</span> Add
-                </button>
             </div>
         </div>`
-    
     $("#cf-results-list").append(result_template)
-    
-    // Prereq button handler
-    $(".prereq-btn").last().on("click", (e) => {
-        e.preventDefault();
+    $(".prereq-btn").last().on("click", () => {
         alert(`Prerequisites for ${courseID}:\n\n${result.prereqs.length > 0 ? result.prereqs : "None"}`)
     })
-    
-    // Add to degree sheet button handler
-    $(".add-to-sheet-btn").last().on("click", function(e) {
-        e.preventDefault();
-        const $btn = $(this);
-        
-        // Call the DegreeSheetClasses.add function
-        if (typeof DegreeSheetClasses !== 'undefined') {
-            const classId = DegreeSheetClasses.add({
-                name: result.name,
-                credits: result.credits,
-                code: courseID,
-                metadata: {
-                    offeredInFall: result.offeredInFall,
-                    offeredInSpring: result.offeredInSpring,
-                    prereqs: result.prereqs,
-                    yearOffered: total_catalog[courseID]?.yearOffered
-                }
-            });
-            
-            if (classId) {
-                // Success feedback
-                $btn.addClass('btn-success').text('✓ Added!');
-                setTimeout(() => {
-                    $btn.removeClass('btn-success').html('<span class="plus-icon">+</span> Add');
-                }, 2000);
-                
-                // Optional: Scroll to degree sheet to show the added class
-                $('html, body').animate({
-                    scrollTop: $('#degree-sheet').offset().top
-                }, 500);
-            }
-        } else {
-            console.error('DegreeSheetClasses not loaded');
-            alert('Error: Degree sheet manager not available. Please refresh the page.');
-        }
-    });
 }
 
 //#endregion =================================================================
